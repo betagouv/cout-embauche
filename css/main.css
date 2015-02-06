@@ -17,3 +17,7 @@ input, select {
 	margin: 0 .5em;
 	vertical-align: middle;
 }
+
+#details {
+	font-size: 60%;
+}

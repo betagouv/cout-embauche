@@ -22,7 +22,7 @@ function update() {
 		var data = JSON.parse(request.responseText);
 
 		display({
-			salsuperbrut: data.value
+			salsuperbrut: String(data.value.toFixed(2)).replace('.', ',')
 		});
 	};
 

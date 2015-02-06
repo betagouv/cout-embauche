@@ -7,30 +7,36 @@
 	</head>
 
 	<body>
-		<form action="http://api-test.openfisca.fr/api/1/formula/salsuperbrut" method="get">
-			<select name="">
-				<option>Mon entreprise</option>
-				<option disabled>Mon association</option>
-				<option disabled>Mon établissement public</option>
-				<option disabled>Moi, comme particulier,</option>
-			</select>
+		<section id="input">
+			<form action="http://api-test.openfisca.fr/api/1/formula/salsuperbrut" method="get">
+				<select name="">
+					<option>Mon entreprise</option>
+					<option disabled>Mon association</option>
+					<option disabled>Mon établissement public</option>
+					<option disabled>Moi, comme particulier,</option>
+				</select>
 
-			souhaite rémunérer un.e
+				souhaite rémunérer un.e
 
-			<select name="">
-				<option>salarié.e</option>
-				<option disabled>aide à domicile</option>
-				<option disabled>auto-entrepeneur.se</option>
-			</select>
+				<select name="">
+					<option>salarié.e</option>
+					<option disabled>aide à domicile</option>
+					<option disabled>auto-entrepeneur.se</option>
+				</select>
 
-			<input name="salaire_de_base" type="number" min="0" max="99999">&nbsp;€ par
-			<select name="">
-				<option>mois</option>
-				<option disabled>jour</option>
-				<option disabled>heure</option>
-			</select>
+				<input name="salaire_de_base" type="number" min="0" max="99999">&nbsp;€ par
+				<select name="">
+					<option>mois</option>
+					<option disabled>jour</option>
+					<option disabled>heure</option>
+				</select>
 
-			<input type="submit" value="Combien cela va-t-il me coûter ?">
-		</form>
+				<input type="submit" value="Combien cela va-t-il coûter ?">
+			</form>
+		</section>
+
+		<section id="result">
+
+		</section>
 	</body>
 </html>

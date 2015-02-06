@@ -55,7 +55,7 @@
 		</section>
 
 		<section id="result">
-			<p>Cela coûtera <span data-source="salsuperbrut">1983,50</span>&nbsp;€ par <span data-source="period">mois</span> à <span data-source="employer">mon entreprise</span>.</p>
+			<p>Cela coûtera <span data-source="salsuperbrut">…</span>&nbsp;€ par <span data-source="period">mois</span> à <span data-source="employer">mon entreprise</span>.</p>
 		</section>
 
 		<script type="text/javascript" src="display.js"></script>
@@ -70,6 +70,8 @@
 
 			form.addEventListener('change', update);
 			form.addEventListener('keyup', update);
+
+			update.call(form);
 
 			})();
 		</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Simulateur de coût d'embauche</title>
+	</head>
+
+	<body>
+		<form action="http://api-test.openfisca.fr/api/1/formula/salsuperbrut" method="get">
+			<select name="">
+				<option>Mon entreprise</option>
+				<option disabled>Mon association</option>
+				<option disabled>Mon établissement public</option>
+				<option disabled>Moi, comme particulier,</option>
+			</select>
+
+			souhaite rémunérer un.e
+
+			<select name="">
+				<option>salarié.e</option>
+				<option disabled>aide à domicile</option>
+				<option disabled>auto-entrepeneur.se</option>
+			</select>
+
+			<input name="salaire_de_base" type="number" min="0" max="99999">&nbsp;€ par
+			<select name="">
+				<option>mois</option>
+				<option disabled>jour</option>
+				<option disabled>heure</option>
+			</select>
+
+			<input type="submit" value="Combien cela va-t-il me coûter ?">
+		</form>
+	</body>
+</html>

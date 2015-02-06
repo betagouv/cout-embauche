@@ -10,8 +10,14 @@ function display(data) {
 }
 
 function reflectParameterChange(event) {
-	var data = {};
-	data[event.target.name || event.target.attributes['data-provides'].value] = event.target.value;
+	if (event.target.attributes['data-sets']) {
+		var modifier = event.target.attributes['data-sets'].value.split('.');	// example: '#salaire.name'; first part is selector, second is attribute to set
 
-	display(data);
+		document.querySelector(modifier[0])[modifier[1]] = event.target.value;
+	} else {
+		var data = {};
+		data[event.target.name || event.target.attributes['data-provides'].value] = event.target.value;
+
+		display(data);
+	}
 }

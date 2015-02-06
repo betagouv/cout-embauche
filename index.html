@@ -28,7 +28,12 @@
 					<option disabled>auto-entrepeneur.se</option>
 				</select>
 
-				<input name="salaire_de_base" type="number" min="0" max="99999" placeholder="1445,38" value="1445.38">&nbsp;€ par
+				<input name="salaire_de_base" id="salaire" type="number" min="0" max="99999" placeholder="1445,38" value="1445.38"><label for="salaire">&nbsp;€</label>
+
+				<select data-sets="#salaire.name">
+					<option value="salaire_de_base">brut</option>
+					<option disabled value="salaire_net_a_payer">net</option>
+				</select>
 				<select data-provides="period">
 					<option>mois</option>
 					<option disabled>jour</option>

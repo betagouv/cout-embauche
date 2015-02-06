@@ -8,3 +8,10 @@ function display(data) {
 		target.innerText = data[toSet];
 	});
 }
+
+function reflectParameterChange(event) {
+	var data = {};
+	data[event.target.name || event.target.attributes['data-provides'].value] = event.target.value;
+
+	display(data);
+}

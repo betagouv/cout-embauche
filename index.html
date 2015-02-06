@@ -9,7 +9,7 @@
 	<body>
 		<section id="input">
 			<form action="http://api-test.openfisca.fr/api/1/formula/salsuperbrut" method="GET">
-				<select name="">
+				<select data-provides="employer">
 					<option>Mon entreprise</option>
 					<option disabled>Mon association</option>
 					<option disabled>Mon établissement public</option>
@@ -18,14 +18,14 @@
 
 				souhaite rémunérer un.e
 
-				<select name="">
+				<select data-provides="employee">
 					<option>salarié.e</option>
 					<option disabled>aide à domicile</option>
 					<option disabled>auto-entrepeneur.se</option>
 				</select>
 
 				<input name="salaire_de_base" type="number" min="0" max="99999">&nbsp;€ par
-				<select name="">
+				<select data-provides="period">
 					<option>mois</option>
 					<option disabled>jour</option>
 					<option disabled>heure</option>
@@ -36,7 +36,7 @@
 		</section>
 
 		<section id="result">
-			<p>Cela coûtera <span class="dynamic" data-source="salsuperbrut"></span>&nbsp;€ par <span class="dynamic" data-source="ui-period">mois</span> à <span class="dynamic" data-source="ui-employer">mon entreprise</span>.</p>
+			<p>Cela coûtera <span data-source="salsuperbrut"></span>&nbsp;€ par <span data-source="period">mois</span> à <span data-source="employer">mon entreprise</span>.</p>
 		</section>
 
 		<script type="text/javascript" src="display.js"></script>
@@ -46,6 +46,8 @@
 			(function() {
 
 			var form = document.querySelector('form');
+
+			form.addEventListener('change', reflectParameterChange);
 
 			form.addEventListener('change', update);
 			form.addEventListener('keyup', update);

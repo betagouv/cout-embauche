@@ -20,7 +20,10 @@ function update() {
 			throw request;
 
 		var data = JSON.parse(request.responseText);
-		display(data);
+
+		display({
+			salsuperbrut: data.value
+		});
 	};
 
 	request.onerror = function() {
@@ -28,8 +31,4 @@ function update() {
 	}
 
 	request.send();
-}
-
-function display(data) {
-	console.log('>> data:', data);
 }

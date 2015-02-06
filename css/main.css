@@ -25,3 +25,20 @@ input, select {
 #details {
 	font-size: 60%;
 }
+
+[hidden] {
+	display: none;
+}
+
+
+@media(max-width: 500px) {
+	body {
+		padding: 0;
+		width: 15em;
+		text-align: left;
+	}
+
+	input {
+		margin: 0;
+	}
+}

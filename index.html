@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Simulateur de coût d'embauche</title>
+
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	</head>
 
 	<body>
@@ -34,7 +36,7 @@
 				</select>
 
 				à hauteur de
-				<input name="salaire_de_base" id="salaire" type="number" min="0" max="99999" placeholder="1445,38" value="1445.38"><label for="salaire">&nbsp;€</label>
+				<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1445,38" value="1445.38"><label for="salaire">&nbsp;€</label>
 
 				<select data-sets="#salaire.name">
 					<option value="salaire_de_base">brut</option>
@@ -53,9 +55,7 @@
 					<option>mois</option>
 					<option disabled>jour</option>
 					<option disabled>heure</option>
-				</select>
-
-				.
+				</select>.
 
 				<noscript>
 					<input type="submit" value="Combien cela va-t-il coûter ?">
@@ -64,7 +64,7 @@
 		</section>
 
 		<section id="result">
-			<p>Cela coûtera <span data-source="salsuperbrut">…</span>&nbsp;€ par <span data-source="period">mois</span> à <span data-source="employer">mon entreprise</span>.</p>
+			<p>Cela coûtera <strong><span data-source="salsuperbrut">…</span>&nbsp;€ par <span data-source="period">mois</span></strong> à <span data-source="employer">mon entreprise</span>.</p>
 		</section>
 
 		<script type="text/javascript" src="display.js"></script>

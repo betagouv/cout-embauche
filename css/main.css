@@ -1,0 +1,19 @@
+body {
+	font-size: 150%;
+	text-align: center;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+input, select {
+	font-size: 100%;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: white;
+	border: none;
+	border-bottom: 1px solid #9A9A9A;
+	border-radius: 0;
+	padding: .25em 0;
+	margin: 0 .5em;
+	vertical-align: middle;
+}

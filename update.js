@@ -21,9 +21,7 @@ function update() {
 
 		var data = JSON.parse(request.responseText);
 
-		display({
-			salsuperbrut: String(data.value.toFixed(2)).replace('.', ',')
-		});
+		display(data.values);
 	};
 
 	request.onerror = function() {

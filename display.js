@@ -1,11 +1,15 @@
 function display(data) {
 	Object.keys(data).forEach(function(toSet) {
-		var target = document.querySelector('#result [data-source="' + toSet + '"]');
+		var target = document.querySelector('#result [data-source="' + toSet + '"]'),
+			value  = data[toSet];
 
 		if (! target)
 			return;
 
-		target.innerText = data[toSet];
+		if (typeof value == 'number')
+			value = String(value.toFixed(2)).replace('.', ',')
+
+		target.innerText = value;
 	});
 }
 

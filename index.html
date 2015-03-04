@@ -10,7 +10,7 @@
 
 	<body>
 		<section id="input">
-			<form action="http://openfisca.sgmap.fr/api/2/formula/salsuperbrut+salaire_net_a_payer" method="GET">
+			<form action="http://openfisca.sgmap.fr/api/2/formula/salsuperbrut+salaire_net_a_payer+sal" method="GET">
 				<select data-sets="#employer_type.innerText">
 					<option value="entreprise">Mon entreprise</option>
 					<option value="association" disabled>Mon association</option>
@@ -74,7 +74,7 @@
 			<p>
 				Mon <span data-source="employee">salarié.e</span>
 				touchera <span data-source="salaire_net_a_payer" title="Salaire net">…</span>&nbsp;€
-				par <span data-source="period">mois</span>.
+				par <span data-source="period">mois</span> et sera imposable à hauteur de <span data-source="sal">…</span>&nbsp;€.
 			</p>
 		</section>
 

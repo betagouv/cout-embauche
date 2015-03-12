@@ -6,11 +6,12 @@
 		<title>Simulateur de coût d'embauche</title>
 
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="css/details.css"/>
 	</head>
 
 	<body>
 		<section id="input">
-			<form action="http://openfisca.sgmap.fr/api/2/formula/salsuperbrut+salaire_net_a_payer+sal" method="GET">
+			<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal_tranche_a+fnal_tranche_a_plus_20+versement_transport+agff_tranche_a_employe+agirc_tranche_b_employe+apec_employe+arrco_tranche_a_employe+assedic_employe+cotisation_exceptionnelle_temporaire_employe+vieillesse_plafonnee_employe+vieillesse_deplafonnee_employe+maladie_employe+csgsald+mhsup+csgsali+crdssal+sal+salaire_net_a_payer+salsuperbrut+ags+agff_tranche_a_employeur+apec_employeur+arrco_tranche_a_employeur+assedic_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+maladie_employeur+cotisations_patronales_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires" method="GET">
 				<select data-sets="#employer_type.innerText">
 					<option value="entreprise">Mon entreprise</option>
 					<option value="association" disabled>Mon association</option>
@@ -78,7 +79,152 @@
 			</p>
 		</section>
 
-		<a href="http://paie.meteor.com" id="details">Simulation détaillée</a>
+		<details>
+			<summary>Simulation détaillée</summary>
+
+			<table>
+				<tr class="employe">
+					<th>Accident du travail</th>
+					<td><span data-source="accident_du_travail"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Famille</th>
+					<td><span data-source="famille"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Fonds national action logement</th>
+					<td><span data-source="fnal_tranche_a"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Fonds national action logement</th>
+					<td><span data-source="fnal_tranche_a_plus_20"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Versement transport</th>
+					<td><span data-source="versement_transport"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>AGFF</th>
+					<td><span data-source="agff_tranche_a_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>AGIRC</th>
+					<td><span data-source="agirc_tranche_b_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>APEC</th>
+					<td><span data-source="apec_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>ARRCO</th>
+					<td><span data-source="arrco_tranche_a_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Assurance chômage</th>
+					<td><span data-source="assedic_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Cotisation exceptionnelle temporaire</th>
+					<td><span data-source="cotisation_exceptionnelle_temporaire_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Vieillesse plafonnée</th>
+					<td><span data-source="vieillesse_plafonnee_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Vieillesse déplafonnée</th>
+					<td><span data-source="vieillesse_deplafonnee_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Maladie</th>
+					<td><span data-source="maladie_employe"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>CSG déductible (salaires)</th>
+					<td><span data-source="csgsald"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>Heures supplémentaires éxonérées</th>
+					<td><span data-source="mhsup"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>CSG non déductible (salaires)</th>
+					<td><span data-source="csgsali">,</span>&nbsp;€</td>
+				</tr>
+				<tr class="employe">
+					<th>CRDS (salaires)</th>
+					<td><span data-source="crdssal"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>AGS</th>
+					<td><span data-source="ags"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>AGFF</th>
+					<td><span data-source="agff_tranche_a_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>APEC</th>
+					<td><span data-source="apec_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>ARRCO</th>
+					<td><span data-source="arrco_tranche_a_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>ASSEDIC</th>
+					<td><span data-source="assedic_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>CET</th>
+					<td><span data-source="cotisation_exceptionnelle_temporaire_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Vieillesse déplafonnée</th>
+					<td><span data-source="vieillesse_deplafonnee_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Vieillesse plafonnée</th>
+					<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Invalidité</th>
+					<td><span data-source="allocations_temporaires_invalidite"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Maladie</th>
+					<td><span data-source="maladie_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Cotisations sociales patronales main d'oeuvre</th>
+					<td><span data-source="cotisations_patronales_main_d_oeuvre"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Contribution au développement de l'apprentissage</th>
+					<td><span data-source="contribution_developpement_apprentissage"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Contribution solidarite autonomie</th>
+					<td><span data-source="contribution_solidarite_autonomie"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Formation professionnelle</th>
+					<td><span data-source="formation_professionnelle"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Participation à l'effort de construction</th>
+					<td><span data-source="participation_effort_construction"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Taxe d'apprentisssage</th>
+					<td><span data-source="taxe_apprentissage"></span>&nbsp;€</td>
+				</tr>
+				<tr class="employeur">
+					<th>Taxe sur les salaires</th>
+					<td><span data-source="taxe_salaires"></span>&nbsp;€</td>
+				</tr>
+			</table>
+		</details>
 
 
 		<script type="text/javascript" src="display.js"></script>

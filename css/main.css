@@ -22,7 +22,7 @@ input, select {
 	vertical-align: middle;
 }
 
-#details {
+details {
 	font-size: 60%;
 }
 

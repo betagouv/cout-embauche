@@ -3,6 +3,10 @@ table {
 	width: 48%;
 }
 
+caption {
+	font-weight: bold;
+}
+
 th {
 	text-align: right;
 }

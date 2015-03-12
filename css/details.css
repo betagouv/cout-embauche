@@ -1,3 +1,8 @@
+table {
+	display: inline-block;
+	width: 48%;
+}
+
 th {
 	text-align: right;
 }

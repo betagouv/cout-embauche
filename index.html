@@ -231,6 +231,8 @@
 					<td><span data-source="crdssal"></span>&nbsp;€</td>
 				</tr>
 			</table>
+
+			<button id="createTest">Corriger ces résultats</button>
 		</details>
 
 
@@ -250,6 +252,12 @@
 			update.call(form);
 
 			})();
+		</script>
+
+		<script type="text/javascript" src="createTest.js"></script>
+
+		<script type="text/javascript">
+			document.getElementById('createTest').addEventListener('click', createTest);
 		</script>
 	</body>
 </html>

@@ -21,6 +21,8 @@ function update() {
 
 		var data = JSON.parse(request.responseText);
 
+		window.lastResult = data.values;
+
 		display(data.values);
 	};
 

@@ -1,0 +1,36 @@
+var ACCEPTANCE_TESTS_ENDPOINT = 'http://localhost:9000/api/acceptance-tests',
+	ACCEPTANCE_TESTS_GUI_URL = 'http://localhost:9000/tests/';
+
+function createTest() {
+	var formattedResults = Object.keys(window.lastResult).map(function(key) {
+		return {
+			code: key,
+			expectedValue: window.lastResult[key]
+		}
+	});
+
+	var data = {
+		expectedResults: formattedResults,
+		scenario: serialize(document.getElementsByTagName('form')[0])
+	}
+
+	var request = new XMLHttpRequest();
+
+	request.open('POST', ACCEPTANCE_TESTS_ENDPOINT);
+
+	request.onload = function() {
+		if (request.status >= 300)
+			throw request;
+
+		var data = JSON.parse(request.responseText);
+
+		document.location = [ ACCEPTANCE_TESTS_GUI_URL, data._id, 'edit' ].join('/');
+	};
+
+	request.onerror = function() {
+		throw request;
+	}
+
+	request.setRequestHeader('Content-Type', 'application/json');
+	request.send(JSON.stringify(data));
+}

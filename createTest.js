@@ -9,9 +9,11 @@ function createTest() {
 		}
 	});
 
+	var form = document.getElementsByTagName('form')[0];
+
 	var data = {
 		expectedResults: formattedResults,
-		scenario: serialize(document.getElementsByTagName('form')[0])
+		scenario: form.action + '?' + serialize(form)
 	}
 
 	var request = new XMLHttpRequest();

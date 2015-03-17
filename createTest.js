@@ -1,5 +1,5 @@
-var ACCEPTANCE_TESTS_ENDPOINT = 'http://localhost:9000/api/acceptance-tests',
-	ACCEPTANCE_TESTS_GUI_URL = 'http://localhost:9000/tests/';
+var ACCEPTANCE_TESTS_ENDPOINT = 'http://paie.sgmap.fr/tests/api/acceptance-tests',
+	ACCEPTANCE_TESTS_GUI_URL = 'http://paie.sgmap.fr/tests/';
 
 function createTest() {
 	var formattedResults = Object.keys(window.lastResult).map(function(key) {
@@ -17,6 +17,8 @@ function createTest() {
 	}
 
 	var request = new XMLHttpRequest();
+
+	request.withCredentials = true;
 
 	request.open('POST', ACCEPTANCE_TESTS_ENDPOINT);
 

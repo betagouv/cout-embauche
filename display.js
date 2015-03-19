@@ -9,7 +9,7 @@ function display(data) {
 		if (typeof value == 'number')
 			value = String(value.toFixed(2)).replace('.', ',')
 
-		target.innerText = value;
+		target.textContent = value;
 	});
 }
 

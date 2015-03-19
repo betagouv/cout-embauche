@@ -1,5 +1,5 @@
-var ACCEPTANCE_TESTS_ENDPOINT = 'http://paie.sgmap.fr/tests/api/public/acceptance-tests',
-	ACCEPTANCE_TESTS_GUI_URL = 'http://paie.sgmap.fr/tests/';
+var ACCEPTANCE_TESTS_ENDPOINT = 'http://embauche.sgmap.fr/tests/api/public/acceptance-tests',
+	ACCEPTANCE_TESTS_GUI_URL = 'http://embauche.sgmap.fr/tests/';
 
 function createTest() {
 	var formattedResults = Object.keys(window.lastResult).map(function(key) {

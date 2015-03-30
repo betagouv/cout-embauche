@@ -11,7 +11,7 @@
 
 	<body>
 		<section id="input">
-			<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csgsald+mhsup+csgsali+crdssal+sal+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie" method="GET">
+			<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csgsald+mhsup+csgsali+crdssal+sal+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon" method="GET">
 				<select data-sets="#employer_type.textContent">
 					<option value="entreprise">Mon entreprise</option>
 					<option value="association" disabled>Mon association</option>
@@ -243,6 +243,26 @@
 					<td><span data-source="contribution_exceptionnelle_solidarite"></span>&nbsp;€</td>
 				</tr>
 			</table>
+
+			<table>
+				<caption>Exonérations employeur</caption>
+
+				<tr>
+					<th>Allègement sur les bas salaires (Fillon)</th>
+					<td><span data-source="allegement_fillon"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Zone franche urbaine</th>
+					<td><span data-source="exoneration_cotisations_employeur_zfu"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Zone de revitalisation rurale</th>
+					<td><span data-source="exoneration_cotisations_employeur_zrr"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Zone RD</th>
+					<td><span data-source="exoneration_cotisations_employeur_zrd"></span>&nbsp;€</td>
+				</tr>
 
 			<button id="createTest">Corriger ces résultats</button>
 		</details>

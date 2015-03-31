@@ -11,6 +11,10 @@
 
 	<body>
 		<section id="input">
+			<form id="siret" action="https://apientreprise.fr/api/v1/entreprises/">
+				<input name="siret" type="text" placeholder="SIRET">
+			</form>
+
 			<form id="situation" action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csgsald+mhsup+csgsali+crdssal+sal+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon" method="GET">
 				<select data-sets="#employer_type.textContent">
 					<option value="entreprise">Mon entreprise</option>
@@ -288,6 +292,20 @@
 			handleSituationUpdate();
 
 			})();
+
+
+			(function bindSiretForm() {
+			var siretForm = document.getElementById('siret');
+
+			var handleSiretUpdate = update.bind(siretForm, function() {
+				return this.action + this.siret.value + '?token=laepai9ekahv9rahLukeV5baiDathahphekir5ae';
+			}, console.log);
+
+			siretForm.addEventListener('change', handleSiretUpdate);
+			siretForm.addEventListener('keyup', handleSiretUpdate);
+
+			})();
+
 		</script>
 
 		<script type="text/javascript" src="createTest.js"></script>

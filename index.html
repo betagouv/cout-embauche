@@ -11,7 +11,7 @@
 
 	<body>
 		<section id="input">
-			<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal_tranche_a+fnal_tranche_a_plus_20+versement_transport+agff_tranche_a_employe+agirc_tranche_b_employe+apec_employe+arrco_tranche_a_employe+assedic_employe+cotisation_exceptionnelle_temporaire_employe+vieillesse_plafonnee_employe+vieillesse_deplafonnee_employe+maladie_employe+csgsald+mhsup+csgsali+crdssal+sal+salaire_net_a_payer+salsuperbrut+ags+agff_tranche_a_employeur+apec_employeur+arrco_tranche_a_employeur+assedic_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+maladie_employeur+cotisations_patronales_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires" method="GET">
+			<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csgsald+mhsup+csgsali+crdssal+sal+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon" method="GET">
 				<select data-sets="#employer_type.textContent">
 					<option value="entreprise">Mon entreprise</option>
 					<option value="association" disabled>Mon association</option>
@@ -91,30 +91,38 @@
 				</tr>
 				<tr>
 					<th>AGFF</th>
-					<td><span data-source="agff_tranche_a_employeur"></span>&nbsp;€</td>
+					<td><span data-source="agff_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>APEC</th>
 					<td><span data-source="apec_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
+					<th>AGIRC</th>
+					<td><span data-source="agirc_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr>
 					<th>ARRCO</th>
-					<td><span data-source="arrco_tranche_a_employeur"></span>&nbsp;€</td>
+					<td><span data-source="arrco_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>ASSEDIC</th>
-					<td><span data-source="assedic_employeur"></span>&nbsp;€</td>
+					<td><span data-source="chomage_employeur"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Ircantec</th>
+					<td><span data-source="ircantec_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>CET</th>
 					<td><span data-source="cotisation_exceptionnelle_temporaire_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
-					<th>Vieillesse déplafonnée</th>
+					<th>Vieillesse (déplafonnée)</th>
 					<td><span data-source="vieillesse_deplafonnee_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
-					<th>Vieillesse plafonnée</th>
+					<th>Vieillesse (plafonnée)</th>
 					<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
@@ -123,11 +131,11 @@
 				</tr>
 				<tr>
 					<th>Maladie</th>
-					<td><span data-source="maladie_employeur"></span>&nbsp;€</td>
+					<td><span data-source="mmid_employeur"></span>&nbsp;€</td>
 				</tr>
 				<tr>
-					<th>Cotisations sociales patronales main d'oeuvre</th>
-					<td><span data-source="cotisations_patronales_main_d_oeuvre"></span>&nbsp;€</td>
+					<th>Main d'oeuvre</th>
+					<td><span data-source="cotisations_employeur_main_d_oeuvre"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>Contribution au développement de l'apprentissage</th>
@@ -168,11 +176,7 @@
 				</tr>
 				<tr>
 					<th>Fonds national action logement</th>
-					<td><span data-source="fnal_tranche_a"></span>&nbsp;€</td>
-				</tr>
-				<tr>
-					<th>Fonds national action logement</th>
-					<td><span data-source="fnal_tranche_a_plus_20"></span>&nbsp;€</td>
+					<td><span data-source="fnal"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>Versement transport</th>
@@ -180,39 +184,43 @@
 				</tr>
 				<tr>
 					<th>AGFF</th>
-					<td><span data-source="agff_tranche_a_employe"></span>&nbsp;€</td>
+					<td><span data-source="agff_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>AGIRC</th>
-					<td><span data-source="agirc_tranche_b_employe"></span>&nbsp;€</td>
+					<td><span data-source="agirc_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>APEC</th>
-					<td><span data-source="apec_employe"></span>&nbsp;€</td>
+					<td><span data-source="apec_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>ARRCO</th>
-					<td><span data-source="arrco_tranche_a_employe"></span>&nbsp;€</td>
+					<td><span data-source="arrco_salarie"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Ircantec</th>
+					<td><span data-source="ircantec_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>Assurance chômage</th>
-					<td><span data-source="assedic_employe"></span>&nbsp;€</td>
+					<td><span data-source="chomage_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>Cotisation exceptionnelle temporaire</th>
-					<td><span data-source="cotisation_exceptionnelle_temporaire_employe"></span>&nbsp;€</td>
+					<td><span data-source="cotisation_exceptionnelle_temporaire_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
-					<th>Vieillesse plafonnée</th>
-					<td><span data-source="vieillesse_plafonnee_employe"></span>&nbsp;€</td>
+					<th>Vieillesse (plafonnée)</th>
+					<td><span data-source="vieillesse_plafonnee_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
-					<th>Vieillesse déplafonnée</th>
-					<td><span data-source="vieillesse_deplafonnee_employe"></span>&nbsp;€</td>
+					<th>Vieillesse (déplafonnée)</th>
+					<td><span data-source="vieillesse_deplafonnee_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>Maladie</th>
-					<td><span data-source="maladie_employe"></span>&nbsp;€</td>
+					<td><span data-source="mmid_salarie"></span>&nbsp;€</td>
 				</tr>
 				<tr>
 					<th>CSG déductible (salaires)</th>
@@ -230,7 +238,31 @@
 					<th>CRDS (salaires)</th>
 					<td><span data-source="crdssal"></span>&nbsp;€</td>
 				</tr>
+				<tr>
+					<th>Contribution exceptionnelle de solidarité</th>
+					<td><span data-source="contribution_exceptionnelle_solidarite"></span>&nbsp;€</td>
+				</tr>
 			</table>
+
+			<table>
+				<caption>Exonérations employeur</caption>
+
+				<tr>
+					<th>Allègement sur les bas salaires (Fillon)</th>
+					<td><span data-source="allegement_fillon"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Zone franche urbaine</th>
+					<td><span data-source="exoneration_cotisations_employeur_zfu"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Zone de revitalisation rurale</th>
+					<td><span data-source="exoneration_cotisations_employeur_zrr"></span>&nbsp;€</td>
+				</tr>
+				<tr>
+					<th>Zone RD</th>
+					<td><span data-source="exoneration_cotisations_employeur_zrd"></span>&nbsp;€</td>
+				</tr>
 
 			<button id="createTest">Corriger ces résultats</button>
 		</details>

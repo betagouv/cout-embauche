@@ -10,10 +10,10 @@ function serialize(form) {
 	return result.join('&');
 }
 
-function update() {
+function update(urlBuilder, callback) {
 	var request = new XMLHttpRequest();
 
-	request.open(this.method, this.action + '?' + serialize(this));
+	request.open(this.method, urlBuilder.call(this));
 
 	request.onload = function() {
 		if (request.status != 200)
@@ -23,7 +23,7 @@ function update() {
 
 		window.lastResult = data.values;
 
-		display(data.values);
+		callback(data.values);
 	};
 
 	request.onerror = function() {

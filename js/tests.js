@@ -1,3 +1,10 @@
+(function() {
+
+window.Embauche.Tests = {
+	create: createTest
+}
+
+
 var ACCEPTANCE_TESTS_ENDPOINT = 'http://embauche.sgmap.fr/tests/api/public/acceptance-tests',
 	ACCEPTANCE_TESTS_GUI_URL = 'http://embauche.sgmap.fr/tests/';
 
@@ -13,7 +20,7 @@ function createTest() {
 
 	var data = {
 		expectedResults: formattedResults,
-		scenario: form.action + '?' + serialize(form)
+		scenario: window.Embauche.OpenFisca.buildURL()
 	}
 
 	var request = new XMLHttpRequest();
@@ -36,3 +43,5 @@ function createTest() {
 	request.setRequestHeader('Content-Type', 'application/json');
 	request.send(JSON.stringify(data));
 }
+
+})();

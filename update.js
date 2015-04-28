@@ -19,6 +19,12 @@ function getAdditionalParameters() {
 	return result;
 }
 
+/** Serializes a shallow object into a series of query string parameters.
+* A naive and shallow implementation.
+*
+*@param		{Object}	source
+*@returns	{String}	The source object as a query string (with no leading '?').
+*/
 function serializeObject(source) {
 	var result = [];
 
@@ -29,10 +35,22 @@ function serializeObject(source) {
 	return result.join('&');
 }
 
+/** Creates an OpenFisca URL to the /formula endpoint, based on the current main form state and the given additional parameters.
+*
+*@param		{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
+*@returns	{String}	The URL for the OpenFisca query.
+*/
+function buildOpenFiscaQueryURL(additionalParameters) {
+	var form = document.querySelector('#input form'),
+		queryStringBlocks = [ serialize(form), serializeObject(getAdditionalParameters()), serializeObject(additionalParameters) ];
+
+	return form.action + '?' + queryStringBlocks.join('&');
+}
+
 function update() {
 	var request = new XMLHttpRequest();
 
-	request.open(this.method, this.action + '?' + serialize(this) + '&' + serializeObject(getAdditionalParameters()));
+	request.open(this.method, buildOpenFiscaQueryURL());
 
 	request.onload = function() {
 		if (request.status != 200)

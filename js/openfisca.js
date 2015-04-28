@@ -1,3 +1,11 @@
+(function() {
+
+window.Embauche.OpenFisca = {
+	buildURL: buildOpenFiscaQueryURL,
+	update: update
+}
+
+
 function serialize(form) {
 	var result = [],
 		elements = form.elements;
@@ -60,7 +68,7 @@ function update() {
 
 		window.lastResult = data.values;
 
-		display(data.values);
+		window.Embauche.UI.display(data.values);
 	};
 
 	request.onerror = function() {
@@ -69,3 +77,5 @@ function update() {
 
 	request.send();
 }
+
+})();

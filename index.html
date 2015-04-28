@@ -13,9 +13,9 @@
 		<section id="input">
 			<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+mhsup+csg_imposable_salaire+crds_salaire+sal+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei" method="GET">
 				<div>
-					<select data-sets="#employer_type.textContent">
+					<select data-sets=".employer_type@textContent">
 						<option value="entreprise">Mon entreprise</option>
-						<option value="association" disabled>Mon association</option>
+						<option value="association">Mon association</option>
 						<option value="établissement" disabled>Mon établissement public</option>
 						<option value="foyer" disabled>Moi, comme particulier,</option>
 					</select>
@@ -42,7 +42,7 @@
 					à hauteur de
 					<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1445,38" value="1445.38"><label for="salaire">&nbsp;€</label>
 
-					<select data-sets="#salaire.name">
+					<select data-sets="#salaire@name">
 						<option value="salaire_de_base">brut</option>
 						<option disabled value="salaire_net_a_payer">net</option>
 					</select>
@@ -63,7 +63,7 @@
 				</div>
 
 				<div>
-					Elle
+					Mon <span class="employer_type">entreprise</span>
 					<select name="jeune_entreprise_innovante">
 						<option value="false">ne dispose pas</option>
 						<option value="true">dispose</option>
@@ -82,7 +82,7 @@
 				Cela coûtera
 				<span data-source="salsuperbrut" title="Salaire super-brut">…</span>&nbsp;€
 				par <span data-source="period">mois</span>
-				à mon <span id="employer_type">entreprise</span>.
+				à mon <span class="employer_type">entreprise</span>.
 			</p>
 			<p>
 				Mon <span data-source="employee">salarié.e</span>

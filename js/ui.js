@@ -1,3 +1,10 @@
+(function() {
+
+window.Embauche.UI = {
+	display: display,
+	reflectParameterChange: reflectParameterChange
+}
+
 function display(data) {
 	Object.keys(data).forEach(function(toSet) {
 		var target = document.querySelector('[data-source="' + toSet + '"]'),
@@ -25,3 +32,5 @@ function reflectParameterChange(event) {
 		display(data);
 	}
 }
+
+})();

@@ -59,7 +59,7 @@ function buildOpenFiscaQueryURL(additionalParameters) {
 /** Computes values based on the current main form state and the given additional parameters.
 *
 *@param	{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
-*@param	{Function<Error, Object, Object>}	callback	A callback that will be called with three parameters: an optional error if something went wrong, the OpenFisca-computed values, and the full OpenFisca response if you want everything it sends back.
+*@param	{Function<[XMLHttpRequest|SyntaxError], Object, Object>}	callback	A callback that will be called with three parameters: an optional error if something went wrong, the OpenFisca-computed values, and the full OpenFisca response if you want everything it sends back.
 */
 function get(additionalParameters, callback) {
 	if (! callback) {
@@ -73,7 +73,11 @@ function get(additionalParameters, callback) {
 		if (request.status != 200)
 			return callback(request);
 
-		var data = JSON.parse(request.responseText);
+		try {
+			var data = JSON.parse(request.responseText);
+		} catch (err) {
+			callback(err);
+		}
 
 		callback(null, data.values, data);
 	};

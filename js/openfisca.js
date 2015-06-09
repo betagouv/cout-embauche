@@ -66,7 +66,7 @@ function update() {
 
 		var data = JSON.parse(request.responseText);
 
-		window.lastResult = data.values;
+		window.Embauche._lastResults = data.values;
 
 		window.Embauche.UI.display(data.values);
 	};

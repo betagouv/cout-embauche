@@ -9,10 +9,10 @@ var ACCEPTANCE_TESTS_ENDPOINT = 'http://embauche.sgmap.fr/tests/api/public/accep
 	ACCEPTANCE_TESTS_GUI_URL = 'http://embauche.sgmap.fr/tests/';
 
 function createTest() {
-	var formattedResults = Object.keys(window.lastResult).map(function(key) {
+	var formattedResults = Object.keys(window.Embauche._lastResults).map(function(key) {
 		return {
 			code: key,
-			expectedValue: window.lastResult[key]
+			expectedValue: window.Embauche._lastResults[key]
 		}
 	});
 

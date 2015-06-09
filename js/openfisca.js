@@ -33,6 +33,7 @@ function getAdditionalParameters() {
 *
 *@param		{Object}	source
 *@returns	{String}	The source object as a query string (with no leading '?').
+*@private
 */
 function serializeObject(source) {
 	var result = [];

@@ -101,7 +101,11 @@ function get(additionalParameters, callback) {
 /** Updates the form.
 */
 function update() {
-	get(function(error, values) {
+	var today = new Date();
+
+	get({
+		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth()
+	}, function(error, values) {
 		if (error) throw error;
 
 		window.Embauche._lastResults = values;

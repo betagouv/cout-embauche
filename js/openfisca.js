@@ -2,6 +2,7 @@
 
 window.Embauche.OpenFisca = {
 	buildURL: buildOpenFiscaQueryURL,
+	get: get,
 	update: update
 }
 
@@ -55,27 +56,43 @@ function buildOpenFiscaQueryURL(additionalParameters) {
 	return form.action + '?' + queryStringBlocks.join('&');
 }
 
-function update() {
+/** Computes values based on the current main form state and the given additional parameters.
+*
+*@param	{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
+*@param	{Function<Error, Object, Object>}	callback	A callback that will be called with three parameters: an optional error if something went wrong, the OpenFisca-computed values, and the full OpenFisca response if you want everything it sends back.
+*/
+function get(additionalParameters, callback) {
+	if (! callback) {
+		callback = additionalParameters;
+		additionalParameters = null;
+	}
+
 	var request = new XMLHttpRequest();
 
-	request.open(this.method, buildOpenFiscaQueryURL());
-
-	request.onload = function() {
+	request.onload = function openFiscaOnloadHandler() {
 		if (request.status != 200)
-			throw request;
+			return callback(request);
 
 		var data = JSON.parse(request.responseText);
 
-		window.Embauche._lastResults = data.values;
-
-		window.Embauche.UI.display(data.values);
+		callback(null, data.values, data);
 	};
 
-	request.onerror = function() {
-		throw request;
-	}
+	request.onerror = callback.bind(null, request);
 
+	request.open('GET', buildOpenFiscaQueryURL(additionalParameters));
 	request.send();
+}
+
+/** Updates the form.
+*/
+function update() {
+	get(function(error, values) {
+		if (error) throw error;
+
+		window.Embauche._lastResults = values;
+		window.Embauche.UI.display(values);
+	});
 }
 
 })();

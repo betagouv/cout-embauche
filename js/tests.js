@@ -16,8 +16,6 @@ function createTest() {
 		}
 	});
 
-	var form = document.getElementsByTagName('form')[0];
-
 	var data = {
 		expectedResults: formattedResults,
 		scenario: window.Embauche.OpenFisca.buildURL()

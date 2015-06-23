@@ -19,11 +19,20 @@ function serialize(form) {
 	return result.join('&');
 }
 
-function getAdditionalParameters() {
-	var result = {},
-		employeeType = document.querySelector('[data-provides="employee"]').value;
 
-	result[employeeType] = true;
+var BOOLEAN_PARAMETERS = {
+	employee: [ 'stagiaire', 'apprenti' ]
+}
+
+function getAdditionalParameters() {
+	var result = {};
+
+	for (var provider in BOOLEAN_PARAMETERS) {
+		var key = document.querySelector('[data-provides="' + provider + '"]').value;
+
+		if (BOOLEAN_PARAMETERS[provider].indexOf(key) > -1)
+			result[key] = true;
+	}
 
 	return result;
 }

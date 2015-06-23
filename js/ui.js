@@ -28,8 +28,10 @@ function reflectParameterChange(event) {
 			elementToUpdate[modifier[1]] = event.target.value;
 		});
 	} else {
-		var data = {};
-		data[event.target.name || event.target.attributes['data-provides'].value] = event.target.value;
+		var data = {},
+			name = event.target.name || event.target.attributes['data-provides'].value;
+
+		data[name] = event.target.value;
 
 		display(data);
 	}

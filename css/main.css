@@ -30,6 +30,45 @@ details {
 	display: none;
 }
 
+#affiliation {
+	font-size: 50%;
+	text-align: right;
+	line-height: 1;
+}
+
+#affiliation abbr {
+	border-bottom: 1px dashed;
+	cursor: help;
+	position: relative;
+}
+
+#affiliation abbr:hover::after {
+	content: attr(title);
+	display: block;
+	position: absolute;
+	top: 2em;
+	background-color: black;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: .5em;
+	border-radius: .5em;
+	text-align: center;
+}
+
+#affiliation img {
+	height: 2em;
+}
+
+#affiliation__sgmap {
+	float: right;
+	padding-left: 1em;
+	margin-top: -.5em;
+}
+
+#affiliation__sgmap img {
+	height: 5em;
+}
+
 
 @media(max-width: 500px) {
 	body {

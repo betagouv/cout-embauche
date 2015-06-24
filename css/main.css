@@ -47,6 +47,7 @@ details {
 	display: block;
 	position: absolute;
 	top: 2em;
+	left: -1em;
 	background-color: black;
 	background-color: rgba(0, 0, 0, 0.8);
 	color: white;

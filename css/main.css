@@ -33,7 +33,11 @@ details {
 #affiliation {
 	font-size: 50%;
 	text-align: right;
-	line-height: 1;
+	line-height: 1.5;
+}
+
+#affiliation span {
+	display: block;
 }
 
 #affiliation abbr {
@@ -63,11 +67,24 @@ details {
 #affiliation__sgmap {
 	float: right;
 	padding-left: 1em;
-	margin-top: -.5em;
+	margin-top: 0;
+}
+
+#affiliation__header {
+	font-style: italic;
 }
 
 #affiliation__sgmap img {
 	height: 5em;
+}
+
+#affiliation__reference {
+	font-weight: bold;
+	color: rgb(138, 0, 46);
+}
+
+#affiliation__beta {
+	font-size: 80%;
 }
 
 

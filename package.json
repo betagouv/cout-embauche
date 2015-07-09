@@ -1,0 +1,22 @@
+{
+  "name": "cout-embauche",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sgmap/cout-embauche.git"
+  },
+  "author": "Matti Schneider <matti.schneider@data.gouv.fr>",
+  "description": "Un simulateur de coût d'embauche",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "css-loader": "^0.15.2",
+    "html-loader": "^0.3.0",
+    "node-libs-browser": "^0.5.2",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.1"
+  },
+  "scripts": {
+    "compile": "webpack"
+  }
+}

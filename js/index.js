@@ -26,3 +26,5 @@ for (var i = 0; i < jsNodes.length; i++) {
 }
 
 document.getElementById('createTest').addEventListener('click', Tests.create);
+
+module.exports.OpenFisca = OpenFisca;

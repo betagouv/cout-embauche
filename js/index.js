@@ -17,6 +17,12 @@ function bindToForm(form) {
 }
 
 
-bindToForm(document.querySelector('#input form'));
+bindToForm(document.querySelector('.embauche form'));
+
+var jsNodes = document.querySelectorAll('.embauche .js-only');
+
+for (var i = 0; i < jsNodes.length; i++) {
+	jsNodes[i].className = jsNodes[i].className.replace('js-only', '');
+}
 
 document.getElementById('createTest').addEventListener('click', Tests.create);

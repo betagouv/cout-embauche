@@ -3,6 +3,9 @@ A graphical demonstration of the Paie API.
 > Un démonstrateur graphique de l'API Paie.
 
 
+This is a drop-in widget to quickly test the benefits of integrating the Paie API in your product. If you want to create a new, specific GUI, have a look at the [Paie API documentation](http://embauche.sgmap.fr).
+
+
 Browser compatibility
 ---------------------
 

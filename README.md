@@ -11,6 +11,19 @@ Expected to support ES5.1-compatible browsers, i.e. IE ≥ 9, Safari ≥ 5, Oper
 **Not cross-browser tested yet.**
 
 
+Drop-in widget
+--------------
+
+Include this line where you want the widget to appear in your page:
+
+```html
+<script src="https://github.com/sgmap/cout-embauche/blob/webpack/dist/bundle.js"></script>
+```
+
+> Reminder: this widget is in early beta and may be updated at any time, without prior notice. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
+> A versioning scheme will be made available as stabilisation occurs.
+
+
 API
 ---
 

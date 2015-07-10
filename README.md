@@ -27,9 +27,9 @@ Include this line where you want the widget to appear in your page:
 API
 ---
 
-The JS API is exposed in `window.Embauche`. All exported files are in `js`.
+The JS API is exposed in `window.Embauche`. At the moment, it depends on the widget being present in the DOM to load the configuration from it.
 
-**WARNING**: inclusion order of JS files matters.
+> Please open an issue if you want to consume the API in a different way.
 
 
 ### `Embauche.OpenFisca.get([additionalParameters], callback)`

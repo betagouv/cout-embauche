@@ -1,10 +1,14 @@
-(function() {
+var UI = require('./ui');
 
-window.Embauche.OpenFisca = {
+
+var buffer;
+
+module.exports = {
 	buildURL: buildOpenFiscaQueryURL,
 	get: get,
-	update: update
-}
+	update: update,
+	getLastResults: function() { return buffer; }
+};
 
 
 function serialize(form) {
@@ -108,9 +112,7 @@ function update() {
 	}, function(error, values) {
 		if (error) throw error;
 
-		window.Embauche._lastResults = values;
-		window.Embauche.UI.display(values);
+		buffer = values;
+		UI.display(values);
 	});
 }
-
-})();

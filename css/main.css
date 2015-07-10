@@ -64,6 +64,10 @@ details {
 	font-size: 80%;
 }
 
+.js-only {
+	display: none;
+}
+
 
 @media(max-width: 500px) {
 	body {

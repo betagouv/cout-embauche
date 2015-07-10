@@ -1,9 +1,8 @@
-(function() {
-
-window.Embauche.UI = {
+module.exports = {
 	display: display,
 	reflectParameterChange: reflectParameterChange
-}
+};
+
 
 function display(data) {
 	Object.keys(data).forEach(function(toSet) {
@@ -36,5 +35,3 @@ function reflectParameterChange(event) {
 		display(data);
 	}
 }
-
-})();

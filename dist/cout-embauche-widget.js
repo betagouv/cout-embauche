@@ -50,7 +50,7 @@
 	__webpack_require__(8);
 	__webpack_require__(1);
 
-	__webpack_require__(10);
+	window.Embauche = __webpack_require__(10);
 
 	__webpack_require__(14);
 
@@ -494,6 +494,8 @@
 	}
 
 	document.getElementById('createTest').addEventListener('click', Tests.create);
+
+	module.exports.OpenFisca = OpenFisca;
 
 
 /***/ },

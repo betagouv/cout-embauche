@@ -1,8 +1,8 @@
 module.exports = {
-    entry: './entry.js',
+    entry: './widget.js',
     output: {
         path: __dirname + '/dist',
-        filename: 'bundle.js'
+        filename: 'cout-embauche-widget.js'
     },
     module: {
         loaders: [

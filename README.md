@@ -1,21 +1,14 @@
 A graphical demonstration of the Paie API.
 
-> Un démonstrateur graphique de l'API Paie.
+> Un démonstrateur graphique de l'API Paie, intégrable en une ligne de code.
 
+**[Online demo](http://sgmap.github.io/cout-embauche/)**.
 
 This is a drop-in widget to quickly test the benefits of integrating the Paie API in your product. If you want to create a new, specific GUI, have a look at the [Paie API documentation](http://embauche.sgmap.fr).
 
 
-Browser compatibility
----------------------
-
-Expected to support ES5.1-compatible browsers, i.e. IE ≥ 9, Safari ≥ 5, Opera ≥ 12, Chrome, Firefox.
-
-**Not cross-browser tested yet.**
-
-
-Drop-in widget
---------------
+Usage
+-----
 
 Include this line where you want the widget to appear in your page:
 
@@ -25,6 +18,14 @@ Include this line where you want the widget to appear in your page:
 
 > Reminder: this widget is in early beta and may be updated at any time, without prior notice. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
 > A versioning scheme will be made available as stabilisation occurs.
+
+
+Browser compatibility
+---------------------
+
+Expected to support ES5.1-compatible browsers, i.e. IE ≥ 9, Safari ≥ 5, Opera ≥ 12, Chrome, Firefox.
+
+**Not cross-browser tested yet.**
 
 
 API

@@ -1,0 +1,17 @@
+dependencies:
+  post:
+    - npm install -g live-server
+    - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
+    - tar -xzf sc-latest-linux.tar.gz
+
+test:
+  override:
+    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready:
+        background: true
+    - live-server:
+        background: true
+    # wait for Sauce Connect
+    - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
+    # wait for server
+    - curl --retry 20 --retry-delay 1 -v http://localhost:8080
+    - npm test

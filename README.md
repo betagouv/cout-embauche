@@ -37,17 +37,36 @@ At the moment, it depends on the widget being present in the DOM to load the con
 > Please open an issue if you want to consume the API in a different way.
 
 
-### `Embauche.OpenFisca.get([additionalParameters], callback)`
+### `window.Embauche.OpenFisca.get([additionalParameters], callback)`
 
-To programmatically get other computations based on the current state of the form, use the `window.Embauche.OpenFisca.buildURL(additionalParameters)` function.
+Calls the Paie API, parameterised with the current state of the form.
 
-It takes as an optional parameter an object whose properties will be appended to the URL as query-string parameters, and a callback as last argument that will be called with three parameters:
+You can adjust the situation to compute by passing an object as the first argument (`additionalParameters`). The parameters you can use are documented in the [Paie API](http://embauche.sgmap.fr/api/doc).
+
+This function takes a callback as last argument. This callback will be called with three parameters:
 
 - An optional error. The failed `XMLHttpRequest`, or a `SyntaxError` if the fetched OpenFisca value is not properly formatted.
-- The OpenFisca-computed values.
-- The full OpenFisca response if you need everything it sends back.
+- An object containing the OpenFisca-computed values, as identifiers from the OpenFisca [legislation](http://legislation.openfisca.fr) mapped to `Number` values.
+- The full OpenFisca [response](http://embauche.sgmap.fr/api/doc) if you need everything it sends back.
+
+#### Example:
+
+```js
+window.Embauche.OpenFisca.get({
+	zone_revitalisation_rurale: true
+}, function(error, results) {
+	if (error) throw error;
+	window.alert('Employer would pay ' + results.salsuperbrut + ' if this geographic zone was elected as a ZRR.')
+});
+```
 
 
-### `Embauche.OpenFisca.buildURL([additionalParameters])`
+### `window.Embauche.OpenFisca.buildURL([additionalParameters])`
 
-To programmatically create other requests based on the current state of the form, use the `window.Embauche.OpenFisca.buildURL(additionalParameters)` function. It takes as an optional parameter an object whose properties will be appended to the URL as query-string parameters, and returns the OpenFisca URL to `GET` to obtain results, as documented in the [`/formula` API](http://embauche.sgmap.fr/api/doc).
+Prepares a `GET` query to the [Paie API](http://embauche.sgmap.fr/api/doc), parameterised with the current state of the form.
+
+You can adjust the situation to compute by passing an object as the first argument (`additionalParameters`). The parameters you can use are documented in the [Paie API](http://embauche.sgmap.fr/api/doc).
+
+Returns the OpenFisca URL to `GET` to obtain results, as documented in the [`/formula` API](http://embauche.sgmap.fr/api/doc).
+
+> If you simply want to obtain the results of calling this API, use `Embauche.OpenFisca.get`.

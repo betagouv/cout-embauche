@@ -1,10 +1,13 @@
 dependencies:
   post:
+    - npm install saucelabs # allow sending Watai results to SauceLabs
     - npm install -g live-server
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
     - tar -xzf sc-latest-linux.tar.gz
 
 test:
+  pre:
+    - mkdir $HOME/.watai && cp test/config-ci.js $HOME/.watai/config.js # prepare CI-specific config holder and add CI-specific config to Watai
   override:
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier "circle-$CIRCLE_BUILD_NUM-$CIRCLE_NODE_INDEX" --readyfile ~/sauce_is_ready:
         background: true

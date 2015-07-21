@@ -13,4 +13,5 @@ module.exports = {
 	views		: [ 'Flow', 'SauceLabs' ],
 	quit		: 'always',	// avoid wasting 90 seconds on SauceLabs
 	bail		: true,
+	build		: 'CircleCI#' + process.env.CIRCLE_BUILD_NUM,
 }

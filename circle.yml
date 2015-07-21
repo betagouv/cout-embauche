@@ -1,7 +1,10 @@
+machine:
+  environment:
+    PORT: 8080
+
 dependencies:
   post:
     - npm install saucelabs # allow sending Watai results to SauceLabs
-    - npm install -g live-server
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
     - tar -xzf sc-latest-linux.tar.gz
 
@@ -11,10 +14,10 @@ test:
   override:
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier "circle-$CIRCLE_BUILD_NUM-$CIRCLE_NODE_INDEX" --readyfile ~/sauce_is_ready:
         background: true
-    - live-server:
+    - /usr/bin/python3 -m http.server $PORT:
         background: true
     # wait for Sauce Connect
     - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
     # wait for server
-    - curl --retry 20 --retry-delay 1 -v http://localhost:8080
+    - curl --retry 20 --retry-delay 1 -v http://localhost:$PORT
     - npm test

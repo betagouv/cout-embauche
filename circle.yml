@@ -12,16 +12,20 @@ dependencies:
 
 test:
   pre:
-    - mkdir $HOME/.watai && cp test/config-ci.js $HOME/.watai/config.js # prepare CI-specific config holder and add CI-specific config to Watai
+    - mkdir $HOME/.watai && cp test/config-ci.js $HOME/.watai/config.js:
+        parallel: true # prepare CI-specific config holder and add CI-specific config to Watai
   override:
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier "circle-$CIRCLE_BUILD_NUM-$CIRCLE_NODE_INDEX" --readyfile ~/sauce_is_ready:
         background: true
+        parallel: true
     - /usr/bin/python3 -m http.server $PORT:
         background: true
+        parallel: true
     # wait for Sauce Connect
-    - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
+    - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done:
+        parallel: true
     # wait for server
-    - curl --retry 20 --retry-delay 1 -v http://localhost:$PORT
-    - watai test --config '{"driverCapabilities":{"browserName":"chrome"}}'
-    - watai test --config '{"driverCapabilities":{"browserName":"firefox"}}'
-    - watai test --config '{"driverCapabilities":{"browserName":"internet explorer"}}'
+    - curl --retry 20 --retry-delay 1 -v http://localhost:$PORT:
+        parallel: true
+    - case $CIRCLE_NODE_INDEX in 0) browser='chrome' ;; 1) browser='firefox' ;; 2) browser='internet explorer' ;; 3) browser='iphone","version":"8.2' ;; esac; watai test --config '{"driverCapabilities":{"browserName":"'"$browser"'"}}':
+        parallel: true

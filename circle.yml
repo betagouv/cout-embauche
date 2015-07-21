@@ -1,6 +1,8 @@
 machine:
   environment:
     PORT: 8080
+    # SAUCE_USERNAME is defined in the CircleCI web UI
+    # SAUCE_ACCESS_KEY is defined in the CircleCI web UI
 
 dependencies:
   post:

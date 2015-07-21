@@ -22,4 +22,6 @@ test:
     - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
     # wait for server
     - curl --retry 20 --retry-delay 1 -v http://localhost:$PORT
-    - npm test
+    - watai test --config '{"driverCapabilities":{"browserName":"chrome"}}'
+    - watai test --config '{"driverCapabilities":{"browserName":"firefox"}}'
+    - watai test --config '{"driverCapabilities":{"browserName":"internet explorer"}}'

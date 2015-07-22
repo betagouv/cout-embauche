@@ -52,7 +52,7 @@
 
 	window.Embauche = __webpack_require__(10);
 
-	__webpack_require__(14);
+	__webpack_require__(15);
 
 
 /***/ },
@@ -468,7 +468,8 @@
 
 	var UI = __webpack_require__(11),
 		OpenFisca = __webpack_require__(12),
-		Tests = __webpack_require__(13);
+		debounce = __webpack_require__(13),
+		Tests = __webpack_require__(14);
 
 
 	/** Handle events from the given form to update data.
@@ -478,10 +479,12 @@
 
 		var update = OpenFisca.update.bind(form);
 
+		update();
+
+		update = debounce(update, 300);
+
 		form.addEventListener('change', update);
 		form.addEventListener('keyup', update);
-
-		update();
 	}
 
 
@@ -667,6 +670,20 @@
 
 /***/ },
 /* 13 */
+/***/ function(module, exports) {
+
+	module.exports = function debounce(debounced, delay) {
+		var timeout;
+
+		return function() {
+			clearTimeout(timeout);
+			timeout = setTimeout(debounced.bind(this, arguments), delay);
+		}
+	};
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var OpenFisca = __webpack_require__(12);
@@ -718,7 +735,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	// from https://raw.githubusercontent.com/termi/Element.details/master/__COMPILE/Element.details.js

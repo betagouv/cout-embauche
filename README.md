@@ -25,10 +25,13 @@ Browser compatibility
 
 ### Continuously tested on:
 
-[![Integration tests status](https://saucelabs.com/browser-matrix/MattiSG.svg)](https://saucelabs.com/u/MattiSG)
+- Chrome.
+- Firefox.
+- IE11.
+- iOS 8.
 
 
-### Also compatible with:
+### Also known to be compatible with:
 
 - IE10.
 - Safari 8.

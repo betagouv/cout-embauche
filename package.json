@@ -18,6 +18,7 @@
   },
   "scripts": {
     "test": "watai test",
-    "compile": "webpack"
+    "compile": "webpack",
+    "compile-continuously": "webpack --watch"
   }
 }

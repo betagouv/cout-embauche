@@ -23,7 +23,7 @@ Include this line where you want the widget to appear in your page:
 Browser compatibility
 ---------------------
 
-### Continuously tested on:
+### [Continuously tested](https://circleci.com/gh/sgmap/cout-embauche) on:
 
 - Chrome.
 - Firefox.
@@ -88,3 +88,31 @@ You can adjust the situation to compute by passing an object as the first argume
 Returns the OpenFisca URL to `GET` to obtain results, as documented in the [`/formula` API](http://embauche.sgmap.fr/api/doc).
 
 > If you simply want to obtain the results of calling this API, use `Embauche.OpenFisca.get`.
+
+
+Build
+-----
+
+This widget is packaged with [Webpack](http://webpack.github.io) and distributed through GitHub's [CDN](https://developer.github.com/changes/2014-04-25-user-content-security/).
+
+
+### Compilation
+
+To compile your modifications, clone this repository, `cd` to it and `npm install`. You can then run `npm run compile` whenever you change a file to update files under `dist`.
+
+To ease development, you can also use `npm run compile-continuously` to have your updates reflected in real time to the `dist` folder.
+
+> In this case, you could probably also make use of [`live-server`](https://www.npmjs.com/package/live-server).
+
+
+### Distribution
+
+Simply compile the widget and push your changes on GitHub.
+
+
+Test
+----
+
+This widget is covered by integration tests written with [Watai](https://github.com/MattiSG/Watai) under the `test` folder. To run them locally, follow the [installation guide](https://github.com/MattiSG/Watai#installing) and run `npm test`.
+
+These tests are run continuously on [CircleCI](https://circleci.com/gh/sgmap/cout-embauche).

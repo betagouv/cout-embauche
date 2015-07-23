@@ -13,7 +13,7 @@ Usage
 Include this line where you want the widget to appear in your page:
 
 ```html
-<script src="https://raw.githubusercontent.com/sgmap/cout-embauche/gh-pages/dist/cout-embauche-widget.js"></script>
+<script src="https://rawgit.com/sgmap/cout-embauche/gh-pages/dist/cout-embauche-widget.js"></script>
 ```
 
 > Reminder: this widget is in early beta and may be updated at any time, without prior notice. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.

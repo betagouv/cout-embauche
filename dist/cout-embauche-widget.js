@@ -52,7 +52,7 @@
 
 	window.Embauche = __webpack_require__(10);
 
-	__webpack_require__(14);
+	__webpack_require__(15);
 
 
 /***/ },
@@ -468,7 +468,8 @@
 
 	var UI = __webpack_require__(11),
 		OpenFisca = __webpack_require__(12),
-		Tests = __webpack_require__(13);
+		debounce = __webpack_require__(13),
+		Tests = __webpack_require__(14);
 
 
 	/** Handle events from the given form to update data.
@@ -478,10 +479,12 @@
 
 		var update = OpenFisca.update.bind(form);
 
+		update();
+
+		update = debounce(update, 300);
+
 		form.addEventListener('change', update);
 		form.addEventListener('keyup', update);
-
-		update();
 	}
 
 
@@ -667,6 +670,20 @@
 
 /***/ },
 /* 13 */
+/***/ function(module, exports) {
+
+	module.exports = function debounce(debounced, delay) {
+		var timeout;
+
+		return function() {
+			clearTimeout(timeout);
+			timeout = setTimeout(debounced.bind(this, arguments), delay);
+		}
+	};
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var OpenFisca = __webpack_require__(12);
@@ -718,16 +735,14 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
-	// from https://raw.githubusercontent.com/termi/Element.details/master/__COMPILE/Element.details.js
-	;(function(){"use strict";var d=window;
-	if(!("open"in document.createElement("details"))){var e,f,g,h;document.head.insertAdjacentHTML("beforeend","<br><style>details{display:block}details>*{display:none}details>summary,details>summary,details>.\u25bc\u25bc{display:block}details .details-marker:before{content:'\u25ba'}details.\u25bc .details-marker:before{content:'\u25bc'}details.\u25bc>*{display:block}</style>");e={get:function(){return!("nodeName"in this)||"DETAILS"!=this.nodeName.toUpperCase()?void 0:this.hasAttribute("open")},set:function(a){if("nodeName"in
-	this&&"DETAILS"==this.nodeName.toUpperCase())return g(this),this.classList[a?"add":"remove"]("\u25bc"),this[a?"setAttribute":"removeAttribute"]("open","open"),a}};f=function(a){if(0!==a.detail&&(13===a.keyCode||"click"===a.type))this.parentNode.open=!this.parentNode.open};g=function(a){if(!a.a||!a.a.__isShimmed){a.a||(a.a={});for(var b,c,i=-1;c=a.childNodes[++i];)3===c.nodeType&&/[^\t\n\r ]/.test(c.data)?(a.insertBefore(document.createElement("x-i"),c).innerHTML=c.data,a.removeChild(c)):"SUMMARY"==
-	c.nodeName.toUpperCase()&&(b=c);b||((b=document.createElement("x-s")).innerHTML="Details",b.className="\u25bc\u25bc");a.insertBefore(b,a.childNodes[0]);b.insertBefore(document.createElement("x-i"),b.childNodes[0]).className="details-marker";b.tabIndex=0;b.addEventListener("click",f,!1);b.addEventListener("keyup",f,!1);a.a.__isShimmed=1}};h=function(){Object.defineProperty(d.Element.prototype,"open",e);for(var a=document.getElementsByTagName("details"),b,c=-1;b=a[++c];)b.open=b.hasAttribute("open")};
-	"complete"!=document.readyState?document.addEventListener("DOMContentLoaded",h,!1):h()};
-	})();
+	// from https://github.com/MattiSG/Element.details/tree/mattisg
+	(function(h,k){if(!k){var f,e,g,d;document.head.insertAdjacentHTML("beforeend","<br><style>details{display:block}details>*{display:none}details>summary,details>summary,details>.\u25bc\u25bc{display:block}details .details-marker:before{content:'\u25ba'}details.\u25bc .details-marker:before{content:'\u25bc'}details.\u25bc>*{display:block}</style>");f={get:function(){return"nodeName"in this&&"DETAILS"==this.nodeName.toUpperCase()?this.hasAttribute("open"):void 0},set:function(a){if("nodeName"in this&&
+	"DETAILS"==this.nodeName.toUpperCase())return g(this),this.classList[a?"add":"remove"]("\u25bc"),this[a?"setAttribute":"removeAttribute"]("open","open"),a}};e=function(a){if(13===a.keyCode||"click"===a.type)this.parentNode.open=!this.parentNode.open};g=function(a){if(!a._||!a._.__isShimmed){a._||(a._={});for(var b,c,d=-1;c=a.childNodes[++d];)3===c.nodeType&&/[^\t\n\r ]/.test(c.data)?(a.insertBefore(document.createElement("x-i"),c).innerHTML=c.data,a.removeChild(c)):"SUMMARY"==c.nodeName.toUpperCase()&&
+	(b=c);b||((b=document.createElement("x-s")).innerHTML="Details",b.className="\u25bc\u25bc");a.insertBefore(b,a.childNodes[0]);b.insertBefore(document.createElement("x-i"),b.childNodes[0]).className="details-marker";b.tabIndex=0;b.addEventListener("click",e,!1);b.addEventListener("keyup",e,!1);a._.__isShimmed=1}};d=function(){Object.defineProperty(h.Element.prototype,"open",f);for(var a=document.getElementsByTagName("details"),b,c=-1;b=a[++c];)b.open=b.hasAttribute("open")};"complete"!=document.readyState?
+	document.addEventListener("DOMContentLoaded",d,!1):d()}})(window,"open"in document.createElement("details"));
 
 
 /***/ }

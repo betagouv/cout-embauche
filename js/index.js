@@ -1,5 +1,6 @@
 var UI = require('./ui.js'),
 	OpenFisca = require('./openfisca.js'),
+	debounce = require('../lib/debounce.js'),
 	Tests = require('./tests.js');
 
 
@@ -10,10 +11,12 @@ function bindToForm(form) {
 
 	var update = OpenFisca.update.bind(form);
 
+	update();
+
+	update = debounce(update, 300);
+
 	form.addEventListener('change', update);
 	form.addEventListener('keyup', update);
-
-	update();
 }
 
 

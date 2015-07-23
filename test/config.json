@@ -1,4 +1,5 @@
 {
 	"name": "Simulateur de coût d'embauche",
-	"baseURL": "http://sgmap.github.io/cout-embauche"
+	"baseURL": "http://localhost:8080",
+	"browser": "chrome"
 }

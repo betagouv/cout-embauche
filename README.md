@@ -23,9 +23,26 @@ Include this line where you want the widget to appear in your page:
 Browser compatibility
 ---------------------
 
-Expected to support ES5.1-compatible browsers, i.e. IE ≥ 9, Safari ≥ 5, Opera ≥ 12, Chrome, Firefox.
+### Continuously tested on:
 
-**Not cross-browser tested yet.**
+- Chrome.
+- Firefox.
+- IE11.
+- iOS 8.
+
+
+### Also known to be compatible with:
+
+- IE10.
+- Safari 8.
+- Opera 28.
+
+> These tests are run manually and may not be as up-to-date as the above.
+
+
+### Not compatible with:
+
+- IE≤9.
 
 
 API

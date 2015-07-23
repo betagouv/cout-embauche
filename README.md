@@ -55,6 +55,11 @@ At the moment, it depends on the widget being present in the DOM to load the con
 > Please open an issue if you want to consume the API in a different way.
 
 
+### `window.Embauche.OpenFisca.getLastResults()`
+
+Returns the currently-displayed computed simulation data, as an object containing the OpenFisca-computed values, as identifiers from the OpenFisca [legislation](http://legislation.openfisca.fr) mapped to `Number` values.
+
+
 ### `window.Embauche.OpenFisca.get([additionalParameters], callback)`
 
 Calls the Paie API, parameterised with the current state of the form.

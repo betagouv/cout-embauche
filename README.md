@@ -16,7 +16,10 @@ Include this line where you want the widget to appear in your page:
 <script src="https://rawgit.com/sgmap/cout-embauche/gh-pages/dist/cout-embauche-widget.js"></script>
 ```
 
-> Reminder: this widget is in early beta and may be updated at any time, without prior notice. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
+> Reminder: this widget is in early beta and may be updated at any time. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
+>
+> There are no uptime guarantees on the hosting of this widget.
+>
 > A versioning scheme will be made available as stabilisation occurs.
 
 

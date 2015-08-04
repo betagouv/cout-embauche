@@ -9,6 +9,6 @@ for (selector in MAPPING) {
 		continue;
 
 	Array.prototype.forEach.call(document.querySelectorAll(selector), function(element) {
-		element.className += ' ' + MAPPING[selector];
+		element.classList.add(MAPPING[selector]);
 	});
 }

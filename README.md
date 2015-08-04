@@ -54,7 +54,9 @@ Browser compatibility
 
 ### Not compatible with:
 
-- IE≤9.
+- IE < 10.
+- Safari < 5.1.
+- Opera < 11.5.
 
 
 API

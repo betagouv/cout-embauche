@@ -4,6 +4,6 @@ require('./css/tooltip.css');
 
 document.write(require('./assets/embauche.html'));
 
-window.Embauche = require('./js/index');
+require('expose?Embauche!./js/index');
 
 require('./lib/details.polyfill.js');

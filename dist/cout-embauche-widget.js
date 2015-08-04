@@ -50,9 +50,9 @@
 	__webpack_require__(8);
 	__webpack_require__(1);
 
-	window.Embauche = __webpack_require__(10);
+	__webpack_require__(10);
 
-	__webpack_require__(15);
+	__webpack_require__(16);
 
 
 /***/ },
@@ -466,10 +466,17 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var UI = __webpack_require__(11),
-		OpenFisca = __webpack_require__(12),
-		debounce = __webpack_require__(13),
-		Tests = __webpack_require__(14);
+	/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Embauche"] = __webpack_require__(11);
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var UI = __webpack_require__(12),
+		OpenFisca = __webpack_require__(13),
+		debounce = __webpack_require__(14),
+		Tests = __webpack_require__(15);
 
 
 	/** Handle events from the given form to update data.
@@ -502,7 +509,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -545,10 +552,10 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var UI = __webpack_require__(11);
+	var UI = __webpack_require__(12);
 
 
 	var buffer;
@@ -669,7 +676,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function debounce(debounced, delay) {
@@ -683,10 +690,10 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OpenFisca = __webpack_require__(12);
+	var OpenFisca = __webpack_require__(13);
 
 
 	module.exports = {
@@ -735,7 +742,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	// from https://github.com/MattiSG/Element.details/tree/mattisg

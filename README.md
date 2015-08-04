@@ -23,6 +23,15 @@ Include this line where you want the widget to appear in your page:
 > A versioning scheme will be made available as stabilisation occurs.
 
 
+### Using with Bootstrap
+
+If you use [Twitter Bootstrap CSS](http://getbootstrap.com), an integration is provided. Simply add the following line after the inclusion of the widget:
+
+```html
+<script async src="https://rawgit.com/sgmap/cout-embauche/gh-pages/dist/bootstrap-compat.js"></script>
+```
+
+
 Browser compatibility
 ---------------------
 

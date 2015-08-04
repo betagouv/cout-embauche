@@ -18,6 +18,7 @@
     "webpack": "^1.10.1"
   },
   "scripts": {
+    "pretest": "npm run compile",
     "test": "watai test && watai test/bootstrap-compat",
     "precompile": "rimraf dist/*",
     "compile": "webpack",

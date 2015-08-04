@@ -31,6 +31,7 @@ test:
         parallel: true
     - case $CIRCLE_NODE_INDEX in 0) browser='chrome' ;; 1) browser='firefox' ;; 2) browser='internet explorer' ;; 3) browser='iphone","version":"8.2' ;; esac; watai test --config '{"driverCapabilities":{"browserName":"'"$browser"'"}}':
         parallel: true
+    - watai test/bootstrap-compat
 
   post:
     - killall sc:

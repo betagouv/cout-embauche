@@ -1,8 +1,8 @@
 <div class="embauche">
 	<section id="input">
 		<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+mhsup+csg_imposable_salaire+crds_salaire+salaire_imposable+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei" method="GET">
-			<div>
-				<select data-sets=".employer_type@textContent">
+			<div class="form-inline">
+				<select class="form-control" data-sets=".employer_type@textContent">
 					<option value="entreprise">Mon entreprise</option>
 					<option value="association">Mon association</option>
 					<option value="établissement" disabled>Mon établissement public</option>
@@ -10,11 +10,11 @@
 				</select>
 
 				de
-				<input name="effectif_entreprise" id="effectif_entreprise" type="number" min="0" placeholder="1" value="1" max="99999">
+				<input class="form-control" name="effectif_entreprise" id="effectif_entreprise" type="number" min="0" placeholder="1" value="1" max="99999">
 				<label for="effectif_entreprise" title="En équivalents temps pleins : un mi-temps vaut 0,5, par exemple.">salariés</label>
 
 				souhaite rémunérer un.e
-				<select data-provides="employee">
+				<select class="form-control" data-provides="employee">
 					<option value="salarié.e">salarié.e</option>
 					<option value="stagiaire">stagiaire</option>
 					<option value="apprenti">apprenti.e</option>
@@ -25,15 +25,15 @@
 				<input type="hidden" name="contrat_de_travail_debut" value="2015-01-01"/>
 
 				en statut
-				<select name="type_sal">
+				<select class="form-control" name="type_sal">
 					<option value="prive_non_cadre">non-cadre</option>
 					<option value="prive_cadre">cadre</option>
 				</select>
 
 				à hauteur de
-				<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1445,38" value="1445.38"><label for="salaire">&nbsp;€</label>
+				<input class="form-control" name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1445,38" value="1445.38"><label for="salaire">&nbsp;€</label>
 
-				<select data-sets="#salaire@name">
+				<select class="form-control" data-sets="#salaire@name">
 					<option value="salaire_de_base">brut</option>
 					<option disabled value="salaire_net_a_payer">net</option>
 				</select>
@@ -45,7 +45,7 @@
 				</select>
 
 				par
-				<select data-provides="period">
+				<select class="form-control" data-provides="period">
 					<option disabled>an</option>
 					<option>mois</option>
 					<option disabled>jour</option>
@@ -53,9 +53,9 @@
 				</select>.
 			</div>
 
-			<div>
-				Mon <span class="employer_type">entreprise</span>
-				<select name="jeune_entreprise_innovante">
+			<div class="form-inline">
+				Mon <span class="form-control" class="employer_type">entreprise</span>
+				<select class="form-control" name="jeune_entreprise_innovante">
 					<option value="false">ne dispose pas</option>
 					<option value="true">dispose</option>
 				</select>
@@ -63,7 +63,7 @@
 			</div>
 
 			<noscript>
-				<input type="submit" value="Combien cela va-t-il coûter ?">
+				<input class="form-control" type="submit" value="Combien cela va-t-il coûter ?">
 			</noscript>
 		</form>
 	</section>

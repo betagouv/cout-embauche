@@ -13,12 +13,15 @@
     "expose-loader": "^0.7.0",
     "html-loader": "^0.3.0",
     "node-libs-browser": "^0.5.2",
+    "rimraf": "^2.4.2",
     "style-loader": "^0.12.3",
     "watai": "^0.6.2",
     "webpack": "^1.10.1"
   },
   "scripts": {
-    "test": "watai test",
+    "pretest": "npm run compile",
+    "test": "watai test && watai test/bootstrap-compat",
+    "precompile": "rimraf dist/*",
     "compile": "webpack",
     "compile-continuously": "webpack --watch"
   }

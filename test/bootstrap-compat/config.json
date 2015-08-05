@@ -1,0 +1,4 @@
+{
+	"name": "Simulateur de coût d'embauche (compatibilité Bootstrap)",
+	"baseURL": "http://localhost:8080/test/bootstrap-compat"
+}

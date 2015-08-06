@@ -15,8 +15,10 @@ test:
   pre:
     - mkdir $HOME/.watai && cp test/config-ci.js $HOME/.watai/config.js:
         parallel: true # prepare CI-specific config holder and add CI-specific config to Watai
+    - npm run compile
 
   override:
+    - test $CIRCLE_BRANCH == 'fix-compilation' && git diff-files --name-only --exit-code  # fail if the compiled output is not up-to-date
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier "circle-$CIRCLE_BUILD_NUM-$CIRCLE_NODE_INDEX" --readyfile ~/sauce_is_ready > $SAUCE_LOG:
         background: true
         parallel: true
@@ -32,7 +34,6 @@ test:
     - case $CIRCLE_NODE_INDEX in 0) browser='chrome' ;; 1) browser='firefox' ;; 2) browser='internet explorer' ;; 3) browser='iphone","version":"8.2' ;; esac; watai test --config '{"driverCapabilities":{"browserName":"'"$browser"'"}}':
         parallel: true
     - watai test/bootstrap-compat
-    - test $CIRCLE_BRANCH == 'fix-compilation' && git diff-files --name-only --exit-code  # fail if the compiled output is not up-to-date
 
   post:
     - killall sc:

@@ -32,6 +32,7 @@ test:
     - case $CIRCLE_NODE_INDEX in 0) browser='chrome' ;; 1) browser='firefox' ;; 2) browser='internet explorer' ;; 3) browser='iphone","version":"8.2' ;; esac; watai test --config '{"driverCapabilities":{"browserName":"'"$browser"'"}}':
         parallel: true
     - watai test/bootstrap-compat
+    - test $CIRCLE_BRANCH == 'fix-compilation' && git diff-files --name-only --exit-code  # fail if the compiled output is not up-to-date
 
   post:
     - killall sc:

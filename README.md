@@ -112,7 +112,9 @@ Returns the OpenFisca URL to `GET` to obtain results, as documented in the [`/fo
 Build
 -----
 
-This widget is packaged with [Webpack](http://webpack.github.io) and distributed through GitHub's [CDN](https://developer.github.com/changes/2014-04-25-user-content-security/).
+This widget is packaged with [Webpack](http://webpack.github.io) and distributed through [RawGit CDN](https://rawgit.com).
+
+> RawGit does not offer any guarantees, we will distribute on our own servers when we get enough users to justify the investment.
 
 
 ### Compilation

@@ -1,6 +1,7 @@
 machine:
   environment:
     PORT: 8080
+    MASTER_BRANCH: gh-pages
     SAUCE_LOG: $CIRCLE_ARTIFACTS/sauce_log.txt
     # SAUCE_USERNAME is defined in the CircleCI web UI
     # SAUCE_ACCESS_KEY is defined in the CircleCI web UI
@@ -15,8 +16,10 @@ test:
   pre:
     - mkdir $HOME/.watai && cp test/config-ci.js $HOME/.watai/config.js:
         parallel: true # prepare CI-specific config holder and add CI-specific config to Watai
+    - npm run compile
 
   override:
+    - git diff-files --name-only --exit-code || echo "Compiled output is not up-to-date" && test $CIRCLE_BRANCH != $MASTER_BRANCH  # fail build only on main branch
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier "circle-$CIRCLE_BUILD_NUM-$CIRCLE_NODE_INDEX" --readyfile ~/sauce_is_ready > $SAUCE_LOG:
         background: true
         parallel: true

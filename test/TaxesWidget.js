@@ -1,0 +1,5 @@
+root				: '#taxes',
+toggleLink			: '#taxes summary',
+taxesList			: '#taxes table',
+randomTax			: '#taxes [data-source]',
+createTestButton	: '#createTest',

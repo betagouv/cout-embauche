@@ -84,16 +84,13 @@ function get(additionalParameters, callback) {
 	var request = new XMLHttpRequest();
 
 	request.onload = function openFiscaOnloadHandler() {
-		if (request.status != 200)
-			return callback(request);
-
 		try {
 			var data = JSON.parse(request.responseText);
 		} catch (err) {
 			callback(err);
 		}
 
-		callback(null, data.values, data);
+		callback(request.status != 200 && request, data.values, data);
 	};
 
 	request.onerror = callback.bind(null, request);
@@ -109,8 +106,13 @@ function update() {
 
 	get({
 		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth()
-	}, function(error, values) {
-		if (error) throw error;
+	}, function(error, values, response) {
+		if (error) {
+			if (response.error)
+				return UI.display(response.error);
+
+			throw error;
+		}
 
 		buffer = values;
 		UI.display(values);

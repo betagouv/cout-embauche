@@ -64,6 +64,18 @@ details {
 	font-size: 80%;
 }
 
+#error {
+	color: red;
+}
+
+#error summary {
+	font-family: monospace;
+}
+
+#error summary:empty {
+	display: none;
+}
+
 .js-only {
 	display: none;
 }

@@ -1,6 +1,6 @@
 <div class="embauche">
 	<section id="input">
-		<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+mhsup+csg_imposable_salaire+crds_salaire+salaire_imposable+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+contribution_exceptionnelle_solidarite+ircantec_employeur+ircantec_salarie+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei" method="GET">
+		<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_imposable+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+exoneration_cotisations_employeur_zfu+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei" method="GET">
 			<div>
 				<select data-sets=".employer_type@textContent">
 					<option value="entreprise">Mon entreprise</option>
@@ -13,7 +13,7 @@
 				<input name="effectif_entreprise" id="effectif_entreprise" type="number" min="0" placeholder="1" value="1" max="99999">
 				<label for="effectif_entreprise" title="En équivalents temps pleins : un mi-temps vaut 0,5, par exemple.">salariés</label>
 
-				souhaite rémunérer un.e
+				&nbsp;<!-- non-breakable space to prevent minification from mangling all space with preceding <label> -->souhaite rémunérer un.e
 				<select data-provides="employee">
 					<option value="salarié.e">salarié.e</option>
 					<option value="stagiaire">stagiaire</option>
@@ -84,7 +84,7 @@
 
 	<section id="affiliation">
 		<p id="affiliation__sgmap">
-			<a href="http://www.modernisation.gouv.fr"><img alt="Secrétariat Général à la Modernisation de l'Action Publique" src="http://www.modernisation.gouv.fr/sites/default/files/bloc-sgmap-2.jpg"/></a>
+			<a href="http://www.modernisation.gouv.fr"><img alt="Secrétariat Général pour la Modernisation de l'Action Publique" src="http://www.modernisation.gouv.fr/sites/default/files/bloc-sgmap-2.jpg"/></a>
 		</p>
 		<p>
 			<a id="affiliation__header" href="http://embauche.sgmap.fr" title="Simuler un coût d'embauche dans mon application">Calculé par</a>
@@ -120,16 +120,16 @@
 				<td><span data-source="arrco_employeur"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>ASSEDIC</th>
+				<th>Assurance chômage</th>
 				<td><span data-source="chomage_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Ircantec</th>
-				<td><span data-source="ircantec_employeur"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>CET</th>
 				<td><span data-source="cotisation_exceptionnelle_temporaire_employeur"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+				<th>Allocations familiales</th>
+				<td><span data-source="famille"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Vieillesse (déplafonnée)</th>
@@ -138,6 +138,10 @@
 			<tr>
 				<th>Vieillesse (plafonnée)</th>
 				<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+				<th>Accident du travail</th>
+				<td><span data-source="accident_du_travail"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Invalidité</th>
@@ -181,14 +185,6 @@
 			<caption>Cotisations salarié</caption>
 
 			<tr>
-				<th>Accident du travail</th>
-				<td><span data-source="accident_du_travail"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Famille</th>
-				<td><span data-source="famille"></span>&nbsp;€</td>
-			</tr>
-			<tr>
 				<th>Fonds national action logement</th>
 				<td><span data-source="fnal"></span>&nbsp;€</td>
 			</tr>
@@ -213,10 +209,6 @@
 				<td><span data-source="arrco_salarie"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>Ircantec</th>
-				<td><span data-source="ircantec_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
 				<th>Assurance chômage</th>
 				<td><span data-source="chomage_salarie"></span>&nbsp;€</td>
 			</tr>
@@ -237,24 +229,16 @@
 				<td><span data-source="mmid_salarie"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>CSG déductible (salaires)</th>
+				<th>CSG déductible</th>
 				<td><span data-source="csg_deductible_salaire"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>Heures supplémentaires éxonérées</th>
-				<td><span data-source="mhsup"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>CSG non déductible (salaires)</th>
+				<th>CSG non déductible</th>
 				<td><span data-source="csg_imposable_salaire"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>CRDS (salaires)</th>
+				<th>CRDS</th>
 				<td><span data-source="crds_salaire"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Contribution exceptionnelle de solidarité</th>
-				<td><span data-source="contribution_exceptionnelle_solidarite"></span>&nbsp;€</td>
 			</tr>
 		</table>
 

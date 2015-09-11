@@ -9,11 +9,9 @@ var UI = require('./ui.js'),
 function bindToForm(form) {
 	form.addEventListener('change', UI.reflectParameterChange);
 
-	var update = OpenFisca.update.bind(form);
+	var update = debounce(OpenFisca.update.bind(form), 300);
 
 	update();
-
-	update = debounce(update, 300);
 
 	form.addEventListener('change', update);
 	form.addEventListener('keyup', update);

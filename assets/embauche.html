@@ -68,6 +68,17 @@
 		</form>
 	</section>
 
+	<section id="error" class="js-only" hidden>
+		<details>
+			<summary>Une erreur est survenue lors du calcul.</summary>
+
+			<p>Merci d'<a href="mailto:embauche@sgmap.fr?subject=Erreur">envoyer un rapport d'erreur</a> contenant les informations ci-dessous pour améliorer le simulateur !</p>
+			<p>Détails techniques :</p>
+			<pre data-source="message"></pre>
+			<pre data-source="userAgent"></pre>
+		</details>
+	</section>
+
 	<section id="result" class="js-only">
 		<p>
 			Cela coûtera
@@ -93,7 +104,7 @@
 		</p>
 	</section>
 
-	<details class="js-only">
+	<details id="taxes" class="js-only">
 		<summary>Cotisations détaillées</summary>
 
 		<table>

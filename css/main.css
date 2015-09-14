@@ -64,6 +64,12 @@ details {
 	font-size: 80%;
 }
 
+#error {
+	color: red;
+	border: 1px solid red;
+	border-radius: .5em;
+}
+
 .js-only {
 	display: none;
 }

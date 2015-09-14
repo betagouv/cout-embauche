@@ -108,9 +108,10 @@ function update() {
 		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth()
 	}, function(error, values, response) {
 		if (error) {
-			if (response.error)
+			if (response && response.error)
 				return UI.showError(response.error);
 
+			UI.showError({ message: error });
 			throw error;
 		}
 

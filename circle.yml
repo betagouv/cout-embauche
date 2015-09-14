@@ -13,10 +13,10 @@ dependencies:
     - npm install saucelabs # allow sending Watai results to SauceLabs
     - wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
     - tar -xzf sc-latest-linux.tar.gz
+    - npm run compile
 
 test:
   pre:
-    - npm run compile
     - mkdir $HOME/.watai && cp test/config-ci.js $HOME/.watai/config.js:
         parallel: true # prepare CI-specific config holder and add CI-specific config to Watai
 

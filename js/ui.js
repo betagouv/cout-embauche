@@ -1,5 +1,6 @@
 module.exports = {
 	display: display,
+	showError: showError,
 	reflectParameterChange: reflectParameterChange
 };
 
@@ -17,6 +18,19 @@ function display(data) {
 
 		target.textContent = value;
 	});
+
+	setErrorVisible(false);
+}
+
+function showError(data) {
+	data.userAgent = window.navigator.userAgent;
+
+	display(data);
+	setErrorVisible(true);
+}
+
+function setErrorVisible(shouldBeVisible) {
+	document.getElementById('error').hidden = ! shouldBeVisible;
 }
 
 function reflectParameterChange(event) {

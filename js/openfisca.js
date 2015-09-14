@@ -109,7 +109,7 @@ function update() {
 	}, function(error, values, response) {
 		if (error) {
 			if (response.error)
-				return UI.display(response.error);
+				return UI.showError(response.error);
 
 			throw error;
 		}

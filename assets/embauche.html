@@ -68,11 +68,14 @@
 		</form>
 	</section>
 
-	<section id="error" class="js-only">
+	<section id="error" class="js-only" hidden>
 		<details>
-			<summary data-source="message"></summary>
+			<summary>Une erreur est survenue lors du calcul.</summary>
 
-			Une erreur est survenue lors du calcul. Merci d'<a href="mailto:embauche@sgmap.fr?subject=Erreur">envoyer un rapport d'erreur</a> pour améliorer le simulateur !
+			<p>Merci d'<a href="mailto:embauche@sgmap.fr?subject=Erreur">envoyer un rapport d'erreur</a> contenant les informations ci-dessous pour améliorer le simulateur !</p>
+			<p>Détails techniques :</p>
+			<pre data-source="message"></pre>
+			<pre data-source="userAgent"></pre>
 		</details>
 	</section>
 

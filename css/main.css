@@ -66,14 +66,8 @@ details {
 
 #error {
 	color: red;
-}
-
-#error summary {
-	font-family: monospace;
-}
-
-#error summary:empty {
-	display: none;
+	border: 1px solid red;
+	border-radius: .5em;
 }
 
 .js-only {

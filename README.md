@@ -37,10 +37,7 @@ Browser compatibility
 
 ### [Continuously tested](https://circleci.com/gh/sgmap/cout-embauche) on:
 
-- Chrome.
-- Firefox.
-- IE11.
-- iOS 8.
+[![Integration Tests Results](https://saucelabs.com/browser-matrix/sgmap-embauche-bot.svg)](https://saucelabs.com/u/sgmap-embauche-bot)
 
 
 ### Also known to be compatible with:

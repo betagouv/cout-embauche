@@ -18,9 +18,9 @@ function bindToForm(form) {
 }
 
 
-bindToForm(document.querySelector('.embauche form'));
+bindToForm(document.querySelector('.SGMAPembauche form'));
 
-var jsNodes = document.querySelectorAll('.embauche .js-only');
+var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only');
 
 for (var i = 0; i < jsNodes.length; i++) {
 	jsNodes[i].className = jsNodes[i].className.replace('js-only', '');

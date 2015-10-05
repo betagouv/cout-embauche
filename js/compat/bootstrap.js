@@ -1,6 +1,6 @@
 var MAPPING = {
-	'.embauche form > div': 'form-inline',
-	'.embauche input, .embauche select': 'form-control'
+	'.SGMAPembauche form > div': 'form-inline',
+	'.SGMAPembauche input, .SGMAPembauche select': 'form-control'
 };
 
 

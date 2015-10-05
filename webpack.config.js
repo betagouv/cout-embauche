@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var prefix = require('postcss-prefix-selector')
 
 
 module.exports = {
@@ -12,9 +13,20 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.css$/,  loader: 'style!css' },
+            {
+                test:   /\.css$/,
+                loader: "style!css!postcss-loader"
+            },
             { test: /\.html$/, loader: 'html' },
         ]
+    },
+    postcss: function () {
+        return [
+          prefix({
+            prefix: '.SGMAPembauche ', // <--- notice the trailing space!
+            exclude: ['.SGMAPembauche'] // in order to style the prefix itself in  the .css
+          })
+        ];
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({

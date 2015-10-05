@@ -22,6 +22,7 @@
     "test": "watai test && watai test/bootstrap-compat",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",
-    "compile-continuously": "webpack --watch"
+    "compile-continuously": "webpack --watch",
+    "dev": "webpack-dev-server"
   }
 }

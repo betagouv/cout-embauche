@@ -73,8 +73,8 @@ details {
 
 
 @media(max-width: 500px) {
-	body {
-		padding: 0;
+	.SGMAPembauche {
+		padding: 1em 0 0;
 		width: 15em;
 		text-align: left;
 	}

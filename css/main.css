@@ -1,11 +1,13 @@
 .SGMAPembauche {
 	font-size: 150%;
+	padding-top: 1em;
 	text-align: center;
+	max-width: 45em;
+	line-height: 2.5;
 }
 
 input, select {
 	font-size: 100%;
-
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background-color: white;

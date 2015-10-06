@@ -122,7 +122,7 @@ To ease development, you can also use `npm run compile-continuously` to have you
 
 > In this case, you could probably also make use of [`live-server`](https://www.npmjs.com/package/live-server).
 
-Or you can even run `npm run dev` for automatic page reloading on change at the url  : `http://localhost:8080/webpack-dev-server/cout-embauche-widget`
+Or you can even run `npm run dev` for automatic page reloading on change at the url: `http://localhost:8080/webpack-dev-server/cout-embauche-widget`
 
 ### Distribution
 

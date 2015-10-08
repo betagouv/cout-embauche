@@ -1,14 +1,14 @@
 var MAPPING = {
 	'.SGMAPembauche form > div': 'form-inline',
-	'.SGMAPembauche input, .SGMAPembauche select': 'form-control'
-};
+	'.SGMAPembauche input, .SGMAPembauche select': 'form-control',
+}
 
 
-for (selector in MAPPING) {
+for (var selector in MAPPING) {
 	if (! MAPPING.hasOwnProperty(selector))
-		continue;
+		continue
 
 	Array.prototype.forEach.call(document.querySelectorAll(selector), function(element) {
-		element.classList.add(MAPPING[selector]);
-	});
+		element.classList.add(MAPPING[selector])
+	})
 }

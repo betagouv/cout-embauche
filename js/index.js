@@ -1,31 +1,31 @@
 var UI = require('./ui.js'),
 	OpenFisca = require('./openfisca.js'),
 	debounce = require('../lib/debounce.js'),
-	Tests = require('./tests.js');
+	Tests = require('./tests.js')
 
 
 /** Handle events from the given form to update data.
 */
 function bindToForm(form) {
-	form.addEventListener('change', UI.reflectParameterChange);
+	form.addEventListener('change', UI.reflectParameterChange)
 
-	var update = debounce(OpenFisca.update.bind(form), 300);
+	var update = debounce(OpenFisca.update.bind(form), 300)
 
-	update();
+	update()
 
-	form.addEventListener('change', update);
-	form.addEventListener('keyup', update);
+	form.addEventListener('change', update)
+	form.addEventListener('keyup', update)
 }
 
 
-bindToForm(document.querySelector('.SGMAPembauche form'));
+bindToForm(document.querySelector('.SGMAPembauche form'))
 
-var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only');
+var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only')
 
 for (var i = 0; i < jsNodes.length; i++) {
-	jsNodes[i].className = jsNodes[i].className.replace('js-only', '');
+	jsNodes[i].className = jsNodes[i].className.replace('js-only', '')
 }
 
-document.getElementById('createTest').addEventListener('click', Tests.create);
+document.getElementById('createTest').addEventListener('click', Tests.create)
 
-module.exports.OpenFisca = OpenFisca;
+module.exports.OpenFisca = OpenFisca

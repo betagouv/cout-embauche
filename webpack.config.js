@@ -15,7 +15,13 @@ module.exports = {
         loaders: [
             { test: /\.css$/,  loader: 'style!css!postcss-loader' },
             { test: /\.html$/, loader: 'html' },
+        ],
+        preLoaders: [
+            {test: /\.js$/, loader: "eslint-loader", exclude: /(node_modules|lib)/}
         ]
+    },
+    eslint: {
+       configFile: './.eslintrc'
     },
     postcss: function () {
         return [

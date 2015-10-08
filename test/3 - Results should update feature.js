@@ -1,9 +1,9 @@
 description: 'Results should update when salary is updated',
 
 scenario: [
-	InputsWidget.setSalaryField(UPDATED_SALARY + '\n'),
+	InputsWidget.setSalaryField(SALARY),
 	{
-		'ResultsWidget.superbrut'	: greaterThan(UPDATED_SALARY),
+		'ResultsWidget.superbrut'	: greaterThan(SALARY),
 		'ErrorWidget.title'			: false,
 	}
 ]

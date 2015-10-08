@@ -2,7 +2,7 @@ var OpenFisca = require('./openfisca')
 
 
 module.exports = {
-	create: createTest
+	create: createTest,
 }
 
 
@@ -15,13 +15,13 @@ function createTest() {
 	var formattedResults = Object.keys(lastResults).map(function(key) {
 		return {
 			code: key,
-			expectedValue: lastResults[key]
+			expectedValue: lastResults[key],
 		}
 	})
 
 	var data = {
 		expectedResults: formattedResults,
-		scenario: OpenFisca.buildURL()
+		scenario: OpenFisca.buildURL(),
 	}
 
 	var request = new XMLHttpRequest()

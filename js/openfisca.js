@@ -7,7 +7,7 @@ module.exports = {
 	buildURL: buildOpenFiscaQueryURL,
 	get: get,
 	update: update,
-	getLastResults: function() { return buffer }
+	getLastResults: function() { return buffer },
 }
 
 
@@ -25,7 +25,7 @@ function serialize(form) {
 
 
 var BOOLEAN_PARAMETERS = {
-	employee: [ 'stagiaire', 'apprenti' ]
+	employee: [ 'stagiaire', 'apprenti' ],
 }
 
 function getAdditionalParameters() {
@@ -105,7 +105,7 @@ function update() {
 	var today = new Date()
 
 	get({
-		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth()
+		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth(),
 	}, function(error, values, response) {
 		if (error) {
 			if (response && response.error)

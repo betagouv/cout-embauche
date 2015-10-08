@@ -1,7 +1,7 @@
 module.exports = {
 	display: display,
 	showError: showError,
-	reflectParameterChange: reflectParameterChange
+	reflectParameterChange: reflectParameterChange,
 }
 
 

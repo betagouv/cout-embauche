@@ -1,7 +1,7 @@
 description: 'Input errors should be visible',
 
 scenario: [
-	InputsWidget.setSalaryField('herp\n'),
+	InputsWidget.setSalaryField(''),
 	{
 		'ErrorWidget.title': true,
 	}

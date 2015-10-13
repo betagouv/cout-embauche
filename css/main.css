@@ -1,10 +1,8 @@
-body {
-	padding-top: 3em;
-	max-width: 45em;
-	margin: auto;
-	text-align: center;
-	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+.SGMAPembauche {
 	font-size: 150%;
+	text-align: center;
+	padding-top: 1em;
+	max-width: 45em;
 	line-height: 2.5;
 }
 

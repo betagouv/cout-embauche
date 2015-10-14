@@ -1,6 +1,6 @@
 {
   "name": "cout-embauche",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "repository": {
     "type": "git",
     "url": "git@github.com:sgmap/cout-embauche.git"
@@ -10,6 +10,7 @@
   "dependencies": {},
   "devDependencies": {
     "css-loader": "^0.18.0",
+    "eslint": "^1.6.0",
     "expose-loader": "^0.7.0",
     "html-loader": "^0.3.0",
     "postcss-loader": "^0.6.0",
@@ -17,13 +18,15 @@
     "rimraf": "^2.4.3",
     "style-loader": "^0.12.3",
     "watai": "^0.6.2",
-    "webpack": "^1.12.1"
+    "webpack": "^1.12.1",
+    "webpack-dev-server": "^1.12.0"
   },
   "scripts": {
     "pretest": "npm run compile",
-    "test": "watai test && watai test/bootstrap-compat",
+    "test": "npm run lint && watai test && watai test/bootstrap-compat",
+    "lint": "eslint .",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",
-    "compile-continuously": "webpack --watch"
+    "dev": "webpack-dev-server"
   }
 }

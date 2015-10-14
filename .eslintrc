@@ -1,0 +1,25 @@
+rules:
+ indent:
+  - 2
+  - tab
+ quotes:
+  - 2
+  - single
+ linebreak-style:
+  - 2
+  - unix
+ semi:
+  - 2
+  - never
+ comma-dangle:
+  - 2
+  - always-multiline
+ array-bracket-spacing:
+  - 2
+  - always
+
+env:
+ browser: true
+ commonjs: true
+extends: 'eslint:recommended'
+

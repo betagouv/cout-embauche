@@ -19,6 +19,10 @@
     "comma-dangle": [
       2,
       "always-multiline"
+    ],
+    "array-bracket-spacing": [
+      2,
+      "always"
     ]
   },
   "env": {

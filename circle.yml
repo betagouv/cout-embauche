@@ -22,6 +22,7 @@ test:
 
   override:
     - git diff --exit-code > $CIRCLE_ARTIFACTS/diff || (echo "Compiled output is not up-to-date" && test $CIRCLE_BRANCH != $MASTER_BRANCH)  # fail build only on main branch
+    - npm run lint
     - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --tunnel-identifier "circle-$CIRCLE_BUILD_NUM-$CIRCLE_NODE_INDEX" --readyfile ~/sauce_is_ready > $SAUCE_LOG:
         background: true
         parallel: true

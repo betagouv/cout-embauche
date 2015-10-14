@@ -11,7 +11,6 @@
   "devDependencies": {
     "css-loader": "^0.18.0",
     "eslint": "^1.6.0",
-    "eslint-loader": "^1.0.0",
     "expose-loader": "^0.7.0",
     "html-loader": "^0.3.0",
     "postcss-loader": "^0.6.0",
@@ -24,7 +23,8 @@
   },
   "scripts": {
     "pretest": "npm run compile",
-    "test": "watai test && watai test/bootstrap-compat",
+    "test": "npm run lint && watai test && watai test/bootstrap-compat",
+    "lint": "eslint .",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",
     "dev": "webpack-dev-server"

@@ -4,6 +4,11 @@
 	float:left;
 }
 
+.category h3 {
+	border-bottom: 1px solid #C3C3C3;
+	margin-left: 20%;
+}
+
 .category ul {
 	list-style-type: none;
 	line-height: 3em;

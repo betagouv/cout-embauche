@@ -107,176 +107,182 @@
 	<details id="taxes" class="js-only">
 		<summary>Cotisations détaillées</summary>
 
-		<table>
-			<caption>Cotisations employeur</caption>
+		<div class="category">
+		  <h3>Cotisations employeur</h3>
 
-			<tr>
-				<th>AGS</th>
-				<td><span data-source="ags"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>AGFF</th>
-				<td><span data-source="agff_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>APEC</th>
-				<td><span data-source="apec_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>AGIRC</th>
-				<td><span data-source="agirc_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>ARRCO</th>
-				<td><span data-source="arrco_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Assurance chômage</th>
-				<td><span data-source="chomage_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>CET</th>
-				<td><span data-source="cotisation_exceptionnelle_temporaire_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Allocations familiales</th>
-				<td><span data-source="famille"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Vieillesse (déplafonnée)</th>
-				<td><span data-source="vieillesse_deplafonnee_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Vieillesse (plafonnée)</th>
-				<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Accident du travail</th>
-				<td><span data-source="accident_du_travail"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Invalidité</th>
-				<td><span data-source="allocations_temporaires_invalidite"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Maladie</th>
-				<td><span data-source="mmid_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Main d'œuvre</th>
-				<td><span data-source="cotisations_employeur_main_d_oeuvre"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Contribution supplémentaire à l'apprentissage</th>
-				<td><span data-source="contribution_developpement_apprentissage"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Contribution solidarité autonomie</th>
-				<td><span data-source="contribution_solidarite_autonomie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Formation professionnelle</th>
-				<td><span data-source="formation_professionnelle"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Participation à l'effort de construction</th>
-				<td><span data-source="participation_effort_construction"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Taxe d'apprentissage</th>
-				<td><span data-source="taxe_apprentissage"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Taxe sur les salaires</th>
-				<td><span data-source="taxe_salaires"></span>&nbsp;€</td>
-			</tr>
-		</table>
+		  <ul>
+		    <li>
+		      <span class="title">AGS</span>
+		      <span class="value"><span data-source="ags"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">AGFF</span>
+		      <span class="value"><span data-source="agff_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">APEC</span>
+		      <span class="value"><span data-source="apec_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">AGIRC</span>
+		      <span class="value"><span data-source="agirc_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">ARRCO</span>
+		      <span class="value"><span data-source="arrco_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Assurance chômage</span>
+		      <span class="value"><span data-source="chomage_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">CET</span>
+		      <span class="value"><span data-source="cotisation_exceptionnelle_temporaire_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Allocations familiales</span>
+		      <span class="value"><span data-source="famille"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Vieillesse (déplafonnée)</span>
+		      <span class="value"><span data-source="vieillesse_deplafonnee_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Vieillesse (plafonnée)</span>
+		      <span class="value"><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Accident du travail</span>
+		      <span class="value"><span data-source="accident_du_travail"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Invalidité</span>
+		      <span class="value"><span data-source="allocations_temporaires_invalidite"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Maladie</span>
+		      <span class="value"><span data-source="mmid_employeur"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Main d'œuvre</span>
+		      <span class="value"><span data-source="cotisations_employeur_main_d_oeuvre"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Contribution supplémentaire à l'apprentissage</span>
+		      <span class="value"><span data-source="contribution_developpement_apprentissage"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Contribution solidarité autonomie</span>
+		      <span class="value"><span data-source="contribution_solidarite_autonomie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Formation professionnelle</span>
+		      <span class="value"><span data-source="formation_professionnelle"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Participation à l'effort de construction</span>
+		      <span class="value"><span data-source="participation_effort_construction"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Taxe d'apprentissage</span>
+		      <span class="value"><span data-source="taxe_apprentissage"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Taxe sur les salaires</span>
+		      <span class="value"><span data-source="taxe_salaires"></span>&nbsp;€</span>
+		    </li>
+		  </ul>
+		</div>
 
-		<table>
-			<caption>Cotisations salarié</caption>
+		<div class="category">
+		  <h3>Cotisations salarié</h3>
 
-			<tr>
-				<th>Fonds national action logement</th>
-				<td><span data-source="fnal"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Versement transport</th>
-				<td><span data-source="versement_transport"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>AGFF</th>
-				<td><span data-source="agff_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>AGIRC</th>
-				<td><span data-source="agirc_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>APEC</th>
-				<td><span data-source="apec_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>ARRCO</th>
-				<td><span data-source="arrco_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Assurance chômage</th>
-				<td><span data-source="chomage_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Cotisation exceptionnelle temporaire</th>
-				<td><span data-source="cotisation_exceptionnelle_temporaire_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Vieillesse (plafonnée)</th>
-				<td><span data-source="vieillesse_plafonnee_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Vieillesse (déplafonnée)</th>
-				<td><span data-source="vieillesse_deplafonnee_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Maladie</th>
-				<td><span data-source="mmid_salarie"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>CSG déductible</th>
-				<td><span data-source="csg_deductible_salaire"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>CSG non déductible</th>
-				<td><span data-source="csg_imposable_salaire"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>CRDS</th>
-				<td><span data-source="crds_salaire"></span>&nbsp;€</td>
-			</tr>
-		</table>
+		  <ul>
+		    <li>
+		      <span class="title">Fonds national action logement</span>
+		      <span class="value"><span data-source="fnal"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Versement transport</span>
+		      <span class="value"><span data-source="versement_transport"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">AGFF</span>
+		      <span class="value"><span data-source="agff_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">AGIRC</span>
+		      <span class="value"><span data-source="agirc_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">APEC</span>
+		      <span class="value"><span data-source="apec_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">ARRCO</span>
+		      <span class="value"><span data-source="arrco_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Assurance chômage</span>
+		      <span class="value"><span data-source="chomage_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Cotisation exceptionnelle temporaire</span>
+		      <span class="value"><span data-source="cotisation_exceptionnelle_temporaire_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Vieillesse (plafonnée)</span>
+		      <span class="value"><span data-source="vieillesse_plafonnee_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Vieillesse (déplafonnée)</span>
+		      <span class="value"><span data-source="vieillesse_deplafonnee_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Maladie</span>
+		      <span class="value"><span data-source="mmid_salarie"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">CSG déductible</span>
+		      <span class="value"><span data-source="csg_deductible_salaire"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">CSG non déductible</span>
+		      <span class="value"><span data-source="csg_imposable_salaire"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">CRDS</span>
+		      <span class="value"><span data-source="crds_salaire"></span>&nbsp;€</span>
+		    </li>
+		  </ul>
+		</div>
 
-		<table>
-			<caption>Exonérations employeur</caption>
+		<div class="category">
+		  <h3>Exonérations employeur</h3>
 
-			<tr>
-				<th>Allègement sur les bas salaires (Fillon)</th>
-				<td><span data-source="allegement_fillon"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Zone de revitalisation rurale</th>
-				<td><span data-source="exoneration_cotisations_employeur_zrr"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Zone de revitalisation de la Défense</th>
-				<td><span data-source="exoneration_cotisations_employeur_zrd"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Jeune entreprise innovante</th>
-				<td><span data-source="exoneration_cotisations_employeur_jei"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Apprentissage ou stage</th>
-				<td><span data-source="exoneration_cotisations_employeur_apprenti"></span> ou <span data-source="exoneration_cotisations_employeur_stagiaire"></span>&nbsp;€</td>
-			</tr>
-		</table>
+		  <ul>
+		    <li>
+		      <span class="title">Allègement sur les bas salaires (Fillon)</span>
+		      <span class="value"><span data-source="allegement_fillon"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Zone de revitalisation rurale</span>
+		      <span class="value"><span data-source="exoneration_cotisations_employeur_zrr"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Zone de revitalisation de la Défense</span>
+		      <span class="value"><span data-source="exoneration_cotisations_employeur_zrd"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Jeune entreprise innovante</span>
+		      <span class="value"><span data-source="exoneration_cotisations_employeur_jei"></span>&nbsp;€</span>
+		    </li>
+		    <li>
+		      <span class="title">Apprentissage ou stage</span>
+		      <span class="value"><span data-source="exoneration_cotisations_employeur_apprenti"></span> ou <span data-source="exoneration_cotisations_employeur_stagiaire"></span>&nbsp;€</span>
+		    </li>
+		  </ul>
+		</div>
 
 		<button id="createTest">Corriger ces résultats</button>
 	</details>

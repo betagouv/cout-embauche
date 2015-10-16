@@ -1,24 +1,197 @@
-table {
+.category {
 	display: inline-block;
 	width: 48%;
+	float:left;
 }
 
-caption {
+.category ul {
+	list-style-type: none;
+	line-height: 3em;
+}
+
+.category li span {
+	display: inline-block;
+}
+
+.category li .title {
 	font-weight: bold;
+	text-align: right;
+	width: 80%;
 }
 
-th {
+.category li .value {
+	width: 17%;
+	max-width: 110px;
+	min-width: 80px;
+	padding-left: 3%;
+	float:right;
+	text-align: left;
+	position: relative;
+}
+
+@media(max-width: 1100px) {
+	.category {
+		width: 80%;
+	}
+}
+
+@media(max-width: 800px) {
+	.category li .title {
+		width: 60%;
+	}
+}
+
+li.imprecise {
+	font-style: italic;
+	position: relative;
+	z-index: 10;
+}
+
+/* Question mark circle icon */
+li.imprecise .value::after {
+	content: "?";
+  position: absolute;
+  top: 1em;
+  right: -0.5em;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  font-size: 13px;
+  font-style: normal;
+  color: #000;
+  line-height: 15px;
+  font-weight: bold;
+  text-align: center;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Explanation tooltip for cotisation lines */
+
+.explanation {
+	position: absolute;
+  z-index: 11;
+  left: 100%;
+  width: 90%;
+  padding: 10px 15px;
+	margin-bottom: 5px;
+  bottom: 100%;
+  text-align: left;
+  font-style: normal;
+  line-height: 20px;
+  box-shadow: -5px -5px 15px rgba(48, 54, 61, 0.2);
+  color: #fff;
+  background: #2A3035 none repeat scroll 0% 0%;
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+
+  transform-origin: 50% calc(100% + 10px) 0px;
+  transform: translateX(-50%) perspective(1000px) rotate3d(1, 0, 0, 45deg);
+  transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+
+}
+
+.imprecise .value:hover + .explanation, .explanation:hover {
+	opacity: 1;
+	transform: translate3d(0,0,0);
+	transform: translateX(-50%);
+	pointer-events: auto;
+}
+
+/* Serves as a mouse path from the element to its tooltip */
+.imprecise .value::before {
+	content: "";
+  width: 70%;
+  position: absolute;
+  border: 15px solid transparent;
+  bottom: 50%;
+}
+
+.explanation::after {
+	content: "";
+	top: 100%;
+	left: 50%;
+	border-style: solid;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+	height: 0px;
+	width: 0px;
+	position: absolute;
+	pointer-events: none;
+	border-color: #2A3035 transparent transparent;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.explanation .estimate {
 	text-align: right;
 }
 
-td {
+.explanation .estimate .interval {
+	padding: 0 10px;
+	padding-bottom: 6px;
+	position: relative;
+}
+
+.explanation .estimate .interval .to {
+	margin-left: 40px;
+}
+
+.explanation .estimate .interval::after {
+	background: #444;
+	background: -moz-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -ms-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -o-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#27AE60), color-stop(100%,#E74C3C));
+	background: webkit-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	content: "";
+	height: 1px;
+	position: absolute;
+	left: 5%;
+	bottom: 5px;
+	width: 90%;
+}
+
+.explanation a {
+	color: white
+}
+
+.explanation .estimate {
 	text-align: right;
 }
 
-summary {
-	cursor: pointer;
+.explanation .estimate .interval {
+	padding: 0 10px;
+	padding-bottom: 6px;
+	position: relative;
+}
 
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-			user-select: none;
+.explanation .estimate .interval .to {
+	margin-left: 40px;
+}
+
+.explanation .estimate .interval::after {
+	background: #444;
+	background: -moz-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -ms-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -o-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#27AE60), color-stop(100%,#E74C3C));
+	background: webkit-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	content: "";
+	height: 1px;
+	position: absolute;
+	left: 5%;
+	bottom: 5px;
+	width: 90%;
+}
+
+.explanation a {
+	color: white
 }

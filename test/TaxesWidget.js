@@ -1,5 +1,5 @@
 root				: '#taxes',
 toggleLink			: '#taxes summary',
-taxesList			: '#taxes table',
+taxesList			: '#taxes .category',
 randomTax			: '#taxes [data-source]',
 createTestButton	: '#createTest',

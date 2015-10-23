@@ -19,6 +19,37 @@ function display(data) {
 		target.textContent = value
 	})
 
+	var salaireBrut = +document.querySelector('#salaire').value
+	var res = {
+		employeur: salaireBrut,
+		salarie: salaireBrut,
+	};
+
+	[].forEach.call(document.querySelectorAll('.category'), function(cat){
+
+		if (cat.innerHTML.indexOf('Cotisations employeur') > -1){
+			[].forEach.call(cat.querySelectorAll('.value span'), function(el){
+				res.employeur += - el.innerHTML.replace(',', '.')
+			})
+
+		}
+		if (cat.innerHTML.indexOf('Cotisations salarié')  > -1){
+			[].forEach.call(cat.querySelectorAll('.value span'), function(el){
+				res.salarie += + el.innerHTML.replace(',', '.')
+			})
+		}
+
+		if (cat.innerHTML.indexOf('Exonérations employeur')  > -1){
+			[].forEach.call(cat.querySelectorAll('.value span'), function(el){
+				res.employeur += - el.innerHTML.replace(',', '.')
+			})
+		}
+
+	})
+	console.log(res)
+	console.log('superbrut reçu', document.querySelector('[data-source="salsuperbrut"]').innerHTML,
+	'net reçu', document.querySelector('[data-source="salaire_net_a_payer"]').innerHTML)
+
 	setErrorVisible(false)
 }
 

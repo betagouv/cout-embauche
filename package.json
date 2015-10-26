@@ -27,6 +27,6 @@
     "lint": "eslint .",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --output-public-path dist/"
   }
 }

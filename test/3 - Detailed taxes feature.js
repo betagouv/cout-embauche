@@ -14,4 +14,8 @@ scenario: [
 		'TaxesWidget.taxesList': true,
 		'TaxesWidget.randomTax': numbers,
 	},
+	TaxesWidget.hoverOverImpreciseTax(),
+	{
+		'TaxesWidget.impreciseTaxTooltipText': true
+	}
 ]

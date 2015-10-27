@@ -1,6 +1,8 @@
 table {
-	display: inline-block;
+	display: table;
 	width: 48%;
+	float: left;
+	margin-bottom: 1.5em;
 }
 
 @media(max-width: 1024px) {
@@ -24,10 +26,12 @@ th {
 td {
 	text-align: left;
 	padding-left: 1em;
+	max-width: 4em;
 }
 
 summary {
 	cursor: pointer;
+	margin-bottom: 1em;
 
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -50,7 +54,7 @@ tr.imprecise td::after {
 	content: "?";
 	position: absolute;
 	top: 0.65em;
-	right: -2.3em;
+	right: -1.2em;
 	width: 1.2em;
 	height: 1.2em;
 	border-radius: 1em;
@@ -71,7 +75,7 @@ tr.imprecise td::after {
 .imprecise td aside {
 	position: absolute;
 	z-index: 11;
-	left: 50%;
+	left: 40%;
 	width: 35em;
 	padding: 10px 15px;
 	margin-bottom: 5px;

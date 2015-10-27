@@ -37,6 +37,8 @@ test:
         parallel: true
     - watai test --config '{"driverCapabilities":{"browserName":"'"$browser_name"'","version":"'"$browser_version"'"}}':
         parallel: true
+    - watai test/errors --config '{"driverCapabilities":{"browserName":"'"$browser_name"'","version":"'"$browser_version"'"}}':
+        parallel: true
     - watai test/bootstrap-compat --config '{"driverCapabilities":{"browserName":"'"$browser_name"'","version":"'"$browser_version"'"}}':
         parallel: true
 

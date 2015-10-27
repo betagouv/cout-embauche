@@ -1,6 +1,7 @@
 {
   "name": "cout-embauche",
   "version": "0.6.4",
+  "license": "AGPL-3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:sgmap/cout-embauche.git"

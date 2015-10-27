@@ -1,5 +1,6 @@
 var webpack = require('webpack'),
-	prefix = require('postcss-prefix-selector')
+	prefix = require('postcss-prefix-selector'),
+	autoprefixer = require('autoprefixer')
 
 
 module.exports = {
@@ -20,14 +21,15 @@ module.exports = {
 			loader: 'html',
 		} ],
 	},
-	postcss: function () {
-		return [
-			prefix({
-				prefix: '.SGMAPembauche ',	// <--- notice the trailing space!
-				exclude: [ '.SGMAPembauche' ],	// to style the prefix container itself
-			}),
-		]
-	},
+	postcss: [
+		autoprefixer({
+			browsers: [ '> 1% in FR', 'not ie < 10' ],
+		}),
+		prefix({
+			prefix: '.SGMAPembauche ',	// <--- notice the trailing space!
+			exclude: [ '.SGMAPembauche' ],	// to style the prefix container itself
+		}),
+	],
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'cout-embauche-widget',

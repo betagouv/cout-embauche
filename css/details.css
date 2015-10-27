@@ -32,10 +32,7 @@ td {
 summary {
 	cursor: pointer;
 	margin-bottom: 1em;
-
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-			user-select: none;
+	user-select: none;
 }
 
 /* Imprecise rows */
@@ -124,10 +121,6 @@ tr.imprecise td::after {
 	top: 100%;
 	left: 50%;
 	border-style: solid;
-	-moz-border-top-colors: none;
-	-moz-border-right-colors: none;
-	-moz-border-bottom-colors: none;
-	-moz-border-left-colors: none;
 	border-image: none;
 	height: 0px;
 	width: 0px;
@@ -159,12 +152,7 @@ tr.imprecise td::after {
 
 .imprecise td aside .estimate .interval::after {
 	background: #444;
-	background: -moz-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
-	background: -ms-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
-	background: -o-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#27AE60), color-stop(100%,#E74C3C));
-	background: webkit-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
-	background: linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: linear-gradient(to right, #27AE60 0%, #E74C3C 100%);
 	content: "";
 	height: 1px;
 	position: absolute;

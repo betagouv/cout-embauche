@@ -3,6 +3,12 @@ table {
 	width: 48%;
 }
 
+@media(max-width: 1024px) {
+	table {
+		width: 80%;
+	}
+}
+
 caption {
 	font-weight: bold;
 	border-bottom: 1px solid #C3C3C3;
@@ -16,7 +22,8 @@ th {
 }
 
 td {
-	text-align: right;
+	text-align: left;
+	padding-left: 1em;
 }
 
 summary {
@@ -82,7 +89,13 @@ tr.imprecise td::after {
 	transform-origin: 50% calc(100% + 10px) 0px;
 	transform: translateX(-50%) perspective(1000px) rotate3d(1, 0, 0, 45deg);
 	transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+}
 
+@media(max-width: 800px) {
+	.imprecise td aside {
+		left: -50%;
+		width: 20em;
+	}
 }
 
 .imprecise td:hover aside {

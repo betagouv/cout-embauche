@@ -61,7 +61,7 @@ tr.imprecise td::after {
 	position: absolute;
 	z-index: 11;
 	left: 50%;
-	width: 30em;
+	width: 35em;
 	padding: 10px 15px;
 	margin-bottom: 5px;
 	bottom: 100%;
@@ -119,4 +119,39 @@ tr.imprecise td::after {
 
 .imprecise td aside p {
 	margin-top: 0;
+}
+
+.imprecise td aside .estimate {
+	text-align: right;
+	float: right;
+}
+
+.imprecise td aside .estimate .interval {
+	padding: 0 0.6em;
+	padding-bottom: 0.4em;
+	position: relative;
+}
+
+.imprecise td aside .estimate .interval .to {
+	margin-left: 40px;
+}
+
+.imprecise td aside .estimate .interval::after {
+	background: #444;
+	background: -moz-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -ms-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -o-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#27AE60), color-stop(100%,#E74C3C));
+	background: webkit-linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	background: linear-gradient(left, #27AE60 0%, #E74C3C 100%);
+	content: "";
+	height: 1px;
+	position: absolute;
+	left: 5%;
+	bottom: 5px;
+	width: 90%;
+}
+
+.imprecise td aside a {
+	color: white
 }

@@ -151,10 +151,6 @@
 				<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>Accident du travail</th>
-				<td><span data-source="accident_du_travail"></span>&nbsp;€</td>
-			</tr>
-			<tr>
 				<th>Invalidité</th>
 				<td><span data-source="allocations_temporaires_invalidite"></span>&nbsp;€</td>
 			</tr>
@@ -165,10 +161,6 @@
 			<tr>
 				<th>Main d'œuvre</th>
 				<td><span data-source="cotisations_employeur_main_d_oeuvre"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Contribution supplémentaire à l'apprentissage</th>
-				<td><span data-source="contribution_developpement_apprentissage"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Contribution solidarité autonomie</th>
@@ -186,9 +178,41 @@
 				<th>Taxe d'apprentissage</th>
 				<td><span data-source="taxe_apprentissage"></span>&nbsp;€</td>
 			</tr>
-			<tr>
+			<tr class="imprecise">
 				<th>Taxe sur les salaires</th>
-				<td><span data-source="taxe_salaires"></span>&nbsp;€</td>
+				<td>
+					<span data-source="taxe_salaires"></span>&nbsp;€
+					<aside>
+						<p>Non calculée. Due par les entreprises non assujetties à la TVA.</p>
+						<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F22576" target="_blank">En savoir plus</a>
+					</aside>
+				</td>
+			</tr>
+			<tr class="imprecise">
+				<th>Accident du travail</th>
+				<td>
+					<span data-source="accident_du_travail"></span>&nbsp;€
+					<aside>
+						<p>Montant calculé pour une activité à faible risque d'accident de travail.</p>
+						<a href="http://www.ameli.fr/employeurs/vos-cotisations/le-calcul-des-taux/les-differents-modes-de-tarification_rhone.php" target="_blank">En savoir plus</a>
+					</aside>
+				</td>
+			</tr>
+			<tr class="imprecise">
+				<th>Contribution supplémentaire à l'apprentissage</th>
+				<td>
+					<span data-source="contribution_developpement_apprentissage"></span>&nbsp;€
+					<aside>
+						<p>Calcul imprécis. Cette contribution décroît en fonction du pourcentage de l'effectif en apprentissage.</p>
+						<a href="http://bofip.impots.gouv.fr/bofip/6325-PGP.html" target="_blank">En savoir plus</a>
+						<span class="estimate">
+							<span>Taux possible :</span>
+							<span class="interval">
+								<span class="from">0&nbsp;%</span><span class="to">0,6&nbsp;%</span>
+							</span>
+						</span>
+					</aside>
+				</td>
 			</tr>
 		</table>
 
@@ -198,10 +222,6 @@
 			<tr>
 				<th>Fonds national action logement</th>
 				<td><span data-source="fnal"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Versement transport</th>
-				<td><span data-source="versement_transport"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>AGFF</th>
@@ -250,6 +270,22 @@
 			<tr>
 				<th>CRDS</th>
 				<td><span data-source="crds_salaire"></span>&nbsp;€</td>
+			</tr>
+			<tr class="imprecise">
+				<th>Versement transport</th>
+				<td>
+					<span data-source="versement_transport"></span>&nbsp;€
+					<aside>
+						<p>Dépend de l'autorité organisatrice des transports de la ville.</p>
+						<a href="https://www.urssaf.fr/portail/home/taux-et-baremes/versement-transport.html" target="_blank">Connaître le taux</a>
+						<span class="estimate">
+							<span>Taux possible :</span>
+							<span class="interval">
+								<span class="from">0&nbsp;%</span><span class="to">2,85&nbsp;% (Paris)</span>
+							</span>
+						</span>
+					</aside>
+				</td>
 			</tr>
 		</table>
 

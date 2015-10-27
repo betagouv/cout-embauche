@@ -147,7 +147,7 @@ tr.imprecise td::after {
 }
 
 .imprecise td aside .estimate .interval .to {
-	margin-left: 40px;
+	margin-left: 3em;
 }
 
 .imprecise td aside .estimate .interval::after {

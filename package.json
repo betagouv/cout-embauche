@@ -6,7 +6,11 @@
     "type": "git",
     "url": "git@github.com:sgmap/cout-embauche.git"
   },
-  "author": "Matti Schneider <matti.schneider@data.gouv.fr>",
+  "contributors": [
+    "Matti Schneider <matti.schneider@data.gouv.fr>",
+    "Agathe Le Nahénec <agathe.le-nahenec@modernisation.gouv.fr>",
+    "Maël Thomas-Quillévéré <mael.thomas@data.gouv.fr>"
+  ],
   "description": "Un simulateur de coût d'embauche",
   "dependencies": {},
   "devDependencies": {

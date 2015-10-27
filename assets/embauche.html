@@ -150,9 +150,14 @@
 				<th>Vieillesse (plafonnée)</th>
 				<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
 			</tr>
-			<tr>
+			<tr class="imprecise">
 				<th>Accident du travail</th>
-				<td><span data-source="accident_du_travail"></span>&nbsp;€</td>
+				<td>
+					<span data-source="accident_du_travail"></span>&nbsp;€
+					<aside>
+						<p>Montant calculé pour une activité à faible risque d'accident de travail.</p>
+					</aside>
+				</td>
 			</tr>
 			<tr>
 				<th>Invalidité</th>
@@ -166,9 +171,14 @@
 				<th>Main d'œuvre</th>
 				<td><span data-source="cotisations_employeur_main_d_oeuvre"></span>&nbsp;€</td>
 			</tr>
-			<tr>
+			<tr class="imprecise">
 				<th>Contribution supplémentaire à l'apprentissage</th>
-				<td><span data-source="contribution_developpement_apprentissage"></span>&nbsp;€</td>
+				<td>
+					<span data-source="contribution_developpement_apprentissage"></span>&nbsp;€
+					<aside>
+						<p>Calcul imprécis. Cette contribution décroît en fonction du pourcentage de l'effectif en apprentissage.</p>
+					</aside>
+				</td>
 			</tr>
 			<tr>
 				<th>Contribution solidarité autonomie</th>
@@ -186,9 +196,14 @@
 				<th>Taxe d'apprentissage</th>
 				<td><span data-source="taxe_apprentissage"></span>&nbsp;€</td>
 			</tr>
-			<tr>
+			<tr class="imprecise">
 				<th>Taxe sur les salaires</th>
-				<td><span data-source="taxe_salaires"></span>&nbsp;€</td>
+				<td>
+					<span data-source="taxe_salaires"></span>&nbsp;€
+					<aside>
+						<p>Non calculée. Due par les entreprises non assujetties à la TVA.</p>
+					</aside>
+				</td>
 			</tr>
 		</table>
 
@@ -199,9 +214,14 @@
 				<th>Fonds national action logement</th>
 				<td><span data-source="fnal"></span>&nbsp;€</td>
 			</tr>
-			<tr>
+			<tr class="imprecise">
 				<th>Versement transport</th>
-				<td><span data-source="versement_transport"></span>&nbsp;€</td>
+				<td>
+					<span data-source="versement_transport"></span>&nbsp;€
+					<aside>
+						<p>Dépend de l'autorité organisatrice des transports de la ville.</p>
+					</aside>
+				</td>
 			</tr>
 			<tr>
 				<th>AGFF</th>

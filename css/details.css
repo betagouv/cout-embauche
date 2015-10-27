@@ -22,3 +22,101 @@ summary {
 	   -moz-user-select: none;
 			user-select: none;
 }
+
+/* Imprecise rows */
+
+tr.imprecise {
+	font-style: italic;
+	z-index: 10;
+}
+
+tr.imprecise td {
+	position: relative;
+}
+
+/* Question mark circle icon */
+tr.imprecise td::after {
+	content: "?";
+	position: absolute;
+	top: 0.65em;
+	right: -2.3em;
+	width: 1.2em;
+	height: 1.2em;
+	border-radius: 1em;
+	border: 1px solid #333;
+	font-size: 90%;
+	font-style: normal;
+	color: #000;
+	line-height: 15px;
+	font-weight: bold;
+	text-align: center;
+	background: #fff;
+	cursor: pointer;
+}
+
+
+/* Explanation tooltip for cotisation lines */
+
+.imprecise td aside {
+	position: absolute;
+	z-index: 11;
+	left: 50%;
+	width: 30em;
+	padding: 10px 15px;
+	margin-bottom: 5px;
+	bottom: 100%;
+	text-align: left;
+	font-style: normal;
+	line-height: 20px;
+	box-shadow: -5px -5px 15px rgba(48, 54, 61, 0.2);
+	color: #fff;
+	background: #2A3035 none repeat scroll 0% 0%;
+	opacity: 0;
+	cursor: default;
+	pointer-events: none;
+
+	transform-origin: 50% calc(100% + 10px) 0px;
+	transform: translateX(-50%) perspective(1000px) rotate3d(1, 0, 0, 45deg);
+	transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+
+}
+
+.imprecise td:hover aside {
+	opacity: 1;
+	transform: translate3d(0,0,0);
+	transform: translateX(-50%);
+	pointer-events: auto;
+}
+
+/* Serves as a mouse path from the element to its tooltip */
+.imprecise td::before {
+	content: "";
+	width: 70%;
+	position: absolute;
+	border: 15px solid transparent;
+	bottom: 50%;
+}
+
+/* The tooltip's arrow */
+.imprecise td aside::after {
+	content: "";
+	top: 100%;
+	left: 50%;
+	border-style: solid;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+	height: 0px;
+	width: 0px;
+	position: absolute;
+	pointer-events: none;
+	border-color: #2A3035 transparent transparent;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.imprecise td aside p {
+	margin-top: 0;
+}

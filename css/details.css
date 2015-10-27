@@ -5,6 +5,10 @@ table {
 
 caption {
 	font-weight: bold;
+	border-bottom: 1px solid #C3C3C3;
+	margin-left: 20%;
+	margin-bottom: 1em;
+	font-size: 115%;
 }
 
 th {

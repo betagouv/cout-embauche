@@ -9,6 +9,7 @@
   "description": "Un simulateur de coût d'embauche",
   "dependencies": {},
   "devDependencies": {
+    "autoprefixer": "^6.0.3",
     "css-loader": "^0.18.0",
     "eslint": "^1.6.0",
     "expose-loader": "^0.7.0",

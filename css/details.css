@@ -22,3 +22,7 @@ summary {
 	   -moz-user-select: none;
 			user-select: none;
 }
+
+tr.imprecise {
+	font-style: italic;
+}

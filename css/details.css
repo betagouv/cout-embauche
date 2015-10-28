@@ -26,3 +26,24 @@ summary {
 tr.imprecise {
 	font-style: italic;
 }
+
+tr.imprecise td {
+	position: relative;
+}
+
+/* Question mark circle icon */
+tr.imprecise td::after {
+	content: "?";
+	position: absolute;
+	top: 0.65em;
+	right: -2.3em;
+	width: 1.2em;
+	height: 1.2em;
+	border-radius: 1em;
+	border: 1px solid #333;
+	font-size: 90%;
+	font-style: normal;
+	line-height: 1.2em;
+	font-weight: bold;
+	text-align: center;
+}

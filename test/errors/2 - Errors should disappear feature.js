@@ -1,4 +1,4 @@
-description: 'Results should update when salary is updated',
+description: 'Errors should be removed once problem is fixed',
 
 scenario: [
 	InputsWidget.setSalaryField(SALARY),

@@ -16,8 +16,15 @@ function serialize(form) {
 		elements = form.elements
 
 	Array.prototype.forEach.call(elements, function(element) {
-		if (element.name)
-			result.push(encodeURI(element.name + '=' + element.value))
+		if (! element.name)
+			return
+
+		var value = element.value
+
+		if (element.type == 'number')
+			value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
+
+		result.push(encodeURI(element.name + '=' + value))
 	})
 
 	return result.join('&')

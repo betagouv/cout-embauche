@@ -1,0 +1,4 @@
+{
+	"name": "Simulateur de coût d'embauche (erreurs)",
+	"baseURL": "http://localhost:8080/test/errors"
+}

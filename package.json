@@ -29,7 +29,7 @@
   },
   "scripts": {
     "pretest": "npm run compile",
-    "test": "npm run lint && watai test && watai test/bootstrap-compat",
+    "test": "npm run lint && watai test && watai test/errors && watai test/bootstrap-compat",
     "lint": "eslint .",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",

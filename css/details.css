@@ -17,10 +17,7 @@ td {
 
 summary {
 	cursor: pointer;
-
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-			user-select: none;
+	user-select: none;
 }
 
 tr.imprecise {

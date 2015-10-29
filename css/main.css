@@ -8,9 +8,7 @@
 
 input, select {
 	font-size: 100%;
-
-	-webkit-appearance: none;
-	-moz-appearance: none;
+	appearance: none;
 	background-color: white;
 	border: none;
 	border-bottom: 1px solid #9A9A9A;

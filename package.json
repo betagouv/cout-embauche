@@ -1,11 +1,16 @@
 {
   "name": "cout-embauche",
-  "version": "0.6.4",
+  "version": "0.6.5",
+  "license": "AGPL-3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:sgmap/cout-embauche.git"
   },
-  "author": "Matti Schneider <matti.schneider@data.gouv.fr>",
+  "contributors": [
+    "Matti Schneider <matti.schneider@data.gouv.fr>",
+    "Agathe Le Nahénec <agathe.le-nahenec@modernisation.gouv.fr>",
+    "Maël Thomas-Quillévéré <mael.thomas@data.gouv.fr>"
+  ],
   "description": "Un simulateur de coût d'embauche",
   "dependencies": {},
   "devDependencies": {
@@ -24,7 +29,7 @@
   },
   "scripts": {
     "pretest": "npm run compile",
-    "test": "npm run lint && watai test && watai test/bootstrap-compat",
+    "test": "npm run lint && watai test && watai test/errors && watai test/bootstrap-compat",
     "lint": "eslint .",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",

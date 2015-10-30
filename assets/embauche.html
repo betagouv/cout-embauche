@@ -1,6 +1,6 @@
 <div class="SGMAPembauche" lang="fr">
 	<section id="input">
-		<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_imposable+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+allocations_temporaires_invalidite+mmid_employeur+cotisations_employeur_main_d_oeuvre+contribution_developpement_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei" method="GET">
+		<form action="http://openfisca.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+agirc_gmp_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_imposable+salaire_net_a_payer+salsuperbrut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+mmid_employeur+contribution_supplementaire_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+taxe_salaires+agirc_employeur+exoneration_cotisations_employeur_zrr+exoneration_cotisations_employeur_zrd+allegement_fillon+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei+credit_impot_competitivite_emploi+financement_organisations_syndicales+prevoyance_obligatoire_cadre" method="GET">
 			<div>
 				<select data-sets=".employer_type@textContent">
 					<option value="entreprise">Mon entreprise</option>
@@ -135,7 +135,7 @@
 				<td><span data-source="chomage_employeur"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>CET</th>
+				<th>Cotisation exceptionnelle temporaire</th>
 				<td><span data-source="cotisation_exceptionnelle_temporaire_employeur"></span>&nbsp;€</td>
 			</tr>
 			<tr>
@@ -151,16 +151,8 @@
 				<td><span data-source="vieillesse_plafonnee_employeur"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>Invalidité</th>
-				<td><span data-source="allocations_temporaires_invalidite"></span>&nbsp;€</td>
-			</tr>
-			<tr>
 				<th>Maladie</th>
 				<td><span data-source="mmid_employeur"></span>&nbsp;€</td>
-			</tr>
-			<tr>
-				<th>Main d'œuvre</th>
-				<td><span data-source="cotisations_employeur_main_d_oeuvre"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Contribution solidarité autonomie</th>
@@ -178,6 +170,18 @@
 				<th>Taxe d'apprentissage</th>
 				<td><span data-source="taxe_apprentissage"></span>&nbsp;€</td>
 			</tr>
+			<tr>
+				<th>Fonds national d'aide au logement</th>
+				<td><span data-source="fnal"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+				<th>Financement des organisations syndicales</th>
+				<td><span data-source="financement_organisations_syndicales"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+			    <th>Prévoyance obligatoire cadre</th>
+			    <td><span data-source="prevoyance_obligatoire_cadre"></span>&nbsp;€</td>
+			</tr>
 			<tr class="imprecise" title="Montant non calculé. Taxe due par les entreprises non assujetties à la TVA.">
 				<th>Taxe sur les salaires</th>
 				<td><span data-source="taxe_salaires"></span>&nbsp;€</td>
@@ -188,7 +192,11 @@
 			</tr>
 			<tr class="imprecise" title="Montant imprécis. Décroît en fonction du pourcentage de l'effectif en apprentissage.">
 				<th>Contribution supplémentaire à l'apprentissage</th>
-				<td><span data-source="contribution_developpement_apprentissage"></span>&nbsp;€</td>
+				<td><span data-source="contribution_supplementaire_apprentissage"></span>&nbsp;€</td>
+			</tr>
+			<tr class="imprecise" title="Montant non calculé. Dépend de l'autorité organisatrice des transports de la commune.">
+				<th>Versement transport</th>
+				<td><span data-source="versement_transport"></span>&nbsp;€</td>
 			</tr>
 		</table>
 
@@ -196,16 +204,16 @@
 			<caption>Cotisations salarié</caption>
 
 			<tr>
-				<th>Fonds national action logement</th>
-				<td><span data-source="fnal"></span>&nbsp;€</td>
-			</tr>
-			<tr>
 				<th>AGFF</th>
 				<td><span data-source="agff_salarie"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>AGIRC</th>
 				<td><span data-source="agirc_salarie"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+				<th>AGIRC GMP</th>
+				<td><span data-source="agirc_gmp_salarie"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>APEC</th>
@@ -247,10 +255,6 @@
 				<th>CRDS</th>
 				<td><span data-source="crds_salaire"></span>&nbsp;€</td>
 			</tr>
-			<tr class="imprecise" title="Montant non calculé. Dépend de l'autorité organisatrice des transports de la commune.">
-				<th>Versement transport</th>
-				<td><span data-source="versement_transport"></span>&nbsp;€</td>
-			</tr>
 		</table>
 
 		<table>
@@ -259,6 +263,10 @@
 			<tr>
 				<th>Allègement sur les bas salaires (Fillon)</th>
 				<td><span data-source="allegement_fillon"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+				<th>Crédit d'impôt pour la compétitivité et l'emploi (CICE)</th>
+				<td><span data-source="credit_impot_competitivite_emploi"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Zone de revitalisation rurale</th>

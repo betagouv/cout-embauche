@@ -31,8 +31,9 @@
   },
   "scripts": {
     "pretest": "npm run compile",
-    "test": "npm run lint && watai test && watai test/errors && watai test/bootstrap-compat",
-    "lint": "eslint .",
+    "test": "npm run lint-js && npm run lint-css && watai test && watai test/errors && watai test/bootstrap-compat",
+    "lint-js": "eslint .",
+    "lint-css": "stylelint css/*.css",
     "precompile": "rimraf dist/*",
     "compile": "webpack --optimize-minimize",
     "dev": "webpack-dev-server --output-public-path dist/"

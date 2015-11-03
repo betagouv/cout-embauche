@@ -3,6 +3,12 @@ table {
 	width: 48%;
 }
 
+@media(max-width: 1024px) {
+	table {
+		width: 80%;
+	}
+}
+
 caption {
 	font-weight: bold;
 	border-bottom: 1px solid #C3C3C3;

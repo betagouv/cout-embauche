@@ -1,6 +1,7 @@
 table {
-	display: inline-block;
-	width: 48%;
+	width: 50%;
+	float: left;
+	margin-bottom: 3em;
 }
 
 @media(max-width: 1024px) {
@@ -23,11 +24,13 @@ th {
 
 td {
 	padding-left: 1em;
+	width: 7em;
 }
 
 summary {
 	cursor: pointer;
 	user-select: none;
+	margin-bottom: 2em;
 }
 
 tr.imprecise {
@@ -43,7 +46,7 @@ tr.imprecise td::after {
 	content: '?';
 	position: absolute;
 	top: .65em;
-	right: -2.3em;
+	right: 0;
 	width: 1.2em;
 	height: 1.2em;
 	border-radius: 1em;

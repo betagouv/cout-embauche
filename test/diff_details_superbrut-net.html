@@ -45,17 +45,17 @@
 				};
 				[...document.querySelectorAll('table')].map(category => {
 
-					if (category.innerHTML.includes('Cotisations employeur')){
+					if (category.innerHTML.includes('Cotisations employeur')) {
 						[...category.querySelectorAll('td span')].map((el) =>
 							res.employeur += - el.innerHTML.replace(',', '.'))
 					}
 
-					if (category.innerHTML.includes('Cotisations salarié')){
+					if (category.innerHTML.includes('Cotisations salarié')) {
 						[...category.querySelectorAll('td span')].map((el) =>
 							res.salarie += + el.innerHTML.replace(',', '.'))
 					}
 
-					if (category.innerHTML.includes('Exonérations employeur')){
+					if (category.innerHTML.includes('Exonérations employeur')) {
 						[...category.querySelectorAll('td span')].map((el) =>
 							res.employeur += - el.innerHTML.replace(',', '.'))
 					}

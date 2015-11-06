@@ -1,10 +1,21 @@
 table {
-	display: inline-block;
-	width: 48%;
+	width: 50%;
+	float: left;
+	margin-bottom: 3em;
+}
+
+@media(max-width: 1024px) {
+	table {
+		width: 80%;
+	}
 }
 
 caption {
 	font-weight: bold;
+	border-bottom: 1px solid #C3C3C3;
+	margin-left: 30%;
+	margin-bottom: 1em;
+	font-size: 115%;
 }
 
 th {
@@ -12,12 +23,14 @@ th {
 }
 
 td {
-	text-align: right;
+	padding-left: 1em;
+	width: 7em;
 }
 
 summary {
 	cursor: pointer;
 	user-select: none;
+	margin-bottom: 2em;
 }
 
 tr.imprecise {
@@ -33,7 +46,7 @@ tr.imprecise td::after {
 	content: '?';
 	position: absolute;
 	top: .65em;
-	right: -2.3em;
+	right: 0;
 	width: 1.2em;
 	height: 1.2em;
 	border-radius: 1em;
@@ -43,4 +56,10 @@ tr.imprecise td::after {
 	line-height: 1.2em;
 	font-weight: bold;
 	text-align: center;
+}
+
+details #createTest {
+	clear: left;
+	display: block;
+	margin: auto;
 }

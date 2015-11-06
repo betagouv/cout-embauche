@@ -1,9 +1,12 @@
 .SGMAPembauche {
 	font-size: 150%;
-	text-align: center;
 	padding-top: 1em;
 	max-width: 45em;
 	line-height: 2.5;
+}
+
+#input, #error, #result, summary {
+	text-align: center;
 }
 
 input, select {

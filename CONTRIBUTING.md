@@ -2,8 +2,8 @@
 
 Notre objectif est évidemment d’élargir l’étendue des cotisations calculées. Pour dépasser la limite de nos ressources, nous cherchons à ouvrir au maximum cet outil à la contribution. Ainsi, tout le code du [moteur de calcul](https://github.com/openfisca/openfisca-france) comme de l’[interface utilisateur](https://github.com/sgmap/cout-embauche) est sous [licence libre](http://fr.wikipedia.org/wiki/Logiciel_libre), et toute forme de contribution peut aider à l’intégration de nouvelles aides : recherche législative préalable et rédaction des règles à implémenter, ajout de [tests](http://embauche.sgmap.fr/tests/) pour valider le calcul de prestations…
 
-Suggérer de nouvelles aides
-===========================
+Suggérer de nouvelles cotisations
+=================================
 
 **Pour suggérer l'ajout de cotisations ou statuts supplémentaires, créez une _issue_** pour chacune d'entre elles, avec la référence la plus officielle possible vers le descriptif de la cotisation. Nous cherchons les conditions d'application et les modalités de calcul.
 

@@ -61,5 +61,5 @@ tr.imprecise td::after {
 details #createTest {
 	clear: left;
 	display: block;
-	margin: auto;
+	margin: 0 auto 3em auto;
 }

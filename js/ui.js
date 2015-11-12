@@ -13,8 +13,11 @@ function display(data) {
 		if (! target)
 			return
 
-		if (typeof value == 'number')
-			value = String(value.toFixed(2)).replace('.', ',')
+		if (typeof value == 'number') {
+			value = value
+				.toFixed(target.hasAttribute('data-round') ? 0 : 2)
+				.replace('.', ',')
+		}
 
 		target.textContent = value
 	})

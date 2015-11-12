@@ -22,9 +22,8 @@ bindToForm(document.querySelector('.SGMAPembauche form'))
 
 var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only')
 
-for (var i = 0; i < jsNodes.length; i++) {
+for (var i = 0; i < jsNodes.length; i++)
 	jsNodes[i].className = jsNodes[i].className.replace('js-only', '')
-}
 
 document.getElementById('createTest').addEventListener('click', Tests.create)
 

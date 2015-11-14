@@ -12,11 +12,13 @@
     "Maël Thomas-Quillévéré <mael.thomas@data.gouv.fr>"
   ],
   "description": "Un simulateur de coût d'embauche",
-  "engines": { "node": ">=0.12" },
+  "engines": {
+    "node": ">=0.12"
+  },
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.0.3",
-    "css-loader": "^0.18.0",
+    "css-loader": "^0.23.0",
     "eslint": "^1.6.0",
     "expose-loader": "^0.7.0",
     "html-loader": "^0.3.0",

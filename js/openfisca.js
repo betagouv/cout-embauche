@@ -113,7 +113,7 @@ function get(additionalParameters, callback) {
 	request.send()
 }
 
-/** Updates the form.
+/** Updates the displayed values.
 */
 function update() {
 	get({}, function(error, values, response) {

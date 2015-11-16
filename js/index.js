@@ -14,9 +14,59 @@ function bindToForm(form) {
 	update()
 
 	form.addEventListener('change', update)
-	form.addEventListener('keyup', update)
+	form.addEventListener('keyup', function(e) {
+		handleDynamicForms(e, update)
+	})
 }
 
+function handleDynamicForms(e, next) {
+
+	function displayCommuneError(text) {
+		//TODO
+	}
+	/*
+	code_postal_entreprise <input> value is used to dynamically
+	fetch a list of options for the the depcom_entreprise <select> element
+	*/
+	if (e.target.name && e.target.name === 'code_postal_entreprise') {
+		var codePostal = e.target.value
+		var depcomElement = document.querySelector('#depcom_entreprise')
+
+		if (codePostal.length !== 5) {
+			depcomElement.innerHTML = ''
+			depcomElement.setAttribute('hidden', '')
+			return
+		}
+		var request = new XMLHttpRequest()
+		request.onload = function() {
+			try {
+				var data = JSON.parse(request.responseText)
+				if (data.length === 0) {
+					displayCommuneError('Aucune commune ne correspond à ce code postal')
+					return
+				}
+				depcomElement.removeAttribute('hidden', false)
+				depcomElement.innerHTML = ''
+				data.forEach(function(datum) {
+					var opt = document.createElement('option')
+					opt.value = datum.codeInsee
+					opt.innerHTML = datum.nomCommune
+					depcomElement.appendChild(opt)
+				})
+				next()
+			} catch (err) {
+				displayCommuneError('Le code postal n\'a pas pu être pris en compte')
+			}
+		}
+
+		request.onerror = function() {
+			displayCommuneError('Le code postal n\'a pas pu être pris en compte')
+		}
+
+		request.open('GET', 'http://code-postaux.sgmap.fr/' + codePostal)
+		request.send()
+	} else next()
+}
 
 bindToForm(document.querySelector('.SGMAPembauche form'))
 

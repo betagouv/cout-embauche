@@ -1,7 +1,7 @@
 description: 'Input errors should be visible',
 
-scenario: [
+steps: [
 	{
-		'ErrorWidget.title': true,
+		'ErrorComponent.title': true,
 	}
 ]

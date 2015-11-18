@@ -21,8 +21,13 @@ function bindToForm(form) {
 
 function handleDynamicForms(e, next) {
 
-	function displayCommuneError(text) {
-		//TODO
+	function setCommuneFetchStatus(text) {
+		var label = document.querySelector('label[for="code_postal_entreprise"]')
+		label.innerHTML = text || ''
+
+		// Clear depcom_entreprise <select>
+		depcomElement.innerHTML = ''
+		depcomElement.setAttribute('hidden', '')
 	}
 	/*
 	code_postal_entreprise <input> value is used to dynamically
@@ -42,11 +47,11 @@ function handleDynamicForms(e, next) {
 			try {
 				var data = JSON.parse(request.responseText)
 				if (data.length === 0) {
-					displayCommuneError('Aucune commune ne correspond à ce code postal')
+					setCommuneFetchStatus('Aucune commune correspondante trouvée')
 					return
 				}
+				setCommuneFetchStatus()
 				depcomElement.removeAttribute('hidden', false)
-				depcomElement.innerHTML = ''
 				data.forEach(function(datum) {
 					var opt = document.createElement('option')
 					opt.value = datum.codeInsee
@@ -55,12 +60,12 @@ function handleDynamicForms(e, next) {
 				})
 				next()
 			} catch (err) {
-				displayCommuneError('Le code postal n\'a pas pu être pris en compte')
+				setCommuneFetchStatus('Le code postal n\'a pas pu être pris en compte')
 			}
 		}
 
 		request.onerror = function() {
-			displayCommuneError('Le code postal n\'a pas pu être pris en compte')
+			setCommuneFetchStatus('Le code postal n\'a pas pu être pris en compte (réseau faible ?)')
 		}
 
 		request.open('GET', 'http://code-postaux.sgmap.fr/' + codePostal)

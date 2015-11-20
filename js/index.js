@@ -9,68 +9,58 @@ var UI = require('./ui.js'),
 function bindToForm(form) {
 	form.addEventListener('change', UI.reflectParameterChange)
 
-	var update = debounce(OpenFisca.update.bind(form), 300)
+	var handleBasicFormChanges = debounce(OpenFisca.update.bind(form), 300)
 
-	update()
+	handleBasicFormChanges()
 
-	form.addEventListener('change', update)
-	form.addEventListener('keyup', function(e) {
-		handleDynamicForms(e, update)
-	})
+	var handleFormChanges = function(event) {
+		switch (event.target.name) {
+		case 'code_postal_entreprise':
+			handlePostalCodeInput(event.target.value, handleBasicFormChanges)
+			break
+		default: handleBasicFormChanges()
+		}
+	}
+
+	form.addEventListener('change', handleFormChanges)
+	form.addEventListener('keyup', handleFormChanges)
 }
 
-function handleDynamicForms(e, next) {
+/*
+code_postal_entreprise <input> value is used to dynamically
+fetch a list of options for the the depcom_entreprise <select> element
+*/
+function handlePostalCodeInput(codePostal, next) {
 
-	function setCommuneFetchStatus(text) {
-		var label = document.querySelector('label[for="code_postal_entreprise"]')
-		label.innerHTML = text || ''
+	if (codePostal.length !== 5)
+		return UI.displayCommunesFetchResults()
 
-		// Clear depcom_entreprise <select>
-		depcomElement.innerHTML = ''
-		depcomElement.setAttribute('hidden', '')
-	}
-	/*
-	code_postal_entreprise <input> value is used to dynamically
-	fetch a list of options for the the depcom_entreprise <select> element
-	*/
-	if (e.target.name && e.target.name === 'code_postal_entreprise') {
-		var codePostal = e.target.value
-		var depcomElement = document.querySelector('#depcom_entreprise')
+	var request = new XMLHttpRequest()
+	request.onload = function() {
+		try {
+			if (request.status !== 200)	throw new Error(request.responseText)
 
-		if (codePostal.length !== 5) {
-			depcomElement.innerHTML = ''
-			depcomElement.setAttribute('hidden', '')
-			return
-		}
-		var request = new XMLHttpRequest()
-		request.onload = function() {
-			try {
-				var data = JSON.parse(request.responseText)
-				if (data.length === 0) {
-					setCommuneFetchStatus('Aucune commune correspondante trouvée')
-					return
-				}
-				setCommuneFetchStatus()
-				depcomElement.removeAttribute('hidden', false)
-				data.forEach(function(datum) {
-					var opt = document.createElement('option')
-					opt.value = datum.codeInsee
-					opt.innerHTML = datum.nomCommune
-					depcomElement.appendChild(opt)
-				})
-				next()
-			} catch (err) {
-				setCommuneFetchStatus('Le code postal n\'a pas pu être pris en compte')
+			var data = JSON.parse(request.responseText)
+			if (data.length === 0) {
+				UI.displayCommunesFetchResults('Aucune commune correspondante trouvée')
+				return
 			}
+			UI.displayCommunesFetchResults('', data)
+		} catch (err) {
+			UI.displayCommunesFetchResults('Le code postal n\'a pas pu être pris en compte')
+			console.error(err)
+		} finally {
+			next()
 		}
+	}
 
-		request.onerror = function() {
-			setCommuneFetchStatus('Le code postal n\'a pas pu être pris en compte (réseau faible ?)')
-		}
+	request.onerror = function() {
+		UI.displayCommunesFetchResults('Le code postal n\'a pas pu être pris en compte (réseau faible ?)')
+		next()
+	}
 
-		request.open('GET', 'http://code-postaux.sgmap.fr/' + codePostal)
-		request.send()
-	} else next()
+	request.open('GET', 'http://code-postaux.sgmap.fr/' + codePostal)
+	request.send()
 }
 
 bindToForm(document.querySelector('.SGMAPembauche form'))

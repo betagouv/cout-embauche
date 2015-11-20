@@ -2,6 +2,7 @@ module.exports = {
 	display: display,
 	showError: showError,
 	reflectParameterChange: reflectParameterChange,
+	displayCommunesFetchResults: displayCommunesFetchResults,
 }
 
 
@@ -24,6 +25,29 @@ function display(data) {
 
 	setErrorVisible(false)
 }
+
+function displayCommunesFetchResults(info, values) {
+	// Inform the user
+	var label = document.querySelector('label[for="depcom_entreprise"]')
+	label.textContent = info || ''
+
+	// Clear the <select>
+	var depcomElement = document.querySelector('#depcom_entreprise')
+	depcomElement.innerHTML = ''
+
+	// Update the commune <select> options
+	if (!values) return depcomElement.setAttribute('hidden', '')
+
+	values.forEach(function(value) {
+		var optionElement = document.createElement('option')
+		optionElement.value = value.codeInsee
+		optionElement.textContent = value.nomCommune
+		depcomElement.appendChild(optionElement)
+	})
+	depcomElement.removeAttribute('hidden')
+
+}
+
 
 function showError(data) {
 	data.userAgent = window.navigator.userAgent

@@ -52,13 +52,13 @@
 					<option disabled>heure</option>
 				</select>
 
-				sur la commune de
-				<input name="code_postal_entreprise" id="code_postal_entreprise" class="medium-width centered"
-				type="text" placeholder="code postal" pattern="\d{5}" title="Entrez le code postal de l'établissement où le salarié sera employé">
-				<label for="code_postal_entreprise" class="dynamic-info"></label>
-				<select name="depcom_entreprise" id="depcom_entreprise" hidden
-				type="text">
-					<!-- INSEE code, will be deducted from code_postal_entreprise input -->
+				sur la&nbsp;<label for="code_postal_entreprise">commune</label>&nbsp;de
+				<input name="code_postal_entreprise" id="code_postal_entreprise" class="centered"
+				type="text" placeholder="code postal" inputmode="numeric" pattern="\d{5}" maxlength="5" autocomplete="postal-code"
+				title="Entrez le code postal de l'établissement où le salarié sera employé">
+				<label for="depcom_entreprise" class="dynamic-info"></label>
+				<select name="depcom_entreprise" id="depcom_entreprise" hidden>
+					<!-- INSEE code, will be deduced from code_postal_entreprise input -->
 				</select>
 			</div>
 

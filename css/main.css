@@ -21,7 +21,7 @@ input, select {
 	vertical-align: middle;
 }
 
-input.medium-width {
+#code_postal_entreprise {
 	max-width: 6em;
 }
 

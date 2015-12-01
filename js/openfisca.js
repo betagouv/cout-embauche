@@ -58,10 +58,11 @@ function getAdditionalParameters() {
 function serializeObject(source) {
 	var result = []
 
-	for (var key in source)
+	for (var key in source) {
 		if (key && source.hasOwnProperty(key))
 			result.push(encodeURI(key + '=' + source[key]))
-
+	}
+	
 	return result.join('&')
 }
 
@@ -72,7 +73,13 @@ function serializeObject(source) {
 */
 function buildOpenFiscaQueryURL(additionalParameters) {
 	var form = document.querySelector('#input form'),
-		queryStringBlocks = [ serialize(form), serializeObject(getAdditionalParameters()), serializeObject(additionalParameters) ]
+		queryStringBlocks = [
+			serialize(form),
+			serializeObject(getAdditionalParameters()),
+			serializeObject(additionalParameters),
+		].filter(function(element) {
+			return element !== ''}
+		)
 
 	return form.action + '?' + queryStringBlocks.join('&')
 }
@@ -109,11 +116,7 @@ function get(additionalParameters, callback) {
 /** Updates the form.
 */
 function update() {
-	var today = new Date()
-
-	get({
-		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth(),
-	}, function(error, values, response) {
+	get({}, function(error, values, response) {
 		if (error) {
 			if (response && response.error)
 				return UI.showError(response.error)

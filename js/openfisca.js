@@ -116,11 +116,7 @@ function get(additionalParameters, callback) {
 /** Updates the form.
 */
 function update() {
-	var today = new Date()
-
-	get({
-		contrat_de_travail_debut: today.getFullYear() + '-' + today.getMonth(),
-	}, function(error, values, response) {
+	get({}, function(error, values, response) {
 		if (error) {
 			if (response && response.error)
 				return UI.showError(response.error)

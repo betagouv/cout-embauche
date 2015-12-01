@@ -58,10 +58,11 @@ function getAdditionalParameters() {
 function serializeObject(source) {
 	var result = []
 
-	for (var key in source)
+	for (var key in source) {
 		if (key && source.hasOwnProperty(key))
 			result.push(encodeURI(key + '=' + source[key]))
-
+	}
+	
 	return result.join('&')
 }
 
@@ -72,7 +73,13 @@ function serializeObject(source) {
 */
 function buildOpenFiscaQueryURL(additionalParameters) {
 	var form = document.querySelector('#input form'),
-		queryStringBlocks = [ serialize(form), serializeObject(getAdditionalParameters()), serializeObject(additionalParameters) ]
+		queryStringBlocks = [
+			serialize(form),
+			serializeObject(getAdditionalParameters()),
+			serializeObject(additionalParameters),
+		].filter(function(element) {
+			return element !== ''}
+		)
 
 	return form.action + '?' + queryStringBlocks.join('&')
 }

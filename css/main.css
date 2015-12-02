@@ -34,6 +34,18 @@ label.dynamic-info {
 	font-style: italic;
 }
 
+input[type='number'] {
+	/* Remove spinner controls from Firefox */
+	-moz-appearance: textfield;
+}
+
+/* Re-applies the controls on :hover and :focus
+to get the same behavior as on chrom* */
+input[type='number']:hover,
+input[type='number']:focus {
+	-moz-appearance: number-input;
+}
+
 details {
 	font-size: 60%;
 }

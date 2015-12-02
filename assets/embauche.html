@@ -30,27 +30,27 @@
 				</select>
 
 				à hauteur de
-				<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1457,52" value="1457.52" step="any"><label for="salaire">&nbsp;€</label>
+				<fieldset class="no-space-wrap">
+					<label for="salaire">
+						<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1457,52" value="1457.52" step="any">
+						&nbsp;€
+						<span class="input-help">Rémunération totale, dont primes. <br>Temps plein <em>(min. 1457 €)</em> ou partiel. </span>
+					</label>
 
-				<select data-sets="#salaire@name">
-					<option value="salaire_de_base">brut</option>
-					<option disabled value="salaire_net_a_payer">net</option>
-				</select>
+					<select data-sets="#salaire@name">
+						<option value="salaire_de_base">brut</option>
+						<option disabled value="salaire_net_a_payer">net</option>
+					</select>
 
-				<select hidden name="allegement_fillon_mode_recouvrement">
-					<option value="progressif">progressive</option>
-					<option value="fin_d_annee">en fin d'année</option>
-					<option value="anticipe_regularisation_fin_de_periode" selected="selected">anticipée</option>
-				</select>
-
-				par
-				<select data-provides="period">
-					<option disabled>an</option>
-					<option>mois</option>
-					<option disabled>jour</option>
-					<option disabled>heure</option>
-				</select>
-
+					<span>par</span>
+					<select data-provides="period">
+						<option disabled>an</option>
+						<option>mois</option>
+						<option disabled>jour</option>
+						<option disabled>heure</option>
+					</select>
+				</fieldset>
+				<br>
 				sur la&nbsp;<label for="code_postal_entreprise">commune</label>&nbsp;de
 				<input name="code_postal_entreprise" id="code_postal_entreprise" class="centered"
 				type="text" placeholder="code postal" inputmode="numeric" pattern="\d{5}" maxlength="5" autocomplete="postal-code"
@@ -59,6 +59,14 @@
 				<select name="depcom_entreprise" id="depcom_entreprise" hidden>
 					<!-- INSEE code, will be deduced from code_postal_entreprise input -->
 				</select>
+				.
+
+				<select hidden name="allegement_fillon_mode_recouvrement">
+					<option value="progressif">progressive</option>
+					<option value="fin_d_annee">en fin d'année</option>
+					<option value="anticipe_regularisation_fin_de_periode" selected="selected">anticipée</option>
+				</select>
+
 			</div>
 
 			<div>

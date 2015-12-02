@@ -16,7 +16,7 @@ input, select {
 	border: none;
 	border-bottom: 1px solid #9A9A9A;
 	border-radius: 0;
-	padding: .25em 0;
+	padding: .20em 0;
 	margin: 0 .5em;
 	vertical-align: middle;
 }
@@ -39,7 +39,6 @@ input[type='number'] {
 	/* Remove spinner controls from Firefox */
 	-moz-appearance: textfield;
 }
-
 /* Re-applies the controls on :hover and :focus
 to get the same behavior as on chrom* */
 input[type='number']:hover,
@@ -47,20 +46,46 @@ input[type='number']:focus {
 	-moz-appearance: number-input;
 }
 
-/* Question mark circle icon */
-label[for='salaire']::after {
-	content: "?";
+/* Enables the first input's help text to pop
+over the lasts of this group.
+Also keeps related inputs together. */
+fieldset.no-space-wrap {
+	white-space: nowrap;
 	display: inline-block;
-	width: 1.2em;
-	margin-left: 1em;
-	vertical-align: text-bottom;
-	border-radius: 1.2em;
-	border: 1px solid;
-	font-size: 80%;
+}
+/* Reset fieldset style */
+fieldset {
+	border: 0;
+  padding: 0.01em 0 0 0;
+  margin: 0;
+  min-width: 0;
+}
+
+label[for='salaire'] {
+	position: relative;
+}
+
+label[for='salaire']:hover ~ * {
+	visibility: hidden;
+}
+label[for='salaire']:hover .input-help {
+	visibility: visible;
+	opacity: 1;
+}
+
+label[for='salaire'] .input-help {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility, opacity .1s linear;
+	display: inline-block;
+	font-size: 60%;
+	margin: 0 -22em 0 .5em;
 	line-height: 1.2em;
-	text-align: center;
-	cursor: pointer;
-	opacity: .3;
+	border-left: 1px solid #CCC;
+	padding: .5em;
+	text-align: left;
+	width: 20em;
+	vertical-align: middle;
 }
 
 details {

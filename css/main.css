@@ -47,6 +47,22 @@ input[type='number']:focus {
 	-moz-appearance: number-input;
 }
 
+/* Question mark circle icon */
+label[for='salaire']::after {
+	content: "?";
+	display: inline-block;
+	width: 1.2em;
+	margin-left: 1em;
+	vertical-align: text-bottom;
+	border-radius: 1.2em;
+	border: 1px solid;
+	font-size: 80%;
+	line-height: 1.2em;
+	text-align: center;
+	cursor: pointer;
+	opacity: .3;
+}
+
 details {
 	font-size: 60%;
 }

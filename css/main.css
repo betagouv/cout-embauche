@@ -35,6 +35,7 @@ label.dynamic-info {
 }
 
 input[type='number'] {
+	max-width: 7em;
 	/* Remove spinner controls from Firefox */
 	-moz-appearance: textfield;
 }

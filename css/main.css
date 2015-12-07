@@ -21,6 +21,19 @@ input, select {
 	vertical-align: middle;
 }
 
+#code_postal_entreprise {
+	max-width: 6em;
+}
+
+input.centered {
+	text-align: center;
+}
+
+label.dynamic-info {
+	font-size: 65%;
+	font-style: italic;
+}
+
 details {
 	font-size: 60%;
 }

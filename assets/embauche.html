@@ -50,7 +50,16 @@
 					<option>mois</option>
 					<option disabled>jour</option>
 					<option disabled>heure</option>
-				</select>.
+				</select>
+
+				sur la&nbsp;<label for="code_postal_entreprise">commune</label>&nbsp;de
+				<input name="code_postal_entreprise" id="code_postal_entreprise" class="centered"
+				type="text" placeholder="code postal" inputmode="numeric" pattern="\d{5}" maxlength="5" autocomplete="postal-code"
+				title="Entrez le code postal de l'établissement où le salarié sera employé">
+				<label for="depcom_entreprise" class="dynamic-info"></label>
+				<select name="depcom_entreprise" id="depcom_entreprise" hidden>
+					<!-- INSEE code, will be deduced from code_postal_entreprise input -->
+				</select>
 			</div>
 
 			<div>
@@ -186,6 +195,10 @@
 			    <th>Prévoyance obligatoire cadre</th>
 			    <td><span data-source="prevoyance_obligatoire_cadre"></span>&nbsp;€</td>
 			</tr>
+			<tr>
+				<th>Versement transport</th>
+				<td><span data-source="versement_transport"></span>&nbsp;€</td>
+			</tr>
 			<tr class="imprecise" title="Montant non calculé. Taxe due par les entreprises non assujetties à la TVA.">
 				<th>Taxe sur les salaires</th>
 				<td><span data-source="taxe_salaires"></span>&nbsp;€</td>
@@ -197,10 +210,6 @@
 			<tr class="imprecise" title="Montant imprécis. Décroît en fonction du pourcentage de l'effectif en apprentissage.">
 				<th>Contribution supplémentaire à l'apprentissage</th>
 				<td><span data-source="contribution_supplementaire_apprentissage"></span>&nbsp;€</td>
-			</tr>
-			<tr class="imprecise" title="Montant non calculé. Dépend de l'autorité organisatrice des transports de la commune.">
-				<th>Versement transport</th>
-				<td><span data-source="versement_transport"></span>&nbsp;€</td>
 			</tr>
 		</table>
 

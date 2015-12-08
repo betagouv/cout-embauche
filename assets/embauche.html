@@ -31,12 +31,12 @@
 
 				à hauteur de
 				<fieldset>
+					<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1457,52" value="1457.52" step="any">
 					<label for="salaire">
-						<input name="salaire_de_base" id="salaire" type="number" min="0" max="9999999" placeholder="1457,52" value="1457.52" step="any">
 						&nbsp;€
-						<span class="input-help">Rémunération totale, dont primes. <br>Temps plein <em>(min. 1457 €)</em> ou partiel. </span>
 					</label>
-
+					<span class="input-help">Rémunération totale, dont primes. <br>Temps plein <em>(min. 1457 €)</em> ou partiel. </span>
+					
 					<select data-sets="#salaire@name">
 						<option value="salaire_de_base">brut</option>
 						<option disabled value="salaire_net_a_payer">net</option>

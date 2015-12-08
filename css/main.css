@@ -69,14 +69,16 @@ fieldset {
 	min-width: 0;
 }
 
-label[for="salaire"] {
-	position: relative;
-}
-
-label[for="salaire"]:hover ~ * {
+input#salaire:hover ~ *,
+input#salaire:focus ~ * {
 	visibility: hidden;
 }
-label[for="salaire"]:hover .input-help {
+input#salaire:hover + label,
+input#salaire:focus + label {
+	visibility: visible;
+}
+input#salaire:hover ~ .input-help,
+input#salaire:focus ~ .input-help {
 	visibility: visible;
 	opacity: 1;
 }

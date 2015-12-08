@@ -14,6 +14,12 @@ function display(data) {
 		if (! target)
 			return
 
+		if (toSet === 'cout_du_travail') {
+			target.parentNode.style.display =
+				data['salaire_super_brut'] !== value ? 'inline' : 'none'
+		}
+
+
 		if (typeof value == 'number') {
 			value = value
 				.toFixed(target.hasAttribute('data-round') ? 0 : 2)

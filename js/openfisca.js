@@ -24,6 +24,11 @@ function serialize(form) {
 		if (element.type == 'number')
 			value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
 
+		/* We are simulating a recruitment,
+		hence requesting salaries with the new size of the entreprise */
+		if (element.name == 'effectif_entreprise')
+			value ++
+
 		result.push(encodeURI(element.name + '=' + value))
 	})
 
@@ -62,7 +67,7 @@ function serializeObject(source) {
 		if (key && source.hasOwnProperty(key))
 			result.push(encodeURI(key + '=' + source[key]))
 	}
-	
+
 	return result.join('&')
 }
 

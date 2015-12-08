@@ -16,7 +16,7 @@ input, select {
 	border: none;
 	border-bottom: 1px solid #9A9A9A;
 	border-radius: 0;
-	padding: .20em 0;
+	padding: .2em 0;
 	margin: 0 .5em;
 	vertical-align: middle;
 }
@@ -34,49 +34,60 @@ label.dynamic-info {
 	font-style: italic;
 }
 
-input[type='number'] {
+input[type="number"] {
 	max-width: 7em;
+
 	/* Remove spinner controls from Firefox */
-	-moz-appearance: textfield;
+	appearance: textfield;
 }
+
 /* Re-applies the controls on :hover and :focus
 to get the same behavior as on chrom* */
-input[type='number']:hover,
-input[type='number']:focus {
-	-moz-appearance: number-input;
+input[type="number"]:hover,
+input[type="number"]:focus {
+	appearance: number-input;
+}
+
+select[data-provides="employee"] {
+	width: 6.5em;
 }
 
 /* Enables the first input's help text to pop
 over the lasts of this group.
 Also keeps related inputs together. */
-fieldset.no-space-wrap {
+#input fieldset {
 	white-space: nowrap;
 	display: inline-block;
 }
+
 /* Reset fieldset style */
 fieldset {
 	border: 0;
-  padding: 0.01em 0 0 0;
-  margin: 0;
-  min-width: 0;
+	padding: 0;
+	padding-top: .01em;
+	margin: 0;
+	min-width: 0;
 }
 
-label[for='salaire'] {
+label[for="salaire"] {
 	position: relative;
 }
 
-label[for='salaire']:hover ~ * {
+label[for="salaire"]:hover ~ * {
 	visibility: hidden;
 }
-label[for='salaire']:hover .input-help {
+label[for="salaire"]:hover .input-help {
 	visibility: visible;
 	opacity: 1;
 }
 
-label[for='salaire'] .input-help {
+/* This input-help will pop over the
+following input fields, using the
+negative margin trick */
+input#salaire ~ .input-help {
 	visibility: hidden;
 	opacity: 0;
-	transition: visibility, opacity .1s linear;
+	transition: opacity .1s linear;
 	display: inline-block;
 	font-size: 60%;
 	margin: 0 -22em 0 .5em;

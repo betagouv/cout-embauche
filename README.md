@@ -90,7 +90,7 @@ window.Embauche.OpenFisca.get({
 	zone_revitalisation_rurale: true
 }, function(error, results) {
 	if (error) throw error;
-	window.alert('Employer would pay ' + results.salsuperbrut + ' if this geographic zone was elected as a ZRR.')
+	window.alert('Employer would pay ' + results.salaire_super_brut + ' if this geographic zone was elected as a ZRR.')
 });
 ```
 

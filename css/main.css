@@ -92,7 +92,7 @@ details {
 	border-radius: .5em;
 }
 
-@media(max-width: 500px) {
+@media(max-width: 600px) {
 	#input, #result {
 		text-align: left;
 	}

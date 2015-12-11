@@ -97,7 +97,7 @@ details {
 		text-align: left;
 	}
 
-	input {
+	select, input {
 		margin: 0;
 	}
 }

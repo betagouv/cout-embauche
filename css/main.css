@@ -93,9 +93,7 @@ details {
 }
 
 @media(max-width: 500px) {
-	body {
-		padding: 0;
-		width: 15em;
+	#input, #result {
 		text-align: left;
 	}
 

@@ -1,7 +1,7 @@
 {
     "rules": {
         "indentation": [ 2, "tab" ],
-        "string-quotes": [ 2, "single" ],
+        "string-quotes": [ 2, "double" ],
         "function-url-quotes": [ 2, "single"],
         "rule-trailing-semicolon": [ 2, "always" ],
         "comment-space-inside": [ 2, "always" ],

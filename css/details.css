@@ -43,7 +43,7 @@ tr.imprecise td {
 
 /* Question mark circle icon */
 tr.imprecise td::after {
-	content: '?';
+	content: "?";
 	position: absolute;
 	top: .65em;
 	right: 0;

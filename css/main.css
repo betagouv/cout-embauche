@@ -16,7 +16,7 @@ input, select {
 	border: none;
 	border-bottom: 1px solid #9A9A9A;
 	border-radius: 0;
-	padding: .25em 0;
+	padding: .2em 0;
 	margin: 0 .5em;
 	vertical-align: middle;
 }
@@ -32,6 +32,73 @@ input.centered {
 label.dynamic-info {
 	font-size: 65%;
 	font-style: italic;
+}
+
+input[type="number"] {
+	max-width: 7em;
+
+	/* Remove spinner controls from Firefox */
+	appearance: textfield;
+}
+
+/* Re-applies the controls on :hover and :focus
+to get the same behavior as on chrom* */
+input[type="number"]:hover,
+input[type="number"]:focus {
+	appearance: number-input;
+}
+
+select[data-provides="employee"] {
+	width: 6.5em;
+}
+
+/* Enables the first input's help text to pop
+over the lasts of this group.
+Also keeps related inputs together. */
+#input fieldset {
+	white-space: nowrap;
+	display: inline-block;
+}
+
+/* Reset fieldset style */
+fieldset {
+	border: 0;
+	padding: 0;
+	padding-top: .01em;
+	margin: 0;
+	min-width: 0;
+}
+
+input#salaire:hover ~ *,
+input#salaire:focus ~ * {
+	visibility: hidden;
+}
+input#salaire:hover + label,
+input#salaire:focus + label {
+	visibility: visible;
+}
+input#salaire:hover ~ .input-help,
+input#salaire:focus ~ .input-help {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* This input-help will pop over the
+following input fields, using the
+negative margin trick */
+input#salaire ~ .input-help {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .1s linear;
+	display: inline-block;
+	font-size: 60%;
+	margin: 0 -22em 0 .5em;
+	line-height: 1.2em;
+	border-left: 1px solid #CCC;
+	padding: .5em;
+	text-align: left;
+	width: 20em;
+	vertical-align: middle;
 }
 
 details {

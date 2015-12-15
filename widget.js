@@ -1,4 +1,6 @@
+require('./css/cross-browser.css')
 require('./css/main.css')
+require('./css/affiliation.css')
 require('./css/details.css')
 require('./css/tooltip.css')
 

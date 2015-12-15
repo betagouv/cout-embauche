@@ -1,0 +1,27 @@
+/* Unify browser styles and reset opinionated defaults */ 
+
+[hidden],
+.js-only {
+	display: none;
+}
+
+/* Reset fieldset style */
+fieldset {
+	border: 0;
+	padding: 0;
+	padding-top: .01em;
+	margin: 0;
+	min-width: 0;
+}
+
+/* Remove spinner controls from Firefox */
+input[type="number"] {
+	appearance: textfield;
+}
+
+/* Re-applies the controls on :hover and :focus
+to get the same behavior as on Chrome */
+input[type="number"]:hover,
+input[type="number"]:focus {
+	appearance: number-input;
+}

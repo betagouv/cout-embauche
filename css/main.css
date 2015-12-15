@@ -21,6 +21,10 @@ input, select {
 	vertical-align: middle;
 }
 
+input[type="number"] {
+	max-width: 7em;
+}
+
 #code_postal_entreprise {
 	max-width: 6em;
 }
@@ -34,20 +38,6 @@ label.dynamic-info {
 	font-style: italic;
 }
 
-input[type="number"] {
-	max-width: 7em;
-
-	/* Remove spinner controls from Firefox */
-	appearance: textfield;
-}
-
-/* Re-applies the controls on :hover and :focus
-to get the same behavior as on chrom* */
-input[type="number"]:hover,
-input[type="number"]:focus {
-	appearance: number-input;
-}
-
 select[data-provides="employee"] {
 	width: 6.5em;
 }
@@ -58,15 +48,6 @@ Also keeps related inputs together. */
 #input fieldset {
 	white-space: nowrap;
 	display: inline-block;
-}
-
-/* Reset fieldset style */
-fieldset {
-	border: 0;
-	padding: 0;
-	padding-top: .01em;
-	margin: 0;
-	min-width: 0;
 }
 
 input#salaire:hover ~ *,
@@ -105,52 +86,10 @@ details {
 	font-size: 60%;
 }
 
-[hidden] {
-	display: none;
-}
-
-#affiliation {
-	font-size: 50%;
-	text-align: right;
-	line-height: 1.5;
-}
-
-#affiliation a {
-	display: block;
-}
-
-#affiliation img {
-	height: 2em;
-}
-
-#affiliation__sgmap {
-	float: right;
-	padding-left: 1em;
-	margin-top: 0;
-}
-
-#affiliation__header {
-	font-weight: bold;
-	color: rgb(138, 0, 46);
-	text-decoration: none;
-}
-
-#affiliation__sgmap img {
-	height: 5em;
-}
-
-#affiliation__beta {
-	font-size: 80%;
-}
-
 #error {
 	color: red;
 	border: 1px solid red;
 	border-radius: .5em;
-}
-
-.js-only {
-	display: none;
 }
 
 @media(max-width: 500px) {

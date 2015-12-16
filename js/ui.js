@@ -14,6 +14,13 @@ function display(data) {
 		if (! target)
 			return
 
+		/* Only display the second result text, "cout du travail",
+		if it is different from "salaire super brut" */
+		if (toSet == 'cout_du_travail') {
+			document.querySelector('#cout_du_travail_container')
+				.hidden = data['salaire_super_brut'] == value
+		}
+
 		if (typeof value == 'number') {
 			value = value
 				.toFixed(target.hasAttribute('data-round') ? 0 : 2)

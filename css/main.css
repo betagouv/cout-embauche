@@ -92,14 +92,12 @@ details {
 	border-radius: .5em;
 }
 
-@media(max-width: 500px) {
-	body {
-		padding: 0;
-		width: 15em;
+@media(max-width: 600px) {
+	#input, #result {
 		text-align: left;
 	}
 
-	input {
+	select, input {
 		margin: 0;
 	}
 }

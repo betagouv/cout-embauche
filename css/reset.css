@@ -1,4 +1,8 @@
-/* Unify browser styles and reset opinionated defaults */ 
+/*
+	Unify browser styles and reset opinionated defaults;
+	Reset style decisions that would break (rather than just customize)
+	the widget's form layout.
+ */
 
 [hidden],
 .js-only {
@@ -24,4 +28,20 @@ to get the same behavior as on Chrome */
 input[type="number"]:hover,
 input[type="number"]:focus {
 	appearance: number-input;
+}
+
+
+select {
+	width: auto;
+	height: auto;
+}
+
+input {
+	line-height: normal;
+	height: auto;
+}
+
+label {
+	font-size: 100%;
+	font-weight: normal;
 }

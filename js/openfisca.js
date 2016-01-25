@@ -121,7 +121,11 @@ function get(additionalParameters, callback) {
 /** Updates the displayed values.
 */
 function update() {
-	get({}, function(error, values, response) {
+	var today = new Date()
+
+	get({
+		contrat_de_travail_debut: today.getFullYear() + '-' + (today.getMonth() + 1),
+	}, function(error, values, response) {
 		if (error) {
 			if (response && response.error)
 				return UI.showError(response.error)

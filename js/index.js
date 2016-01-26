@@ -59,7 +59,7 @@ function handlePostalCodeInput(codePostal, next) {
 		next()
 	}
 
-	request.open('GET', 'http://code-postaux.sgmap.fr/' + codePostal)
+	request.open('GET', 'https://apicarto.sgmap.fr/codes-postaux/communes/' + codePostal)
 	request.send()
 }
 

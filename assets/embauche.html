@@ -5,7 +5,6 @@
 				<select data-sets=".employer_type@textContent">
 					<option value="entreprise">Mon entreprise</option>
 					<option value="association">Mon association</option>
-					<option value="établissement" disabled>Mon administration</option>
 				</select>
 
 				de
@@ -16,9 +15,6 @@
 				<select data-provides="employee">
 					<option value="salarié·e">salarié·e</option>
 					<option value="apprenti">apprenti·e</option>
-					<option value="stagiaire" disabled>stagiaire</option>
-					<option disabled>aide à domicile</option>
-					<option disabled>intermittent·e du spectacle</option>
 				</select>
 
 				en&nbsp;statut
@@ -34,18 +30,8 @@
 						&nbsp;€
 					</label>
 					<span class="input-help">Rémunération totale, dont primes. <br>Temps plein <em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em> ou partiel. </span>
-
-					<select data-sets="#salaire@name">
-						<option value="salaire_de_base">brut</option>
-						<option disabled value="salaire_net_a_payer">net</option>
-					</select>
-
-					<span>par</span>
-					<select data-provides="period">
-						<option disabled>an</option>
-						<option>mois</option>
-						<option disabled>heure</option>
-					</select>
+					&nbsp;
+					<span>brut par mois</span>
 				</fieldset>
 				<br>
 				sur la&nbsp;<label for="code_postal_entreprise">commune</label>&nbsp;de
@@ -295,8 +281,8 @@
 				<td><span data-source="exoneration_cotisations_employeur_jei"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-				<th>Apprentissage ou stage</th>
-				<td><span data-source="exoneration_cotisations_employeur_apprenti"></span> ou <span data-source="exoneration_cotisations_employeur_stagiaire"></span>&nbsp;€</td>
+				<th>Apprentissage</th>
+				<td><span data-source="exoneration_cotisations_employeur_apprenti"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Zone de revitalisation rurale</th>

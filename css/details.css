@@ -58,8 +58,14 @@ tr.imprecise td::after {
 	text-align: center;
 }
 
-details #createTest {
+#reportDetailsProblem {
 	clear: left;
 	display: block;
-	margin: 0 auto 3em auto;
+	width: 12em;
+	margin: 1em auto 2em;
+	text-decoration: none;
+	color: black;
+	border: 1px solid #C3C3C3;
+	text-align: center;
+	line-height: 2em;
 }

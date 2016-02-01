@@ -1,7 +1,6 @@
 var UI = require('./ui.js'),
 	OpenFisca = require('./openfisca.js'),
-	debounce = require('../lib/debounce.js'),
-	Tests = require('./tests.js')
+	debounce = require('../lib/debounce.js')
 
 
 /** Handle events from the given form to update data.
@@ -69,7 +68,5 @@ var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only')
 
 for (var i = 0; i < jsNodes.length; i++)
 	jsNodes[i].className = jsNodes[i].className.replace('js-only', '')
-
-document.getElementById('createTest').addEventListener('click', Tests.create)
 
 module.exports.OpenFisca = OpenFisca

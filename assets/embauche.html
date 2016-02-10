@@ -12,9 +12,10 @@
 				<label for="effectif_entreprise" title="En équivalents temps pleins : un mi-temps vaut 0,5, par exemple.">salariés</label>
 
 				&nbsp;<!-- non-breakable space to prevent minification from mangling all space with preceding <label> -->souhaite embaucher un·e
-				<select data-provides="employee">
-					<option value="salarié·e" selected>salarié·e</option>
-					<option value="apprenti">apprenti·e</option>
+				<select name="contrat_de_travail_duree" data-boolean="true">
+					<option value="cdi" selected>CDI</option>
+					<option value="cdd">CDD</option>
+					<option value="cdd" data-boolean-key="apprenti">apprenti·e</option>
 				</select>
 
 				en&nbsp;statut
@@ -106,6 +107,9 @@
 			Mon <span data-source="employee">salarié·e</span>
 			touchera <span data-source="salaire_net_a_payer" data-round title="Salaire net">…</span>&nbsp;€
 			par <span data-source="period">mois</span>.
+		</p>
+		<p id="indemnite-fin-contrat">
+			Ces montants anticipent le versement de l'indemnité de fin de contrat
 		</p>
 	</section>
 

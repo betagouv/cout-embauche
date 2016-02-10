@@ -43,20 +43,14 @@ function serialize(form) {
 	return result.join('&')
 }
 
-
-var BOOLEAN_PARAMETERS = {
-	employee: [ 'stagiaire', 'apprenti' ],
-}
-
 function getAdditionalParameters() {
-	var result = {}
+	var result = {};
 
-	for (var provider in BOOLEAN_PARAMETERS) {
-		var key = document.querySelector('[data-provides="' + provider + '"]').value
-
-		if (BOOLEAN_PARAMETERS[provider].indexOf(key) > -1)
+	[].forEach.call(document.querySelectorAll('[data-boolean]'), function(element) {
+		var key = element.options[element.selectedIndex].dataset.booleanKey
+		if (key)
 			result[key] = true
-	}
+	})
 
 	return result
 }

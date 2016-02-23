@@ -35,6 +35,17 @@
 					<span>brut par mois</span>
 				</fieldset>
 				<br>
+				<label>à temps
+					<select name="contrat_de_travail">
+						<option value="temps_plein">plein</option>
+						<option value="temps_partiel">partiel</option>
+					</select>
+				</label>
+				<span id="temps_partiel_container" hidden>
+					pour <input name="heures_remunerees_volume" id="heures_remunerees_volume" type="number" min="0" max="35" placeholder="30" value="30" step="1">
+					heures par semaine
+					<br>
+				</span>
 				sur la&nbsp;<label for="code_postal_entreprise">commune</label>&nbsp;de
 				<input name="code_postal_entreprise" id="code_postal_entreprise" class="centered"
 				type="text" placeholder="code postal" inputmode="numeric" pattern="\d{5}" maxlength="5" autocomplete="postal-code"

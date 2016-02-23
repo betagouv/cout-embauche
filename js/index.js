@@ -15,7 +15,10 @@ function bindToForm(form) {
 	var handleFormChanges = function(event) {
 		switch (event.target.name) {
 		case 'code_postal_entreprise':
-			handlePostalCodeInput(event.target.value, handleBasicFormChanges)
+			handleCodePostalInput(event.target.value, handleBasicFormChanges)
+			break
+		case 'contrat_de_travail':
+			handleTempsPartielSelect(event.target.value, handleBasicFormChanges)
 			break
 		default: handleBasicFormChanges()
 		}
@@ -29,7 +32,7 @@ function bindToForm(form) {
 code_postal_entreprise <input> value is used to dynamically
 fetch a list of options for the the depcom_entreprise <select> element
 */
-function handlePostalCodeInput(codePostal, next) {
+function handleCodePostalInput(codePostal, next) {
 
 	if (codePostal.length !== 5)
 		return UI.displayCommunesFetchResults()
@@ -60,6 +63,15 @@ function handlePostalCodeInput(codePostal, next) {
 
 	request.open('GET', 'https://apicarto.sgmap.fr/codes-postaux/communes/' + codePostal)
 	request.send()
+}
+
+/*
+contrat_de_travail <select> value can trigger the display
+of the heures_remunerees_volume <input> field.
+*/
+function handleTempsPartielSelect(contrat, next) {
+	document.querySelector('#temps_partiel_container').hidden = contrat === 'temps_plein'
+	next()
 }
 
 bindToForm(document.querySelector('.SGMAPembauche form'))

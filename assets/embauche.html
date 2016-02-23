@@ -1,6 +1,6 @@
 <div class="SGMAPembauche" lang="fr">
 	<section id="input">
-		<form action="https://openfisca-embauche.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+agirc_gmp_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_net_a_payer+salaire_super_brut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+mmid_employeur+contribution_supplementaire_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+agirc_employeur+agirc_gmp_employeur+allegement_fillon+allegement_cotisation_allocations_familiales+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei+credit_impot_competitivite_emploi+financement_organisations_syndicales+prevoyance_obligatoire_cadre+cout_du_travail+aide_premier_salarie+smic_proratise" method="GET">
+		<form action="https://openfisca-embauche.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+agirc_gmp_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_net_a_payer+salaire_super_brut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+mmid_employeur+contribution_supplementaire_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+agirc_employeur+agirc_gmp_employeur+allegement_fillon+allegement_cotisation_allocations_familiales+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei+credit_impot_competitivite_emploi+financement_organisations_syndicales+prevoyance_obligatoire_cadre+cout_du_travail+aide_premier_salarie+aide_embauche_pme+smic_proratise" method="GET">
 			<div>
 				<select data-sets=".employer_type@textContent">
 					<option value="entreprise">Mon entreprise</option>
@@ -301,6 +301,10 @@
 			<tr>
 				<th>Aide à l'embauche d'un premier salarié</th>
 				<td><span data-source="aide_premier_salarie"></span>&nbsp;€</td>
+			</tr>
+			<tr>
+				<th>Aide à l'embauche pour les PME</th>
+				<td><span data-source="aide_embauche_pme"></span>&nbsp;€</td>
 			</tr>
 		</table>
 

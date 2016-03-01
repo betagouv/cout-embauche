@@ -33,16 +33,16 @@ summary {
 	margin-bottom: 2em;
 }
 
-tr.imprecise {
+tr.explained {
 	font-style: italic;
 }
 
-tr.imprecise td {
+tr.explained td {
 	position: relative;
 }
 
 /* Question mark circle icon */
-tr.imprecise td::after {
+tr.explained td::after {
 	content: "?";
 	position: absolute;
 	top: .65em;

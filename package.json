@@ -17,7 +17,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^6.0.3",
+    "autoprefixer": "^6.1.2",
     "css-loader": "^0.23.0",
     "eslint": "^1.6.0",
     "expose-loader": "^0.7.0",

@@ -121,10 +121,11 @@ function get(additionalParameters, callback) {
 /** Updates the displayed values.
 */
 function update() {
-	var today = new Date()
+	var today = new Date(),
+		mm = ('0' + (today.getMonth() + 1)).slice(-2)
 
 	get({
-		contrat_de_travail_debut: today.getFullYear() + '-' + (today.getMonth() + 1),
+		contrat_de_travail_debut: today.getFullYear() + '-' + mm,
 	}, function(error, values, response) {
 		if (error) {
 			if (response && response.error)

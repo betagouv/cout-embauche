@@ -33,16 +33,22 @@ summary {
 	margin-bottom: 2em;
 }
 
-tr.imprecise {
+tr.not-calculated td::before {
+	content: "--";
+	color: #888;
+	padding-left: 1em;
+}
+
+tr.explained {
 	font-style: italic;
 }
 
-tr.imprecise td {
+tr.explained td {
 	position: relative;
 }
 
 /* Question mark circle icon */
-tr.imprecise td::after {
+tr.explained td::after {
 	content: "?";
 	position: absolute;
 	top: .65em;

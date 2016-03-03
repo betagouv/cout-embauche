@@ -29,6 +29,14 @@ function serialize(form) {
 		if (element.name == 'effectif_entreprise')
 			value ++
 
+		/* In the case of a `temps partiel`, we are asking hours per week,
+		the most common way to reason about it. But OpenFisca needs hours per month */
+		if (element.name == 'heures_remunerees_volume') {
+			var dureeLegaleMensuelle = 151.66,
+				dureeLegaleHebdomadaire = 35
+			value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
+		}
+
 		result.push(encodeURI(element.name + '=' + value))
 	})
 

@@ -96,6 +96,11 @@ details {
 	border-radius: .5em;
 }
 
+#computation-note {
+	font-size: 80%;
+	font-style: italic;
+}
+
 @media(max-width: 500px) {
 	body {
 		padding: 0;

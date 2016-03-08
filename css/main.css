@@ -29,7 +29,7 @@ input[type="number"] {
 	max-width: 6em;
 }
 
-#heures_remunerees_volume {
+[name="heures_remunerees_volume"] {
 	max-width: 2.3em;
 }
 

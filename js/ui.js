@@ -17,8 +17,10 @@ function display(data) {
 		/* Only display the second result text, "cout du travail",
 		if it is different from "salaire super brut" */
 		if (toSet == 'cout_du_travail') {
-			document.querySelector('#cout_du_travail_container')
-				.hidden = data['salaire_super_brut'] == value
+			var container = document.querySelector('#cout_du_travail_container')
+			if (data['salaire_super_brut'] == value)
+				container.setAttribute('hidden', true)
+			else container.removeAttribute('hidden')
 		}
 
 		if (typeof value == 'number') {
@@ -64,7 +66,10 @@ function showError(data) {
 }
 
 function setErrorVisible(shouldBeVisible) {
-	document.getElementById('error').hidden = ! shouldBeVisible
+	var element = document.getElementById('error')
+	if (! shouldBeVisible)
+		element.setAttribute('hidden', true)
+	else element.removeAttribute('hidden')
 }
 
 function reflectParameterChange(event) {

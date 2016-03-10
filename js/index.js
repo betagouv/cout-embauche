@@ -70,7 +70,11 @@ contrat_de_travail <select> value can trigger the display
 of the heures_remunerees_volume <input> field.
 */
 function handleTempsPartielSelect(contrat, next) {
-	document.querySelector('#temps_partiel_container').hidden = contrat === 'temps_plein'
+	var container = document.querySelector('#temps_partiel_container')
+	if (contrat === 'temps_plein')
+		container.setAttribute('hidden', true)
+	else container.removeAttribute('hidden')
+
 	next()
 }
 

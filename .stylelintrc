@@ -3,7 +3,7 @@
         "indentation": "tab",
         "string-quotes": "double",
         "function-url-quotes": "single",
-        "rule-trailing-semicolon": "always",
+        "declaration-block-trailing-semicolon": "always",
         "comment-whitespace-inside": "always",
         "no-missing-eof-newline": true,
         "max-empty-lines": 2,

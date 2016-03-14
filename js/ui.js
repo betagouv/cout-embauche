@@ -33,6 +33,20 @@ function display(data) {
 	})
 
 	setErrorVisible(false)
+	setComputationNode()
+}
+
+function setComputationNode() {
+	var noteHolder = document.querySelector('#computation-note'),
+		contratSelect = document.querySelector('[name="contrat_de_travail_duree"]'),
+		selectedContrat = contratSelect.options[contratSelect.selectedIndex]
+
+	noteHolder.textContent = ''
+
+	if (selectedContrat.value === 'cdd' && selectedContrat.dataset.booleanKey !== 'apprenti') {
+		noteHolder
+			.textContent = 'CDD > 6 mois. L\'indemnité de fin de contrat (10% du brut) est anticipée.'
+	}
 }
 
 function displayCommunesFetchResults(info, values) {

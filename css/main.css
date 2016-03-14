@@ -29,6 +29,10 @@ input[type="number"] {
 	max-width: 6em;
 }
 
+[name="heures_remunerees_volume"] {
+	max-width: 2.3em;
+}
+
 input.centered {
 	text-align: center;
 }

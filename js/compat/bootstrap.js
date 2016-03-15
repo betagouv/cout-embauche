@@ -1,4 +1,4 @@
-var MAPPING = {
+const MAPPING = {
 	'.SGMAPembauche form > div': 'form-inline',
 	'.SGMAPembauche input, .SGMAPembauche select': 'form-control',
 }

@@ -40,7 +40,7 @@ const serialize = form =>
 		.join('&')
 
 
-var BOOLEAN_PARAMETERS = {
+const BOOLEAN_PARAMETERS = {
 	employee: [ 'stagiaire', 'apprenti' ],
 }
 

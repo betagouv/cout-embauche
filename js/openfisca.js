@@ -59,11 +59,10 @@ const getAdditionalParameters = () =>
 *@returns	{String}	The source object as a query string (with no leading '?').
 *@private
 */
-function serializeObject(source) {
-	return Object.keys(source)
+const serializeObject = source =>
+	Object.keys(source)
 		.map(key => encodeURI(key + '=' + source[key]))
 		.join('&')
-}
 
 /** Creates an OpenFisca URL to the /formula endpoint, based on the current main form state and the given additional parameters.
 *
@@ -76,9 +75,7 @@ function buildOpenFiscaQueryURL(additionalParameters) {
 			serialize(form),
 			serializeObject(getAdditionalParameters()),
 			serializeObject(additionalParameters),
-		].filter(function(element) {
-			return element !== ''}
-		)
+		].filter(element => element !== '')
 
 	return form.action + '?' + queryStringBlocks.join('&')
 }

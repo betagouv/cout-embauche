@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	display: display,
 	showError: showError,
 	reflectParameterChange: reflectParameterChange,

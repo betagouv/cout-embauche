@@ -1,6 +1,6 @@
-var UI = require('./ui.js'),
-	OpenFisca = require('./openfisca.js'),
-	debounce = require('../lib/debounce.js')
+import UI from './ui.js'
+import OpenFisca from './openfisca.js'
+import debounce from '../lib/debounce.js'
 
 
 /** Handle events from the given form to update data.
@@ -85,4 +85,4 @@ var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only')
 for (var i = 0; i < jsNodes.length; i++)
 	jsNodes[i].className = jsNodes[i].className.replace('js-only', '')
 
-module.exports.OpenFisca = OpenFisca
+export {OpenFisca}

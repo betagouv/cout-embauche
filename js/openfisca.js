@@ -1,13 +1,12 @@
-var UI = require('./ui')
-
+import UI from './ui'
 
 var buffer
 
-module.exports = {
+export default {
 	buildURL: buildOpenFiscaQueryURL,
-	get: get,
-	update: update,
-	getLastResults: function() { return buffer },
+	get,
+	update,
+	getLastResults: () => buffer,
 }
 
 

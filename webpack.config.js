@@ -5,7 +5,7 @@ var webpack = require('webpack'),
 
 module.exports = {
 	entry: {
-		'cout-embauche-widget': './widget.js',
+		'cout-embauche-widget': [ 'babel-polyfill', './widget.js' ],
 		'bootstrap-compat': './js/compat/bootstrap.js',
 	},
 	output: {
@@ -19,7 +19,13 @@ module.exports = {
 		}, {
 			test: /\.html$/,
 			loader: 'html',
-		} ],
+		},
+		{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			loader: 'babel-loader',
+		},
+		],
 	},
 	postcss: [
 		autoprefixer({

@@ -12,7 +12,7 @@ function bindToForm(form) {
 
 	handleBasicFormChanges()
 
-	var handleFormChanges = function(event) {
+	const handleFormChanges = event => {
 		switch (event.target.name) {
 		case 'code_postal_entreprise':
 			handleCodePostalInput(event.target.value, handleBasicFormChanges)
@@ -78,11 +78,9 @@ function handleTempsPartielSelect(contrat, next) {
 	next()
 }
 
-bindToForm(document.querySelector('.SGMAPembauche form'))
+bindToForm(document.querySelector('.SGMAPembauche form'));
 
-var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only')
-
-for (var i = 0; i < jsNodes.length; i++)
-	jsNodes[i].className = jsNodes[i].className.replace('js-only', '')
+[ ...document.querySelectorAll('.SGMAPembauche .js-only') ]
+	.forEach(jsNode => jsNode.className = jsNode.className.replace('js-only', ''))
 
 export {OpenFisca}

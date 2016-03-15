@@ -10,55 +10,47 @@ export default {
 }
 
 
-function serialize(form) {
-	var result = [],
-		elements = form.elements
+const serialize = form =>
+	[ ...form.elements ]
+		.map(element => {
+			if (! element.name)
+				return null
 
-	Array.prototype.forEach.call(elements, function(element) {
-		if (! element.name)
-			return
+			var value = element.value
 
-		var value = element.value
+			if (element.type == 'number')
+				value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
 
-		if (element.type == 'number')
-			value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
+			/* We are simulating a recruitment,
+			hence requesting salaries with the new size of the entreprise */
+			if (element.name == 'effectif_entreprise')
+				value ++
 
-		/* We are simulating a recruitment,
-		hence requesting salaries with the new size of the entreprise */
-		if (element.name == 'effectif_entreprise')
-			value ++
+			/* In the case of a `temps partiel`, we are asking hours per week,
+			the most common way to reason about it. But OpenFisca needs hours per month */
+			if (element.name == 'heures_remunerees_volume') {
+				var dureeLegaleMensuelle = 151.66,
+					dureeLegaleHebdomadaire = 35
+				value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
+			}
 
-		/* In the case of a `temps partiel`, we are asking hours per week,
-		the most common way to reason about it. But OpenFisca needs hours per month */
-		if (element.name == 'heures_remunerees_volume') {
-			var dureeLegaleMensuelle = 151.66,
-				dureeLegaleHebdomadaire = 35
-			value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
-		}
-
-		result.push(encodeURI(element.name + '=' + value))
-	})
-
-	return result.join('&')
-}
+			return encodeURI(element.name + '=' + value)
+		})
+		.filter(value => value != null)
+		.join('&')
 
 
 var BOOLEAN_PARAMETERS = {
 	employee: [ 'stagiaire', 'apprenti' ],
 }
 
-function getAdditionalParameters() {
-	var result = {}
-
-	for (var provider in BOOLEAN_PARAMETERS) {
-		var key = document.querySelector('[data-provides="' + provider + '"]').value
-
+const getAdditionalParameters = () =>
+	Object.keys(BOOLEAN_PARAMETERS).reduce((memo, provider) => {
+		const key = document.querySelector('[data-provides="' + provider + '"]').value
 		if (BOOLEAN_PARAMETERS[provider].indexOf(key) > -1)
-			result[key] = true
-	}
-
-	return result
-}
+			memo[key] = true
+		return memo
+	}, {})
 
 /** Serializes a shallow object into a series of query string parameters.
 * A naive and shallow implementation.
@@ -68,14 +60,9 @@ function getAdditionalParameters() {
 *@private
 */
 function serializeObject(source) {
-	var result = []
-
-	for (var key in source) {
-		if (key && source.hasOwnProperty(key))
-			result.push(encodeURI(key + '=' + source[key]))
-	}
-
-	return result.join('&')
+	return Object.keys(source)
+		.map(key => encodeURI(key + '=' + source[key]))
+		.join('&')
 }
 
 /** Creates an OpenFisca URL to the /formula endpoint, based on the current main form state and the given additional parameters.

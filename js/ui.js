@@ -74,11 +74,11 @@ function setErrorVisible(shouldBeVisible) {
 
 function reflectParameterChange(event) {
 	if (event.target.attributes['data-sets']) {
-		var modifier = event.target.attributes['data-sets'].value.split('@')	// example: '#salaire@name'; first part is selector, second is attribute to set
+		var modifier = event.target.attributes['data-sets'].value.split('@');	// example: '#salaire@name'; first part is selector, second is attribute to set
 
-		Array.prototype.forEach.call(document.querySelectorAll(modifier[0]), function(elementToUpdate) {
-			elementToUpdate[modifier[1]] = event.target.value
-		})
+		[ ...document.querySelectorAll(modifier[0]) ]
+			.forEach(elementToUpdate => elementToUpdate[modifier[1]] = event.target.value)
+
 	} else {
 		var data = {},
 			name = event.target.name || event.target.attributes['data-provides'].value

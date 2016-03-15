@@ -46,5 +46,8 @@ module.exports = {
 			filename: 'bootstrap-compat.js',
 			async: true,
 		}),
+		new webpack.ProvidePlugin({
+			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+		}),
 	],
 }

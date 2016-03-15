@@ -91,22 +91,21 @@ function get(additionalParameters, callback) {
 		additionalParameters = null
 	}
 
-	var request = new XMLHttpRequest()
+	const url = buildOpenFiscaQueryURL(additionalParameters)
 
-	request.onload = function openFiscaOnloadHandler() {
-		try {
-			var data = JSON.parse(request.responseText)
-		} catch (err) {
-			callback(err)
-		}
-
-		callback(request.status != 200 && request, data.values, data)
-	}
-
-	request.onerror = callback.bind(null, request)
-
-	request.open('GET', buildOpenFiscaQueryURL(additionalParameters))
-	request.send()
+	fetch(url)
+		.then( response => {
+			if (!response.ok) {
+				let error = new Error(response.statusText)
+				error.response = response
+				throw error
+			}
+			return response.json()
+		})
+		.then( json => callback(false, json.values, json))
+		.catch( error => {
+			callback(error)
+		})
 }
 
 /** Updates the displayed values.

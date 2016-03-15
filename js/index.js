@@ -37,32 +37,26 @@ function handleCodePostalInput(codePostal, next) {
 	if (codePostal.length !== 5)
 		return UI.displayCommunesFetchResults()
 
-	var request = new XMLHttpRequest()
-	request.onload = function() {
-		try {
-			if (request.status !== 200)	throw new Error(request.responseText)
-
-			var data = JSON.parse(request.responseText)
-			if (data.length === 0) {
-				UI.displayCommunesFetchResults('Aucune commune correspondante trouvée')
-				return
+	fetch(`https://apicarto.sgmap.fr/codes-postaux/communes/${codePostal}`)
+		.then(response => {
+			if (!response.ok) {
+				const error = new Error(response.statusText)
+				error.response = response
+				throw error
 			}
-			UI.displayCommunesFetchResults('', data)
-		} catch (err) {
+			return response.json()
+		})
+		.then(json => {
+			if (json.length === 0)
+				UI.displayCommunesFetchResults('Aucune commune correspondante trouvée')
+			else
+				UI.displayCommunesFetchResults('', json)
+		})
+		.catch(error => {
 			UI.displayCommunesFetchResults('Le code postal n\'a pas pu être pris en compte')
-			console.error(err)
-		} finally {
-			next()
-		}
-	}
-
-	request.onerror = function() {
-		UI.displayCommunesFetchResults('Le code postal n\'a pas pu être pris en compte (réseau faible ?)')
-		next()
-	}
-
-	request.open('GET', 'https://apicarto.sgmap.fr/codes-postaux/communes/' + codePostal)
-	request.send()
+			console.error(error)
+		})
+		.then(next)
 }
 
 /*

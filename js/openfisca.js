@@ -1,56 +1,9 @@
 import UI from './ui'
 
-var buffer
-
 export default {
 	buildURL: buildOpenFiscaQueryURL,
-	get,
-	update,
-	getLastResults: () => buffer,
+	get: get,
 }
-
-
-const serialize = form =>
-	[ ...form.elements ]
-		.map(element => {
-			if (! element.name)
-				return null
-
-			let value = element.value
-
-			if (element.type == 'number')
-				value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
-
-			/* We are simulating a recruitment,
-			hence requesting salaries with the new size of the entreprise */
-			if (element.name == 'effectif_entreprise')
-				value ++
-
-			/* In the case of a `temps partiel`, we are asking hours per week,
-			the most common way to reason about it. But OpenFisca needs hours per month */
-			if (element.name == 'heures_remunerees_volume') {
-				const dureeLegaleMensuelle = 151.66,
-					dureeLegaleHebdomadaire = 35
-				value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
-			}
-
-			return encodeURI(element.name + '=' + value)
-		})
-		.filter(value => value != null)
-		.join('&')
-
-
-const BOOLEAN_PARAMETERS = {
-	employee: [ 'stagiaire', 'apprenti' ],
-}
-
-const getAdditionalParameters = () =>
-	Object.keys(BOOLEAN_PARAMETERS).reduce((memo, provider) => {
-		const key = document.querySelector('[data-provides="' + provider + '"]').value
-		if (BOOLEAN_PARAMETERS[provider].indexOf(key) > -1)
-			memo[key] = true
-		return memo
-	}, {})
 
 /** Serializes a shallow object into a series of query string parameters.
 * A naive and shallow implementation.
@@ -64,34 +17,19 @@ const serializeObject = source =>
 		.map(key => encodeURI(key + '=' + source[key]))
 		.join('&')
 
-/** Creates an OpenFisca URL to the /formula endpoint, based on the current main form state and the given additional parameters.
-*
-*@param		{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
-*@returns	{String}	The URL for the OpenFisca query.
-*/
-function buildOpenFiscaQueryURL(additionalParameters) {
-	const form = document.querySelector('#input form'),
-		queryStringBlocks = [
-			serialize(form),
-			serializeObject(getAdditionalParameters()),
-			serializeObject(additionalParameters),
-		].filter(element => element !== '')
 
-	return form.action + '?' + queryStringBlocks.join('&')
-}
-
-/** Computes values based on the current main form state and the given additional parameters.
+/** Helper to call the OpenFisca Web API's /formula endpoint
 *
-*@param	{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
+*@param	{Object}	[input]	An object whose properties will be appended to the URL as query-string parameters representing OpenFisca input variable ids and their values.
+*@param	{String}	[baseUrl]	Url pointing to an instance of the OpenFisca Web API and containing the desired output variables
 *@param	{Function<[XMLHttpRequest|SyntaxError], Object, Object>}	callback	A callback that will be called with three parameters: an optional error if something went wrong, the OpenFisca-computed values, and the full OpenFisca response if you want everything it sends back.
 */
-function get(additionalParameters, callback) {
-	if (! callback) {
-		callback = additionalParameters
-		additionalParameters = null
-	}
+function request(input, baseUrl, callback) {
 
-	const url = buildOpenFiscaQueryURL(additionalParameters)
+	const url = baseUrl + '?' + serializeObject(input)
+
+	if (!callback)
+		return url
 
 	fetch(url)
 		.then( response => {
@@ -108,24 +46,29 @@ function get(additionalParameters, callback) {
 		})
 }
 
-/** Updates the displayed values.
+/** API function
+
+Computes values based on the current main form state and the given additional parameters.
+*
+*@param	{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
+*@param	{Function<[XMLHttpRequest|SyntaxError], Object, Object>}	callback	A callback that will be called with three parameters: an optional error if something went wrong, the OpenFisca-computed values, and the full OpenFisca response if you want everything it sends back.
 */
-function update() {
-	const today = new Date(),
-		mm = ('0' + (today.getMonth() + 1)).slice(-2)
+function get(additionalParameters, callback) {
+	// Base url containing the list of desired output variables
+	var baseUrl = UI.getOutputVariables()
+	var input = UI.collectInput()
 
-	get({
-		contrat_de_travail_debut: today.getFullYear() + '-' + mm,
-	}, function(error, values, response) {
-		if (error) {
-			if (response && response.error)
-				return UI.showError(response.error)
+	Object.assign(input, additionalParameters) // merge parameters
 
-			UI.showError({ message: error })
-			throw error
-		}
-
-		buffer = values
-		UI.display(values)
-	})
+	return request(input, baseUrl, callback)
 }
+
+
+/** API backward compatibility function
+
+Creates an OpenFisca URL to the /formula endpoint, based on the current main form state and the given additional parameters.
+*
+*@param		{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
+*@returns	{String}	The URL for the OpenFisca query.
+*/
+const buildOpenFiscaQueryURL = (additionalParameters) => get(additionalParameters)

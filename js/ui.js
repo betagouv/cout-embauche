@@ -1,9 +1,71 @@
 export default {
-	display: display,
-	showError: showError,
-	reflectParameterChange: reflectParameterChange,
-	displayCommunesFetchResults: displayCommunesFetchResults,
+	display,
+	showError,
+	reflectParameterChange,
+	displayCommunesFetchResults,
+	getForm,
+	collectInput,
+	getOutputVariables,
 }
+
+const getForm = () => document.querySelector('.SGMAPembauche form')
+
+const getOutputVariables = () => getForm().action
+
+function collectInput(form) {
+	let input = collectFormFields(form)
+
+	Object.assign(input, addBooleanParameters())
+
+	// Additional parameters
+	var today = new Date()
+	input['contrat_de_travail_debut'] = today.getFullYear() + '-' + (today.getMonth() + 1)
+
+	return input
+}
+
+// Collect form fields that will be the base for the API input
+const collectFormFields = (form) =>
+		[ ...form.elements ].reduce(
+			(memo, element) => {
+				if (! element.name)
+					return memo
+
+				var value = element.value
+
+				if (element.type == 'number')
+					value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
+
+				/* We are simulating a recruitment,
+				hence requesting salaries with the new size of the entreprise */
+				if (element.name == 'effectif_entreprise')
+					value ++
+
+				/* In the case of a `temps partiel`, we are asking hours per week,
+				the most common way to reason about it. But OpenFisca needs hours per month */
+				if (element.name == 'heures_remunerees_volume') {
+					var dureeLegaleMensuelle = 151.66,
+						dureeLegaleHebdomadaire = 35
+					value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
+				}
+				if (value != null)
+					memo[element.name] = value
+				return memo
+			}, {})
+
+
+const BOOLEAN_PARAMETERS = {
+	employee: [ 'stagiaire', 'apprenti' ],
+}
+
+
+const addBooleanParameters = () =>
+	Object.keys(BOOLEAN_PARAMETERS).reduce((memo, provider) => {
+		const key = document.querySelector('[data-provides="' + provider + '"]').value
+		if (BOOLEAN_PARAMETERS[provider].indexOf(key) > -1)
+			memo[key] = true
+		return memo
+	}, {})
 
 
 function display(data) {
@@ -54,7 +116,6 @@ function displayCommunesFetchResults(info, values) {
 		depcomElement.appendChild(optionElement)
 	})
 	depcomElement.removeAttribute('hidden')
-
 }
 
 

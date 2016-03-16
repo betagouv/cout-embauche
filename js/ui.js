@@ -1,15 +1,5 @@
 import transForms from './transForms.js'
 
-export default {
-	display,
-	showError,
-	reflectParameterChange,
-	displayCommunesFetchResults,
-	getForm,
-	collectInput,
-	getOutputVariables,
-}
-
 const getForm = () => document.querySelector('.SGMAPembauche form')
 
 const getOutputVariables = () => getForm().action
@@ -142,4 +132,14 @@ function reflectParameterChange(event) {
 
 		display(data)
 	}
+}
+
+export default {
+	display,
+	showError,
+	reflectParameterChange,
+	displayCommunesFetchResults,
+	getForm,
+	collectInput,
+	getOutputVariables,
 }

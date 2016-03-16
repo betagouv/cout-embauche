@@ -1,10 +1,5 @@
 import UI from './ui'
 
-export default {
-	buildURL: buildOpenFiscaQueryURL,
-	get: get,
-}
-
 /** Serializes a shallow object into a series of query string parameters.
 * A naive and shallow implementation.
 *
@@ -72,3 +67,9 @@ Creates an OpenFisca URL to the /formula endpoint, based on the current main for
 *@returns	{String}	The URL for the OpenFisca query.
 */
 const buildOpenFiscaQueryURL = (additionalParameters) => get(additionalParameters)
+
+export default {
+	buildURL: buildOpenFiscaQueryURL,
+	get: get,
+	request: request,
+}

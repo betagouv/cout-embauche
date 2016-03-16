@@ -1,3 +1,5 @@
+import transForms from './transForms.js'
+
 export default {
 	display,
 	showError,
@@ -31,23 +33,15 @@ const collectFormFields = (form) =>
 				if (! element.name)
 					return memo
 
-				var value = element.value
-
-				if (element.type == 'number')
-					value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
-
-				/* We are simulating a recruitment,
-				hence requesting salaries with the new size of the entreprise */
-				if (element.name == 'effectif_entreprise')
-					value ++
-
-				/* In the case of a `temps partiel`, we are asking hours per week,
-				the most common way to reason about it. But OpenFisca needs hours per month */
-				if (element.name == 'heures_remunerees_volume') {
-					var dureeLegaleMensuelle = 151.66,
-						dureeLegaleHebdomadaire = 35
-					value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
-				}
+				/* 	Some of the form values must be transformed
+						before being sent through the request */
+				const value = transForms.reduce(
+					(value, transformer) => {
+						const [ test, transformed ] = transformer(element, value)
+						return test ? transformed : value
+					},
+					element.value
+				)
 				if (value != null)
 					memo[element.name] = value
 				return memo

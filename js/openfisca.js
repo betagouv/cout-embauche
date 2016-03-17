@@ -16,7 +16,7 @@ const serialize = form =>
 			if (! element.name)
 				return null
 
-			var value = element.value
+			let value = element.value
 
 			if (element.type == 'number')
 				value = Number(element.value.replace(',', '.'))	// IE doesn't support locale number formats
@@ -29,7 +29,7 @@ const serialize = form =>
 			/* In the case of a `temps partiel`, we are asking hours per week,
 			the most common way to reason about it. But OpenFisca needs hours per month */
 			if (element.name == 'heures_remunerees_volume') {
-				var dureeLegaleMensuelle = 151.66,
+				const dureeLegaleMensuelle = 151.66,
 					dureeLegaleHebdomadaire = 35
 				value = value * (dureeLegaleMensuelle / dureeLegaleHebdomadaire)
 			}
@@ -70,7 +70,7 @@ const serializeObject = source =>
 *@returns	{String}	The URL for the OpenFisca query.
 */
 function buildOpenFiscaQueryURL(additionalParameters) {
-	var form = document.querySelector('#input form'),
+	const form = document.querySelector('#input form'),
 		queryStringBlocks = [
 			serialize(form),
 			serializeObject(getAdditionalParameters()),
@@ -111,7 +111,7 @@ function get(additionalParameters, callback) {
 /** Updates the displayed values.
 */
 function update() {
-	var today = new Date(),
+	const today = new Date(),
 		mm = ('0' + (today.getMonth() + 1)).slice(-2)
 
 	get({

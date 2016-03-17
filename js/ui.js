@@ -8,8 +8,8 @@ export default {
 
 function display(data) {
 	Object.keys(data).forEach(function(toSet) {
-		var target = document.querySelector('[data-source="' + toSet + '"]'),
-			value  = data[toSet]
+		const target = document.querySelector('[data-source="' + toSet + '"]')
+		let value  = data[toSet]
 
 		if (! target)
 			return
@@ -17,7 +17,7 @@ function display(data) {
 		/* Only display the second result text, "cout du travail",
 		if it is different from "salaire super brut" */
 		if (toSet == 'cout_du_travail') {
-			var container = document.querySelector('#cout_du_travail_container')
+			const container = document.querySelector('#cout_du_travail_container')
 			if (data['salaire_super_brut'] == value)
 				container.setAttribute('hidden', true)
 			else container.removeAttribute('hidden')
@@ -37,18 +37,18 @@ function display(data) {
 
 function displayCommunesFetchResults(info, values) {
 	// Inform the user
-	var label = document.querySelector('label[for="depcom_entreprise"]')
+	const label = document.querySelector('label[for="depcom_entreprise"]')
 	label.textContent = info || ''
 
 	// Clear the <select>
-	var depcomElement = document.querySelector('#depcom_entreprise')
+	const depcomElement = document.querySelector('#depcom_entreprise')
 	depcomElement.innerHTML = ''
 
 	// Update the commune <select> options
 	if (!values) return depcomElement.setAttribute('hidden', '')
 
 	values.forEach(function(value) {
-		var optionElement = document.createElement('option')
+		const optionElement = document.createElement('option')
 		optionElement.value = value.codeInsee
 		optionElement.textContent = value.nomCommune
 		depcomElement.appendChild(optionElement)
@@ -66,7 +66,7 @@ function showError(data) {
 }
 
 function setErrorVisible(shouldBeVisible) {
-	var element = document.getElementById('error')
+	const element = document.getElementById('error')
 	if (! shouldBeVisible)
 		element.setAttribute('hidden', true)
 	else element.removeAttribute('hidden')
@@ -74,13 +74,13 @@ function setErrorVisible(shouldBeVisible) {
 
 function reflectParameterChange(event) {
 	if (event.target.attributes['data-sets']) {
-		var modifier = event.target.attributes['data-sets'].value.split('@');	// example: '#salaire@name'; first part is selector, second is attribute to set
+		const modifier = event.target.attributes['data-sets'].value.split('@');	// example: '#salaire@name'; first part is selector, second is attribute to set
 
 		[ ...document.querySelectorAll(modifier[0]) ]
 			.forEach(elementToUpdate => elementToUpdate[modifier[1]] = event.target.value)
 
 	} else {
-		var data = {},
+		const data = {},
 			name = event.target.name || event.target.attributes['data-provides'].value
 
 		data[name] = event.target.value

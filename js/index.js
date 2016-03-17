@@ -8,7 +8,7 @@ import debounce from '../lib/debounce.js'
 function bindToForm(form) {
 	form.addEventListener('change', UI.reflectParameterChange)
 
-	var handleBasicFormChanges = debounce(OpenFisca.update.bind(form), 300)
+	const handleBasicFormChanges = debounce(OpenFisca.update.bind(form), 300)
 
 	handleBasicFormChanges()
 
@@ -64,7 +64,7 @@ contrat_de_travail <select> value can trigger the display
 of the heures_remunerees_volume <input> field.
 */
 function handleTempsPartielSelect(contrat, next) {
-	var container = document.querySelector('#temps_partiel_container')
+	const container = document.querySelector('#temps_partiel_container')
 	if (contrat === 'temps_plein')
 		container.setAttribute('hidden', true)
 	else container.removeAttribute('hidden')

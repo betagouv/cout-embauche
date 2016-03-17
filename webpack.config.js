@@ -5,7 +5,7 @@ var webpack = require('webpack'),
 
 module.exports = {
 	entry: {
-		'cout-embauche-widget': [ 'babel-polyfill', './widget.js' ],
+		'cout-embauche-widget': './widget.js',
 		'bootstrap-compat': './js/compat/bootstrap.js',
 	},
 	output: {

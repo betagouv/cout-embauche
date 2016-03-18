@@ -1,5 +1,5 @@
 // IE doesn't support locale number formats
-const decimalMark = (element, value) => [
+const transformDecimalMark = (element, value) => [
 	element.type == 'number',
 	Number(value.replace(',', '.')),
 ]
@@ -24,7 +24,7 @@ const transformQuotite = (element, value) => [
 
 
 export default [
-	decimalMark,
+	transformDecimalMark,
 	incrementEffectif,
 	transformQuotite,
 ]

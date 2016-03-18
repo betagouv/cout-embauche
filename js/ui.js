@@ -5,7 +5,7 @@ const getForm = () => document.querySelector('.SGMAPembauche form')
 const getOutputVariables = () => getForm().action
 
 function collectInput(form) {
-	let input = collectFormFields(form)
+	const input = collectFormFields(form)
 
 	Object.assign(input, addBooleanParameters())
 

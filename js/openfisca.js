@@ -29,7 +29,7 @@ function request(input, baseUrl, callback) {
 	fetch(url)
 		.then( response => {
 			if (!response.ok) {
-				let error = new Error(response.statusText)
+				const error = new Error(response.statusText)
 				error.response = response
 				throw error
 			}
@@ -50,26 +50,16 @@ Computes values based on the current main form state and the given additional pa
 */
 function get(additionalParameters, callback) {
 	// Base url containing the list of desired output variables
-	var baseUrl = UI.getOutputVariables()
-	var input = UI.collectInput()
+	const baseUrl = UI.getOutputVariables(),
+		input = UI.collectInput()
 
 	Object.assign(input, additionalParameters) // merge parameters
 
 	return request(input, baseUrl, callback)
 }
 
-
-/** API backward compatibility function
-
-Creates an OpenFisca URL to the /formula endpoint, based on the current main form state and the given additional parameters.
-*
-*@param		{Object}	[additionalParameters]	An object whose properties will be appended to the URL as query-string parameters.
-*@returns	{String}	The URL for the OpenFisca query.
-*/
-const buildOpenFiscaQueryURL = (additionalParameters) => get(additionalParameters)
-
 export default {
-	buildURL: buildOpenFiscaQueryURL,
+	buildURL: get,
 	get: get,
 	request: request,
 }

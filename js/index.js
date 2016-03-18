@@ -3,7 +3,7 @@ import OpenFisca from './openfisca.js'
 import debounce from '../lib/debounce.js'
 
 //Store the last computation
-var buffer = null
+let buffer
 
 /** Handle events from the given form to update data.
 */
@@ -30,12 +30,12 @@ function bindToForm(form) {
 	form.addEventListener('keyup', handleFormChanges)
 }
 
-const openFiscaRequestBuilder = (form) => () => {
-	// Base url containing the list of desired output variables
-	var baseUrl = UI.getOutputVariables()
-
-	OpenFisca.request(UI.collectInput(form), baseUrl, handleAPIResponse)
-}
+const openFiscaRequestBuilder = (form) => () =>
+	OpenFisca.request(
+		UI.collectInput(form),
+		UI.getOutputVariables(), // Base url containing the list of desired output variables
+		handleAPIResponse
+	)
 
 function handleAPIResponse(error, values, response) {
 	if (error) {

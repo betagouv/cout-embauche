@@ -12,18 +12,18 @@ function bindToForm(form) {
 
 	const handleBasicFormChanges = debounce(openFiscaRequestBuilder(form), 300)
 
+	// Trigger the first request
 	handleBasicFormChanges()
 
 	const handleFormChanges = event => {
-		switch (event.target.name) {
-		case 'code_postal_entreprise':
-			handleCodePostalInput(event.target.value, handleBasicFormChanges)
-			break
-		case 'contrat_de_travail':
-			handleTempsPartielSelect(event.target.value, handleBasicFormChanges)
-			break
-		default: handleBasicFormChanges()
-		}
+		const {name, id} = event.target
+		if (name === 'code_postal_entreprise')
+			return handleCodePostalInput(event.target.value, handleBasicFormChanges)
+		if (name === 'contrat_de_travail')
+			return handleTempsPartielSelect(event.target.value, handleBasicFormChanges)
+		if (id === 'select-salaire-entree')
+			return handleSalaireSelect(event.target.value, handleBasicFormChanges)
+		return handleBasicFormChanges()
 	}
 
 	form.addEventListener('change', handleFormChanges)
@@ -90,6 +90,21 @@ function handleTempsPartielSelect(contrat, next) {
 	if (contrat === 'temps_plein')
 		container.setAttribute('hidden', true)
 	else container.removeAttribute('hidden')
+
+	next()
+}
+
+function handleSalaireSelect(selectedSalaire, next) {
+	const outputSalaireValue = document.querySelector('#salaire-calcule'),
+		outputSalaireType = document.querySelector('#type-salaire-calcule'),
+		correspondence = {
+			'salaire_de_base': [ 'salaire_net_a_payer', 'net' ],
+			'salaire_net_a_payer': [ 'salaire_de_base', 'brut' ],
+		},
+		[ source, type ] = correspondence[selectedSalaire]
+
+	outputSalaireValue.dataset.source = source
+	outputSalaireType.textContent = type
 
 	next()
 }

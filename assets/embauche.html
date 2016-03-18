@@ -32,7 +32,7 @@
 					<span class="input-help">Rémunération totale<br>
 						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.
 					</span>
-					<select id="select-salaire-entree">
+					<select id="select-salaire-entree" data-sets="#salaire@name">
 						<option value="salaire_de_base" selected>brut</option>
 						<option value="salaire_net_a_payer">net</option>
 					</select>
@@ -110,7 +110,7 @@
 		<p>
 			Mon <span data-source="employee">salarié·e</span>
 			touchera
-			<span id="salaire-calcule" data-source="salaire_net_a_payer" data-round title="Salaire net">
+			<span id="salaire-calcule" data-source="salaire_net_a_payer" data-add-source-to-action data-round title="Salaire net">
 				…
 			</span>&nbsp;€
 			&nbsp;<span id="type-salaire-calcule">net</span>

@@ -10,7 +10,7 @@ let buffer
 function bindToForm(form) {
 	form.addEventListener('change', UI.reflectParameterChange)
 
-	const handleBasicFormChanges = debounce(openFiscaRequestBuilder(form), 300)
+	const handleBasicFormChanges = debounce(openFiscaRequestBuilder(form), 500)
 
 	// Trigger the first request
 	handleBasicFormChanges()

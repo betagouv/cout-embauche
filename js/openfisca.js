@@ -27,7 +27,7 @@ function request(input, baseUrl, callback) {
 		return url
 
 	fetch(url)
-		.then( response => {
+		.then(response => {
 			if (!response.ok) {
 				const error = new Error(response.statusText)
 				error.response = response
@@ -35,10 +35,8 @@ function request(input, baseUrl, callback) {
 			}
 			return response.json()
 		})
-		.then( json => callback(false, json.values, json))
-		.catch( error => {
-			callback(error)
-		})
+		.then(json => callback(false, json.values, json))
+		.catch(callback)
 }
 
 /** API function

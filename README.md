@@ -1,10 +1,10 @@
-A graphical demonstration of the Paie API.
+A widget to estimate the cost of hiring in France
 
-> Un démonstrateur graphique de l'API Paie, intégrable en une ligne de code.
+> Module Web d'estimation du coût d'une embauche en France.
 
 **[Online demo](http://sgmap.github.io/cout-embauche/)**.
 
-This is a drop-in widget to quickly test the benefits of integrating the Paie API in your product. If you want to create a new, specific GUI, have a look at the [Paie API documentation](http://embauche.sgmap.fr).
+If you want to create your own specific interface, have a look at the [API documentation](http://embauche.sgmap.fr/api-cotisations-sociales).
 
 
 Usage
@@ -13,22 +13,17 @@ Usage
 Include this line where you want the widget to appear in your page:
 
 ```html
-<script src="https://rawgit.com/sgmap/cout-embauche/gh-pages/dist/cout-embauche-widget.js"></script>
-```
+ <script src="http://embauche.sgmap.fr/modules/pointe/cout-embauche-widget.js"></script>
+ ```
 
-> Reminder: this widget is in early beta and may be updated at any time. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
->
-> There are no uptime guarantees on the hosting of this widget.
->
-> A versioning scheme will be made available as stabilisation occurs.
-
+> Reminder: this widget is in beta and may be updated at any time. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
 
 ### Using with Bootstrap
 
 If you use [Twitter Bootstrap version 2 CSS](http://getbootstrap.com/2.3.2/), an integration is provided. Simply add the following line after the inclusion of the widget:
 
 ```html
-<script async src="https://rawgit.com/sgmap/cout-embauche/gh-pages/dist/bootstrap-compat.js"></script>
+<script async src="http://embauche.sgmap.fr/modules/pointe/bootstrap-compat.js"></script>
 ```
 
 > If you use version [Bootstrap version 3](http://getbootstrap.com), no compatibility line should be required.  
@@ -57,7 +52,7 @@ Browser compatibility
 - Opera < 11.5.
 
 
-API
+JS API
 ---
 
 The JS API is exposed in `window.Embauche`.

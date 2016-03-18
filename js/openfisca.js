@@ -21,12 +21,15 @@ const serializeObject = source =>
 */
 function request(input, baseUrl, callback) {
 
-	const url = baseUrl + '?' + serializeObject(input)
+	const url = baseUrl + '?' + serializeObject(input),
+		headers = input['salaire_net_a_payer'] ? {
+			'x-OpenFisca-Extensions': 'de_net_a_brut',
+		} : {}
 
 	if (!callback)
 		return url
 
-	fetch(url)
+	fetch(url, {headers})
 		.then(response => {
 			if (!response.ok) {
 				const error = new Error(response.statusText)

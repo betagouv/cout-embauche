@@ -23,6 +23,8 @@ rules:
  space-before-blocks: 2
  no-console: 1
 
+parser: babel-eslint
+
 env:
  browser: true
  commonjs: true

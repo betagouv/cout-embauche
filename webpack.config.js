@@ -19,7 +19,13 @@ module.exports = {
 		}, {
 			test: /\.html$/,
 			loader: 'html',
-		} ],
+		},
+		{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			loader: 'babel-loader',
+		},
+		],
 	},
 	postcss: [
 		autoprefixer({
@@ -39,6 +45,9 @@ module.exports = {
 			name: 'bootstrap-compat',
 			filename: 'bootstrap-compat.js',
 			async: true,
+		}),
+		new webpack.ProvidePlugin({
+			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
 		}),
 	],
 }

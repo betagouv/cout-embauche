@@ -1,6 +1,6 @@
-var UI = require('./ui.js'),
-	OpenFisca = require('./openfisca.js'),
-	debounce = require('../lib/debounce.js')
+import UI from './ui.js'
+import OpenFisca from './openfisca.js'
+import debounce from '../lib/debounce.js'
 
 
 /** Handle events from the given form to update data.
@@ -8,11 +8,11 @@ var UI = require('./ui.js'),
 function bindToForm(form) {
 	form.addEventListener('change', UI.reflectParameterChange)
 
-	var handleBasicFormChanges = debounce(OpenFisca.update.bind(form), 300)
+	const handleBasicFormChanges = debounce(OpenFisca.update.bind(form), 300)
 
 	handleBasicFormChanges()
 
-	var handleFormChanges = function(event) {
+	const handleFormChanges = event => {
 		switch (event.target.name) {
 		case 'code_postal_entreprise':
 			handleCodePostalInput(event.target.value, handleBasicFormChanges)
@@ -37,32 +37,26 @@ function handleCodePostalInput(codePostal, next) {
 	if (codePostal.length !== 5)
 		return UI.displayCommunesFetchResults()
 
-	var request = new XMLHttpRequest()
-	request.onload = function() {
-		try {
-			if (request.status !== 200)	throw new Error(request.responseText)
-
-			var data = JSON.parse(request.responseText)
-			if (data.length === 0) {
-				UI.displayCommunesFetchResults('Aucune commune correspondante trouvée')
-				return
+	fetch(`https://apicarto.sgmap.fr/codes-postaux/communes/${codePostal}`)
+		.then(response => {
+			if (!response.ok) {
+				const error = new Error(response.statusText)
+				error.response = response
+				throw error
 			}
-			UI.displayCommunesFetchResults('', data)
-		} catch (err) {
+			return response.json()
+		})
+		.then(json => {
+			if (json.length === 0)
+				UI.displayCommunesFetchResults('Aucune commune correspondante trouvée')
+			else
+				UI.displayCommunesFetchResults('', json)
+		})
+		.catch(error => {
 			UI.displayCommunesFetchResults('Le code postal n\'a pas pu être pris en compte')
-			console.error(err)
-		} finally {
-			next()
-		}
-	}
-
-	request.onerror = function() {
-		UI.displayCommunesFetchResults('Le code postal n\'a pas pu être pris en compte (réseau faible ?)')
-		next()
-	}
-
-	request.open('GET', 'https://apicarto.sgmap.fr/codes-postaux/communes/' + codePostal)
-	request.send()
+			console.error(error)
+		})
+		.then(next)
 }
 
 /*
@@ -70,7 +64,7 @@ contrat_de_travail <select> value can trigger the display
 of the heures_remunerees_volume <input> field.
 */
 function handleTempsPartielSelect(contrat, next) {
-	var container = document.querySelector('#temps_partiel_container')
+	const container = document.querySelector('#temps_partiel_container')
 	if (contrat === 'temps_plein')
 		container.setAttribute('hidden', true)
 	else container.removeAttribute('hidden')
@@ -78,11 +72,9 @@ function handleTempsPartielSelect(contrat, next) {
 	next()
 }
 
-bindToForm(document.querySelector('.SGMAPembauche form'))
+bindToForm(document.querySelector('.SGMAPembauche form'));
 
-var jsNodes = document.querySelectorAll('.SGMAPembauche .js-only')
+[ ...document.querySelectorAll('.SGMAPembauche .js-only') ]
+	.forEach(jsNode => jsNode.className = jsNode.className.replace('js-only', ''))
 
-for (var i = 0; i < jsNodes.length; i++)
-	jsNodes[i].className = jsNodes[i].className.replace('js-only', '')
-
-module.exports.OpenFisca = OpenFisca
+export {OpenFisca}

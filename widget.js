@@ -1,11 +1,14 @@
-require('./css/reset.css')
-require('./css/main.css')
-require('./css/affiliation.css')
-require('./css/details.css')
-require('./css/tooltip.css')
+import './css/reset.css'
+import './css/main.css'
+import './css/affiliation.css'
+import './css/details.css'
+import './css/tooltip.css'
 
-document.write(require('./assets/embauche.html'))
+import html from './assets/embauche.html'
+document.write(html)
+
+require('core-js/fn/promise')
 
 require('expose?Embauche!./js/index')
 
-require('./lib/details.polyfill.js')
+import './lib/details.polyfill.js'

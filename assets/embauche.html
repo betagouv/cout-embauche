@@ -30,9 +30,14 @@
 						&nbsp;€
 					</label>
 					<span class="input-help">Rémunération totale<br>
-						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.</span>
+						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.
+					</span>
+					<select id="select-salaire-entree">
+						<option value="salaire_de_base" selected>brut</option>
+						<option value="salaire_net_a_payer">net</option>
+					</select>
 					&nbsp;
-					<span>brut par mois</span>
+					<span>par mois</span>
 				</fieldset>
 				<br>
 				<label>à temps
@@ -104,7 +109,11 @@
 		</p>
 		<p>
 			Mon <span data-source="employee">salarié·e</span>
-			touchera <span data-source="salaire_net_a_payer" data-round title="Salaire net">…</span>&nbsp;€
+			touchera
+			<span id="salaire-calcule" data-source="salaire_net_a_payer" data-round title="Salaire net">
+				…
+			</span>&nbsp;€
+			&nbsp;<span id="type-salaire-calcule">net</span>
 			par <span data-source="period">mois</span>.
 		</p>
 	</section>
@@ -199,8 +208,8 @@
 				<td><span data-source="financement_organisations_syndicales"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-			    <th>Prévoyance obligatoire cadre</th>
-			    <td><span data-source="prevoyance_obligatoire_cadre"></span>&nbsp;€</td>
+				<th>Prévoyance obligatoire cadre</th>
+				<td><span data-source="prevoyance_obligatoire_cadre"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Versement transport</th>

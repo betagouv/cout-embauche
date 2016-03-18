@@ -8,7 +8,7 @@ const decimalMark = (element, value) => [
 hence requesting salaries with the new size of the entreprise */
 const incrementEffectif = (element, value) => [
 	element.name == 'effectif_entreprise',
-	value ++,
+	value + 1,
 ]
 
 const dureeLegaleMensuelle = 151.66,

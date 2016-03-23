@@ -49,5 +49,8 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
 		}),
+		new webpack.DefinePlugin({
+			VERSION_SIMULATEUR: JSON.stringify(require('./package.json').version),
+		}),
 	],
 }

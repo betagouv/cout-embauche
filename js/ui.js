@@ -3,6 +3,7 @@ export default {
 	showError: showError,
 	reflectParameterChange: reflectParameterChange,
 	displayCommunesFetchResults: displayCommunesFetchResults,
+	hideLogosIfStale,
 }
 
 
@@ -87,4 +88,20 @@ function reflectParameterChange(event) {
 
 		display(data)
 	}
+}
+
+function hideLogosIfStale() {
+
+	fetch('https://api.github.com/repos/sgmap/cout-embauche/releases/latest')
+		.then(response => {
+			if (!response.ok)
+				console.log('not ok')
+			return response.json()
+		})
+		.then(json => {
+			const test = json.tag_name + ' VS ' + 'v' + window.VERSION_SIMULATEUR
+			if (test)
+				document.querySelector('#affiliation').hidden = true
+		})
+		.catch(error => console.log('error'))
 }

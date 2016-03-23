@@ -2,7 +2,6 @@ import UI from './ui.js'
 import OpenFisca from './openfisca.js'
 import debounce from '../lib/debounce.js'
 
-
 /** Handle events from the given form to update data.
 */
 function bindToForm(form) {
@@ -77,4 +76,5 @@ bindToForm(document.querySelector('.SGMAPembauche form'));
 [ ...document.querySelectorAll('.SGMAPembauche .js-only') ]
 	.forEach(jsNode => jsNode.className = jsNode.className.replace('js-only', ''))
 
+UI.hideLogosIfStale()
 export {OpenFisca}

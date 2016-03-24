@@ -1,9 +1,55 @@
-export default {
-	display: display,
-	showError: showError,
-	reflectParameterChange: reflectParameterChange,
-	displayCommunesFetchResults: displayCommunesFetchResults,
+import transForms from './transForms.js'
+
+const getForm = () => document.querySelector('.SGMAPembauche form')
+
+const getOutputVariables = () => getForm().action
+
+function collectInput(form) {
+	const input = collectFormFields(form)
+
+	Object.assign(input, addBooleanParameters())
+
+	// Additional parameters
+	var today = new Date()
+	input['contrat_de_travail_debut'] = today.getFullYear() + '-' + (today.getMonth() + 1)
+
+	return input
 }
+
+// Collect form fields that will be the base for the API input
+const collectFormFields = (form) =>
+		[ ...form.elements ].reduce(
+			(memo, element) => {
+				if (! element.name)
+					return memo
+
+				/* 	Some of the form values must be transformed
+						before being sent through the request */
+				const value = transForms.reduce(
+					(value, transformer) => {
+						const [ test, transformed ] = transformer(element, value)
+						return test ? transformed : value
+					},
+					element.value
+				)
+				if (value != null)
+					memo[element.name] = value
+				return memo
+			}, {})
+
+
+const BOOLEAN_PARAMETERS = {
+	employee: [ 'stagiaire', 'apprenti' ],
+}
+
+
+const addBooleanParameters = () =>
+	Object.keys(BOOLEAN_PARAMETERS).reduce((memo, provider) => {
+		const key = document.querySelector('[data-provides="' + provider + '"]').value
+		if (BOOLEAN_PARAMETERS[provider].indexOf(key) > -1)
+			memo[key] = true
+		return memo
+	}, {})
 
 
 function display(data) {
@@ -54,7 +100,6 @@ function displayCommunesFetchResults(info, values) {
 		depcomElement.appendChild(optionElement)
 	})
 	depcomElement.removeAttribute('hidden')
-
 }
 
 
@@ -87,4 +132,14 @@ function reflectParameterChange(event) {
 
 		display(data)
 	}
+}
+
+export default {
+	display,
+	showError,
+	reflectParameterChange,
+	displayCommunesFetchResults,
+	getForm,
+	collectInput,
+	getOutputVariables,
 }

@@ -2,13 +2,15 @@ import UI from './ui.js'
 import OpenFisca from './openfisca.js'
 import debounce from '../lib/debounce.js'
 
+//Store the last computation
+let buffer
 
 /** Handle events from the given form to update data.
 */
 function bindToForm(form) {
 	form.addEventListener('change', UI.reflectParameterChange)
 
-	const handleBasicFormChanges = debounce(OpenFisca.update.bind(form), 300)
+	const handleBasicFormChanges = debounce(openFiscaRequestBuilder(form), 300)
 
 	handleBasicFormChanges()
 
@@ -26,6 +28,26 @@ function bindToForm(form) {
 
 	form.addEventListener('change', handleFormChanges)
 	form.addEventListener('keyup', handleFormChanges)
+}
+
+const openFiscaRequestBuilder = (form) => () =>
+	OpenFisca.request(
+		UI.collectInput(form),
+		UI.getOutputVariables(), // Base url containing the list of desired output variables
+		handleAPIResponse
+	)
+
+function handleAPIResponse(error, values, response) {
+	if (error) {
+		if (response && response.error)
+			return UI.showError(response.error)
+
+		UI.showError({ message: error })
+		throw error
+	}
+
+	buffer = values
+	UI.display(values)
 }
 
 /*
@@ -72,9 +94,15 @@ function handleTempsPartielSelect(contrat, next) {
 	next()
 }
 
-bindToForm(document.querySelector('.SGMAPembauche form'));
+bindToForm(UI.getForm());
 
 [ ...document.querySelectorAll('.SGMAPembauche .js-only') ]
 	.forEach(jsNode => jsNode.className = jsNode.className.replace('js-only', ''))
 
-export {OpenFisca}
+export default {
+	OpenFisca: {
+		buildURL: OpenFisca.buildOpenFiscaQueryURL,
+		get: OpenFisca.get,
+		getLastResults: () => buffer, // API function
+	},
+}

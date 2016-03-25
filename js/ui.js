@@ -10,8 +10,10 @@ function collectInput(form) {
 	Object.assign(input, addBooleanParameters())
 
 	// Additional parameters
-	var today = new Date()
-	input['contrat_de_travail_debut'] = today.getFullYear() + '-' + (today.getMonth() + 1)
+	const today = new Date(),
+		mm = ('0' + (today.getMonth() + 1)).slice(-2)
+
+	input['contrat_de_travail_debut'] = today.getFullYear() + '-' + mm
 
 	return input
 }

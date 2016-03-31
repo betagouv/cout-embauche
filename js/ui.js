@@ -2,7 +2,16 @@ import transForms from './transForms.js'
 
 const getForm = () => document.querySelector('.SGMAPembauche form')
 
-const getOutputVariables = () => getForm().action
+function getOutputVariables() {
+	const baseUrl = getForm().action,
+		// some of the output variables are chosen dynamically
+		sourcesToAdd =
+			[ ...document.querySelectorAll('[data-add-source-to-action]') ]
+				.map(element => element.dataset.source)
+				.join('+')
+
+	return `${baseUrl}+${sourcesToAdd}`
+}
 
 function collectInput(form) {
 	const input = collectFormFields(form)

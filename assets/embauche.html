@@ -1,6 +1,6 @@
 <div class="SGMAPembauche" lang="fr">
 	<section id="input">
-		<form action="https://openfisca-embauche.sgmap.fr/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+agirc_gmp_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_net_a_payer+salaire_super_brut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+mmid_employeur+contribution_supplementaire_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+agirc_employeur+agirc_gmp_employeur+allegement_fillon+allegement_cotisation_allocations_familiales+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei+credit_impot_competitivite_emploi+financement_organisations_syndicales+prevoyance_obligatoire_cadre+cout_du_travail+aide_premier_salarie+aide_embauche_pme+smic_proratise" method="GET">
+		<form action="https://embauche.beta.gouv.fr/openfisca/api/2/formula/accident_du_travail+famille+fnal+versement_transport+agff_salarie+agirc_salarie+agirc_gmp_salarie+apec_salarie+arrco_salarie+chomage_salarie+cotisation_exceptionnelle_temporaire_salarie+vieillesse_plafonnee_salarie+vieillesse_deplafonnee_salarie+mmid_salarie+csg_deductible_salaire+csg_imposable_salaire+crds_salaire+salaire_super_brut+ags+agff_employeur+apec_employeur+arrco_employeur+chomage_employeur+cotisation_exceptionnelle_temporaire_employeur+vieillesse_deplafonnee_employeur+vieillesse_plafonnee_employeur+mmid_employeur+contribution_supplementaire_apprentissage+contribution_solidarite_autonomie+formation_professionnelle+participation_effort_construction+taxe_apprentissage+agirc_employeur+agirc_gmp_employeur+allegement_fillon+allegement_cotisation_allocations_familiales+exoneration_cotisations_employeur_apprenti+exoneration_cotisations_employeur_stagiaire+exoneration_cotisations_employeur_jei+credit_impot_competitivite_emploi+financement_organisations_syndicales+prevoyance_obligatoire_cadre+cout_du_travail+aide_premier_salarie+aide_embauche_pme+smic_proratise" method="GET">
 			<div>
 				<select data-sets=".employer_type@textContent">
 					<option value="entreprise" selected>Mon entreprise</option>
@@ -30,9 +30,14 @@
 						&nbsp;€
 					</label>
 					<span class="input-help">Rémunération totale<br>
-						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.</span>
+						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.
+					</span>
+					<select id="select-salaire-entree" data-sets="#salaire@name">
+						<option value="salaire_de_base" selected>brut</option>
+						<option value="salaire_net_a_payer">net</option>
+					</select>
 					&nbsp;
-					<span>brut par mois</span>
+					<span>par mois</span>
 				</fieldset>
 				<br>
 				<label>à temps
@@ -104,7 +109,11 @@
 		</p>
 		<p>
 			Mon <span data-source="employee">salarié·e</span>
-			touchera <span data-source="salaire_net_a_payer" data-round title="Salaire net">…</span>&nbsp;€
+			touchera
+			<span id="salaire-calcule" data-source="salaire_net_a_payer" data-add-source-to-action data-round title="Salaire net">
+				…
+			</span>&nbsp;€
+			&nbsp;<span id="type-salaire-calcule">net</span>
 			par <span data-source="period">mois</span>.
 		</p>
 	</section>
@@ -199,8 +208,8 @@
 				<td><span data-source="financement_organisations_syndicales"></span>&nbsp;€</td>
 			</tr>
 			<tr>
-			    <th>Prévoyance obligatoire cadre</th>
-			    <td><span data-source="prevoyance_obligatoire_cadre"></span>&nbsp;€</td>
+				<th>Prévoyance obligatoire cadre</th>
+				<td><span data-source="prevoyance_obligatoire_cadre"></span>&nbsp;€</td>
 			</tr>
 			<tr>
 				<th>Versement transport</th>

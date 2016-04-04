@@ -4,7 +4,7 @@ A widget to estimate the cost of hiring in France
 
 **[Online demo](http://sgmap.github.io/cout-embauche/)**.
 
-If you want to create your own specific interface, have a look at the [API documentation](http://embauche.sgmap.fr/api-cotisations-sociales).
+If you want to create your own specific interface, have a look at the [API documentation](http://embauche.beta.gouv.fr/api-cotisations-sociales).
 
 
 Usage
@@ -13,7 +13,7 @@ Usage
 Include this line where you want the widget to appear in your page:
 
 ```html
- <script src="http://embauche.sgmap.fr/modules/pointe/cout-embauche-widget.js"></script>
+ <script src="http://embauche.beta.gouv.fr/modules/pointe/cout-embauche-widget.js"></script>
  ```
 
 > Reminder: this widget is in beta and may be updated at any time. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
@@ -23,7 +23,7 @@ Include this line where you want the widget to appear in your page:
 If you use [Twitter Bootstrap version 2 CSS](http://getbootstrap.com/2.3.2/), an integration is provided. Simply add the following line after the inclusion of the widget:
 
 ```html
-<script async src="http://embauche.sgmap.fr/modules/pointe/bootstrap-compat.js"></script>
+<script async src="http://embauche.beta.gouv.fr/modules/pointe/bootstrap-compat.js"></script>
 ```
 
 > If you use version [Bootstrap version 3](http://getbootstrap.com), no compatibility line should be required.  
@@ -71,15 +71,15 @@ Returns the currently-displayed computed simulation data, as an object containin
 
 Calls the Paie API, parameterised with the current state of the form.
 
-You can adjust the situation to compute by passing an object as the first argument (`additionalParameters`). The parameters you can use are documented in the [Paie API](http://embauche.sgmap.fr/api/doc).
+You can adjust the situation to compute by passing an object as the first argument (`additionalParameters`). The parameters you can use are documented in the [Paie API](http://embauche.beta.gouv.fr/api/doc).
 
 This function takes a callback as last argument. This callback will be called with three parameters:
 
 - An optional error. The failed `XMLHttpRequest`, or a `SyntaxError` if the fetched OpenFisca value is not properly formatted.
 - An object containing the OpenFisca-computed values, as identifiers from the OpenFisca [legislation](http://legislation.openfisca.fr) mapped to `Number` values.
-- The full OpenFisca [response](http://embauche.sgmap.fr/api/doc) if you need everything it sends back.
+- The full OpenFisca [response](http://embauche.beta.gouv.fr/api/doc) if you need everything it sends back.
 
-If the callback is not input, returns the OpenFisca `GET` URL to obtain the results, as documented in the [`/formula` API](http://embauche.sgmap.fr/api/doc).
+If the callback is not input, returns the OpenFisca `GET` URL to obtain the results, as documented in the [`/formula` API](http://embauche.beta.gouv.fr/api/doc).
 
 #### Example:
 

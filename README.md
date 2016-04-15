@@ -4,7 +4,7 @@ A widget to estimate the cost of hiring in France
 
 **[Online demo](http://sgmap.github.io/cout-embauche/)**.
 
-If you want to create your own specific interface, have a look at the [API documentation](http://embauche.beta.gouv.fr/api-cotisations-sociales).
+If you want to create your own specific interface, have a look at the [API documentation](https://embauche.beta.gouv.fr/api-prelevements-sociaux).
 
 
 Usage
@@ -17,6 +17,10 @@ Include this line where you want the widget to appear in your page:
  ```
 
 > Reminder: this widget is in beta and may be updated at any time. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
+
+### Style
+
+The widget's style is deliberately neutral to avoid visual integration problems. The host site's styles will affect the widget, and one can finalize the visual integration with a few CSS rules.
 
 ### Using with Bootstrap
 

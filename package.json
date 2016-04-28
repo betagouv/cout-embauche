@@ -16,12 +16,16 @@
     "node": ">=0.12"
   },
   "babel": {
-    "presets": ["es2015"],
-    "plugins": ["transform-runtime"]
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ]
   },
   "dependencies": {
     "babel-runtime": "^6.6.1",
-    "whatwg-fetch": "^0.11.0"
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",

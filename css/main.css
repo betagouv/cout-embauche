@@ -90,6 +90,7 @@ input#salaire ~ .input-help {
 
 details {
 	font-size: 60%;
+	display: none;
 }
 
 #error {

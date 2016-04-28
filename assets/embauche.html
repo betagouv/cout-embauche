@@ -85,17 +85,19 @@
 		</details>
 	</section>
 
-	<section id="result" class="js-only">
+	<section class="results js-only">
 		<p>
 			Cela coûtera
-			<span data-source="salaire_super_brut" data-round title="Salaire super-brut">…</span>&nbsp;€
+			<span class="figure" data-source="salaire_super_brut" data-round title="Salaire super-brut">…</span>&nbsp;€
 			par <span data-source="period">mois</span>
-			à mon <span class="employer_type">entreprise</span><span id="cout_du_travail_container" hidden>, ou <span data-source="cout_du_travail" data-round title="Coût du travail"></span>&nbsp;€ après déduction des aides différées</span>.
+			à mon <span class="employer_type">entreprise</span><span id="cout_du_travail_container" hidden>,
+			<br/>
+			ou <span class="figure" data-source="cout_du_travail" data-round title="Coût du travail"></span>&nbsp;€ après déduction des aides différées</span>.
 		</p>
 		<p>
 			Mon <span data-source="employee">salarié·e</span>
 			touchera
-			<span id="salaire-calcule" data-source="salaire_net_a_payer" data-add-source-to-action data-round title="Salaire net">
+			<span class="figure" id="salaire-calcule" data-source="salaire_net_a_payer" data-add-source-to-action data-round title="Salaire net">
 				…
 			</span>&nbsp;€
 			&nbsp;<span id="type-salaire-calcule">net</span>

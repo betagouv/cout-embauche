@@ -1,0 +1,18 @@
+.results {
+  width: 90%;
+  margin: auto;
+  margin-top: 3em;
+  background: #3B94D9;
+  padding: .01em 1.8em;
+}
+
+.results p {
+  color: #DFEDF9;
+  line-height: 1em;
+  border-left: 3px solid white;
+  padding-left: .65em;
+}
+
+.results .figure {
+  color: white;
+}

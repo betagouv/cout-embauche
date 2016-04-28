@@ -5,7 +5,7 @@
 	line-height: 2.5;
 }
 
-#input, #error, #result, summary {
+#input, #error, summary {
 	text-align: center;
 }
 

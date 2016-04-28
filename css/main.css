@@ -3,6 +3,7 @@
 	padding-top: 1em;
 	max-width: 45em;
 	line-height: 2.5;
+	color: rgba(0, 0, 0, 0.8)
 }
 
 #input, #error, summary {
@@ -19,6 +20,7 @@ input, select {
 	padding: .2em 0;
 	margin: 0 .5em;
 	vertical-align: middle;
+	color: rgba(0, 0, 0, 0.8)
 }
 
 input[type="number"] {

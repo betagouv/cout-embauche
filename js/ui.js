@@ -157,9 +157,12 @@ function handleResultActions() {
 	advancedViewButton.addEventListener('click', () => {
 		if (advancedViewButton.disabled) return
 		advancedViewButton.disabled = true
+		taxDetailsButton.disabled = false
 
 		inputSection.setAttribute('hidden', true)
 		bringInputButton.disabled = false
+
+		taxDetailsSection.setAttribute('hidden', true)
 
 		//TODO display advanced view
 	})
@@ -167,11 +170,13 @@ function handleResultActions() {
 	taxDetailsButton.addEventListener('click', () => {
 		if (taxDetailsButton.disabled) return
 		taxDetailsButton.disabled = true
+		advancedViewButton.disabled = false
 
 		inputSection.setAttribute('hidden', true)
 		bringInputButton.disabled = false
 
 		taxDetailsSection.removeAttribute('hidden')
+		//TODO remove advanced view
 
 	})
 

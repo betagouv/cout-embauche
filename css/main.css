@@ -6,7 +6,11 @@
 	color: rgba(0, 0, 0, 0.8)
 }
 
-#input, #error, summary {
+.input {
+	padding-top: 1em;
+}
+
+.input, #error, summary {
 	text-align: center;
 }
 
@@ -51,7 +55,7 @@ select[data-provides="employee"] {
 /* Enables the first input's help text to pop
 over the lasts of this group.
 Also keeps related inputs together. */
-#input fieldset {
+.input fieldset {
 	white-space: nowrap;
 	display: inline-block;
 }

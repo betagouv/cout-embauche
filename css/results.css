@@ -1,8 +1,9 @@
 .results {
   margin: auto;
-  margin-top: 3em;
+  margin-top: 2.5em;
   background: #3B94D9;
   padding: .01em 1.8em;
+  width: 90%
 }
 
 .results .figures {
@@ -29,7 +30,7 @@
 }
 
 .results .actions button {
-  width: 90%;
+  width: 95%;
   background: none;
   border: 1px solid white;
   color: white;

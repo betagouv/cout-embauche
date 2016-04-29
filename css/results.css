@@ -1,91 +1,91 @@
 .results {
-  margin: auto;
-  margin-top: .3em;
-  background: #3B94D9; /* main blue */
-  padding: .01em 1.8em;
-  width: 90%
+	margin: auto;
+	margin-top: .3em;
+	background: #3B94D9; /* main blue */
+	padding: .01em 1.8em;
+	width: 90%;
 }
 
 .results .figures {
-  display: inline-block;
-  width: 66%;
+	display: inline-block;
+	width: 66%;
 }
 
 .results p {
-  color: #DFEDF9; /* lighter blue */
-  line-height: 1em;
-  border-left: 3px solid white;
-  padding-left: .65em;
+	color: #DFEDF9; /* lighter blue */
+	line-height: 1em;
+	border-left: 3px solid white;
+	padding-left: .65em;
 }
 
 .results .figure {
-  color: white;
+	color: white;
 }
 
 .results .actions {
-  display: inline-block;
-  width: 33%;
-  text-align: right;
-  padding: .5em 0;
+	display: inline-block;
+	width: 33%;
+	text-align: right;
+	padding: .5em 0;
 }
 
 .results button {
-  width: 95%;
-  background: none;
-  border: 1px solid white;
-  color: white;
-  font-size: 70%;
-  padding: .3em;
-  cursor: pointer;
+	width: 95%;
+	background: none;
+	border: 1px solid white;
+	color: white;
+	font-size: 70%;
+	padding: .3em;
+	cursor: pointer;
 }
 
 /* See handleResultActions() for what happens with these buttons */
 
 .results button span {
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .results button:hover {
-  background: #529DD7;
+	background: #529DD7;
 }
 
 .results button:active {
-  border: none;
+	border: none;
 }
 
 .results button[disabled]{
-  border: none;
-  background: white;
-  color: #1676C0; /* darker blue */
+	border: none;
+	background: white;
+	color: #1676C0; /* darker blue */
 }
 
 /* Change button text on hover */
 .results button span.on-hover {
-  display: none;
-  font-style: italic;
-  text-transform: none;
+	display: none;
+	font-style: italic;
+	text-transform: none;
 }
 .results button:hover:enabled span.regular {
-  display: none;
+	display: none;
 }
 .results button:hover:enabled span.on-hover {
-  display: inline;
+	display: inline;
 }
 
 
 .bring-input-back {
-  display: block;
-  margin: 0 auto;
-  width: 60%;
-  background: none;
-  border: 1px solid white;
-  color: rgba(0, 0, 0, 0.5);
-  font-style: italic;
-  font-size: 70%;
-  padding: .3em;
-  cursor: pointer;
-  text-align: center;
+	display: block;
+	margin: 0 auto;
+	width: 60%;
+	background: none;
+	border: 1px solid white;
+	color: rgba(0, 0, 0, .5);
+	font-style: italic;
+	font-size: 70%;
+	padding: .3em;
+	cursor: pointer;
+	text-align: center;
 }
 .bring-input-back:disabled {
-  display: none;
+	display: none;
 }

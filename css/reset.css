@@ -47,12 +47,12 @@ label {
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, .8);
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, .8);
 	opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, .8);
 }

@@ -1,9 +1,13 @@
 .results {
-  width: 90%;
   margin: auto;
   margin-top: 3em;
   background: #3B94D9;
   padding: .01em 1.8em;
+}
+
+.results .figures {
+  display: inline-block;
+  width: 66%;
 }
 
 .results p {
@@ -15,4 +19,30 @@
 
 .results .figure {
   color: white;
+}
+
+.results .actions {
+  display: inline-block;
+  width: 33%;
+  text-align: right;
+  padding: .5em 0;
+}
+
+.results .actions button {
+  width: 90%;
+  background: none;
+  border: 1px solid white;
+  color: white;
+  font-size: 70%;
+  padding: .3em;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.results .actions button:hover {
+  background: #529DD7;
+}
+
+.results .actions button:active {
+  border: none;
 }

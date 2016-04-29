@@ -1,8 +1,8 @@
 .affiliation {
 	font-size: 50%;
-	float: right;
 	margin-top: 3em;
-	opacity: .8
+	opacity: .8;
+	text-align: center;
 }
 
 .affiliation a {

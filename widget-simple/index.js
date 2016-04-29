@@ -1,6 +1,6 @@
 import UI from './ui.js'
 import OpenFisca from './openfisca.js'
-import debounce from '../lib/debounce.js'
+import debounce from '../utils/debounce.js'
 
 //Store the last computation
 let buffer

@@ -108,7 +108,7 @@ This widget is packaged with [Webpack](http://webpack.github.io) and distributed
 
 To compile your modifications, clone this repository, `cd` to it and `npm install`. You can then run `npm run compile` whenever you change a file to update files under `dist`.
 
-Run `npm run dev` to get [webpack's development server](https://webpack.github.io/docs/webpack-dev-server.html) and visit the ouput url to work on `index.html` with automatic page reloading on source change.
+Run `npm start` to get [webpack's development server](https://webpack.github.io/docs/webpack-dev-server.html) and visit the ouput url to work on `index.html` with automatic page reloading on source change.
 
 To work directly on a module with automatic page reloading , e.g. the `cout-embauche-widget`, add  `dist/cout-embauche-widget` at the end of the ouput url.
 

@@ -1,4 +1,6 @@
 import transForms from './transForms.js'
+if (window.loadCompleteWidget)
+	require('../widget-advanced/index')
 
 const getForm = () => document.querySelector('.SGMAPembauche form')
 

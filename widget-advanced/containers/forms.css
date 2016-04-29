@@ -1,0 +1,220 @@
+
+#conversation {
+  margin: 0 auto;
+  width: 40em;
+}
+
+#conversation-introduction {
+  text-align: center;
+  width: 60%;
+  margin: 2em auto 3em;
+
+}
+
+#conversation-introduction div {
+  margin-bottom: 1em;
+}
+
+.step {
+  position: relative;
+  margin-bottom: 2.8em;
+}
+
+.step h1 {
+  display: inline-block;
+  max-width: 45%;
+  font-size: 100%;
+  font-weight: 400;
+  background: #E6E9ED;
+  color: #434A54;
+  padding: .5em .8em;
+  margin: 0;
+  border-radius: 1em;
+  position: relative;
+}
+.step:not(.open) h1 {
+  border-bottom: none;
+}
+.step:not(.open) h1 {
+  cursor: pointer;
+}
+
+.question-mark {
+  display: inline-block;
+  float: right;
+  margin-top: .5em;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 1em;
+  font-size: 90%;
+  color: #777;
+  border: 1px solid #777;
+  background: #F5F7FA;
+  text-align: center;
+  cursor: pointer;
+}
+.question-mark:hover {
+  color: #333;
+  border: 1px solid #333;
+}
+
+.step fieldset {
+  /* Reset this default styled element */
+  border: 0;
+  margin: .3em;
+  padding: 0;
+  width: 95%;
+}
+
+form label.radio,
+.resume {
+  text-align: center;
+  margin-left: 1em;
+  cursor: pointer;
+  background: #AAB2BD;
+  padding: 0 .8em;
+  line-height: 1.8em;
+  border-radius: 1em;
+  color: white;
+  float: right;
+  border: 1px solid #AAB2BD;
+}
+form label.radio:hover {
+  background: #CCD1D9;
+}
+form label.radio.checked,
+.resume {
+  background: #4A89DC;
+  border-color: #4A89DC;
+}
+
+.answer-appear {
+  background: #AAB2BD;
+}
+
+.answer-appear.answer-appear-active {
+  background: #4A89DC;
+  transition: background .2s ease-in;
+}
+
+.resume {
+  transition: 1s display;
+}
+
+.cancel {
+  position: absolute;
+  bottom: 0em;
+  color: #656D78;
+  font-weight: 300;
+}
+.cancel:visited {
+  color:#656D78;
+}
+
+.step input[type=radio] {
+  display : none;
+}
+
+.step input[type=text],
+.step input[type=number] {
+  color: #434A54;
+  border: 1px solid #AAB2BD;
+  display: inline-block;
+  line-height: 1.8em;
+  font-size: 100%;
+  padding: 0;
+  padding-right: .4em;
+  border-radius: .2em;
+  width: 9em;
+  text-align: right;
+  /*
+  border-radius: 0 1em 1em 0;
+  */
+}
+
+.step input[type=number]::-webkit-outer-spin-button,
+.step input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.step input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.step input.has-unit {
+  padding-right: 1.5em;
+}
+
+.step label.unit {
+  margin: -1.3em;
+  color: #AAB2BD;
+}
+
+.step input[type=text]:focus,
+.step input[type=number]:focus {
+  border-color: #D0D4D8;
+  outline: none;
+}
+
+
+.form-group {
+  position: relative;
+}
+
+.form-group h3 {
+  transform: translateX(-50%);
+  display: inline-block;
+  margin-left: 50%;
+  margin-bottom: 2em;
+  background: #555;
+  padding: .2em 1.5em;
+  border-radius: .4em;
+  color: white;
+  font-weight: bold;
+  font-size: 90%;
+}
+
+.help-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: white;
+  text-align: center;
+}
+
+.help-box p {
+  padding: 1em;
+}
+
+.close-help {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 150%;
+}
+
+.step .send {
+  position: relative;
+  left: 1em;
+  vertical-align: middle;
+  border: 0;
+  background: none;
+  font-size: 200%;
+  color: #CCD1D9
+}
+
+.step .send[disabled]{
+  opacity: 0;
+}
+
+.step .send:hover {
+  color: #4A89DC;
+  cursor: pointer;
+}
+
+.answer {
+  float: right;
+}

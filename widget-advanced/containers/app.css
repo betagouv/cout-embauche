@@ -1,0 +1,9 @@
+body {
+  font-family: 'Open Sans';
+  font-size: 110%;
+  color: #555
+}
+
+#conversation-introduction img {
+  opacity: .45
+}

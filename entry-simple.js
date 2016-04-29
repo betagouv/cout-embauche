@@ -5,11 +5,9 @@ import './css/affiliation.css'
 import './css/details.css'
 import './css/tooltip.css'
 
-import html from './assets/embauche.html'
+import html from './embauche.html'
 document.write(html)
 
 require('core-js/fn/promise')
 
-require('expose?Embauche!./js/index')
-
-import './lib/details.polyfill.js'
+require('expose?Embauche!./widget-simple/index')

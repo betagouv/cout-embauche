@@ -93,9 +93,9 @@ input#salaire ~ .input-help {
 	vertical-align: middle;
 }
 
-details {
+section.taxes {
 	font-size: 60%;
-	display: none;
+	margin-top: 3em;
 }
 
 #error {

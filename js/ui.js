@@ -148,10 +148,11 @@ function reflectParameterChange(event) {
 function handleResultActions() {
 	const
 		advancedViewButton = document.querySelector('button.show-advanced'),
-		detailsButton = document.querySelector('button.show-details'),
-		resultButtons = [advancedViewButton, detailsButton],
+		taxDetailsButton = document.querySelector('button.show-details'),
+		resultButtons = [ advancedViewButton, taxDetailsButton ],
 		bringInputButton = document.querySelector('.bring-input-back'),
-		inputSection = document.querySelector('.input')
+		inputSection = document.querySelector('.input'),
+		taxDetailsSection = document.querySelector('section.taxes')
 
 	advancedViewButton.addEventListener('click', () => {
 		if (advancedViewButton.disabled) return
@@ -160,6 +161,17 @@ function handleResultActions() {
 		inputSection.setAttribute('hidden', true)
 		bringInputButton.disabled = false
 
+		//TODO display advanced view
+	})
+
+	taxDetailsButton.addEventListener('click', () => {
+		if (taxDetailsButton.disabled) return
+		taxDetailsButton.disabled = true
+
+		inputSection.setAttribute('hidden', true)
+		bringInputButton.disabled = false
+
+		taxDetailsSection.removeAttribute('hidden')
 
 	})
 
@@ -167,6 +179,7 @@ function handleResultActions() {
 		inputSection.removeAttribute('hidden')
 		bringInputButton.disabled = true
 		resultButtons.forEach((b) => b.disabled = false)
+		taxDetailsSection.setAttribute('hidden', true)
 	})
 }
 

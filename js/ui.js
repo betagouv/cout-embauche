@@ -145,6 +145,31 @@ function reflectParameterChange(event) {
 	}
 }
 
+function handleResultActions() {
+	const
+		advancedViewButton = document.querySelector('button.show-advanced'),
+		detailsButton = document.querySelector('button.show-details'),
+		resultButtons = [advancedViewButton, detailsButton],
+		bringInputButton = document.querySelector('.bring-input-back'),
+		inputSection = document.querySelector('.input')
+
+	advancedViewButton.addEventListener('click', () => {
+		if (advancedViewButton.disabled) return
+		advancedViewButton.disabled = true
+
+		inputSection.setAttribute('hidden', true)
+		bringInputButton.disabled = false
+
+
+	})
+
+	bringInputButton.addEventListener('click', () => {
+		inputSection.removeAttribute('hidden')
+		bringInputButton.disabled = true
+		resultButtons.forEach((b) => b.disabled = false)
+	})
+}
+
 export default {
 	display,
 	showError,
@@ -153,4 +178,5 @@ export default {
 	getForm,
 	collectInput,
 	getOutputVariables,
+	handleResultActions,
 }

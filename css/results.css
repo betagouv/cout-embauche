@@ -1,7 +1,7 @@
 .results {
 	margin: auto;
 	margin-top: .3em;
-	background: #3B94D9; /* main blue */
+	background: #4A89DC; /* main blue */
 	padding: .01em 1.8em;
 	width: 90%;
 }
@@ -12,7 +12,7 @@
 }
 
 .results p {
-	color: #DFEDF9; /* lighter blue */
+	color: #CEE3FF; /* lighter blue */
 	line-height: 1em;
 	border-left: 3px solid white;
 	padding-left: .65em;
@@ -46,7 +46,7 @@
 }
 
 .results button:hover {
-	background: #529DD7;
+	background: #70A7EE;
 }
 
 .results button:active {
@@ -56,7 +56,7 @@
 .results button[disabled]{
 	border: none;
 	background: white;
-	color: #1676C0; /* darker blue */
+	color: #346DB9; /* darker blue */
 }
 
 /* Change button text on hover */

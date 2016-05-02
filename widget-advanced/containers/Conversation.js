@@ -21,17 +21,33 @@ class Conversation extends Component {
     return (
       <div id="conversation">
         <Question
-          title="Résultat question 1"
-          question="Question 1 ?"
+          title="Jeune Entreprise Innovante"
+          question="Disposez-vous du statut Jeune Entreprise Innovante ?"
           when={true}
-          form="un" formName="un"
+          form="jei" formName="jei"
           fields={['resume']}
           possibleChoices ={[
             {value: 'oui', text: 'Oui' },
             {value: 'non', text: 'Non' }
           ]}/>
 
-        <Group name="AT / MP" when={resolve(f, 'un.resume.value')}>
+        <Input
+          title="% alternants"
+          question="Quel est le pourcentage d'alternants dans votre entreprise ?"
+          when={resolve(f, 'jei.resume.value') != undefined}
+          form="pourcentage_alternants" formName="pourcentage_alternants"
+          fields={['resume']}
+          attributes={{
+            type: "number",
+            step: "any",
+            min: "0",
+            max: "100"
+          }}
+          unit="%"
+          helpText="Cette information permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
+        />
+
+      <Group name="AT / MP" when={submitted['pourcentage_alternants']}>
           <Question
             title="Taux de risque connu"
             question="Connaissez-vous votre taux de risque AT/MP ?"

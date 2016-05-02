@@ -11,7 +11,7 @@ export default class App extends Component {
     return (
       <div>
         <Introduction />
-        <Conversation delay="3000" />
+        <Conversation delay="4000" />
       </div>
     )
   }

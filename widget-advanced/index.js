@@ -15,13 +15,15 @@ const createFinalStore = compose(
 
 const store = createFinalStore(todoApp)
 
-const rootElement = document.querySelector('.advanced-simulation')
-render(
-  <div>
-    <Provider store={store}>
-      <App />
-    </Provider>
-    <DevTools store={store}/>
-  </div>,
-  rootElement
-)
+const anchor = (anchor) =>
+  render(
+    <div>
+      <Provider store={store}>
+        <App />
+      </Provider>
+      <DevTools store={store}/>
+    </div>,
+    anchor
+  )
+
+export {anchor}

@@ -13,7 +13,7 @@ import ResultATMP from '../components/ResultATMP'
   C'est ici qu'est définie la suite de questions à poser.
 */
 class Conversation extends Component {
-  state = { hidden: false }
+  state = { hidden: true }
   componentDidMount = () => setTimeout(() => this.setState({hidden: false}), this.props.delay)
   render() {
     if (this.state.hidden) return null

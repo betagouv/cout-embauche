@@ -1,6 +1,6 @@
 import transForms from './transForms.js'
 if (window.loadCompleteWidget)
-	require('../widget-advanced/index')
+	var {anchor} = require('../widget-advanced/index')
 
 const getForm = () => document.querySelector('.SGMAPembauche form')
 
@@ -166,7 +166,8 @@ function handleResultActions() {
 		bringInputButton.disabled = false
 
 		taxDetailsSection.setAttribute('hidden', true)
-
+		if (advancedViewSection.children.length === 0)
+			anchor(document.querySelector('.advanced-simulation'))
 		advancedViewSection.removeAttribute('hidden')
 
 	})
@@ -177,6 +178,7 @@ function handleResultActions() {
 		advancedViewButton.disabled = false
 
 		inputSection.setAttribute('hidden', true)
+		advancedViewSection.setAttribute('hidden', true)
 		bringInputButton.disabled = false
 
 		taxDetailsSection.removeAttribute('hidden')
@@ -189,6 +191,7 @@ function handleResultActions() {
 		bringInputButton.disabled = true
 		resultButtons.forEach((b) => b.disabled = false)
 		taxDetailsSection.setAttribute('hidden', true)
+		advancedViewSection.setAttribute('hidden', true)
 	})
 }
 

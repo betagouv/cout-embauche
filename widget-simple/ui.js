@@ -154,7 +154,8 @@ function handleResultActions() {
 		resultButtons = [ advancedViewButton, taxDetailsButton ],
 		bringInputButton = document.querySelector('.bring-input-back'),
 		inputSection = document.querySelector('.input'),
-		taxDetailsSection = document.querySelector('section.taxes')
+		taxDetailsSection = document.querySelector('section.taxes'),
+		advancedViewSection = document.querySelector('section.advanced-simulation')
 
 	advancedViewButton.addEventListener('click', () => {
 		if (advancedViewButton.disabled) return
@@ -166,7 +167,8 @@ function handleResultActions() {
 
 		taxDetailsSection.setAttribute('hidden', true)
 
-		//TODO display advanced view
+		advancedViewSection.removeAttribute('hidden')
+
 	})
 
 	taxDetailsButton.addEventListener('click', () => {

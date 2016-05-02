@@ -8,13 +8,10 @@ import './app.css'
 
 export default class App extends Component {
   render() {
-    /*
-      C'est ici qu'est définie la suite de questions à poser.
-    */
     return (
       <div>
         <Introduction />
-        <Conversation />
+        <Conversation delay="3000" />
       </div>
     )
   }

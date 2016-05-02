@@ -1,9 +1,6 @@
-body {
-  font-family: 'Open Sans';
-  font-size: 110%;
-  color: #555
-}
-
-#conversation-introduction img {
-  opacity: .45
+.advanced-simulation {
+  /* font-family: 'Open Sans'; */
+  font-size: 80%;
+  color: #555;
+  line-height: normal;
 }

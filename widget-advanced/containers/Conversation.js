@@ -9,9 +9,12 @@ import Select from '../components/Forms/Select'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
 
+/*
+  C'est ici qu'est définie la suite de questions à poser.
+*/
 class Conversation extends Component {
   state = { hidden: false }
-  componentDidMount = () => setTimeout(() => this.setState({hidden: false}), 3000)
+  componentDidMount = () => setTimeout(() => this.setState({hidden: false}), this.props.delay)
   render() {
     if (this.state.hidden) return null
     let { actions, form: f, submitted} = this.props

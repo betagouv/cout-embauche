@@ -10,7 +10,7 @@ const createFinalStore = compose(
 	// Enables your middleware:
 	applyMiddleware(), // any Redux middleware, e.g. redux-thunk
 	// Provides support for DevTools:
-	DevTools.instrument(),
+	DevTools.instrument()
 )(createStore)
 
 const store = createFinalStore(todoApp)

@@ -3,7 +3,7 @@ var webpack = require('webpack'),
 	autoprefixer = require('autoprefixer')
 
 module.exports = {
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-source-map',
 	entry: {
 		'cout-embauche-simple': './entry-simple.js',
 		'bootstrap-compat': './widget-simple/compat/entry-bootstrap.js',
@@ -49,10 +49,8 @@ module.exports = {
 		}),
 	],
 	plugins: [
-		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
-		//TODO reactivate the CommonsChunkPlugin ?
 		// in order to use the fetch polyfill:
 		new webpack.ProvidePlugin({
 			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',

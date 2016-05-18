@@ -7,11 +7,17 @@ module.exports = {
 	entry: {
 		'cout-embauche-simple': './entry-simple.js',
 		'bootstrap-compat': './widget-simple/compat/entry-bootstrap.js',
-		'cout-embauche': [ 'webpack-hot-middleware/client', './entry-complete.js' ],
+		'cout-embauche': [
+			'webpack-dev-server/client?http://localhost:3000/',
+			'webpack/hot/only-dev-server',
+			'react-hot-loader/patch',
+			'./entry-complete.js',
+		],
 	},
 	output: {
 		path: require('path').resolve('./dist/'),
 		filename: '[name].js',
+		publicPath: '/dist/',
 	},
 	module: {
 		loaders: [ {

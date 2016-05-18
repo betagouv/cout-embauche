@@ -1,18 +1,4 @@
-import React, {Component} from 'react'
-
-import Introduction from '../components/Introduction'
-import Conversation from '../containers/Conversation'
-
-import './forms.css'
-import './app.css'
-
-export default class App extends Component {
-	render() {
-		return (
-			<div>
-				<Introduction />
-				<Conversation delay="4000" />
-			</div>
-		)
-	}
-}
+if (process.env.NODE_ENV === 'production')
+	module.exports = require('./App.prod')
+else
+	module.exports = require('./App.dev')

@@ -92,39 +92,42 @@
 	<button class="bring-input-back" disabled>&#8634; &nbsp; Revenir à la saisie simple</button>
 
 	<section class="results js-only">
-		<div class="figures">
-			<p>
-				Cela coûtera
-				<span class="figure" data-source="salaire_super_brut" data-round title="Salaire super-brut">…</span>&nbsp;€
-				par <span data-source="period">mois</span>
-				à mon <span class="employer_type">entreprise</span><span id="cout_du_travail_container" hidden>,
-				<br/>
-				ou <span class="figure" data-source="cout_du_travail" data-round title="Coût du travail"></span>&nbsp;€ après déduction des aides différées</span>.
-			</p>
-			<p>
-				Mon <span data-source="employee">salarié·e</span>
-				touchera
-				<span class="figure" id="salaire-calcule" data-source="salaire_net_a_payer" data-add-source-to-action data-round title="Salaire net">
-					…
-				</span>&nbsp;€
-				&nbsp;<span id="type-salaire-calcule">net</span>
-				par <span data-source="period">mois</span>.
-			</p>
-		</div>
-		<div class="actions">
-			<button class="show-advanced">
-				<span class="regular">
-					Simulation avancée
-				</span>
-				<span class="on-hover">
-					AT/MP, JEI, CDD... &#10141;
-				</span>
-			</button>
-			<button class="show-details">
-				<span>
-					Détail des prélèvements
-				</span>
-			</button>
+		<h1>Résultats de l'estimation</h1>
+		<div class="content">
+			<div class="figures">
+				<p>
+					Cela coûtera
+					<span class="figure" data-source="salaire_super_brut" data-round title="Salaire super-brut">…</span>&nbsp;€
+					par <span data-source="period">mois</span>
+					à mon <span class="employer_type">entreprise</span><span id="cout_du_travail_container" hidden>,
+					<br/>
+					ou <span class="figure" data-source="cout_du_travail" data-round title="Coût du travail"></span>&nbsp;€ après déduction des aides différées</span>.
+				</p>
+				<p>
+					Mon <span data-source="employee">salarié·e</span>
+					touchera
+					<span class="figure" id="salaire-calcule" data-source="salaire_net_a_payer" data-add-source-to-action data-round title="Salaire net">
+						…
+					</span>&nbsp;€
+					&nbsp;<span id="type-salaire-calcule">net</span>
+					par <span data-source="period">mois</span>.
+				</p>
+			</div>
+			<div class="actions">
+				<button class="show-advanced">
+					<span class="regular">
+						Simulation avancée
+					</span>
+					<span class="on-hover">
+						AT/MP, JEI, CDD... &#10141;
+					</span>
+				</button>
+				<button class="show-details">
+					<span>
+						Détail des prélèvements
+					</span>
+				</button>
+			</div>
 		</div>
 	</section>
 	<section id="note-alternance" hidden>Note: pour une simulation plus fiable du cas de l'apprentissage, rendez-vous sur <a href="https://www.alternance.emploi.gouv.fr/portail_alternance/jcms/hl_5641" target="_blank">le simulateur du portail de l'alternance</a></section>

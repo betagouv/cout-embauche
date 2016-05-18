@@ -1,10 +1,22 @@
 .results {
 	margin: auto;
 	margin-top: .3em;
-	background: #4A89DC; /* main blue */
-	padding: .01em 1.8em;
 	width: 90%;
 }
+
+.results h1 {
+	font-size: 60%;
+	color: #346DB9;
+	font-weight: 300;
+	line-height: 1.3em;
+	margin: 0;
+}
+
+.results .content {
+	background: #4A89DC; /* main blue */
+	padding: .01em 1.8em;
+}
+
 
 .results .figures {
 	display: inline-block;
@@ -56,7 +68,7 @@
 .results button[disabled]{
 	border: none;
 	background: white;
-	color: #346DB9; /* darker blue */
+	color: #346DB9; /* darker blue for texts */
 }
 
 /* Change button text on hover */

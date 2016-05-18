@@ -22,10 +22,19 @@ rules:
   - multi-or-nest
  space-before-blocks: 2
  no-console: 1
+ react/prop-types: 0
+ react/display-name: 0
 
 parser: babel-eslint
 
 env:
  browser: true
  commonjs: true
-extends: 'eslint:recommended'
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+plugins:
+  - react
+parserOptions:
+  ecmaFeatures:
+    jsx: true

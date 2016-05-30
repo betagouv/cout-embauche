@@ -14,10 +14,14 @@ import ResultATMP from '../components/ResultATMP'
 */
 class Conversation extends Component {
 	state = { hidden: true }
+
+	/* Display <Introduction> a bit before this component */
 	componentDidMount = () => setTimeout(() => this.setState({hidden: false}), this.props.delay)
+
 	render() {
 		if (this.state.hidden) return null
-		let { form: f, submitted} = this.props
+		let { form: f, submitted, actions} = this.props
+
 		return (
 			<div id="conversation">
 				<Question
@@ -47,7 +51,13 @@ class Conversation extends Component {
 					helpText="Cette information permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
 				/>
 
-			<Group name="AT / MP" when={submitted['pourcentage_alternants']}>
+			<Group
+				when={submitted['pourcentage_alternants']}
+				text="Taux de risque AT/MP"
+				submitted={submitted}
+				unsubmitStep={actions.unsubmitStep}
+				foldTrigger='tauxRisque'
+				value={resolve(f, 'tauxRisque.resume.value')} >
 					<Question
 						title="Taux de risque connu"
 						question="Connaissez-vous votre taux de risque AT/MP ?"

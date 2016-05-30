@@ -1,19 +1,8 @@
 import React, { Component } from 'react'
 import resolve from '../../utils/resolve'
+import RhetoricalQuestion from './Forms/RhetoricalQuestion'
 
 class ResultATMP extends Component {
-	renderText(tauxCommunGeneral, taux, effectif) {
-
-		if (tauxCommunGeneral)
-			return `Votre taux AT/MP est ${taux}% (votre activité le fixe au taux commun quel que soit votre effectif)`
-		if (effectif < 20)
-			return `Votre taux AT/MP est ${taux}%`
-		else {
-			return `Votre taux AT/MP est estimé à ${taux}%, le taux commun de votre activité.
-							Rendez-vous sur net-entreprises.fr pour obtenir votre taux individuel.`
-		}
-	}
-
 	render() {
 		let {
 			f,
@@ -25,11 +14,25 @@ class ResultATMP extends Component {
 		} = this.props
 		if (!effectif || !submitted['effectif']) return null
 		return (
-			<section className="step">
-				<h1 style={{cursor: 'normal'}}>{this.renderText(tauxCommunGeneral, taux, effectif)}</h1>
-			</section>
+			<RhetoricalQuestion
+				form="tauxRisque" formName="tauxRisque"
+				fields={[ 'resume' ]}
+				question={this.renderText(tauxCommunGeneral, taux, effectif)}
+				possibleChoice={{text: 'OK', value: taux}} />
 		)
 	}
+
+	renderText(tauxCommunGeneral, taux, effectif) {
+		if (tauxCommunGeneral)
+			return `Votre taux AT/MP est ${taux}% (votre activité le fixe au taux commun quel que soit votre effectif)`
+		if (effectif < 20)
+			return `Votre taux AT/MP est ${taux}%`
+		else {
+			return `Votre taux AT/MP est estimé à ${taux}%, le taux commun de votre activité.
+							Rendez-vous sur net-entreprises.fr pour obtenir votre taux individuel.`
+		}
+	}
+
 
 }
 

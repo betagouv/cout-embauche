@@ -37,4 +37,4 @@ class Input extends Component {
 
 }
 
-export default reduxForm()(Input)
+export default reduxForm({destroyOnUnmount: false})(Input)

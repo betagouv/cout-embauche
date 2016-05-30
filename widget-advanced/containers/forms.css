@@ -22,12 +22,55 @@
   margin-bottom: 2.8em;
 }
 
+
+.form-group {
+  position: relative;
+}
+
+.form-group .header {
+  margin-bottom: 2em;
+}
+
+.group-title {
+  transform: translateX(-50%);
+  display: inline-block;
+  margin-left: 50%;
+  background: #4A89DC;
+  padding: .2em 1.5em;
+  border-radius: .4em;
+  color: white;
+  font-size: 90%;
+}
+
+/* Simple way for a visual stack,
+hinting on the fact that it is a group result */
+.title-stack {
+  position: relative;
+  display: inline-block;
+}
+.title-stack h1 {
+  font-size: 100%;
+  font-weight: 400;
+  padding: .5em .8em;
+  margin: 0;
+  border-radius: 1em;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.3);
+  background: white; /* TODO could be a problem for non-white background hosts */
+  width: 100%;
+}
+.title-stack h1:first-child {
+  position: absolute;
+  left: .15em;
+  top: .15em;
+}
+
 .step h1 {
   display: inline-block;
   max-width: 60%;
   font-size: 100%;
   font-weight: 400;
-  background: none;
   padding: .5em .8em;
   margin: 0;
   border-radius: 1em;
@@ -167,24 +210,6 @@ question : make it visible with colors */
 .step input[type=number]:focus {
   border-color: #D0D4D8;
   outline: none;
-}
-
-
-.form-group {
-  position: relative;
-}
-
-.form-group h3 {
-  transform: translateX(-50%);
-  display: inline-block;
-  margin-left: 50%;
-  margin-bottom: 2em;
-  background: #555;
-  padding: .2em 1.5em;
-  border-radius: .4em;
-  color: white;
-  font-weight: bold;
-  font-size: 90%;
 }
 
 .help-box {

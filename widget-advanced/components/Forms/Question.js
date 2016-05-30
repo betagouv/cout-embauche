@@ -31,4 +31,4 @@ class Question extends Component {
 
 }
 
-export default reduxForm()(Question)
+export default reduxForm({destroyOnUnmount: false})(Question)

@@ -82,4 +82,4 @@ class Select extends Component {
 
 }
 
-export default reduxForm()(Select)
+export default reduxForm({destroyOnUnmount: false})(Select)

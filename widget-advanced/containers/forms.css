@@ -27,20 +27,26 @@
   max-width: 45%;
   font-size: 100%;
   font-weight: 400;
-  background: #E6E9ED;
-  color: #434A54;
+  background: none;
   padding: .5em .8em;
   margin: 0;
   border-radius: 1em;
   position: relative;
-}
-.step:not(.open) h1 {
-  border-bottom: none;
-}
-.step:not(.open) h1 {
   cursor: pointer;
+  border: 1px solid rgba(0,0,0,.3);
+}
+.step.unfolded h1 {
+  cursor: default;
+}
+/* The unfolded step is the currently focused
+question : make it visible with colors */
+.step.unfolded h1 {
+  border: 1px solid #4A89DC;
+  background: none;
+  color: #4A89DC;
 }
 
+/* Our little question help icon */
 .question-mark {
   display: inline-block;
   float: right;
@@ -61,33 +67,36 @@
 }
 
 .step fieldset {
-  /* Reset this default styled element */
+  /* Reset the default style of this element */
   border: 0;
   margin: .3em;
   padding: 0;
   width: 95%;
 }
 
-form label.radio,
+.step label.radio,
+/* A resume of what's been answered */
 .resume {
   text-align: center;
   margin-left: 1em;
   cursor: pointer;
-  background: #AAB2BD;
+  background: none;
   padding: 0 .8em;
   line-height: 1.8em;
   border-radius: 1em;
-  color: white;
   float: right;
-  border: 1px solid #AAB2BD;
+  color: #4A89DC;
+  border: 1px solid #4A89DC;
 }
-form label.radio:hover {
-  background: #CCD1D9;
+.step label.radio:hover {
+  background: #4A89DC;
+  color: white;
 }
-form label.radio.checked,
+.step label.radio.checked,
 .resume {
   background: #4A89DC;
   border-color: #4A89DC;
+  color: white;
 }
 
 .answer-appear {

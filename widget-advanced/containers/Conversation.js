@@ -21,7 +21,7 @@ class Conversation extends Component {
 		return (
 			<div id="conversation">
 				<Question
-					title="Jeune Entreprise Innovante"
+					title="Statut Jeune Entreprise Innovante"
 					question="Disposez-vous du statut Jeune Entreprise Innovante ?"
 					when={true}
 					form="jei" formName="jei"
@@ -32,7 +32,7 @@ class Conversation extends Component {
 					]}/>
 
 				<Input
-					title="% alternants"
+					title="Pourcentage d'alternants"
 					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
 					when={resolve(f, 'jei.resume.value') != undefined}
 					form="pourcentage_alternants" formName="pourcentage_alternants"

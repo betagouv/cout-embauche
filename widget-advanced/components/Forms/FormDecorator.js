@@ -34,13 +34,13 @@ export var FormDecorator = DecoratedComponent =>
 
 			let
 				visible = when == undefined ? true : when,
-				/* Should this form be unfolded (ready to receive a user action)
+				/* Should this form be unfolded (ready to receive user action)
 				or in its folded state, displaying a resume. */
 				unfolded = !submitted[formName]
 
 			if (visible) {
 				return (
-				<section className={classNames('step')}>
+				<section className={classNames('step', {unfolded})}>
 					{this.state.helpVisible && this.renderHelpBox()}
 					{this.renderHeader(unfolded, resume)}
 					{unfolded &&

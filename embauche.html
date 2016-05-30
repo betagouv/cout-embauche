@@ -89,7 +89,17 @@
 		<!-- Entry point for React render -->
 	</section>
 
-	<button class="bring-input-back" disabled>&#8634; &nbsp; Revenir à la saisie simple</button>
+	<button class="action show-advanced">
+		<span class="regular">
+			Aller plus loin
+		</span>
+		<span class="on-hover">
+			AT/MP, JEI, CDD... &#10141;
+		</span>
+	</button>
+	<button class="action bring-input-back" disabled>
+		&#8634; &nbsp; Revenir à la saisie simple
+	</button>
 
 	<section class="results js-only">
 		<h1>Résultats de l'estimation</h1>
@@ -113,21 +123,11 @@
 					par <span data-source="period">mois</span>.
 				</p>
 			</div>
-			<div class="actions">
-				<button class="show-advanced">
-					<span class="regular">
-						Simulation avancée
-					</span>
-					<span class="on-hover">
-						AT/MP, JEI, CDD... &#10141;
-					</span>
-				</button>
-				<button class="show-details">
-					<span>
-						Détail des prélèvements
-					</span>
-				</button>
-			</div>
+			<button class="action show-details">
+				<span>
+					Voir le détail<br/>des prélèvements
+				</span>
+			</button>
 		</div>
 	</section>
 	<section id="note-alternance" hidden>Note: pour une simulation plus fiable du cas de l'apprentissage, rendez-vous sur <a href="https://www.alternance.emploi.gouv.fr/portail_alternance/jcms/hl_5641" target="_blank">le simulateur du portail de l'alternance</a></section>

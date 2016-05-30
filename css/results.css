@@ -1,6 +1,6 @@
 .results {
 	margin: auto;
-	margin-top: .3em;
+	margin-top: 1.5em;
 	width: 90%;
 }
 
@@ -15,12 +15,13 @@
 .results .content {
 	background: #4A89DC; /* main blue */
 	padding: .01em 1.8em;
+	position: relative;
 }
 
 
 .results .figures {
 	display: inline-block;
-	width: 66%;
+	width: 70%;
 }
 
 .results p {
@@ -34,55 +35,67 @@
 	color: white;
 }
 
-.results .actions {
-	display: inline-block;
-	width: 33%;
-	text-align: right;
-	padding: .5em 0;
-}
-
-.results button {
-	width: 95%;
-	background: none;
-	border: 1px solid white;
-	color: white;
-	font-size: 70%;
-	padding: .3em;
-	cursor: pointer;
-}
-
 /* See handleResultActions() for what happens with these buttons */
 
-.results button span {
+button.action span {
 	text-transform: uppercase;
 }
 
-.results button:hover {
+/* Change button text on hover */
+.show-advanced span.on-hover {
+	display: none;
+	font-style: italic;
+	text-transform: none;
+}
+.show-advanced:hover:enabled span.regular {
+	display: none;
+}
+.show-advanced:hover:enabled span.on-hover {
+	display: inline;
+}
+
+
+.show-advanced {
+	background: none;
+	border: 1px solid rgb(154, 154, 154);
+	padding: .25em;
+	cursor: pointer;
+	width: 16em;
+	margin: 0 auto;
+	display: block;
+	font-size: 55%;
+}
+.show-advanced[disabled]{
+	display: none;
+}
+
+.show-details {
+	background: none;
+	border: 1px solid white;
+	color: white;
+	font-size: 55%;
+	padding: .3em;
+	cursor: pointer;
+	width: 15em;
+	position: absolute;
+	top: 40%;
+}
+
+
+.show-details:hover {
 	background: #70A7EE;
 }
 
-.results button:active {
+.show-details:active {
 	border: none;
 }
 
-.results button[disabled]{
+.show-details[disabled]{
 	border: none;
 	background: white;
 	color: #346DB9; /* darker blue for texts */
 }
 
-/* Change button text on hover */
-.results button span.on-hover {
-	display: none;
-	font-style: italic;
-	text-transform: none;
-}
-.results button:hover:enabled span.regular {
-	display: none;
-}
-.results button:hover:enabled span.on-hover {
-	display: inline;
-}
 
 
 .bring-input-back {

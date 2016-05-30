@@ -147,7 +147,7 @@ function reflectParameterChange(event) {
 	}
 }
 
-function handleResultActions() {
+function handleActions() {
 	const
 		advancedViewButton = document.querySelector('button.show-advanced'),
 		taxDetailsButton = document.querySelector('button.show-details'),
@@ -162,11 +162,10 @@ function handleResultActions() {
 		advancedViewButton.disabled = true
 		taxDetailsButton.disabled = false
 
-		inputSection.setAttribute('hidden', true)
 		bringInputButton.disabled = false
 
 		taxDetailsSection.setAttribute('hidden', true)
-		if (advancedViewSection.children.length === 0)
+		if (advancedViewSection.children.length === 0) // The advanced view can be disabled
 			anchor(document.querySelector('.advanced-simulation'))
 		advancedViewSection.removeAttribute('hidden')
 
@@ -175,7 +174,7 @@ function handleResultActions() {
 	taxDetailsButton.addEventListener('click', () => {
 		if (taxDetailsButton.disabled) return
 		taxDetailsButton.disabled = true
-		advancedViewButton.disabled = false
+		advancedViewButton.disabled = true
 
 		inputSection.setAttribute('hidden', true)
 		advancedViewSection.setAttribute('hidden', true)
@@ -203,5 +202,5 @@ export default {
 	getForm,
 	collectInput,
 	getOutputVariables,
-	handleResultActions,
+	handleActions,
 }

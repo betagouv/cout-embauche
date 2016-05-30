@@ -126,7 +126,7 @@ bindToForm(UI.getForm());
 [ ...document.querySelectorAll('.SGMAPembauche .js-only') ]
 	.forEach(jsNode => jsNode.className = jsNode.className.replace('js-only', ''))
 
-UI.handleResultActions()
+UI.handleActions()
 
 export default {
 	OpenFisca: {

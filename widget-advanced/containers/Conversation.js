@@ -22,7 +22,7 @@ class Conversation extends Component {
 			<div id="conversation">
 				<Question
 					title="Jeune Entreprise Innovante"
-					question="Disposez -vous du statut Jeune Entreprise Innovante ?"
+					question="Disposez-vous du statut Jeune Entreprise Innovante ?"
 					when={true}
 					form="jei" formName="jei"
 					fields={[ 'resume' ]}

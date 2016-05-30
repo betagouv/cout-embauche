@@ -5,6 +5,7 @@
 .select-answer .Select {
   width: 90%;
   display: inline-block;
+  float: right;
 }
 
 

@@ -24,7 +24,7 @@
 
 .step h1 {
   display: inline-block;
-  max-width: 45%;
+  max-width: 60%;
   font-size: 100%;
   font-weight: 400;
   background: none;
@@ -53,11 +53,12 @@ question : make it visible with colors */
   margin-top: .5em;
   width: 1.3em;
   height: 1.3em;
+  line-height: 1.3em;
   border-radius: 1em;
   font-size: 90%;
   color: #777;
   border: 1px solid #777;
-  background: #F5F7FA;
+  background: none;
   text-align: center;
   cursor: pointer;
 }
@@ -135,7 +136,7 @@ question : make it visible with colors */
   font-size: 100%;
   padding: 0;
   padding-right: .4em;
-  border-radius: .2em;
+  border-radius: 1em;
   width: 9em;
   text-align: right;
   /*
@@ -158,7 +159,7 @@ question : make it visible with colors */
 }
 
 .step label.unit {
-  margin: -1.3em;
+  margin: -1.7em;
   color: #AAB2BD;
 }
 

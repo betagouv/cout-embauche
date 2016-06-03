@@ -103,7 +103,7 @@ function handleSalaireSelect(selectedSalaire, next) {
 		},
 		[ source, type ] = correspondence[selectedSalaire]
 
-	outputSalaireValue.dataset.source = source
+	outputSalaireValue.setAttribute('data-source', source)
 	outputSalaireType.textContent = type
 
 	next()

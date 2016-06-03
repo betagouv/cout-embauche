@@ -107,7 +107,7 @@ function displayCommunesFetchResults(info, values) {
 	values.forEach(function(value) {
 		const optionElement = document.createElement('option')
 		optionElement.value = value.codeInsee
-		optionElement.textContent = value.nomCommune
+		optionElement.textContent = value.nom
 		depcomElement.appendChild(optionElement)
 	})
 	depcomElement.removeAttribute('hidden')

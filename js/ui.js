@@ -7,7 +7,7 @@ function getOutputVariables() {
 		// some of the output variables are chosen dynamically
 		sourcesToAdd =
 			[ ...document.querySelectorAll('[data-add-source-to-action]') ]
-				.map(element => element.dataset.source)
+				.map(element => element.getAttribute('data-source'))
 				.join('+')
 
 	return `${baseUrl}+${sourcesToAdd}`

@@ -59,7 +59,7 @@ function handleCodePostalInput(codePostal, next) {
 	if (codePostal.length !== 5)
 		return UI.displayCommunesFetchResults()
 
-	fetch(`https://apicarto.sgmap.fr/codes-postaux/communes/${codePostal}`)
+	fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`)
 		.then(response => {
 			if (!response.ok) {
 				const error = new Error(response.statusText)

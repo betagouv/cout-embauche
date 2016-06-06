@@ -1,6 +1,6 @@
 **Si vous lisez ce fichier, c'est que vous pensez pouvoir nous aider d’une manière ou d’une autre, et nous vous en remercions d'ores et déjà !  :)**
 
-Notre objectif est évidemment d’élargir l’étendue des cotisations calculées. Pour dépasser la limite de nos ressources, nous cherchons à ouvrir au maximum cet outil à la contribution. Ainsi, tout le code du [moteur de calcul](https://github.com/openfisca/openfisca-france) comme de l’[interface utilisateur](https://github.com/sgmap/cout-embauche) est sous [licence libre](http://fr.wikipedia.org/wiki/Logiciel_libre), et toute forme de contribution peut aider à l’intégration de nouvelles cotisations : recherche législative préalable et rédaction des règles à implémenter, ajout de [tests](http://embauche.sgmap.fr/tests/) pour valider le calcul de prestations…
+Notre objectif est évidemment d’élargir l’étendue des cotisations calculées. Pour dépasser la limite de nos ressources, nous cherchons à ouvrir au maximum cet outil à la contribution. Ainsi, tout le code du [moteur de calcul](https://github.com/openfisca/openfisca-france) comme de l’[interface utilisateur](https://github.com/sgmap/cout-embauche) est sous [licence libre](http://fr.wikipedia.org/wiki/Logiciel_libre), et toute forme de contribution peut aider à l’intégration de nouvelles cotisations : recherche législative préalable et rédaction des règles à implémenter, ajout de [tests](http://embauche.beta.gouv.fr/tests/) pour valider le calcul de prestations…
 
 Suggérer de nouvelles cotisations
 =================================

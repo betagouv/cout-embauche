@@ -16,7 +16,7 @@ Include this line where you want the widget to appear in your page:
  <script src="http://embauche.beta.gouv.fr/modules/pointe/cout-embauche-widget.js"></script>
  ```
 
-> Reminder: this widget is in beta and may be updated at any time. Please send an email to embauche[AT]sgmap.fr to request being sent potentially breaking update notices.
+> Reminder: this widget is in beta and may be updated at any time. Please send an email to contact[AT]embauche.beta.gouv.fr to request being sent potentially breaking update notices.
 
 ### Style
 

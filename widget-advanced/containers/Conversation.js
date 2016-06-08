@@ -30,9 +30,10 @@ class Conversation extends Component {
 					when={true}
 					form="jei" formName="jei"
 					fields={[ 'resume' ]}
+					variableName="jeune_entreprise_innovante"
 					possibleChoices ={[
-						{value: 'oui', text: 'Oui' },
-						{value: 'non', text: 'Non' },
+						{value: '1', text: 'Oui' },
+						{value: '0', text: 'Non' },
 					]}/>
 
 				<Input

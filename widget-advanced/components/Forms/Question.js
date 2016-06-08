@@ -12,7 +12,11 @@ class Question extends Component {
 			handleSubmit,
 			actions: {submitStep},
 			formName,
-			radioClick = handleSubmit(() => submitStep(formName)),
+			/* On radio click, just submit the form using redux-form's
+			handleSumbit and trigger the SUMIT_STEP action that will mark this
+			step in the state as completed */
+			variableName,
+			radioClick = handleSubmit(() => submitStep(formName, variableName, choice.value)),
 		} = this.props
 		return (
 			<span className="answer">

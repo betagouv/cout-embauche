@@ -44,7 +44,7 @@ export var FormDecorator = DecoratedComponent =>
 					{this.state.helpVisible && this.renderHelpBox()}
 					{this.renderHeader(unfolded, resume)}
 					{unfolded &&
-						<form className="binary">
+						<form>
 							<fieldset>
 								{ /* <a className="cancel" href="#" onClick={() => console.log('utilité de ce bouton encore à voir')}>annuler</a> */}
 								{ /* TODO : make this following content float right */ }

@@ -5,15 +5,21 @@ import App from './containers/App'
 import todoApp from './reducers'
 import DevTools from './DevTools'
 import { AppContainer } from 'react-hot-loader'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
+
+const sagaMiddleware = createSagaMiddleware()
 
 const createFinalStore = compose(
 	// Enables your middleware:
-	applyMiddleware(), // any Redux middleware, e.g. redux-thunk
+	applyMiddleware(sagaMiddleware), // any Redux middleware, e.g. redux-thunk
 	// Provides support for DevTools:
 	DevTools.instrument()
 )(createStore)
 
+
 const store = createFinalStore(todoApp)
+sagaMiddleware.run(rootSaga)
 
 const anchor = (anchor) => {
 	render(

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 
-import Introduction from '../components/Introduction'
 import Conversation from '../containers/Conversation'
 import { Provider } from 'react-redux'
 import DevTools from '../DevTools'
@@ -14,7 +13,6 @@ export default class App extends Component {
 		return (
 			<Provider store={store}>
 				<div>
-					<Introduction />
 					<Conversation delay="300" />
 					<DevTools />
 				</div>

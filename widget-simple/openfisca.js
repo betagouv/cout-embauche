@@ -52,7 +52,7 @@ Computes values based on the current main form state and the given additional pa
 function get(additionalParameters, callback) {
 	// Base url containing the list of desired output variables
 	const baseUrl = UI.getOutputVariables(),
-		input = UI.collectInput()
+		input = UI.collectInput(UI.getForm())
 
 	Object.assign(input, additionalParameters) // merge parameters
 

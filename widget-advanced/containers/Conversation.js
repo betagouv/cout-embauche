@@ -8,6 +8,8 @@ import Input from '../components/Forms/Input'
 import Select from '../components/Forms/Select'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
+import Introduction from '../components/Introduction'
+
 
 /*
 	C'est ici qu'est définie la suite de questions à poser.
@@ -20,10 +22,11 @@ class Conversation extends Component {
 
 	render() {
 		if (this.state.hidden) return null
-		let { form: f, submitted, actions} = this.props
+		let { form: f, submitted, pending, actions} = this.props
 
 		return (
 			<div id="conversation">
+				<Introduction {... {pending}} />
 				<Question
 					title="Statut Jeune Entreprise Innovante"
 					question="Disposez-vous du statut Jeune Entreprise Innovante ?"

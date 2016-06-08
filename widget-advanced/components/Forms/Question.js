@@ -16,14 +16,14 @@ class Question extends Component {
 			handleSumbit and trigger the SUMIT_STEP action that will mark this
 			step in the state as completed */
 			variableName,
-			radioClick = handleSubmit(() => submitStep(formName, variableName, choice.value)),
+			radioClick = (value) => handleSubmit(() => submitStep(formName, variableName, value)),
 		} = this.props
 		return (
 			<span className="answer">
 				{ possibleChoices.map(({value, text}) =>
 						( <label key={value} className={classnames('radio', value === choice.value ? 'checked' : '')}>
 								<input
-									type="radio" {...choice} onClick={radioClick}
+									type="radio" {...choice} onClick={radioClick(value)}
 									value={value} checked={value === choice.value ? 'checked' : ''} />
 									{text}
 							</label>

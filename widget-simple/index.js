@@ -128,10 +128,14 @@ bindToForm(UI.getForm());
 
 UI.handleActions()
 
-export default {
-	OpenFisca: {
-		buildURL: OpenFisca.buildOpenFiscaQueryURL,
-		get: OpenFisca.get,
-		getLastResults: () => buffer, // API function
-	},
+// Expose the OpenFisa requester
+const jsAPI = {
+	buildURL: OpenFisca.buildOpenFiscaQueryURL,
+	get: OpenFisca.get,
+	getLastResults: () => buffer, // API function
 }
+
+// Let other scripts on the page update the simulation results
+const updateSimulationResults = UI.display
+
+export { jsAPI as OpenFisca, updateSimulationResults}

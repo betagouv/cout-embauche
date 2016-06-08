@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import {reducer as formReducer} from 'redux-form'
 
 import { SUBMIT_STEP, UNSUBMIT_STEP } from './actions'
+import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
 
 function submitted(state = {}, action) {
 	switch (action.type) {
@@ -18,13 +19,27 @@ function submitted(state = {}, action) {
 	}
 }
 
+function pending(state = false, action) {
+	switch (action.type) {
+	case SIMULATION_UPDATE_REQUEST:
+		return true
+	case SIMULATION_UPDATE_SUCCESS:
+		return false
+	default:
+		return state
+	}
+}
+
 const todoApp = combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,
 
 	/* which forms have been submitted ?
-	Submitted: false can mean the user is reconsidering its previous input */
+	false can mean the user is reconsidering its previous input */
 	submitted,
+
+	// Is an (advanced simulation) request pending ?
+	pending,
 })
 
 export default todoApp

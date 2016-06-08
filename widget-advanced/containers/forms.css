@@ -1,257 +1,273 @@
 
 #conversation {
-  margin: 0 auto;
-  width: 40em;
+	margin: 0 auto;
+	width: 40em;
 }
 
 #conversation-introduction {
-  text-align: center;
-  width: 60%;
-  font-size: 85%;
-  margin: 2em auto 3em;
-  font-style: italic;
+	text-align: center;
+	width: 60%;
+	font-size: 85%;
+	margin: 2em auto 3em;
+	font-style: italic;
 }
 
 #conversation-introduction img {
-  opacity: .45;
-  width: 1em;
+	opacity: .45;
+	width: 1em;
 }
 
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+#conversation-introduction img.spinning {
+	animation-name:             rotate;
+	animation-duration:         1s;
+	animation-iteration-count:  infinite;
+	animation-timing-function: linear;
+}
+
+
 .step {
-  position: relative;
-  margin-bottom: 2.8em;
+	position: relative;
+	margin-bottom: 2.8em;
 }
 
 
 .form-group {
-  position: relative;
+	position: relative;
 }
 
 .form-group .header {
-  margin-bottom: 2em;
+	margin-bottom: 2em;
 }
 
 .group-title {
-  transform: translateX(-50%);
-  display: inline-block;
-  margin-left: 50%;
-  background: #4A89DC;
-  padding: .2em 1.5em;
-  border-radius: .4em;
-  color: white;
-  font-size: 90%;
+	transform: translateX(-50%);
+	display: inline-block;
+	margin-left: 50%;
+	background: #4A89DC;
+	padding: .2em 1.5em;
+	border-radius: .4em;
+	color: white;
+	font-size: 90%;
 }
 
 /* Simple way for a visual stack,
 hinting on the fact that it is a group result */
 .title-stack {
-  position: relative;
-  display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 .title-stack h1 {
-  font-size: 100%;
-  font-weight: 400;
-  padding: .5em .8em;
-  margin: 0;
-  border-radius: 1em;
-  position: relative;
-  cursor: pointer;
-  border: 1px solid rgba(0,0,0,.3);
-  background: white; /* TODO could be a problem for non-white background hosts */
-  width: 100%;
+	font-size: 100%;
+	font-weight: 400;
+	padding: .5em .8em;
+	margin: 0;
+	border-radius: 1em;
+	position: relative;
+	cursor: pointer;
+	border: 1px solid rgba(0,0,0,.3);
+	background: white; /* TODO could be a problem for non-white background hosts */
+	width: 100%;
 }
 .title-stack h1:first-child {
-  position: absolute;
-  left: .15em;
-  top: .15em;
+	position: absolute;
+	left: .15em;
+	top: .15em;
 }
 
 .step h1 {
-  display: inline-block;
-  max-width: 60%;
-  font-size: 100%;
-  font-weight: 400;
-  padding: .5em .8em;
-  margin: 0;
-  border-radius: 1em;
-  position: relative;
-  cursor: pointer;
-  border: 1px solid rgba(0,0,0,.3);
+	display: inline-block;
+	max-width: 60%;
+	font-size: 100%;
+	font-weight: 400;
+	padding: .5em .8em;
+	margin: 0;
+	border-radius: 1em;
+	position: relative;
+	cursor: pointer;
+	border: 1px solid rgba(0,0,0,.3);
 }
 .step.unfolded h1 {
-  cursor: default;
+	cursor: default;
 }
 /* The unfolded step is the currently focused
 question : make it visible with colors */
 .step.unfolded h1 {
-  border: 1px solid #4A89DC;
-  background: none;
-  color: #4A89DC;
+	border: 1px solid #4A89DC;
+	background: none;
+	color: #4A89DC;
 }
 
 /* Our little question help icon */
 .question-mark {
-  display: inline-block;
-  float: right;
-  margin-top: .5em;
-  width: 1.3em;
-  height: 1.3em;
-  line-height: 1.3em;
-  border-radius: 1em;
-  font-size: 90%;
-  color: #777;
-  border: 1px solid #777;
-  background: none;
-  text-align: center;
-  cursor: pointer;
+	display: inline-block;
+	float: right;
+	margin-top: .5em;
+	width: 1.3em;
+	height: 1.3em;
+	line-height: 1.3em;
+	border-radius: 1em;
+	font-size: 90%;
+	color: #777;
+	border: 1px solid #777;
+	background: none;
+	text-align: center;
+	cursor: pointer;
 }
 .question-mark:hover {
-  color: #333;
-  border: 1px solid #333;
+	color: #333;
+	border: 1px solid #333;
 }
 
 .step fieldset {
-  /* Reset the default style of this element */
-  border: 0;
-  margin: .3em;
-  padding: 0;
-  width: 95%;
+	/* Reset the default style of this element */
+	border: 0;
+	margin: .3em;
+	padding: 0;
+	width: 95%;
 }
 
 .step label.radio,
 /* A resume of what's been answered */
 .resume {
-  text-align: center;
-  margin-left: 1em;
-  cursor: pointer;
-  background: none;
-  padding: 0 .8em;
-  line-height: 1.8em;
-  border-radius: 1em;
-  float: right;
-  color: #4A89DC;
-  border: 1px solid #4A89DC;
+	text-align: center;
+	margin-left: 1em;
+	cursor: pointer;
+	background: none;
+	padding: 0 .8em;
+	line-height: 1.8em;
+	border-radius: 1em;
+	float: right;
+	color: #4A89DC;
+	border: 1px solid #4A89DC;
 }
 .step label.radio:hover {
-  background: #4A89DC;
-  color: white;
+	background: #4A89DC;
+	color: white;
 }
 .step label.radio.checked,
 .resume {
-  background: #4A89DC;
-  border-color: #4A89DC;
-  color: white;
+	background: #4A89DC;
+	border-color: #4A89DC;
+	color: white;
 }
 
 .answer-appear {
-  background: #AAB2BD;
+	background: #AAB2BD;
 }
 
 .answer-appear.answer-appear-active {
-  background: #4A89DC;
-  transition: background .2s ease-in;
+	background: #4A89DC;
+	transition: background .2s ease-in;
 }
 
 .resume {
-  transition: 1s display;
+	transition: 1s display;
 }
 
 .cancel {
-  position: absolute;
-  bottom: 0em;
-  color: #656D78;
-  font-weight: 300;
+	position: absolute;
+	bottom: 0em;
+	color: #656D78;
+	font-weight: 300;
 }
 .cancel:visited {
-  color:#656D78;
+	color:#656D78;
 }
 
 .step input[type=radio] {
-  display : none;
+	display : none;
 }
 
 .step input[type=text],
 .step input[type=number] {
-  color: #434A54;
-  border: 1px solid #AAB2BD;
-  display: inline-block;
-  line-height: 1.8em;
-  font-size: 100%;
-  padding: 0;
-  padding-right: .4em;
-  border-radius: 1em;
-  width: 9em;
-  text-align: right;
-  /*
-  border-radius: 0 1em 1em 0;
-  */
+	color: #434A54;
+	border: 1px solid #AAB2BD;
+	display: inline-block;
+	line-height: 1.8em;
+	font-size: 100%;
+	padding: 0;
+	padding-right: .4em;
+	border-radius: 1em;
+	width: 9em;
+	text-align: right;
+	/*
+	border-radius: 0 1em 1em 0;
+	*/
 }
 
 .step input[type=number]::-webkit-outer-spin-button,
 .step input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+		-webkit-appearance: none;
+		margin: 0;
 }
 
 .step input[type=number] {
-    -moz-appearance:textfield;
+		-moz-appearance:textfield;
 }
 
 .step input.has-unit {
-  padding-right: 1.5em;
+	padding-right: 1.5em;
 }
 
 .step label.unit {
-  margin: -1.7em;
-  color: #AAB2BD;
+	margin: -1.7em;
+	color: #AAB2BD;
 }
 
 .step input[type=text]:focus,
 .step input[type=number]:focus {
-  border-color: #D0D4D8;
-  outline: none;
+	border-color: #D0D4D8;
+	outline: none;
 }
 
 .help-box {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background: white;
-  text-align: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background: white;
+	text-align: center;
 }
 
 .help-box p {
-  padding: 1em;
+	padding: 1em;
 }
 
 .close-help {
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 150%;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 150%;
 }
 
 .step .send {
-  position: relative;
-  left: 1em;
-  vertical-align: middle;
-  border: 0;
-  background: none;
-  font-size: 200%;
-  color: #CCD1D9
+	position: relative;
+	left: 1em;
+	vertical-align: middle;
+	border: 0;
+	background: none;
+	font-size: 200%;
+	color: #CCD1D9
 }
 
 .step .send[disabled]{
-  opacity: 0;
+	opacity: 0;
 }
 
 .step .send:hover {
-  color: #4A89DC;
-  cursor: pointer;
+	color: #4A89DC;
+	cursor: pointer;
 }
 
 .answer {
-  float: right;
+	float: right;
 }

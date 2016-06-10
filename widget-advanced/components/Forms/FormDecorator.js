@@ -28,7 +28,22 @@ export var FormDecorator = DecoratedComponent =>
 				when,
 				formName,
 				submitted,
+				handleSubmit,
+				actions: {submitStep},
+				variableName,
+				transformInputValue,
 			} = this.props
+
+			/* Call redux-form's handleSumbit to keep the form in state
+			and trigger the SUMIT_STEP action that will mark this
+			step in the state as completed.
+			SUBMIT_STEP will also trigger an API call if specified in the props.
+			The value can be transformed before being sent online,
+			e.g. to transform a percentage to a ratio */
+			let	submit = value => {
+				let v2 = transformInputValue ? transformInputValue(value) : value
+				return handleSubmit(() => submitStep(formName, variableName, v2))
+			}
 
 			let
 				visible = when == undefined ? true : when,
@@ -45,7 +60,7 @@ export var FormDecorator = DecoratedComponent =>
 						<form>
 							<fieldset>
 								{ /* <a className="cancel" href="#" onClick={() => console.log('utilité de ce bouton encore à voir')}>annuler</a> */}
-								<DecoratedComponent {...this.props} />
+								<DecoratedComponent {...this.props} {...{submit}}/>
 							</fieldset>
 						</form>}
 				</section>

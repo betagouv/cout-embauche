@@ -8,10 +8,8 @@ class Input extends Component {
 	render() {
 		let {
 			fields: {resume: choice},
-			handleSubmit,
-			actions: {submitStep},
 			formName,
-			submit = handleSubmit(() => submitStep(formName)),
+			submit,
 			attributes,
 			answerSuffix,
 		} = this.props
@@ -27,7 +25,7 @@ class Input extends Component {
 					<label className="suffix" htmlFor={'input-' + formName}>
 						{answerSuffix}
 					</label>}
-				<button className="send" disabled={!choice.value} onClick={submit}>
+				<button className="send" disabled={!choice.value} onClick={submit(choice.value)}>
 					&#10548;
 				</button>
 			</span>

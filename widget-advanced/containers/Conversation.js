@@ -45,6 +45,8 @@ class Conversation extends Component {
 						when={resolve(f, 'jei.resume.value') != undefined}
 						form="pourcentage_alternants" formName="pourcentage_alternants"
 						fields={[ 'resume' ]}
+						variableName="ratio_alternants"
+						transformInputValue={v => v/100}
 						attributes={{
 							type: 'number',
 							step: 'any',

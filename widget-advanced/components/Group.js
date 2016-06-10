@@ -6,8 +6,8 @@ or to gather a set of questions that will be eventually collapsed to a final @va
 export default class Group extends Component {
 
 	render() {
-		let {when, submitted, foldTrigger, children} = this.props,
-			folded = foldTrigger ? submitted[foldTrigger] : false
+		let {when, steps, foldTrigger, children} = this.props,
+			folded = foldTrigger ? steps[foldTrigger] : false
 
 		if (when) {
 			return (
@@ -18,19 +18,29 @@ export default class Group extends Component {
 			)
 		} else return null
 	}
+
 	renderTitle(folded) {
 		let {foldTrigger, unsubmitStep, text, answer, answerSuffix} = this.props,
+			/* The first question of the group,
+			to unfold if the users wants to change his answers */
 			headerClick = () => unsubmitStep(foldTrigger)
 
 		return(
 			text &&
 				<div className="header">
+					<a className="ignore" onClick={this.ignoreGroup}>
+						passer
+					</a>
 					<GroupTitle {...{text, folded}} onClick={headerClick}/>
 					{folded &&
 						<span className="resume">{answer + ' ' + answerSuffix}</span>
 					}
 				</div>
 		)
+
+	}
+
+	ignoreGroup() {
 
 	}
 

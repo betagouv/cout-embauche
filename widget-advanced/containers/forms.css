@@ -44,12 +44,20 @@
 }
 
 .form-group .header {
-	margin-bottom: 2em;
+	margin: 4em 0 2em 0;
+}
+
+/* This is a specialization of .ignore for .form-group */
+.form-group .ignore {
+	top: .3em;
+	bottom: auto;
+	left: 3%;
 }
 
 .group-title {
 	transform: translateX(-50%);
 	display: inline-block;
+	margin: 0;
 	margin-left: 50%;
 	background: #4A89DC;
 	padding: .2em 1.5em;
@@ -172,14 +180,15 @@ question : make it visible with colors */
 	transition: 1s display;
 }
 
-.cancel {
+.ignore, .ignore:visited {
+	cursor: pointer;
 	position: absolute;
 	bottom: 0em;
-	color: #656D78;
-	font-weight: 300;
-}
-.cancel:visited {
-	color:#656D78;
+	color: #888;
+	font-weight: 200;
+	text-decoration: none;
+	border-bottom: 1px solid #aaa;
+	font-size: 80%;
 }
 
 .step input[type=radio] {

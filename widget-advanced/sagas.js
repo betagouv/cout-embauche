@@ -12,11 +12,14 @@ const updateSimulation = (variableName, variableValue) =>
 			}))
 
 
-function* handleSubmitStep({variableName, variableValue}) {
+function* handleSubmitStep({variableName, variableValue, transformInputValue}) {
 	if (variableName != null) { // there is a need for an API request
 		try {
 			yield put({type: 'SIMULATION_UPDATE_REQUEST'})
-			const output = yield call(updateSimulation, variableName, variableValue)
+			/* The value can be transformed before being sent online,
+			e.g. to transform a percentage to a ratio */
+			let v2 = transformInputValue ? transformInputValue(variableValue) : variableValue
+			const output = yield call(updateSimulation, variableName, v2)
 			console.log('API call output', output)
 			yield put({type: 'SIMULATION_UPDATE_SUCCESS'})
 			yield call(window.Embauche.updateSimulationResults, output)

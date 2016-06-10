@@ -22,7 +22,7 @@ class Conversation extends Component {
 
 	render() {
 		if (this.state.hidden) return null
-		let { form: f, submitted, pending, actions} = this.props
+		let { form: f, steps, pending, actions} = this.props
 
 		return (
 			<div id="conversation">
@@ -38,6 +38,7 @@ class Conversation extends Component {
 						'1': 'Oui',
 						'0': 'Non',
 					}}
+					valueIfIgnored = "0"
 					/>
 					<Input
 						title="Pourcentage d'alternants"
@@ -53,14 +54,15 @@ class Conversation extends Component {
 							min: '0',
 							max: '100',
 						}}
+						valueIfIgnored = "0"
 						answerSuffix="%"
 						helpText="Nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
 					/>
 
 				<Group
-					when={submitted['pourcentage_alternants']}
+					when={steps['pourcentage_alternants']}
 					text="Taux de risque AT/MP"
-					submitted={submitted}
+					{...{steps}}
 					unsubmitStep={actions.unsubmitStep}
 					foldTrigger='tauxRisque'
 					answer={resolve(f, 'tauxRisque.resume.value')}
@@ -110,7 +112,7 @@ class Conversation extends Component {
 									min: '0',
 									placeholder: '29',
 								}} />
-							<ResultATMP f={f} submitted={submitted}/>
+							<ResultATMP f={f} {...{steps}}/>
 						</Group>
 					</Group>
 

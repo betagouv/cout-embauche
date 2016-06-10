@@ -4,11 +4,11 @@ import {reducer as formReducer} from 'redux-form'
 import { SUBMIT_STEP, UNSUBMIT_STEP } from './actions'
 import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
 
-function submitted(state = {}, action) {
+function steps(state = {}, action) {
 	switch (action.type) {
 	case SUBMIT_STEP:
 		return Object.assign({}, state, {
-			[action.formName]: true,
+			[action.formName]: action.ignored ? 'ignored' : 'filled',
 		})
 	case UNSUBMIT_STEP:
 		return Object.assign({}, state, {
@@ -34,9 +34,9 @@ export default combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,
 
-	/* which forms have been submitted ?
-	false can mean the user is reconsidering its previous input */
-	submitted,
+	/* Have forms been filled or ignored ?
+	false means the user is reconsidering its previous input */
+	steps,
 
 	// Is an (advanced simulation) request pending ?
 	pending,

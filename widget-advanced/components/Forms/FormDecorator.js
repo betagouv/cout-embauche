@@ -27,29 +27,33 @@ export var FormDecorator = DecoratedComponent =>
 			let {
 				when,
 				formName,
-				submitted,
+				steps,
 				handleSubmit,
 				actions: {submitStep},
 				variableName,
 				transformInputValue,
+				valueIfIgnored,
+				fields: {resume: field},
 			} = this.props
-
 			/* Call redux-form's handleSumbit to keep the form in state
 			and trigger the SUMIT_STEP action that will mark this
 			step in the state as completed.
 			SUBMIT_STEP will also trigger an API call if specified in the props.
 			The value can be transformed before being sent online,
 			e.g. to transform a percentage to a ratio */
-			let	submit = value => {
-				let v2 = transformInputValue ? transformInputValue(value) : value
-				return handleSubmit(() => submitStep(formName, variableName, v2))
+			let	submit = (value, ignored) =>
+				handleSubmit(() => submitStep(formName, variableName, value, transformInputValue, ignored))
+
+			let ignoreStep = () => {
+				field.onChange(valueIfIgnored)
+				return submit(valueIfIgnored, true)()
 			}
 
 			let
 				visible = when == undefined ? true : when,
 				/* Should this form be unfolded (ready to receive user action)
 				or in its folded state, displaying a resume. */
-				unfolded = !submitted[formName]
+				unfolded = !steps[formName]
 
 			if (visible) {
 				return (
@@ -59,8 +63,12 @@ export var FormDecorator = DecoratedComponent =>
 					{unfolded &&
 						<form>
 							<fieldset>
-								{ /* <a className="cancel" href="#" onClick={() => console.log('utilité de ce bouton encore à voir')}>annuler</a> */}
-								<DecoratedComponent {...this.props} {...{submit}}/>
+								{ valueIfIgnored &&
+									<a className="ignore" onClick={ignoreStep}>
+										passer
+									</a>
+								}
+								<DecoratedComponent {...this.props} {...{submit}} />
 							</fieldset>
 						</form>}
 				</section>

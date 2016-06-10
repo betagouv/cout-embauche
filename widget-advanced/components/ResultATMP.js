@@ -6,13 +6,13 @@ class ResultATMP extends Component {
 	render() {
 		let {
 			f,
-			submitted,
+			steps,
 			effectif = resolve(f, 'effectif.resume.value'),
 			selectTauxRisque = resolve(f, 'selectTauxRisque.resume.value'),
 			taux = selectTauxRisque && selectTauxRisque['Taux net'].replace(',', '.'),
 			tauxCommunGeneral = selectTauxRisque && selectTauxRisque['Taux commun quel que soit effectif ?'] == 'Oui',
 		} = this.props
-		if (!effectif || !submitted['effectif']) return null
+		if (!effectif || !steps['effectif']) return null
 		return (
 			<RhetoricalQuestion
 				form="tauxRisque" formName="tauxRisque"

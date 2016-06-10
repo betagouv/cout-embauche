@@ -8,17 +8,14 @@ class RhetoricalQuestion extends Component {
 	render() {
 		let {
 			fields: {resume: choice},
-			handleSubmit,
-			actions: {submitStep},
-			formName,
-			radioClick = handleSubmit(() => submitStep(formName)),
+			submit,
 			possibleChoice: {text, value},
 		} = this.props
 		return (
 			<span className="answer">
 				<label key={value} className={classnames('radio')}>
 					<input
-						type="radio" {...choice} onClick={radioClick}
+						type="radio" {...choice} onClick={submit(value)}
 						value={value} />
 					{text}
 				</label>

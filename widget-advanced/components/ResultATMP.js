@@ -9,7 +9,7 @@ class ResultATMP extends Component {
 			submitted,
 			effectif = resolve(f, 'effectif.resume.value'),
 			selectTauxRisque = resolve(f, 'selectTauxRisque.resume.value'),
-			taux = selectTauxRisque && selectTauxRisque['Taux net'],
+			taux = selectTauxRisque && selectTauxRisque['Taux net'].replace(',', '.'),
 			tauxCommunGeneral = selectTauxRisque && selectTauxRisque['Taux commun quel que soit effectif ?'] == 'Oui',
 		} = this.props
 		if (!effectif || !submitted['effectif']) return null
@@ -18,7 +18,10 @@ class ResultATMP extends Component {
 				form="tauxRisque" formName="tauxRisque"
 				fields={[ 'resume' ]}
 				question={this.renderText(tauxCommunGeneral, taux, effectif)}
-				possibleChoice={{text: 'OK', value: taux}} />
+				possibleChoice={{text: 'OK', value: taux}}
+				variableName="taux_accident_travail"
+				transformInputValue={v => v/100}
+				/>
 		)
 	}
 

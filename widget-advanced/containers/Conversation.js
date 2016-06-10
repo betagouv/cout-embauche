@@ -81,6 +81,8 @@ class Conversation extends Component {
 							when={resolve(f, 'tauxRisqueConnu.resume.value') == 'oui'}
 							form="tauxRisque" formName="tauxRisque"
 							fields={[ 'resume' ]}
+							variableName="taux_accident_travail"
+							transformInputValue={v => v/100}
 							attributes={{
 								type: 'number',
 								step: 'any',

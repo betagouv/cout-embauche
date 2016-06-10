@@ -14,8 +14,6 @@ class ReactSelectWrapper extends Component {
 			options,
 			onChangeAndSubmit =
 				(value, [ option ]) => {
-					// TODO we're using a small hack (the step's resume is an object)
-					// until we store more redux form fields
 					option.text = option['Taux net'] + ' %'
 					onChange(option)
 					submit(option)
@@ -64,6 +62,10 @@ class Select extends Component {
 			</div>
 
 		)
+	}
+
+	static humanAnswer(props, value) {
+		return value.text
 	}
 
 	componentDidMount() {

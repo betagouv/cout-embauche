@@ -34,80 +34,82 @@ class Conversation extends Component {
 					form="jei" formName="jei"
 					fields={[ 'resume' ]}
 					variableName="jeune_entreprise_innovante"
-					possibleChoices ={[
-						{value: '1', text: 'Oui' },
-						{value: '0', text: 'Non' },
-					]}/>
-
-				<Input
-					title="Pourcentage d'alternants"
-					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
-					when={resolve(f, 'jei.resume.value') != undefined}
-					form="pourcentage_alternants" formName="pourcentage_alternants"
-					fields={[ 'resume' ]}
-					attributes={{
-						type: 'number',
-						step: 'any',
-						min: '0',
-						max: '100',
+					possibleChoices ={{
+						'1': 'Oui',
+						'0': 'Non',
 					}}
-					unit="%"
-					helpText="Cette information permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
-				/>
-
-			<Group
-				when={submitted['pourcentage_alternants']}
-				text="Taux de risque AT/MP"
-				submitted={submitted}
-				unsubmitStep={actions.unsubmitStep}
-				foldTrigger='tauxRisque'
-				value={resolve(f, 'tauxRisque.resume.value')} >
-					<Question
-						title="Taux de risque connu"
-						question="Connaissez-vous votre taux de risque AT/MP ?"
-						form="tauxRisqueConnu" formName="tauxRisqueConnu"
-						fields={[ 'resume' ]}
-						possibleChoices ={[
-							{value: 'oui', text: 'Oui' },
-							{value: 'non', text: 'Non' },
-						]}
-						helpText="La cotisation d’accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur net-entreprises.fr"/>
+					/>
 					<Input
-						title="Taux de risque"
-						question="Entrez votre taux de risque"
-						when={resolve(f, 'tauxRisqueConnu.resume.value') == 'oui'}
-						form="tauxRisque" formName="tauxRisque"
+						title="Pourcentage d'alternants"
+						question="Quel est le pourcentage d'alternants dans votre entreprise ?"
+						when={resolve(f, 'jei.resume.value') != undefined}
+						form="pourcentage_alternants" formName="pourcentage_alternants"
 						fields={[ 'resume' ]}
 						attributes={{
 							type: 'number',
 							step: 'any',
 							min: '0',
-							max: '200',
-							placeholder: '1.1',
+							max: '100',
 						}}
-						unit="%" />
-					<Group when={resolve(f, 'tauxRisqueConnu.resume.value') == 'non'}>
-						<Select
-							title="Code de risque sélectionné"
-							question="Sélectionnez votre code risque dans cette liste"
-							form="selectTauxRisque" formName="selectTauxRisque"
+						answerSuffix="%"
+						helpText="Nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
+					/>
+
+				<Group
+					when={submitted['pourcentage_alternants']}
+					text="Taux de risque AT/MP"
+					submitted={submitted}
+					unsubmitStep={actions.unsubmitStep}
+					foldTrigger='tauxRisque'
+					answer={resolve(f, 'tauxRisque.resume.value')}
+					answerSuffix="%" >
+						<Question
+							title="Taux de risque connu"
+							question="Connaissez-vous votre taux de risque AT/MP ?"
+							form="tauxRisqueConnu" formName="tauxRisqueConnu"
 							fields={[ 'resume' ]}
-							optionsURL="https://cdn.rawgit.com/laem/taux-collectifs-cotisation-atmp/master/taux-2016.json" />
+							possibleChoices ={{
+								oui: 'Oui',
+								non: 'Non',
+							}}
+							helpText="Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur net-entreprises.fr"/>
 						<Input
-							title="Effectif entreprise"
-							question="Quel est l'effectif de votre entreprise ?"
-							when={typeof resolve(f, 'selectTauxRisque.resume.value') == 'object'}
-							form="effectif" formName="effectif"
+							title="Taux de risque"
+							question="Entrez votre taux de risque"
+							when={resolve(f, 'tauxRisqueConnu.resume.value') == 'oui'}
+							form="tauxRisque" formName="tauxRisque"
 							fields={[ 'resume' ]}
 							attributes={{
 								type: 'number',
-								step: '1',
+								step: 'any',
 								min: '0',
-								placeholder: '29',
-							}} />
-						<ResultATMP f={f} submitted={submitted}/>
+								max: '200',
+								placeholder: '1.1',
+							}}
+							answerSuffix="%" />
+						<Group when={resolve(f, 'tauxRisqueConnu.resume.value') == 'non'}>
+							<Select
+								title="Code de risque sélectionné"
+								question="Sélectionnez votre code risque dans cette liste"
+								form="selectTauxRisque" formName="selectTauxRisque"
+								fields={[ 'resume' ]}
+								optionsURL="https://cdn.rawgit.com/laem/taux-collectifs-cotisation-atmp/master/taux-2016.json" />
+							<Input
+								title="Effectif entreprise"
+								question="Quel est l'effectif de votre entreprise ?"
+								when={typeof resolve(f, 'selectTauxRisque.resume.value') == 'object'}
+								form="effectif" formName="effectif"
+								fields={[ 'resume' ]}
+								attributes={{
+									type: 'number',
+									step: '1',
+									min: '0',
+									placeholder: '29',
+								}} />
+							<ResultATMP f={f} submitted={submitted}/>
+						</Group>
 					</Group>
-				</Group>
+
 
 		</div>)
 	}

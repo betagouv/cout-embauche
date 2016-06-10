@@ -213,11 +213,11 @@ question : make it visible with colors */
 		-moz-appearance:textfield;
 }
 
-.step input.has-unit {
+.step input.suffixed {
 	padding-right: 1.5em;
 }
 
-.step label.unit {
+.step label.suffix {
 	margin: -1.7em;
 	color: #AAB2BD;
 }

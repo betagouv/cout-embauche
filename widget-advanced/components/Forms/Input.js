@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {reduxForm} from 'redux-form'
 import {FormDecorator} from './FormDecorator'
+import classnames from 'classnames'
 
 @FormDecorator
 class Input extends Component {
@@ -12,8 +13,7 @@ class Input extends Component {
 			formName,
 			submit = handleSubmit(() => submitStep(formName)),
 			attributes,
-			unit,
-			hasUnit = unit ? 'has-unit' : '',
+			answerSuffix,
 		} = this.props
 		return (
 			<span className="answer">
@@ -21,20 +21,22 @@ class Input extends Component {
 					{...attributes}
 					{...choice}
 					id={'input-' + formName}
-					className={hasUnit}
+					className={classnames({suffixed: answerSuffix})}
 					/>
-				{ hasUnit ?
-					<label className="unit" htmlFor={'input-' + formName}>
-						{unit}
-					</label> : null}
+				{ answerSuffix &&
+					<label className="suffix" htmlFor={'input-' + formName}>
+						{answerSuffix}
+					</label>}
 				<button className="send" disabled={!choice.value} onClick={submit}>
 					&#10548;
 				</button>
 			</span>
-
 		)
 	}
-
+	static humanAnswer(props, value) {
+		return value + ' ' + props.answerSuffix
+	}
 }
+
 
 export default reduxForm({destroyOnUnmount: false})(Input)

@@ -27,8 +27,6 @@ export var FormDecorator = DecoratedComponent =>
 			let {
 				when,
 				formName,
-				form: {[formName]: formState},
-				resume = formState && formState.resume.value,
 				submitted,
 			} = this.props
 
@@ -42,12 +40,11 @@ export var FormDecorator = DecoratedComponent =>
 				return (
 				<section className={classNames('step', {unfolded})}>
 					{this.state.helpVisible && this.renderHelpBox()}
-					{this.renderHeader(unfolded, resume)}
+					{this.renderHeader(unfolded)}
 					{unfolded &&
 						<form>
 							<fieldset>
 								{ /* <a className="cancel" href="#" onClick={() => console.log('utilité de ce bouton encore à voir')}>annuler</a> */}
-								{ /* TODO : make this following content float right */ }
 								<DecoratedComponent {...this.props} />
 							</fieldset>
 						</form>}
@@ -56,9 +53,9 @@ export var FormDecorator = DecoratedComponent =>
 		}
 
 		/*
-			< Le titre de ma question > ----------- < (?) / résultat >
+			< Le titre de ma question > ----------- < (? bulle d'aide) / résultat >
 		*/
-		renderHeader(unfolded, resume) {
+		renderHeader(unfolded) {
 			let {
 				handleSubmit,
 				actions: {unsubmitStep},
@@ -68,7 +65,7 @@ export var FormDecorator = DecoratedComponent =>
 
 			return (
 				<span className="form-header" onClick={headerClick}>
-				{ unfolded ? this.renderQuestionHeader() : this.renderResumeHeader(resume)}
+				{ unfolded ? this.renderQuestionHeader() : this.renderResumeHeader()}
 				</span>
 			)
 		}
@@ -83,16 +80,25 @@ export var FormDecorator = DecoratedComponent =>
 					}
 				</span>
 
-		renderResumeHeader = (resume) =>
-			<span>
-				<h1>{this.props.title}</h1>
-				<ReactCSSTransitionGroup
-						transitionAppear={true}
-						transitionName="answer"
-						transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-						<span key="1" className="resume">{typeof resume === 'object' ? resume.text : resume}</span>
-					</ReactCSSTransitionGroup>
-			</span>
+		renderResumeHeader() {
+			let {
+				formName,
+				form: {[formName]: formState},
+				value = formState.resume.value,
+				// Show a beautiful answer to the user, rather than the technical form value
+				humanText = DecoratedComponent.humanAnswer(this.props, value),
+			} = this.props
+			return (
+				<span>
+					<h1>{this.props.title}</h1>
+					<ReactCSSTransitionGroup
+							transitionAppear={true}
+							transitionName="answer"
+							transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+							<span key="1" className="resume">{humanText}</span>
+						</ReactCSSTransitionGroup>
+				</span>)
+		}
 
 		renderHelpBox = () =>
 			<div className="help-box">

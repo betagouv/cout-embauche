@@ -19,7 +19,7 @@ export default class Group extends Component {
 		} else return null
 	}
 	renderTitle(folded) {
-		let {foldTrigger, unsubmitStep, text, value} = this.props,
+		let {foldTrigger, unsubmitStep, text, answer, answerSuffix} = this.props,
 			headerClick = () => unsubmitStep(foldTrigger)
 
 		return(
@@ -27,7 +27,7 @@ export default class Group extends Component {
 				<div className="header">
 					<GroupTitle {...{text, folded}} onClick={headerClick}/>
 					{folded &&
-						<span className="resume">{value}</span>
+						<span className="resume">{answer + ' ' + answerSuffix}</span>
 					}
 				</div>
 		)

@@ -13,7 +13,7 @@ export default class App extends Component {
 		return (
 			<Provider store={store}>
 				<div>
-					<Conversation delay="300" />
+					<Conversation delay="0" />
 					<DevTools />
 				</div>
 			</Provider>

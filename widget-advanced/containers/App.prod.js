@@ -14,7 +14,7 @@ export default class App extends Component {
 			<Provider store={store}>
 				<div>
 					<Introduction />
-					<Conversation delay="4000" />
+					<Conversation delay="200" />
 				</div>
 			</Provider>
 		)

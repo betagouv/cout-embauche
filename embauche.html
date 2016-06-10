@@ -88,8 +88,8 @@
 	<section class="advanced-simulation" hidden>
 		<!-- Entry point for React render -->
 	</section>
-
-	<button class="action show-advanced">
+	<!-- autocomplete off forbid firefox to keep disabled state in memory on page refresh -->
+	<button class="action show-advanced" autocomplete="off">
 		<span class="regular">
 			Aller plus loin
 		</span>
@@ -97,7 +97,7 @@
 			AT/MP, JEI, CDD... &#10141;
 		</span>
 	</button>
-	<button class="action bring-input-back" disabled>
+	<button class="action bring-input-back" disabled autocomplete="off">
 		&#8634; &nbsp; Revenir à la saisie simple
 	</button>
 
@@ -123,7 +123,7 @@
 					par <span data-source="period">mois</span>.
 				</p>
 			</div>
-			<button class="action show-details">
+			<button class="action show-details" autocomplete="off">
 				<span>
 					Voir le détail<br/>des prélèvements
 				</span>

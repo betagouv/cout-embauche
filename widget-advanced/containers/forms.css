@@ -4,35 +4,6 @@
 	width: 40em;
 }
 
-#conversation-introduction {
-	text-align: center;
-	width: 60%;
-	font-size: 85%;
-	margin: 2em auto 3em;
-	font-style: italic;
-}
-
-#conversation-introduction img {
-	opacity: .45;
-	width: 1em;
-}
-
-@keyframes rotate {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-#conversation-introduction img.spinning {
-	animation-name:             rotate;
-	animation-duration:         1s;
-	animation-iteration-count:  infinite;
-	animation-timing-function: linear;
-}
-
-
 .step {
 	position: relative;
 	margin-bottom: 2.8em;

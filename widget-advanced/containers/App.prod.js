@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 
-import Introduction from '../components/Introduction'
 import Conversation from '../containers/Conversation'
 import { Provider } from 'react-redux'
 
@@ -12,10 +11,7 @@ export default class App extends Component {
 		const { store } = this.props
 		return (
 			<Provider store={store}>
-				<div>
-					<Introduction />
-					<Conversation delay="200" />
-				</div>
+				<Conversation />
 			</Provider>
 		)
 	}

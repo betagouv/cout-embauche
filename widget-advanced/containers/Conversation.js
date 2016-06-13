@@ -8,25 +8,14 @@ import Input from '../components/Forms/Input'
 import Select from '../components/Forms/Select'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
-import Introduction from '../components/Introduction'
 
-
-/*
-	C'est ici qu'est définie la suite de questions à poser.
-*/
 class Conversation extends Component {
-	state = { hidden: true }
-
-	/* Display <Introduction> a bit before this component */
-	componentDidMount = () => setTimeout(() => this.setState({hidden: false}), this.props.delay)
-
 	render() {
-		if (this.state.hidden) return null
-		let { form: f, steps, pending, actions} = this.props
+		let { form: f, steps, actions} = this.props
 
+		/* C'est ici qu'est définie la suite de questions à poser. */
 		return (
 			<div id="conversation">
-				<Introduction {... {pending}} />
 				<Question
 					title="Statut Jeune Entreprise Innovante"
 					question="Disposez-vous du statut Jeune Entreprise Innovante ?"

@@ -30,7 +30,7 @@ function pending(state = false, action) {
 	}
 }
 
-const todoApp = combineReducers({
+export default combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,
 
@@ -41,5 +41,3 @@ const todoApp = combineReducers({
 	// Is an (advanced simulation) request pending ?
 	pending,
 })
-
-export default todoApp

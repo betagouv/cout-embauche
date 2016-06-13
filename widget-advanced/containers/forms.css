@@ -6,7 +6,7 @@
 
 .step {
 	position: relative;
-	margin-bottom: 2.8em;
+	margin-bottom: 3.5em;
 }
 
 
@@ -118,6 +118,7 @@ question : make it visible with colors */
 .resume {
 	text-align: center;
 	margin-left: 1em;
+	margin-top: 2em;
 	cursor: pointer;
 	background: none;
 	padding: 0 .8em;

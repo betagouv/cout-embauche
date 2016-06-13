@@ -20,7 +20,7 @@ class ResultATMP extends Component {
 				question={this.renderText(tauxCommunGeneral, taux, effectif)}
 				possibleChoice={{text: 'OK', value: taux}}
 				variableName="taux_accident_travail"
-				transformInputValue={v => v/100}
+				serialise={v => v/100}
 				/>
 		)
 	}

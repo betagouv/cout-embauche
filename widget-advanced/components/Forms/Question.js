@@ -11,30 +11,25 @@ This is a "Question" user input : he selects one of a list of button */
 class Question extends Component {
 	render() {
 		let {
-			fields: {resume: choice},
-			possibleChoices,
+			fields: {resume: chosen},
+			choices,
 			/* On radio click, just submit the form using the decorator's submit function */
 			submit,
 		} = this.props
 		return (
 			<span className="answer">
-				{ Object.keys(possibleChoices).map((value) =>
-						( <label key={value} className={classnames('radio', value === choice.value ? 'checked' : '')}>
+				{ choices.map((choice) =>
+						( <label key={choice} className={classnames('radio', {checked: choice === chosen.value})}>
 								<input
-									type="radio" {...choice} onClick={submit(value)}
-									value={value} checked={value === choice.value ? 'checked' : ''} />
-								{possibleChoices[value]}
+									type="radio" {...chosen} onClick={submit(choice)}
+									value={choice} checked={choice === chosen.value ? 'checked' : ''} />
+								{choice}
 							</label>
 						)
 				)}
 			</span>
 		)
 	}
-	// How should the value be presented to the user once answered ?
-	static humanAnswer(props, value) {
-		return props.possibleChoices[value]
-	}
-
 }
 
 export default reduxForm({destroyOnUnmount: false})(Question)

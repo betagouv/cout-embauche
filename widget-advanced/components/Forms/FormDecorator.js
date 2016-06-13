@@ -31,7 +31,8 @@ export var FormDecorator = DecoratedComponent =>
 				handleSubmit,
 				actions: {submitStep},
 				variableName,
-				transformInputValue,
+				serialise,
+				valueType,
 				valueIfIgnored,
 				fields: {resume: field},
 			} = this.props
@@ -39,10 +40,12 @@ export var FormDecorator = DecoratedComponent =>
 			and trigger the SUMIT_STEP action that will mark this
 			step in the state as completed.
 			SUBMIT_STEP will also trigger an API call if specified in the props.
-			The value can be transformed before being sent online,
+			The value can be serialised before being sent online,
 			e.g. to transform a percentage to a ratio */
-			let	submit = (value, ignored) =>
-				handleSubmit(() => submitStep(formName, variableName, value, transformInputValue, ignored))
+			serialise = serialise || valueType && new valueType().serialise
+			let	submit = (value, ignored) => {
+				return handleSubmit(() => submitStep(formName, variableName, value, serialise, ignored))
+			}
 
 			let ignoreStep = () => {
 				field.onChange(valueIfIgnored)
@@ -88,12 +91,12 @@ export var FormDecorator = DecoratedComponent =>
 
 			return (
 				<span className="form-header" onClick={headerClick}>
-				{ unfolded ? this.renderQuestionHeader() : this.renderResumeHeader()}
+				{ unfolded ? this.renderQuestion() : this.renderTitleAndAnswer()}
 				</span>
 			)
 		}
 
-		renderQuestionHeader = () =>
+		renderQuestion = () =>
 				<span>
 					<h1>{this.props.question}</h1>
 					{this.props.helpText &&
@@ -103,14 +106,17 @@ export var FormDecorator = DecoratedComponent =>
 					}
 				</span>
 
-		renderResumeHeader() {
+		renderTitleAndAnswer() {
 			let {
 				formName,
 				form: {[formName]: formState},
+				valueType,
+				human,
+			} = this.props,
 				value = formState.resume.value,
 				// Show a beautiful answer to the user, rather than the technical form value
-				humanText = DecoratedComponent.humanAnswer(this.props, value),
-			} = this.props
+				humanFunc = human || valueType && new valueType().human || (v => v)
+
 			return (
 				<span>
 					<h1>{this.props.title}</h1>
@@ -118,7 +124,7 @@ export var FormDecorator = DecoratedComponent =>
 							transitionAppear={true}
 							transitionName="answer"
 							transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-							<span key="1" className="resume">{humanText}</span>
+							<span key="1" className="resume">{humanFunc(value)}</span>
 						</ReactCSSTransitionGroup>
 				</span>)
 		}

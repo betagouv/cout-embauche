@@ -16,7 +16,7 @@ class ReactSelectWrapper extends Component {
 				(value, [ option ]) => {
 					option.text = option['Taux net'] + ' %'
 					onChange(option)
-					submit(option)
+					submit(option)()
 				},
 				selectValue = value && value['Code risque'],
 				// but ReactSelect obviously needs a unique identifier
@@ -51,10 +51,7 @@ class Select extends Component {
 	render() {
 		let {
 			fields: {resume: choice},
-			handleSubmit,
-			actions: {submitStep},
-			formName,
-			submit = handleSubmit(() => submitStep(formName)),
+			submit,
 		} = this.props
 		return (
 			<div className="select-answer">
@@ -62,10 +59,6 @@ class Select extends Component {
 			</div>
 
 		)
-	}
-
-	static humanAnswer(props, value) {
-		return value.text
 	}
 
 	componentDidMount() {
@@ -79,7 +72,7 @@ class Select extends Component {
 					return response.json()
 				})
 				.then(json => this.setState({options: json}))
-				.catch(console.log('Oups !!'))
+				.catch(error => console.log('Oups !!'))
 	}
 
 }

@@ -11,17 +11,20 @@ class Input extends Component {
 			formName,
 			submit,
 			attributes,
-			answerSuffix,
-		} = this.props
+			valueType,
+		} = this.props,
+			answerSuffix = valueType && new valueType().suffix,
+			suffixed = answerSuffix != null
+
 		return (
 			<span className="answer">
 				<input
 					{...attributes}
 					{...choice}
 					id={'input-' + formName}
-					className={classnames({suffixed: answerSuffix})}
+					className={classnames({suffixed})}
 					/>
-				{ answerSuffix &&
+				{ suffixed &&
 					<label className="suffix" htmlFor={'input-' + formName}>
 						{answerSuffix}
 					</label>}
@@ -30,9 +33,6 @@ class Input extends Component {
 				</button>
 			</span>
 		)
-	}
-	static humanAnswer(props, value) {
-		return value + ' ' + props.answerSuffix
 	}
 }
 

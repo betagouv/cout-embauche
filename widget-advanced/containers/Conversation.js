@@ -8,6 +8,7 @@ import Input from '../components/Forms/Input'
 import Select from '../components/Forms/Select'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
+import { Percentage } from '../formValueTypes.js'
 
 class Conversation extends Component {
 	render() {
@@ -23,11 +24,9 @@ class Conversation extends Component {
 					form="jei" formName="jei"
 					fields={[ 'resume' ]}
 					variableName="jeune_entreprise_innovante"
-					possibleChoices ={{
-						'1': 'Oui',
-						'0': 'Non',
-					}}
-					valueIfIgnored = "0"
+					choices={[ 'Oui', 'Non' ]}
+					valueIfIgnored = "Non"
+					serialise={v => v === 'Oui' ? 1 : 0}
 					/>
 					<Input
 						title="Pourcentage d'alternants"
@@ -36,44 +35,40 @@ class Conversation extends Component {
 						form="pourcentage_alternants" formName="pourcentage_alternants"
 						fields={[ 'resume' ]}
 						variableName="ratio_alternants"
-						transformInputValue={v => v/100}
 						attributes={{
 							type: 'number',
 							step: 'any',
 							min: '0',
 							max: '100',
 						}}
+						valueType={Percentage}
 						valueIfIgnored = "0"
-						answerSuffix="%"
 						helpText="Nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
 					/>
 
 				<Group
 					when={steps['pourcentage_alternants']}
 					text="Taux de risque AT/MP"
-					{...{steps}}
+					steps={steps}
 					unsubmitStep={actions.unsubmitStep}
-					foldTrigger='tauxRisque'
+					foldTrigger="tauxRisque"
+					valueType={Percentage}
 					answer={resolve(f, 'tauxRisque.resume.value')}
-					answerSuffix="%" >
+					>
 						<Question
 							title="Taux de risque connu"
 							question="Connaissez-vous votre taux de risque AT/MP ?"
 							form="tauxRisqueConnu" formName="tauxRisqueConnu"
 							fields={[ 'resume' ]}
-							possibleChoices ={{
-								oui: 'Oui',
-								non: 'Non',
-							}}
+							choices={[ 'Oui', 'Non' ]}
 							helpText="Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur net-entreprises.fr"/>
 						<Input
 							title="Taux de risque"
 							question="Entrez votre taux de risque"
-							when={resolve(f, 'tauxRisqueConnu.resume.value') == 'oui'}
+							when={resolve(f, 'tauxRisqueConnu.resume.value') == 'Oui'}
 							form="tauxRisque" formName="tauxRisque"
 							fields={[ 'resume' ]}
 							variableName="taux_accident_travail"
-							transformInputValue={v => v/100}
 							attributes={{
 								type: 'number',
 								step: 'any',
@@ -81,13 +76,14 @@ class Conversation extends Component {
 								max: '200',
 								placeholder: '1.1',
 							}}
-							answerSuffix="%" />
-						<Group when={resolve(f, 'tauxRisqueConnu.resume.value') == 'non'}>
+							valueType={Percentage} />
+						<Group when={resolve(f, 'tauxRisqueConnu.resume.value') == 'Non'}>
 							<Select
 								title="Code de risque sélectionné"
 								question="Sélectionnez votre code risque dans cette liste"
 								form="selectTauxRisque" formName="selectTauxRisque"
 								fields={[ 'resume' ]}
+								human={v => v.text}
 								optionsURL="https://cdn.rawgit.com/laem/taux-collectifs-cotisation-atmp/master/taux-2016.json" />
 							<Input
 								title="Effectif entreprise"

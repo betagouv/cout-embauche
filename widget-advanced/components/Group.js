@@ -12,36 +12,29 @@ export default class Group extends Component {
 		if (when) {
 			return (
 				<div className="form-group">
-					{this.renderTitle(folded)}
+					{this.renderHeader(folded)}
 					{folded ? null : children}
 				</div>
 			)
 		} else return null
 	}
 
-	renderTitle(folded) {
-		let {foldTrigger, unsubmitStep, text, answer, answerSuffix} = this.props,
-			/* The first question of the group,
-			to unfold if the users wants to change his answers */
+	renderHeader(folded) {
+		let {
+			foldTrigger, unsubmitStep, text, answer,
+			valueType,
+		} = this.props,
 			headerClick = () => unsubmitStep(foldTrigger)
 
 		return(
 			text &&
 				<div className="header">
-					<a className="ignore" onClick={this.ignoreGroup}>
-						passer
-					</a>
 					<GroupTitle {...{text, folded}} onClick={headerClick}/>
 					{folded &&
-						<span className="resume">{answer + ' ' + answerSuffix}</span>
+						<span className="resume">{valueType ? new valueType().human(answer) : answer }</span>
 					}
 				</div>
 		)
-
-	}
-
-	ignoreGroup() {
-
 	}
 
 }

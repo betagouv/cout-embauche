@@ -218,8 +218,10 @@ question : make it visible with colors */
 }
 
 .step label.suffix {
-	margin: -1.7em;
+	margin: -2em;
+  font-size: 85%;
 	color: #AAB2BD;
+	vertical-align: middle;
 }
 
 .step input[type=text]:focus,
@@ -251,11 +253,11 @@ question : make it visible with colors */
 
 .step .send {
 	position: relative;
-	left: 1em;
-	vertical-align: middle;
+	left: 1.3em;
+	top: .2em;
 	border: 0;
 	background: none;
-	font-size: 200%;
+	font-size: 180%;
 	color: #CCD1D9
 }
 

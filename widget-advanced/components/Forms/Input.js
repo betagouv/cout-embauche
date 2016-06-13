@@ -26,7 +26,7 @@ class Input extends Component {
 						{answerSuffix}
 					</label>}
 				<button className="send" disabled={!choice.value} onClick={submit(choice.value)}>
-					&#10548;
+					➤
 				</button>
 			</span>
 		)

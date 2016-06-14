@@ -14,8 +14,18 @@
 	position: relative;
 }
 
+.form-group.explicit > .group-content {
+	border-left: 1px solid #4A89DC;
+	margin-left: 1em;
+	padding: .8em 0 0 1.3em;
+}
+
+.form-group.folded .group-content {
+	border: none;
+}
+
 .form-group .header {
-	margin: 4em 0 2em 0;
+	margin: 4em 0 .6em 0;
 }
 
 /* This is a specialization of .ignore for .form-group */
@@ -25,37 +35,38 @@
 	left: 3%;
 }
 
-.group-title {
-	transform: translateX(-50%);
-	display: inline-block;
-	margin: 0;
-	margin-left: 50%;
-	background: #4A89DC;
-	padding: .2em 1.5em;
-	border-radius: .4em;
-	color: white;
-	font-size: 90%;
-}
-
 /* Simple way for a visual stack,
 hinting on the fact that it is a group result */
-.title-stack {
+.group-title {
 	position: relative;
 	display: inline-block;
 }
-.title-stack h1 {
+.group-title h1 {
 	font-size: 100%;
 	font-weight: 400;
 	padding: .5em .8em;
 	margin: 0;
 	border-radius: 1em;
 	position: relative;
-	cursor: pointer;
-	border: 1px solid rgba(0,0,0,.3);
-	background: white; /* TODO could be a problem for non-white background hosts */
 	width: 100%;
+	border: 1px solid rgba(0,0,0,.3);
 }
-.title-stack h1:first-child {
+.form-group.unfolded .group-title h1 {
+	color: #4A89DC;
+	border: 1px solid #4A89DC;
+}
+.form-group.unfolded .group-title h1:first-child {
+	display: none;
+}
+
+.form-group.folded .group-title h1:nth-child(2) {
+	cursor: pointer;
+	border: 1px solid rgba(0,0,0,.6);
+}
+.form-group.folded .group-title h1:first-child {
+	color: transparent;
+	border-top: none;
+	border-left: none;
 	position: absolute;
 	left: .15em;
 	top: .15em;

@@ -1,19 +1,23 @@
 import React, {Component} from 'react'
 import GroupTitle from './GroupTitle'
+import classnames from 'classnames'
 
 /* Groups can be used only to avoid repeating conditions for all its children,
-or to gather a set of questions that will be eventually collapsed to a final @value */
+or to gather a set of questions that will be eventually collapsed to a final @value,
+marked with the 'explicit' class  */
 export default class Group extends Component {
 
 	render() {
-		let {when, steps, foldTrigger, children} = this.props,
+		let {when, steps, foldTrigger, children, text} = this.props,
 			folded = foldTrigger ? steps[foldTrigger] : false
 
 		if (when) {
 			return (
-				<div className="form-group">
+				<div className={classnames('form-group', {folded, unfolded: !folded, explicit: text})}>
 					{this.renderHeader(folded)}
-					{folded ? null : children}
+					<div className="group-content">
+						{folded ? null : children}
+					</div>
 				</div>
 			)
 		} else return null
@@ -29,7 +33,7 @@ export default class Group extends Component {
 		return(
 			text &&
 				<div className="header">
-					<GroupTitle {...{text, folded}} onClick={headerClick}/>
+					<GroupTitle {...{text}} onClick={headerClick}/>
 					{folded &&
 						<span className="resume">{valueType ? new valueType().human(answer) : answer }</span>
 					}

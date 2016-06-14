@@ -80,7 +80,7 @@ class Conversation extends Component {
 						<Group when={resolve(f, 'tauxRisqueConnu.resume.value') == 'Non'}>
 							<Select
 								title="Code de risque sélectionné"
-								question="Sélectionnez votre code risque dans cette liste"
+								question="Choisissez la catégorie de risque de votre entreprise"
 								form="selectTauxRisque" formName="selectTauxRisque"
 								fields={[ 'resume' ]}
 								human={v => v.text}

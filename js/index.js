@@ -23,6 +23,8 @@ function bindToForm(form) {
 			return handleTempsPartielSelect(event.target.value, handleBasicFormChanges)
 		if (id === 'select-salaire-entree')
 			return handleSalaireSelect(event.target.value, handleBasicFormChanges)
+		if (id === 'select-employee-type')
+			return handleNoteAlternance(event.target.value, handleBasicFormChanges)
 		return handleBasicFormChanges()
 	}
 
@@ -105,6 +107,16 @@ function handleSalaireSelect(selectedSalaire, next) {
 
 	outputSalaireValue.setAttribute('data-source', source)
 	outputSalaireType.textContent = type
+
+	next()
+}
+
+function handleNoteAlternance(selectedEmployeeType, next) {
+	const noteAlternance = document.querySelector('#note-alternance')
+	if (selectedEmployeeType === 'apprenti')
+		noteAlternance.removeAttribute('hidden')
+	else
+		noteAlternance.setAttribute('hidden', true)
 
 	next()
 }

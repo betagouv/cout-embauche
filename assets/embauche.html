@@ -12,7 +12,7 @@
 				<label for="effectif_entreprise" title="En équivalents temps pleins : un mi-temps vaut 0,5, par exemple.">salariés</label>
 
 				&nbsp;<!-- non-breakable space to prevent minification from mangling all space with preceding <label> -->souhaite embaucher un·e
-				<select data-provides="employee">
+				<select id="select-employee-type" data-provides="employee">
 					<option value="salarié·e" selected>salarié·e</option>
 					<option value="apprenti">apprenti·e</option>
 				</select>
@@ -117,6 +117,7 @@
 			par <span data-source="period">mois</span>.
 		</p>
 	</section>
+	<section id="note-alternance" hidden>Note: pour une simulation plus fiable du cas de l'apprentissage, rendez-vous sur <a href="https://www.alternance.emploi.gouv.fr/portail_alternance/jcms/hl_5641" target="_blank">le simulateur du portail de l'alternance</a></section>
 
 	<section id="affiliation">
 		<p id="affiliation__sgmap">

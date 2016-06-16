@@ -96,6 +96,12 @@ details {
 	border-radius: .5em;
 }
 
+#note-alternance {
+	font-size: 75%;
+	text-align: center;
+	font-style: italic;
+}
+
 @media(max-width: 500px) {
 	body {
 		padding: 0;

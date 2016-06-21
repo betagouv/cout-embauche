@@ -50,7 +50,8 @@ const collectFormFields = (form) =>
 
 
 const BOOLEAN_PARAMETERS = {
-	employee: [ 'stagiaire', 'apprenti' ],
+	employee: [ 'apprenti' ],
+	'entreprise-type': [ 'entreprise_est_association_non_lucrative' ],
 }
 
 

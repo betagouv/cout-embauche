@@ -21,6 +21,10 @@ input, select {
 	vertical-align: middle;
 }
 
+#select-entreprise-type {
+	width: 7.5em;
+}
+
 input[type="number"] {
 	max-width: 7em;
 }

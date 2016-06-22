@@ -25,7 +25,7 @@ export var FormDecorator = DecoratedComponent =>
 		}
 		render() {
 			let {
-				when,
+				visible,
 				formName,
 				steps,
 				handleSubmit,
@@ -53,10 +53,10 @@ export var FormDecorator = DecoratedComponent =>
 			}
 
 			let
-				visible = when == undefined ? true : when,
 				/* Should this form be unfolded (ready to receive user action)
 				or in its folded state, displaying a resume. */
-				unfolded = !steps[formName]
+				folded = steps[formName],
+				unfolded = !folded
 
 			if (visible) {
 				return (

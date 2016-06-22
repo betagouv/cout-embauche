@@ -8,7 +8,7 @@ import Input from '../components/Forms/Input'
 import Select from '../components/Forms/Select'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
-import { Percentage } from '../formValueTypes.js'
+import { Percentage, Euro } from '../formValueTypes.js'
 
 class Conversation extends Component {
 	render() {
@@ -17,21 +17,38 @@ class Conversation extends Component {
 		/* C'est ici qu'est définie la suite de questions à poser. */
 		return (
 			<div id="conversation">
+				<Input
+					title="Complémentaire santé"
+					question="Quel est le montant de votre complémentaire santé entreprise obligatoire ?"
+					visible="true"
+					form="mutuelle" formName="mutuelle"
+					fields={[ 'resume' ]}
+					variableName="complementaire_sante_montant"
+					attributes={{
+						type: 'number',
+						step: 'any',
+						placeholder: 30,
+					}}
+					valueType={Euro}
+					valueIfIgnored = "30"
+					helpText={`L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
+										de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.`} />
+
 				<Question
 					title="Statut Jeune Entreprise Innovante"
 					question="Disposez-vous du statut Jeune Entreprise Innovante ?"
-					when={true}
+					visible={steps['mutuelle']}
 					form="jei" formName="jei"
 					fields={[ 'resume' ]}
 					variableName="jeune_entreprise_innovante"
 					choices={[ 'Oui', 'Non' ]}
 					valueIfIgnored = "Non"
-					serialise={v => v === 'Oui' ? 1 : 0}
-					/>
+					serialise={v => v === 'Oui' ? 1 : 0} />
+
 					<Input
 						title="Pourcentage d'alternants"
 						question="Quel est le pourcentage d'alternants dans votre entreprise ?"
-						when={resolve(f, 'jei.resume.value') != undefined}
+						visible={resolve(f, 'jei.resume.value') != undefined}
 						form="pourcentage_alternants" formName="pourcentage_alternants"
 						fields={[ 'resume' ]}
 						variableName="ratio_alternants"
@@ -43,11 +60,11 @@ class Conversation extends Component {
 						}}
 						valueType={Percentage}
 						valueIfIgnored = "0"
-						helpText="Nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
+						helpText="Ce pourcentage nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage"
 					/>
 
 				<Group
-					when={steps['pourcentage_alternants']}
+					visible={steps['pourcentage_alternants']}
 					text="Taux de risque AT/MP"
 					steps={steps}
 					unsubmitStep={actions.unsubmitStep}
@@ -65,7 +82,7 @@ class Conversation extends Component {
 						<Input
 							title="Taux de risque"
 							question="Entrez votre taux de risque"
-							when={resolve(f, 'tauxRisqueConnu.resume.value') == 'Oui'}
+							visible={resolve(f, 'tauxRisqueConnu.resume.value') == 'Oui'}
 							form="tauxRisque" formName="tauxRisque"
 							fields={[ 'resume' ]}
 							variableName="taux_accident_travail"
@@ -77,7 +94,7 @@ class Conversation extends Component {
 								placeholder: '1.1',
 							}}
 							valueType={Percentage} />
-						<Group when={resolve(f, 'tauxRisqueConnu.resume.value') == 'Non'}>
+						<Group visible={resolve(f, 'tauxRisqueConnu.resume.value') == 'Non'}>
 							<Select
 								title="Code de risque sélectionné"
 								question="Choisissez la catégorie de risque de votre entreprise"
@@ -88,7 +105,7 @@ class Conversation extends Component {
 							<Input
 								title="Effectif entreprise"
 								question="Quel est l'effectif de votre entreprise ?"
-								when={typeof resolve(f, 'selectTauxRisque.resume.value') == 'object'}
+								visible={typeof resolve(f, 'selectTauxRisque.resume.value') == 'object'}
 								form="effectif" formName="effectif"
 								fields={[ 'resume' ]}
 								attributes={{

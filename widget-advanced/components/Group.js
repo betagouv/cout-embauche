@@ -8,10 +8,10 @@ marked with the 'explicit' class  */
 export default class Group extends Component {
 
 	render() {
-		let {when, steps, foldTrigger, children, text} = this.props,
+		let {visible, steps, foldTrigger, children, text} = this.props,
 			folded = foldTrigger ? steps[foldTrigger] : false
 
-		if (when) {
+		if (visible) {
 			return (
 				<div className={classnames('form-group', {folded, unfolded: !folded, explicit: text})}>
 					{this.renderHeader(folded)}

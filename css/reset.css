@@ -23,14 +23,6 @@ input[type="number"] {
 	appearance: textfield;
 }
 
-/* Re-applies the controls on :hover and :focus
-to get the same behavior as on Chrome */
-input[type="number"]:hover,
-input[type="number"]:focus {
-	appearance: number-input;
-}
-
-
 select {
 	width: auto;
 	height: auto;

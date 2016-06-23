@@ -29,7 +29,12 @@ input, select {
 }
 
 input[type="number"] {
-	max-width: 7em;
+	max-width: 5em;
+	text-align: right;
+}
+
+#effectif_entreprise {
+	width: 3.5em;
 }
 
 #code_postal_entreprise {

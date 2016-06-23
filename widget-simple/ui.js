@@ -83,9 +83,10 @@ function display(data) {
 		}
 
 		if (typeof value == 'number') {
+			let fmt = new Intl.NumberFormat('fr-FR').format
 			value = value
 				.toFixed(target.hasAttribute('data-round') ? 0 : 2)
-				.replace('.', ',')
+			value = fmt(value)
 		}
 
 		target.textContent = value

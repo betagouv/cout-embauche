@@ -25,6 +25,8 @@ function bindToForm(form) {
 			return handleSalaireSelect(event.target.value, handleBasicFormChanges)
 		if (id === 'select-employee-type')
 			return handleNoteAlternance(event.target.value, handleBasicFormChanges)
+		if (id === 'select-entreprise-type')
+			return handleEntrepriseTypeSelect(event.target.value, handleBasicFormChanges)
 		return handleBasicFormChanges()
 	}
 
@@ -110,6 +112,21 @@ function handleSalaireSelect(selectedSalaire, next) {
 
 	next()
 }
+
+function handleEntrepriseTypeSelect(selectedEntrepriseType, next) {
+	const nodesToUpdate = document.querySelectorAll('.employer_type'),
+		correspondence = {
+			'entreprise': 'entreprise',
+			'entreprise_est_association_non_lucrative': 'association',
+		},
+		updateText = n => n.textContent = correspondence[selectedEntrepriseType];
+
+	[ ...nodesToUpdate ].forEach(updateText)
+
+	next()
+}
+
+
 
 function handleNoteAlternance(selectedEmployeeType, next) {
 	const noteAlternance = document.querySelector('#note-alternance')

@@ -15,6 +15,7 @@ class ResultATMP extends Component {
 		if (!effectif || !steps['effectif']) return null
 		return (
 			<RhetoricalQuestion
+				visible={true}
 				form="tauxRisque" formName="tauxRisque"
 				fields={[ 'resume' ]}
 				question={this.renderText(tauxCommunGeneral, taux, effectif)}

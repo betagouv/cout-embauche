@@ -74,6 +74,7 @@ class Conversation extends Component {
 					answer={resolve(f, 'tauxRisque.resume.value')}
 					>
 						<Question
+							visible={true}
 							title="Taux de risque connu"
 							question="Connaissez-vous votre taux de risque AT/MP ?"
 							form="tauxRisqueConnu" formName="tauxRisqueConnu"
@@ -97,6 +98,7 @@ class Conversation extends Component {
 							valueType={Percentage} />
 						<Group visible={resolve(f, 'tauxRisqueConnu.resume.value') == 'Non'}>
 							<Select
+								visible={true}
 								title="Code de risque sélectionné"
 								question="Choisissez la catégorie de risque de votre entreprise"
 								form="selectTauxRisque" formName="selectTauxRisque"

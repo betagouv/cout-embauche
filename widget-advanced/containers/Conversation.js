@@ -19,7 +19,7 @@ class Conversation extends Component {
 			<div id="conversation">
 				<Input
 					title="Complémentaire santé"
-					question="Quel est le montant de votre complémentaire santé entreprise obligatoire ?"
+					question="Quel est le montant total de votre complémentaire santé entreprise obligatoire ?"
 					visible="true"
 					form="mutuelle" formName="mutuelle"
 					fields={[ 'resume' ]}
@@ -27,7 +27,7 @@ class Conversation extends Component {
 					attributes={{
 						type: 'number',
 						step: 'any',
-						placeholder: 30,
+						placeholder: 'par ex. 30',
 					}}
 					valueType={Euro}
 					valueIfIgnored = "30"
@@ -36,14 +36,15 @@ class Conversation extends Component {
 
 				<Question
 					title="Statut Jeune Entreprise Innovante"
-					question="Disposez-vous du statut Jeune Entreprise Innovante ?"
+					question="Profitez-vous du statut Jeune Entreprise Innovante ?"
 					visible={steps['mutuelle']}
 					form="jei" formName="jei"
 					fields={[ 'resume' ]}
 					variableName="jeune_entreprise_innovante"
 					choices={[ 'Oui', 'Non' ]}
 					valueIfIgnored = "Non"
-					serialise={v => v === 'Oui' ? 1 : 0} />
+					serialise={v => v === 'Oui' ? 1 : 0}
+					helpText={'Votre entreprise doit pouvoir bénéficier de ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188'} />
 
 					<Input
 						title="Pourcentage d'alternants"

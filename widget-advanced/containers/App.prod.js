@@ -1,10 +1,22 @@
-import React, {Component} from 'react'
-
-import Conversation from '../containers/Conversation'
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-
-import './forms.css'
-import './app.css'
+import Conversation  from '../containers/Conversation'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
+import './advanced-questions.css'
 
 export default class App extends Component {
 	render() {

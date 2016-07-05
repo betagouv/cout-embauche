@@ -1,11 +1,9 @@
-import React, {Component} from 'react'
-
-import Conversation from '../containers/Conversation'
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import DevTools from '../DevTools'
+import DevTools  from '../DevTools'
+import Widget  from '../containers/Widget'
 
-import './forms.css'
-import './app.css'
+import './advanced-questions.css'
 
 export default class App extends Component {
 	render() {
@@ -13,7 +11,7 @@ export default class App extends Component {
 		return (
 			<Provider store={store}>
 				<div>
-					<Conversation />
+					<Widget />
 					<DevTools />
 				</div>
 			</Provider>

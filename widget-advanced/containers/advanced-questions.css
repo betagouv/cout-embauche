@@ -1,3 +1,9 @@
+.advanced-simulation {
+  /* font-family: 'Open Sans'; */
+  font-size: 80%;
+  color: #555;
+  line-height: normal;
+}
 
 #conversation {
 	margin: 0 auto;

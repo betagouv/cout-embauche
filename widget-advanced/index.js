@@ -21,27 +21,25 @@ const createFinalStore = compose(
 const store = createFinalStore(todoApp)
 sagaMiddleware.run(rootSaga)
 
-const anchor = (anchor) => {
-	render(
-		<AppContainer>
-			<App store={store}/>
-		</AppContainer>,
-		anchor
-	)
+let anchor = document.querySelector('.SGMAPembauche')
 
-	if (module.hot) {
-		module.hot.accept('./containers/App', () => {
-		// If you use Webpack 2 in ES modules mode, you can
-		// use <App /> here rather than require() a <NextApp />.
-			const NextApp = require('./containers/App').default
-			render(
-				<AppContainer>
-					<NextApp store={store} />
-				</AppContainer>,
-				anchor
-			)
-		})
-	}
+render(
+	<AppContainer>
+		<App store={store}/>
+	</AppContainer>,
+	anchor
+)
+
+if (module.hot) {
+	module.hot.accept('./containers/App', () => {
+	// If you use Webpack 2 in ES modules mode, you can
+	// use <App /> here rather than require() a <NextApp />.
+		const NextApp = require('./containers/App').default
+		render(
+			<AppContainer>
+				<NextApp store={store} />
+			</AppContainer>,
+			anchor
+		)
+	})
 }
-
-export {anchor}

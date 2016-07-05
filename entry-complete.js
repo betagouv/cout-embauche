@@ -5,11 +5,9 @@ import './css/affiliation.css'
 import './css/details.css'
 import './css/tooltip.css'
 
-import html from './embauche.html'
+import html from './widget-advanced/widget.html'
 document.write(html)
 
 require('core-js/fn/promise')
 
-window.loadCompleteWidget = true //TODO there is probably a better way
-
-require('expose?Embauche!./widget-simple/index')
+require('expose?Embauche!./widget-advanced/index')

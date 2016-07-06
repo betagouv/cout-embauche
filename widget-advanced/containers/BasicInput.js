@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import {connect} from 'react-redux'
 import CodePostal from '../components/CodePostal'
-import {initialValues} from './basicInputValues'
+import {initialValues} from '../data/basicInputValues'
 
 let selector = formValueSelector('basicInput')
 

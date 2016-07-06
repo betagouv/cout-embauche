@@ -1,7 +1,7 @@
 import { takeEvery} from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
-import {basicInputData} from './containers/basicInputValues'
+import {basicInputData} from './data/basicInputValues'
 
 // Promisify the API call to handled by saga's call Effect
 const updateSimulation = (variableName, variableValue) =>

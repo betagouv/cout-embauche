@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import {connect} from 'react-redux'
+import CodePostal from '../components/CodePostal'
+
 
 let selector = formValueSelector('basicInput')
 
 @connect(state => ({
-	tempsPartiel: selector(state, 'tempsDeTravail') == 'temps_partiel',
+	enTempsPartiel: selector(state, 'tempsDeTravail') == 'temps_partiel',
+	codePostal: selector(state, 'codePostal'),
 }))
 @reduxForm({
 	form: 'basicInput', // a unique name for this form
@@ -17,11 +20,12 @@ let selector = formValueSelector('basicInput')
 		categorieSalarié: 'prive_non_cadre',
 		tempsDeTravail: 'temps_plein',
 		heuresParSemaine: 30,
+		typeSalaireEntré: 'brut',
 	},
 })
 export default class BasicInput extends Component {
 	render() {
-		let {tempsPartiel} = this.props
+		let {enTempsPartiel, codePostal} = this.props
 		return (
 			<form>
 				<Field component="select" name="typeEntreprise" >
@@ -59,9 +63,9 @@ export default class BasicInput extends Component {
 						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.
 					</span>
 
-					<Field component="select" name="categorieSalarié" >
-						<option value="prive_non_cadre">non-cadre</option>
-						<option value="prive_cadre">cadre</option>
+					<Field component="select" name="typeSalaireEntré" >
+						<option value="brut">brut</option>
+						<option value="net">net</option>
 					</Field>
 					<span>par mois</span>
 
@@ -73,7 +77,7 @@ export default class BasicInput extends Component {
 						<option value="temps_partiel">partiel</option>
 					</Field>
 				</label>
-				{ tempsPartiel &&
+				{ enTempsPartiel &&
 					<label>
 						pour
 						<Field component="input" name="heuresParSemaine" type="number"
@@ -82,16 +86,7 @@ export default class BasicInput extends Component {
 					</label>
 				}
 
-				sur la <label htmlFor="codePostal">commune</label>de
-				<Field id="codePostal" component="input" name="codePostal" type="text"
-					placeholder="code postal" inputMode="numeric" pattern="\d{5}" maxLength="5" autoComplete="postal-code"
-					title="Entrez le code postal de l'établissement où le salarié sera employé" />
-
-				<label htmlFor="codeINSEE"></label>
-				{/* Le code INSEE sera déduit du code postal entré par l'utilisateur */}
-				<select name="codeINSEE" id="codeINSEE" hidden>
-
-				</select>
+				<CodePostal codePostal={codePostal} />
 
 				{/* TODO: mode_recouvrement des allègements de cotisation à envoyer dans la requête */}
 

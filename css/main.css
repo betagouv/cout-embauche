@@ -33,15 +33,19 @@ input[type="number"] {
 	text-align: right;
 }
 
-#effectif_entreprise {
+select[name="typeEntreprise"] {
+	width: 7.5em;
+}
+
+input[name="effectifEntreprise"] {
 	width: 3.5em;
 }
 
-#code_postal_entreprise {
+input[name="codePostal"] {
 	max-width: 6em;
 }
 
-[name="heures_remunerees_volume"] {
+input[name="heuresParSemaine"] {
 	max-width: 2.3em;
 }
 

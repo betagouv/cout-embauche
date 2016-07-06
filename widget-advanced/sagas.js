@@ -1,6 +1,7 @@
 import { takeEvery} from 'redux-saga'
-import { call, put} from 'redux-saga/effects'
+import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
+import {basicInputData} from './containers/basicInputValues'
 
 // Promisify the API call to handled by saga's call Effect
 const updateSimulation = (variableName, variableValue) =>
@@ -33,6 +34,26 @@ function* watchSteps() {
 	yield* takeEvery('SUBMIT_STEP', handleSubmitStep)
 }
 
+function* handleFormChange({meta: {field, form}, payload}) {
+	let
+		basicInputValues = yield select(state => state.form.basicInput.values),
+		transformedValues = Object.keys(basicInputData).reduce((final, name) => {
+			let data = basicInputData[name],
+				userValue = basicInputValues[Object.keys(basicInputValues).find(k => k == name)],
+				transformed = typeof data != 'string' ? data[1](userValue) : {[name]: data}
+
+			return Object.assign(final, transformed)
+		}, {})
+		console.log('basicInputState', basicInputValues, transformedValues)
+
+
+
+}
+
+function* watchFormChanges() {
+	yield* takeEvery('redux-form/CHANGE', handleFormChange)
+}
+
 export default function* rootSaga() {
-	yield [ watchSteps() ]
+	yield [ watchSteps(), watchFormChanges() ]
 }

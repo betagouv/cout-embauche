@@ -10,7 +10,6 @@ export default class Summary extends Component {
 				'net': 'brut',
 				'brut': 'net',
 			}[typeSalaireEntré]
-			console.log('typeSalaireEntre', typeSalaire)
 
 		return (
 			<div className="simulation-summary">

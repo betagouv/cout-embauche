@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import {connect} from 'react-redux'
 import CodePostal from '../components/CodePostal'
-
+import {initialValues} from './basicInputValues'
 
 let selector = formValueSelector('basicInput')
 
@@ -12,16 +12,7 @@ let selector = formValueSelector('basicInput')
 }))
 @reduxForm({
 	form: 'basicInput', // a unique name for this form
-	initialValues: {
-		typeEntreprise: 'entreprise',
-		effectifEntreprise: 29,
-		typeEmployé: 'apprenti',
-		salaire: 2300,
-		categorieSalarié: 'prive_non_cadre',
-		tempsDeTravail: 'temps_plein',
-		heuresParSemaine: 30,
-		typeSalaireEntré: 'brut',
-	},
+	initialValues,
 })
 export default class BasicInput extends Component {
 	render() {

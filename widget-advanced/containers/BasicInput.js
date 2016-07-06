@@ -27,7 +27,7 @@ export default class BasicInput extends Component {
 	render() {
 		let {enTempsPartiel, codePostal} = this.props
 		return (
-			<form>
+			<form className="basic-input">
 				<Field component="select" name="typeEntreprise" >
 					<option value="entreprise">Mon entreprise</option>
 					<option value="entreprise_est_association_non_lucrative">Mon association à but non lucratif</option>

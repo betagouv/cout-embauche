@@ -3,15 +3,14 @@
 	padding-top: 1em;
 	max-width: 45em;
 	line-height: 2.5;
-	color: rgba(0, 0, 0, .8);
 }
 
-.input {
+.basic-input {
 	padding-top: 1em;
 	margin-bottom: 1.5em;
 }
 
-.input, #error, summary {
+.basic-input, #error, summary {
 	text-align: center;
 }
 
@@ -65,7 +64,7 @@ select[data-provides="employee"] {
 /* Enables the first input's help text to pop
 over the lasts of this group.
 Also keeps related inputs together. */
-.input fieldset {
+.basic-input fieldset {
 	white-space: nowrap;
 	display: inline-block;
 }

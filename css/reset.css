@@ -16,7 +16,6 @@ fieldset {
 	padding-top: .01em;
 	margin: 0;
 	min-width: 0;
-	display: inline;
 }
 
 /* Remove spinner controls from Firefox */

@@ -1,21 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import Conversation  from '../containers/Conversation'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
-import './advanced-questions.css'
+import Widget  from '../containers/Widget'
+
 import './advanced-questions.css'
 
 export default class App extends Component {
@@ -23,7 +9,9 @@ export default class App extends Component {
 		const { store } = this.props
 		return (
 			<Provider store={store}>
-				<Conversation />
+				<div>
+					<Widget />
+				</div>
 			</Provider>
 		)
 	}

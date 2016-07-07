@@ -3,7 +3,7 @@ import {reducer as formReducer} from 'redux-form'
 
 import { SUBMIT_STEP, UNSUBMIT_STEP } from './actions'
 import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
-import { SIMULATION_SUCCESS } from './actions'
+import { SIMULATION_SUCCESS, TOGGLE_SECTION } from './actions'
 
 function steps(state = {}, action) {
 	switch (action.type) {
@@ -40,6 +40,15 @@ function results(state = {}, {type, results}) {
 	}
 }
 
+function activeSection(state = 'input', {type}) {
+	switch (type) {
+	case TOGGLE_SECTION:
+		return state === 'input' ? 'details' : 'input'
+	default:
+		return state
+	}
+}
+
 export default combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,
@@ -50,6 +59,7 @@ export default combineReducers({
 
 	// Is an (advanced simulation) request pending ?
 	pending,
-
 	results,
+	activeSection,
+	// advancedInput,
 })

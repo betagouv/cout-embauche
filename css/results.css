@@ -1,10 +1,10 @@
-.results {
+.simulation-summary {
 	margin: auto;
 	margin-top: 1.5em;
 	width: 90%;
 }
 
-.results h1 {
+.simulation-summary h1 {
 	font-size: 60%;
 	color: #346DB9;
 	font-weight: 300;
@@ -12,26 +12,26 @@
 	margin: 0;
 }
 
-.results .content {
+.simulation-summary .content {
 	background: #4A89DC; /* main blue */
 	padding: .01em 1.8em;
 	position: relative;
 }
 
 
-.results .figures {
+.simulation-summary .figures {
 	display: inline-block;
 	width: 70%;
 }
 
-.results p {
+.simulation-summary p {
 	color: #CEE3FF; /* lighter blue */
 	line-height: 1em;
 	border-left: 3px solid white;
 	padding-left: .65em;
 }
 
-.results .figure {
+.simulation-summary .figure {
 	color: white;
 }
 
@@ -81,22 +81,9 @@ button.action span {
 	top: 40%;
 }
 
-
 .show-details:hover {
 	background: #70A7EE;
 }
-
-.show-details:active {
-	border: none;
-}
-
-.show-details[disabled]{
-	border: none;
-	background: white;
-	color: #346DB9; /* darker blue for texts */
-}
-
-
 
 .bring-input-back {
 	display: block;

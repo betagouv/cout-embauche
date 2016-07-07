@@ -8,6 +8,8 @@ export default class Summary extends Component {
 				},
 				typeEntreprise, typeSalaireEntré,
 				humanizeFigures: humanize,
+				toggleSection,
+				showDetails,
 			} = this.props,
 			labelTypeEntreprise = {
 				'entreprise_est_association_non_lucrative': 'association',
@@ -20,10 +22,10 @@ export default class Summary extends Component {
 
 		if (salaire_super_brut == null) return null
 
-		console.log(salaire_super_brut, cout_du_travail, salaire_net_a_payer)
 		return (
 			<div className="simulation-summary">
-				<h1>Résultats de l'estimation</h1>
+				<h1>{"Résultats de l'estimation"}</h1>
+				<div className="content">
 					<div className="figures">
 						<p>
 							Cela coûtera <span className="figure" title="Salaire super-brut">
@@ -42,12 +44,16 @@ export default class Summary extends Component {
 							</span> {typeSalaire} par mois.
 						</p>
 					</div>
-					<button className="action show-details" autoComplete="off">
-						<span>
-							Voir le détail<br />des prélèvements
-						</span>
+					<button
+						className="action show-details" autoComplete="off"
+						onClick={toggleSection} >
+						{showDetails ?
+							<span>Revenir à la saisie</span> :
+							<span>Voir le détail<br />des prélèvements</span>
+						}
 					</button>
 			</div>
+		</div>
 		)
 	}
 }

@@ -2,16 +2,16 @@ import { takeEvery} from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
 import {basicInputData} from './data/basicInputValues'
+import outputVariables from './data/outputVariables.yaml'
 
 // Promisify the API call to handled by saga's call Effect
-const updateSimulation = (variableName, variableValue) =>
+let updateSimulation = (variableName, variableValue) =>
 	new Promise( (resolve, reject) =>
 		window.Embauche.OpenFisca.get(
 			{[variableName]: variableValue},
 			(error, output) => {
 				error ? reject(error) : resolve(output)
 			}))
-
 
 function* handleSubmitStep({variableName, variableValue, transformInputValue}) {
 	if (variableName != null) { // there is a need for an API request
@@ -34,19 +34,64 @@ function* watchSteps() {
 	yield* takeEvery('SUBMIT_STEP', handleSubmitStep)
 }
 
-function* handleFormChange({meta: {field, form}, payload}) {
+
+let serializeObject = source =>
+	Object.keys(source)
+		.map(key => encodeURI(key + '=' + source[key]))
+		.join('&')
+
+let baseUrl =
+	'https://embauche.beta.gouv.fr/openfisca/api/2/formula/' +
+	Object.keys(outputVariables)
+		.reduce((final, category) =>
+			[ // Turn the yaml object into a flat array
+				...final,
+				...outputVariables[category].filter(i => !i.notCalculated).map(i => i.key),
+			], [])
+		.join('+')
+
+function request(input) {
+
 	let
-		basicInputValues = yield select(state => state.form.basicInput.values),
-		transformedValues = Object.keys(basicInputData).reduce((final, name) => {
-			let data = basicInputData[name],
-				userValue = basicInputValues[Object.keys(basicInputValues).find(k => k == name)],
-				transformed = typeof data != 'string' ? data[1](userValue) : {[name]: data}
+		url = baseUrl + '?' + serializeObject(input),
+		headers = input['salaire_net_a_payer'] ? {
+			'x-OpenFisca-Extensions': 'de_net_a_brut',
+		} : {}
 
-			return Object.assign(final, transformed)
-		}, {})
-		console.log('basicInputState', basicInputValues, transformedValues)
+	return new Promise( (resolve, reject) =>
+		fetch(url, {headers})
+			.then(response => {
+				if (!response.ok) {
+					const error = new Error(response.statusText)
+					error.response = response
+					reject(error)
+				}
+				return response.json()
+			})
+			.then(json => resolve(json.values))
+			.catch(reject)
+		)
+}
 
 
+
+function* handleFormChange({meta: {field, form}, payload}) {
+	try {
+		let
+			basicInputValues = yield select(state => state.form.basicInput.values),
+			transformedValues = Object.keys(basicInputData).reduce((final, name) => {
+				let data = basicInputData[name],
+					userValue = basicInputValues[Object.keys(basicInputValues).find(k => k == name)],
+					transformed = typeof data != 'string' ? data[1](userValue) : {[name]: data}
+
+				return Object.assign(final, transformed)
+			}, {}),
+			results = yield call(request, transformedValues)
+		console.log('yo', results)
+		yield put({type: 'SIMULATION_SUCCESS', results})
+	} catch (e) {
+		console.log('ARGHH', e)
+	}
 
 }
 

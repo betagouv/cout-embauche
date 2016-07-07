@@ -3,22 +3,24 @@ import { formValueSelector } from 'redux-form'
 import {connect} from 'react-redux'
 import Summary from '../components/Summary'
 import Details from '../components/Details'
-import pick from 'object.pick'
+
+let fmt = new Intl.NumberFormat('fr-FR').format
 
 let selector = formValueSelector('basicInput')
-
 @connect(state => ({
 	typeEntreprise: selector(state, 'typeEntreprise'),
 	typeSalaireEntré: selector(state, 'typeSalaireEntré'),
-	results: state => state.results,
+	results: state.results,
 }))
 export default class Results extends Component {
 	render() {
 		return (
 			<div>
-				<Summary {...pick(this.props, 'typeSalaireEntré', 'typeEntreprise')} />
-				<Details />
+				<Summary {...this.props} humanizeFigures={this.humanizeFigures(0)}/>
+				<Details results={this.props.results} humanizeFigures={this.humanizeFigures(2)} />
 			</div>
 		)
 	}
+	humanizeFigures = decimalDigits => value => fmt(value.toFixed(decimalDigits))
+
 }

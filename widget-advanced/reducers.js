@@ -3,6 +3,7 @@ import {reducer as formReducer} from 'redux-form'
 
 import { SUBMIT_STEP, UNSUBMIT_STEP } from './actions'
 import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
+import { SIMULATION_SUCCESS } from './actions'
 
 function steps(state = {}, action) {
 	switch (action.type) {
@@ -30,6 +31,15 @@ function pending(state = false, action) {
 	}
 }
 
+function results(state = {}, {type, results}) {
+	switch (type) {
+	case SIMULATION_SUCCESS:
+		return results
+	default:
+		return state
+	}
+}
+
 export default combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,
@@ -40,4 +50,6 @@ export default combineReducers({
 
 	// Is an (advanced simulation) request pending ?
 	pending,
+
+	results,
 })

@@ -24,7 +24,7 @@ export default class Summary extends Component {
 
 		return (
 			<div className="simulation-summary">
-				<h1>{"Résultats de l'estimation"}</h1>
+				<h1>{/* "Résultats de l'estimation" */}</h1>
 				<div className="content">
 					<div className="figures">
 						<p>
@@ -34,7 +34,7 @@ export default class Summary extends Component {
 							{ (salaire_super_brut != cout_du_travail) &&
 								<span>
 									<br />
-									ou <span className="figure" title="Coût du travail">{humanize(cout_du_travail)} € après déduction des aides différées</span>.
+									ou <span className="figure" title="Coût du travail">{humanize(cout_du_travail)} €</span> après déduction des aides différées.
 								</span>
 							}
 						</p>

@@ -33,12 +33,6 @@ summary {
 	margin-bottom: 2em;
 }
 
-tr.not-calculated td::before {
-	content: "--";
-	color: #888;
-	padding-left: 1em;
-}
-
 tr.explained {
 	font-style: italic;
 }

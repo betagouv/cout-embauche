@@ -87,7 +87,6 @@ function* handleFormChange({meta: {field, form}, payload}) {
 				return Object.assign(final, transformed)
 			}, {}),
 			results = yield call(request, transformedValues)
-		console.log('yo', results)
 		yield put({type: 'SIMULATION_SUCCESS', results})
 	} catch (e) {
 		console.log('ARGHH', e)

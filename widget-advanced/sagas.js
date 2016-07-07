@@ -1,8 +1,9 @@
-import { takeEvery} from 'redux-saga'
+import { takeEvery, delay } from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
 import {basicInputData} from './data/basicInputValues'
 import outputVariables from './data/outputVariables.yaml'
+import {INITIAL_REQUEST} from './actions'
 
 // Promisify the API call to handled by saga's call Effect
 let updateSimulation = (variableName, variableValue) =>
@@ -75,7 +76,7 @@ function request(input) {
 
 
 
-function* handleFormChange({meta: {field, form}, payload}) {
+function* handleFormChange() {
 	try {
 		let
 			basicInputValues = yield select(state => state.form.basicInput.values),
@@ -95,7 +96,7 @@ function* handleFormChange({meta: {field, form}, payload}) {
 }
 
 function* watchFormChanges() {
-	yield* takeEvery('redux-form/CHANGE', handleFormChange)
+	yield* takeEvery([ INITIAL_REQUEST, 'redux-form/CHANGE' ], handleFormChange)
 }
 
 export default function* rootSaga() {

@@ -18,6 +18,4 @@ export const SIMULATION_SUCCESS = 'SIMULATION_SUCCESS'
 export const SIMULATION_FAILURE = 'SIMULATION_FAIL'
 
 export const TOGGLE_SECTION = 'TOGGLE_SECTION'
-export function toggleSection() {
-	return {type: TOGGLE_SECTION, yo: 3}
-}
+export const INITIAL_REQUEST = 'INITIAL_REQUEST'

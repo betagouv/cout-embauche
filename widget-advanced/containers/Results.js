@@ -3,8 +3,8 @@ import { formValueSelector } from 'redux-form'
 import {connect} from 'react-redux'
 import Summary from '../components/Summary'
 import Details from '../components/Details'
-import {toggleSection} from '../actions'
-console.log(toggleSection)
+import {TOGGLE_SECTION} from '../actions'
+
 let fmt = new Intl.NumberFormat('fr-FR').format
 
 let selector = formValueSelector('basicInput')
@@ -13,7 +13,8 @@ let selector = formValueSelector('basicInput')
 	typeSalaireEntré: selector(state, 'typeSalaireEntré'),
 	results: state.results,
 }), dispatch => ({
-	toggleSection: () => dispatch(toggleSection()),
+	toggleSection: () =>
+		dispatch({type: TOGGLE_SECTION}),
 }))
 export default class Results extends Component {
 	render() {

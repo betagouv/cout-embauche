@@ -5,9 +5,12 @@ import InfoZone from '../components/InfoZone'
 import AdvancedQuestions from '../containers/AdvancedQuestions'
 import Results from '../containers/Results'
 import Affiliation from '../components/Affiliation'
+import {INITIAL_REQUEST} from '../actions'
 
 @connect(state => ({
 	activeSection: state.activeSection,
+}), dispatch => ({
+	makeInitialRequest: () => dispatch({type: INITIAL_REQUEST}),
 }))
 export default class Widget extends React.Component {
 	render() {
@@ -26,5 +29,8 @@ export default class Widget extends React.Component {
 					<Affiliation />
 				</div>
 		)
+	}
+	componentDidMount() {
+		this.props.makeInitialRequest()
 	}
 }

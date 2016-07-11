@@ -3,26 +3,26 @@ import {reduxForm} from 'redux-form'
 import {FormDecorator} from './FormDecorator'
 import classnames from 'classnames'
 
-/* Decorate this component to avoid rewriting
-the question and folded state markup : just output
-here the user input you want to show.
-This is a "Question" user input : he selects one of a list of button */
+/* Ceci est une saisie de type "radio" : l'utilisateur choisit une réponse dans une liste.
+FormDecorator permet de factoriser du code partagé par les différents types de saisie,
+dont Question est un example */
 @FormDecorator
-class Question extends Component {
+export default class Question extends Component {
 	render() {
 		let {
-			fields: {resume: chosen},
-			choices,
-			/* On radio click, just submit the form using the decorator's submit function */
-			submit,
+			name,
+			input,
+			input: {stepProps: {submit, choices}, ...rest},
+			touched, error, disabled,
 		} = this.props
+
 		return (
-			<span className="answer">
+			<span>
 				{ choices.map((choice) =>
-						( <label key={choice} className={classnames('radio', {checked: choice === chosen.value})}>
+						( <label key={choice} className={classnames('radio', {checked: choice === input.value})}>
 								<input
-									type="radio" {...chosen} onClick={submit(choice)}
-									value={choice} checked={choice === chosen.value ? 'checked' : ''} />
+									type="radio" {...rest} onClick={submit(choice)}
+									value={choice} checked={choice === input.value ? 'checked' : ''} />
 								{choice}
 							</label>
 						)
@@ -31,5 +31,3 @@ class Question extends Component {
 		)
 	}
 }
-
-export default reduxForm({destroyOnUnmount: false})(Question)

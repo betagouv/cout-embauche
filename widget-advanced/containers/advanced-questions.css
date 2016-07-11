@@ -6,7 +6,7 @@
 }
 
 #conversation {
-	margin: 0 auto;
+	margin: 3em auto;
 	width: 40em;
 }
 
@@ -187,18 +187,14 @@ question : make it visible with colors */
 .step input[type=text],
 .step input[type=number] {
 	color: #434A54;
-	border: 1px solid #AAB2BD;
+	border-bottom: 1px solid #AAB2BD;
 	display: inline-block;
 	line-height: 1.8em;
 	font-size: 100%;
 	padding: 0;
 	padding-right: .4em;
-	border-radius: 1em;
 	width: 9em;
 	text-align: right;
-	/*
-	border-radius: 0 1em 1em 0;
-	*/
 }
 
 .step input[type=number]::-webkit-outer-spin-button,
@@ -251,21 +247,35 @@ question : make it visible with colors */
 
 .step .send {
 	position: relative;
-	left: 1.3em;
-	top: .2em;
-	border: 0;
+	left: 4.5em;
+  padding: 0 .1em 0 .5em;
+	bottom: 0;
 	background: none;
-	font-size: 180%;
-	color: #CCD1D9
+  cursor: pointer;
+  color: #4A89DC;
+  border: 1px solid;
+  line-height: 0em;
 }
 
 .step .send[disabled]{
-	opacity: 0;
+	visibility: hidden;
+}
+
+.step .send .icon {
+  margin-left: .1em;
+  font-size: 180%;
+  color: #4A89DC;
+  vertical-align: middle;
 }
 
 .step .send:hover {
 	color: #4A89DC;
-	cursor: pointer;
+}
+
+.step .send .text {
+  text-transform: uppercase;
+  font-size: 90%;
+  line-height: 2em;
 }
 
 .answer {

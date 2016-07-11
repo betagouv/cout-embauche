@@ -15,7 +15,7 @@ export default class Input extends Component {
 				<button className="action show-advanced" autoComplete="off"
 					onClick={toggleAdvancedSection}>
 					{ !showAdvanced ?
-						<span>Continuer l'estimation</span>:
+						<span>{'Continuer l\'estimation'}</span>:
 						<span>Réinitialiser</span>
 						/* TODO: cliquez là, ça vous donnera plus de précision */
 					}

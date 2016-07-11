@@ -6,6 +6,8 @@ export function submitStep(formName, variableName, variableValue, transformInput
 }
 export function unsubmitStep(formName) {return {type: UNSUBMIT_STEP, formName}}
 
+export const UNSUBMIT_ALL = 'UNSUBMIT_ALL'
+
 
 export const SIMULATION_UPDATE_REQUEST = 'SIMULATION_UPDATE_REQUEST'
 export const SIMULATION_UPDATE_SUCCESS = 'SIMULATION_UPDATE_SUCCESS'

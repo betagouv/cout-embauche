@@ -5,19 +5,18 @@ import RhetoricalQuestion from './Forms/RhetoricalQuestion'
 class ResultATMP extends Component {
 	render() {
 		let {
-			f,
 			steps,
-			effectif = resolve(f, 'effectif.resume.value'),
-			selectTauxRisque = resolve(f, 'selectTauxRisque.resume.value'),
-			taux = selectTauxRisque && selectTauxRisque['Taux net'].replace(',', '.'),
-			tauxCommunGeneral = selectTauxRisque && selectTauxRisque['Taux commun quel que soit effectif ?'] == 'Oui',
+			effectif,
+			selectedTauxRisque,
+			taux = selectedTauxRisque && selectedTauxRisque['Taux net'].replace(',', '.'),
+			tauxCommunGeneral = selectedTauxRisque && selectedTauxRisque['Taux commun quel que soit effectif ?'] == 'Oui',
 		} = this.props
-		if (!effectif || !steps['effectif']) return null
+
+		if (!steps.get('selectTauxRisque')) return null
 		return (
 			<RhetoricalQuestion
 				visible={true}
-				form="tauxRisque" formName="tauxRisque"
-				fields={[ 'resume' ]}
+				name="tauxRisque"
 				question={this.renderText(tauxCommunGeneral, taux, effectif)}
 				possibleChoice={{text: 'OK', value: taux}}
 				variableName="taux_accident_travail"

@@ -1,20 +1,24 @@
 import { combineReducers } from 'redux'
 import {reducer as formReducer} from 'redux-form'
 
-import { SUBMIT_STEP, UNSUBMIT_STEP } from './actions'
+import { SUBMIT_STEP, UNSUBMIT_STEP, UNSUBMIT_ALL} from './actions'
 import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
 import { SIMULATION_SUCCESS, TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION } from './actions'
 
-function steps(state = {}, action) {
+function steps(state = new Map(), action) {
 	switch (action.type) {
 	case SUBMIT_STEP:
-		return Object.assign({}, state, {
-			[action.formName]: action.ignored ? 'ignored' : 'filled',
-		})
+		return new Map([ ...state ]).set(
+			action.formName,
+			action.ignored ? 'ignored' : 'filled'
+		)
 	case UNSUBMIT_STEP:
-		return Object.assign({}, state, {
-			[action.formName]: false,
-		})
+		return new Map([ ...state ]).set(
+			action.formName,
+			false
+		)
+	case UNSUBMIT_ALL:
+		return new Map()
 	default:
 		return state
 	}

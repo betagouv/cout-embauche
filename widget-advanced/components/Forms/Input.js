@@ -1,17 +1,15 @@
 import React, {Component} from 'react'
-import {reduxForm} from 'redux-form'
 import {FormDecorator} from './FormDecorator'
 import classnames from 'classnames'
 
 @FormDecorator
-class Input extends Component {
+export default class Input extends Component {
 	render() {
 		let {
-			fields: {resume: choice},
-			formName,
-			submit,
-			attributes,
-			valueType,
+			name,
+			input,
+			input: {stepProps: {submit, valueType}, ...rest},
+			touched, error, disabled,
 		} = this.props,
 			answerSuffix = valueType && new valueType().suffix,
 			suffixed = answerSuffix != null
@@ -19,22 +17,20 @@ class Input extends Component {
 		return (
 			<span className="answer">
 				<input
-					{...attributes}
-					{...choice}
-					id={'input-' + formName}
+					type="text" {...rest}
 					className={classnames({suffixed})}
-					/>
+					id={'step-' + name} />
 				{ suffixed &&
-					<label className="suffix" htmlFor={'input-' + formName}>
+					<label className="suffix" htmlFor={'step-' + name}>
 						{answerSuffix}
-					</label>}
-				<button className="send" disabled={!choice.value} onClick={submit(choice.value)}>
-					➤
+					</label>
+				}
+				<button className="send" disabled={!input.value} onClick={submit(input.value)}>
+					<span className="text">valider</span>
+					<span className="icon">✓</span>
 				</button>
+				{touched && error && !disabled && <span className="error">{error}</span>}
 			</span>
 		)
 	}
 }
-
-
-export default reduxForm({destroyOnUnmount: false})(Input)

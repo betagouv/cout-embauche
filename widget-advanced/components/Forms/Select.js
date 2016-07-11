@@ -43,26 +43,25 @@ class ReactSelectWrapper extends Component {
 }
 
 @FormDecorator
-class Select extends Component {
+export default class Select extends Component {
 	state = {
 		options: null,
 	}
 
 	render() {
 		let {
-			fields: {resume: choice},
-			submit,
+			input: {stepProps: {submit}, ...rest},
 		} = this.props
 		return (
 			<div className="select-answer">
-				<ReactSelectWrapper {...choice} options={this.state.options}  submit={submit} />
+				<ReactSelectWrapper {...rest} options={this.state.options} submit={submit} />
 			</div>
 
 		)
 	}
 
 	componentDidMount() {
-		fetch(this.props.optionsURL)
+		fetch(this.props.input.stepProps.optionsURL)
 				.then(response => {
 					if (!response.ok) {
 						let error = new Error(response.statusText)
@@ -76,5 +75,3 @@ class Select extends Component {
 	}
 
 }
-
-export default reduxForm({destroyOnUnmount: false})(Select)

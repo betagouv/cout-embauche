@@ -9,10 +9,21 @@ import Select from '../components/Forms/Select'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
 import { Percentage, Euro } from '../formValueTypes.js'
+import {reduxForm, formValueSelector} from 'redux-form'
 
+let selector = formValueSelector('advancedQuestions'),
+	 simpleSelector = formValueSelector('basicInput')
+
+@reduxForm({form: 'advancedQuestions'})
+@connect(state => ({
+	formValue: (field, simple) => simple ? simpleSelector(state, field): selector(state, field),
+	steps: state.steps,
+}), dispatch => ({
+	actions: bindActionCreators(actions, dispatch),
+}))
 class Conversation extends Component {
 	render() {
-		let { form: f, steps, actions} = this.props
+		let { formValue, steps, actions} = this.props
 
 		/* C'est ici qu'est définie la suite de questions à poser. */
 		return (
@@ -21,8 +32,7 @@ class Conversation extends Component {
 					title="Complémentaire santé"
 					question="Quel est le montant total de votre complémentaire santé entreprise obligatoire ?"
 					visible="true"
-					form="mutuelle" formName="mutuelle"
-					fields={[ 'resume' ]}
+					name="mutuelle"
 					variableName="complementaire_sante_montant"
 					attributes={{
 						type: 'number',
@@ -34,24 +44,22 @@ class Conversation extends Component {
 					helpText={`L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
 										de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.`} />
 
-				<Question
-					title="Statut Jeune Entreprise Innovante"
-					question="Profitez-vous du statut Jeune Entreprise Innovante ?"
-					visible={steps['mutuelle']}
-					form="jei" formName="jei"
-					fields={[ 'resume' ]}
-					variableName="jeune_entreprise_innovante"
-					choices={[ 'Oui', 'Non' ]}
-					valueIfIgnored = "Non"
-					serialise={v => v === 'Oui' ? 1 : 0}
-					helpText={'Votre entreprise doit pouvoir bénéficier de ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188'} />
+					<Question
+						title="Statut Jeune Entreprise Innovante"
+						question="Profitez-vous du statut Jeune Entreprise Innovante ?"
+						visible={steps.get('mutuelle')}
+						name="jei"
+						variableName="jeune_entreprise_innovante"
+						choices={[ 'Oui', 'Non' ]}
+						valueIfIgnored = "Non"
+						serialise={v => v === 'Oui' ? 1 : 0}
+						helpText={'Votre entreprise doit pouvoir bénéficier de ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188'} />
 
 					<Input
 						title="Pourcentage d'alternants"
 						question="Quel est le pourcentage d'alternants dans votre entreprise ?"
-						visible={resolve(f, 'jei.resume.value') != undefined}
-						form="pourcentage_alternants" formName="pourcentage_alternants"
-						fields={[ 'resume' ]}
+						visible={steps.get('jei')}
+						name="pourcentage_alternants"
 						variableName="ratio_alternants"
 						attributes={{
 							type: 'number',
@@ -65,28 +73,26 @@ class Conversation extends Component {
 					/>
 
 				<Group
-					visible={steps['pourcentage_alternants']}
+					visible={steps.get('pourcentage_alternants')}
 					text="Taux de risque AT/MP"
 					steps={steps}
 					unsubmitStep={actions.unsubmitStep}
 					foldTrigger="tauxRisque"
 					valueType={Percentage}
-					answer={resolve(f, 'tauxRisque.resume.value')}
+					answer={formValue('tauxRisque')}
 					>
 						<Question
 							visible={true}
 							title="Taux de risque connu"
 							question="Connaissez-vous votre taux de risque AT/MP ?"
-							form="tauxRisqueConnu" formName="tauxRisqueConnu"
-							fields={[ 'resume' ]}
+							name="tauxRisqueConnu"
 							choices={[ 'Oui', 'Non' ]}
 							helpText="Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur net-entreprises.fr"/>
 						<Input
 							title="Taux de risque"
 							question="Entrez votre taux de risque"
-							visible={resolve(f, 'tauxRisqueConnu.resume.value') == 'Oui'}
-							form="tauxRisque" formName="tauxRisque"
-							fields={[ 'resume' ]}
+							visible={formValue('tauxRisqueConnu') == 'Oui'}
+							name="tauxRisque"
 							variableName="taux_accident_travail"
 							attributes={{
 								type: 'number',
@@ -96,38 +102,24 @@ class Conversation extends Component {
 								placeholder: '1.1',
 							}}
 							valueType={Percentage} />
-						<Group visible={resolve(f, 'tauxRisqueConnu.resume.value') == 'Non'}>
-							<Select
-								visible={true}
-								title="Code de risque sélectionné"
-								question="Choisissez la catégorie de risque de votre entreprise"
-								form="selectTauxRisque" formName="selectTauxRisque"
-								fields={[ 'resume' ]}
-								human={v => v.text}
-								optionsURL="https://cdn.rawgit.com/laem/taux-collectifs-cotisation-atmp/master/taux-2016.json" />
-							<Input
-								title="Effectif entreprise"
-								question="Quel est l'effectif de votre entreprise ?"
-								visible={typeof resolve(f, 'selectTauxRisque.resume.value') == 'object'}
-								form="effectif" formName="effectif"
-								fields={[ 'resume' ]}
-								attributes={{
-									type: 'number',
-									step: '1',
-									min: '0',
-									placeholder: '29',
-								}} />
-							<ResultATMP f={f} {...{steps}}/>
+						<Group visible={formValue('tauxRisqueConnu')== 'Non'}>
+						<Select
+							visible={true}
+							title="Code de risque sélectionné"
+							question="Choisissez la catégorie de risque de votre entreprise"
+							name="selectTauxRisque"
+							fields={[ 'resume' ]}
+							human={v => v.text}
+							optionsURL="https://cdn.rawgit.com/laem/taux-collectifs-cotisation-atmp/master/taux-2016.json" />
+
+						<ResultATMP
+							selectedTauxRisque={formValue('selectTauxRisque')}
+							formValue={formValue} {...{steps}}
+							effectif={formValue('effectifEntreprise', 'basicInput')} />
 						</Group>
 					</Group>
-
-
 		</div>)
 	}
 }
 
-const selectActions = (dispatch) => ({
-	actions: bindActionCreators(actions, dispatch),
-})
-
-export default connect(state => state, selectActions)(Conversation)
+export default Conversation

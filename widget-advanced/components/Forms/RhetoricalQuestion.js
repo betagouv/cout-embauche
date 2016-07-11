@@ -1,21 +1,18 @@
 import React, {Component} from 'react'
-import {reduxForm} from 'redux-form'
 import {FormDecorator} from './FormDecorator'
 import classnames from 'classnames'
 
 @FormDecorator
-class RhetoricalQuestion extends Component {
+export default class RhetoricalQuestion extends Component {
 	render() {
 		let {
-			fields: {resume: choice},
-			submit,
-			possibleChoice: {text, value},
+			input: {stepProps: {submit, possibleChoice: {text, value}}, ...rest},
 		} = this.props
 		return (
 			<span className="answer">
 				<label key={value} className={classnames('radio')}>
 					<input
-						type="radio" {...choice} onClick={submit(value)}
+						type="radio" {...rest} onClick={submit(value)}
 						value={value} />
 					{text}
 				</label>
@@ -24,5 +21,3 @@ class RhetoricalQuestion extends Component {
 	}
 
 }
-
-export default reduxForm({destroyOnUnmount: false})(RhetoricalQuestion)

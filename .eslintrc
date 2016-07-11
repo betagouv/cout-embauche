@@ -15,7 +15,7 @@ rules:
   - 2
   - always-multiline
  array-bracket-spacing:
-  - 2
+  - 1
   - always
  curly:
   - 2
@@ -31,6 +31,7 @@ parser: babel-eslint
 env:
  browser: true
  commonjs: true
+ es6: true
 extends:
   - eslint:recommended
   - plugin:react/recommended

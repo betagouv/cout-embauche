@@ -32,7 +32,7 @@ function* handleSubmitStep({variableName, variableValue, transformInputValue}) {
 }
 
 function* watchSteps() {
-	yield* takeEvery('SUBMIT_STEP', handleSubmitStep)
+	//yield* takeEvery('SUBMIT_STEP', handleSubmitStep)
 }
 
 

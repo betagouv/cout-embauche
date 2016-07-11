@@ -9,7 +9,7 @@ export default class Group extends Component {
 
 	render() {
 		let {visible, steps, foldTrigger, children, text} = this.props,
-			folded = foldTrigger ? steps[foldTrigger] : false
+			folded = foldTrigger ? steps.get(foldTrigger) : false
 
 		if (visible) {
 			return (

@@ -2,8 +2,10 @@ import { combineReducers } from 'redux'
 import {reducer as formReducer} from 'redux-form'
 
 import { SUBMIT_STEP, EDIT_STEP, UNSUBMIT_ALL} from './actions'
-import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
-import { SIMULATION_SUCCESS, TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION } from './actions'
+import {
+	SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS,
+	TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION,
+} from './actions'
 
 function steps(state = new Map(), {type, name, ignored}) {
 	switch (type) {
@@ -37,8 +39,8 @@ function pending(state = false, action) {
 
 function results(state = {}, {type, results}) {
 	switch (type) {
-	case SIMULATION_SUCCESS:
-		return results
+	case SIMULATION_UPDATE_SUCCESS:
+		return results.values
 	default:
 		return state
 	}

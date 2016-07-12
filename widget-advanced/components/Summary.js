@@ -19,7 +19,7 @@ export default class Summary extends Component {
 				'net': 'brut',
 				'brut': 'net',
 			}[typeSalaireEntré]
-
+console.log(this.props.results);
 		if (salaire_super_brut == null) return null
 
 		return (

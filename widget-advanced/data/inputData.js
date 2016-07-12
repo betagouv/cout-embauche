@@ -1,6 +1,6 @@
 /*
-	inputData contient à la fois la valeure par défaut de la saisie pour le formulaire basique,
-	et la fonctionn de transformation (si pertinent)
+	inputData contient à la fois la valeur par défaut de la saisie pour le formulaire basique,
+	et la fonction de transformation (si pertinent)
 	*/
 
 let	today = new Date()

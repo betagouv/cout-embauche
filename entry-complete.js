@@ -10,4 +10,4 @@ document.write(html)
 
 require('core-js/fn/promise')
 
-require('expose?Embauche!./widget-advanced/index')
+require('./widget-advanced/index')

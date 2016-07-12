@@ -44,21 +44,10 @@ class Conversation extends Component {
 					helpText={`L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
 										de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.`} />
 
-					<Question
-						title="Statut Jeune Entreprise Innovante"
-						question="Profitez-vous du statut Jeune Entreprise Innovante ?"
-						visible={steps.get('mutuelle')}
-						name="jei"
-						variableName="jeune_entreprise_innovante"
-						choices={[ 'Oui', 'Non' ]}
-						valueIfIgnored = "Non"
-						serialise={v => v === 'Oui' ? 1 : 0}
-						helpText={'Votre entreprise doit pouvoir bénéficier de ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188'} />
-
 					<Input
 						title="Pourcentage d'alternants"
 						question="Quel est le pourcentage d'alternants dans votre entreprise ?"
-						visible={steps.get('jei')}
+						visible={steps.get('mutuelle')}
 						name="pourcentage_alternants"
 						variableName="ratio_alternants"
 						attributes={{
@@ -73,10 +62,10 @@ class Conversation extends Component {
 					/>
 
 				<Group
-					visible={steps.get('pourcentage_alternants')}
 					text="Taux de risque AT/MP"
+					visible={steps.get('pourcentage_alternants')}
 					steps={steps}
-					unsubmitStep={actions.unsubmitStep}
+					editStep={actions.editStep}
 					foldTrigger="tauxRisque"
 					valueType={Percentage}
 					answer={formValue('tauxRisque')}
@@ -118,6 +107,17 @@ class Conversation extends Component {
 							effectif={formValue('effectifEntreprise', 'basicInput')} />
 						</Group>
 					</Group>
+
+					<Question
+						title="Statut Jeune Entreprise Innovante"
+						question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
+						visible={steps.get('tauxRisque')}
+						name="jei"
+						variableName="jeune_entreprise_innovante"
+						choices={[ 'Oui', 'Non' ]}
+						valueIfIgnored = "Non"
+						serialise={v => v === 'Oui' ? 1 : 0}
+						helpText={'Votre entreprise doit être éligible à ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188'} />
 		</div>)
 	}
 }

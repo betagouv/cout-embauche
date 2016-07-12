@@ -18,6 +18,7 @@
 
 .form-group {
 	position: relative;
+  margin-bottom: 3.5em;
 }
 
 .form-group.explicit > .group-content {
@@ -262,14 +263,10 @@ question : make it visible with colors */
 }
 
 .step .send .icon {
-  margin-left: .1em;
-  font-size: 180%;
+  margin-left: .2em;
+  font-size: 150%;
   color: #4A89DC;
   vertical-align: middle;
-}
-
-.step .send:hover {
-	color: #4A89DC;
 }
 
 .step .send .text {

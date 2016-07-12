@@ -24,7 +24,7 @@ export default class Widget extends React.Component {
 	render() {
 		let {activeSection, showAdvanced, toggleAdvancedSection} = this.props
 		return (
-				<div className="advanced-simulation">
+				<div>
 					<InputSection
 						showInput={activeSection == 'input'}
 						showAdvanced={showAdvanced}

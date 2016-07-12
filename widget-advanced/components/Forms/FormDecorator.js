@@ -69,7 +69,8 @@ export var FormDecorator = RenderField =>
 			/* La saisie peut être cachée car ce n'est pas encore son tour,
 			ou parce qu'elle a déjà été remplie. Dans ce dernier cas, un résumé
 			de la réponse est affiché */
-			let completed = steps.get(name),
+			let stepState = steps.get(name),
+				completed = stepState && stepState != 'editing',
 				unfolded = !completed
 
 			if (!visible) return null
@@ -115,9 +116,9 @@ export var FormDecorator = RenderField =>
 		*/
 		renderHeader(unfolded) {
 			let {
-				actions: {unsubmitStep},
+				actions: {editStep},
 				name,
-				headerClick = () => unsubmitStep(name),
+				headerClick = () => editStep(name),
 			} = this.props
 
 			return (

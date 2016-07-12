@@ -9,7 +9,7 @@ export default class Group extends Component {
 
 	render() {
 		let {visible, steps, foldTrigger, children, text} = this.props,
-			folded = foldTrigger ? steps.get(foldTrigger) : false
+			folded = foldTrigger ? steps.get(foldTrigger) && steps.get(foldTrigger) != 'editing' : false
 
 		if (visible) {
 			return (
@@ -25,10 +25,10 @@ export default class Group extends Component {
 
 	renderHeader(folded) {
 		let {
-			foldTrigger, unsubmitStep, text, answer,
+			foldTrigger, editStep, text, answer,
 			valueType,
 		} = this.props,
-			headerClick = () => unsubmitStep(foldTrigger)
+			headerClick = () => editStep(foldTrigger)
 
 		return(
 			text &&

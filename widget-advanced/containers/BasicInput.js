@@ -13,6 +13,7 @@ let selector = formValueSelector('basicInput')
 @reduxForm({
 	form: 'basicInput', // a unique name for this form
 	initialValues,
+	destroyOnUnmount: false,
 })
 export default class BasicInput extends Component {
 	render() {

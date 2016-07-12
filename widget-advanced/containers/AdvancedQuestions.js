@@ -4,7 +4,9 @@ import Conversation from './Conversation'
 export default class AdvancedQuestions extends Component {
 	render() {
 		return (
-			<Conversation />
+			<div className="advanced-simulation">
+				<Conversation />
+			</div>
 		)
 	}
 }

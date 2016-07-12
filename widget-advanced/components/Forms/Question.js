@@ -21,7 +21,7 @@ export default class Question extends Component {
 				{ choices.map((choice) =>
 						( <label key={choice} className={classnames('radio', {checked: choice === input.value})}>
 								<input
-									type="radio" {...rest} onClick={submit(choice)}
+									type="radio" {...rest} onClick={submit}
 									value={choice} checked={choice === input.value ? 'checked' : ''} />
 								{choice}
 							</label>

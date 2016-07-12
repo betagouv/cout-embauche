@@ -16,7 +16,7 @@ class ReactSelectWrapper extends Component {
 				(value, [ option ]) => {
 					option.text = option['Taux net'] + ' %'
 					onChange(option)
-					submit(option)()
+					submit()
 				},
 				selectValue = value && value['Code risque'],
 				// but ReactSelect obviously needs a unique identifier

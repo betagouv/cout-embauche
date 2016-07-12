@@ -11,7 +11,6 @@
 export class Percentage {
 	suffix = '%'
 	human = value => value + ' ' + '%'
-	serialise = value => value / 100
 }
 
 export class Euro {

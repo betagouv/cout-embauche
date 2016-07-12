@@ -5,16 +5,16 @@ import { SUBMIT_STEP, EDIT_STEP, UNSUBMIT_ALL} from './actions'
 import { SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS } from './actions'
 import { SIMULATION_SUCCESS, TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION } from './actions'
 
-function steps(state = new Map(), action) {
-	switch (action.type) {
+function steps(state = new Map(), {type, name, ignored}) {
+	switch (type) {
 	case SUBMIT_STEP:
 		return new Map([ ...state ]).set(
-			action.formName,
-			action.ignored ? 'ignored' : 'filled'
+			name,
+			ignored ? 'ignored' : 'filled'
 		)
 	case EDIT_STEP:
 		return new Map([ ...state ]).set(
-			action.formName,
+			name,
 			'editing'
 		)
 	case UNSUBMIT_ALL:

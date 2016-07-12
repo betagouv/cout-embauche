@@ -33,7 +33,6 @@ class Conversation extends Component {
 					question="Quel est le montant total de votre complémentaire santé entreprise obligatoire ?"
 					visible="true"
 					name="mutuelle"
-					variableName="complementaire_sante_montant"
 					attributes={{
 						type: 'number',
 						step: 'any',
@@ -49,7 +48,6 @@ class Conversation extends Component {
 						question="Quel est le pourcentage d'alternants dans votre entreprise ?"
 						visible={steps.get('mutuelle')}
 						name="pourcentage_alternants"
-						variableName="ratio_alternants"
 						attributes={{
 							type: 'number',
 							step: 'any',
@@ -82,7 +80,6 @@ class Conversation extends Component {
 							question="Entrez votre taux de risque"
 							visible={formValue('tauxRisqueConnu') == 'Oui'}
 							name="tauxRisque"
-							variableName="taux_accident_travail"
 							attributes={{
 								type: 'number',
 								step: 'any',
@@ -113,10 +110,8 @@ class Conversation extends Component {
 						question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
 						visible={steps.get('tauxRisque')}
 						name="jei"
-						variableName="jeune_entreprise_innovante"
 						choices={[ 'Oui', 'Non' ]}
 						valueIfIgnored = "Non"
-						serialise={v => v === 'Oui' ? 1 : 0}
 						helpText={'Votre entreprise doit être éligible à ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188'} />
 		</div>)
 	}

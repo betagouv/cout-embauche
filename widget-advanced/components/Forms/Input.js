@@ -25,7 +25,7 @@ export default class Input extends Component {
 						{answerSuffix}
 					</label>
 				}
-				<button className="send" disabled={!input.value} onClick={submit(input.value)}>
+				<button className="send" disabled={!input.value} onClick={submit}>
 					<span className="text">valider</span>
 					<span className="icon">✓</span>
 				</button>

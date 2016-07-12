@@ -12,7 +12,7 @@ export default class RhetoricalQuestion extends Component {
 			<span className="answer">
 				<label key={value} className={classnames('radio')}>
 					<input
-						type="radio" {...rest} onClick={submit(value)}
+						type="radio" {...rest} onClick={submit}
 						value={value} />
 					{text}
 				</label>

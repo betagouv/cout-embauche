@@ -1,22 +1,28 @@
 /*
-	Le formulaire est initialisé avec ces valeurs, puis modifié par l'utilisateur. Elles pourront ensuite être
-	transformées par une fonction avant d'être envoyées à OpenFisca */
+	inputData contient à la fois la valeure par défaut de la saisie pour le formulaire basique,
+	et la fonctionn de transformation (si pertinent)
+	*/
 
 let	today = new Date()
 
-let	basicInputData = {
+let	inputData = {
+	// Beaucoup de valeurs, dont les questions intermédiaires de la simulation avancée, ne seront pas envoyées
 
-	// Celles-ci ne seront pas transformées
+
+	/****** Simulation simple *******/
+
+	// Celles-ci ne seront pas transformées, mais envoyées telles quelles (nécessaires à la simulation)
 	allegement_fillon_mode_recouvrement: 'anticipe_regularisation_fin_de_periode',
 	allegement_cotisation_allocations_familiales_mode_recouvrement: 'anticipe_regularisation_fin_de_periode',
 
-	// Celles-ci ne seront pas envoyées par la requête
-	typeEmployé: [ 'cdi', () => null ],
-	typeSalaireEntré: [ 'brut', () => null ],
 
+	// Cette valeur n'est pas captée, car déductible sans saisie
+	contrat_de_travail_debut: today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2),
 
-	/* Le type d'entreprise n'est pas défini comme une catégorie dans OpenFisca,
-	mais comme des booléens */
+	//TODO apprenti
+
+	/* Le type d'entreprise association 190X n'est pas défini comme une catégorie dans OpenFisca,
+	mais comme un booléen */
 	typeEntreprise: [
 		'entreprise',
 		value => value === 'entreprise_est_association_non_lucrative' && {
@@ -24,8 +30,7 @@ let	basicInputData = {
 		},
 	],
 
-	/* We are simulating a recruitment,
-	hence requesting salaries with the new size of the entreprise */
+	/* Nous simulons une embauche, donc nous incrémentons l'effectif */
 	effectifEntreprise: [
 		0,
 		value => ({'effectif_entreprise': value + 1}),
@@ -59,22 +64,28 @@ let	basicInputData = {
 		value => ({'depcom_entreprise': value}),
 	],
 
-	contrat_de_travail_debut: today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2),
+	/****** Simulation avancée *******/
 
-	//TODO
+	mutuelle: v => ({'complementaire_sante_montant': v}),
+
+	pourcentage_alternants: v => ({'ratio_alternants': v / 100}),
+
+	jei: v => ({jeune_entreprise_innovante: v === 'Oui' ? 1 : 0}),
+
+	tauxRisque: v => ({taux_accident_travail: v / 100}),
 
 }
 
 // Extraction des valeurs initiales de l'object précédent
 let initialValues =
-	Object.keys(basicInputData)
+	Object.keys(inputData)
 		.reduce((final, i) => {
-			let value = basicInputData[i],
-				initialValue = {[i]: typeof value === 'string' ? value : value[0]}
+			let data = inputData[i],
+				initialValue = Array.isArray(data) ? {[i]: data[0]} : {}
 			return Object.assign(final, initialValue)
 		}, {})
 
 export {
 	initialValues,
-	basicInputData,
+	inputData,
 }

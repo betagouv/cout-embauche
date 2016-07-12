@@ -1,10 +1,10 @@
 export const SUBMIT_STEP = 'SUBMIT_STEP'
-export function submitStep(formName, variableName, variableValue, transformInputValue, ignored) {
-	return {type: SUBMIT_STEP, formName, variableName, variableValue, transformInputValue, ignored}
+export function submitStep(name, ignored) {
+	return {type: SUBMIT_STEP, name, ignored}
 }
 
 export const EDIT_STEP = 'EDIT_STEP'
-export function editStep(formName) {return {type: EDIT_STEP, formName}}
+export function editStep(name) {return {type: EDIT_STEP, name}}
 
 export const UNSUBMIT_ALL = 'UNSUBMIT_ALL'
 

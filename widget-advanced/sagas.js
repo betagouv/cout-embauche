@@ -1,40 +1,9 @@
 import { takeEvery, delay } from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
-import {basicInputData} from './data/basicInputValues'
+import {inputData} from './data/inputData'
 import outputVariables from './data/outputVariables.yaml'
 import {INITIAL_REQUEST} from './actions'
-
-// Promisify the API call to handled by saga's call Effect
-let updateSimulation = (variableName, variableValue) =>
-	new Promise( (resolve, reject) =>
-		window.Embauche.OpenFisca.get(
-			{[variableName]: variableValue},
-			(error, output) => {
-				error ? reject(error) : resolve(output)
-			}))
-
-function* handleSubmitStep({variableName, variableValue, transformInputValue}) {
-	if (variableName != null) { // there is a need for an API request
-		try {
-			yield put({type: 'SIMULATION_UPDATE_REQUEST'})
-			/* The value can be transformed before being sent online,
-			e.g. to transform a percentage to a ratio */
-			let v2 = transformInputValue ? transformInputValue(variableValue) : variableValue
-			const output = yield call(updateSimulation, variableName, v2)
-			console.log('API call output', output)
-			yield put({type: 'SIMULATION_UPDATE_SUCCESS'})
-			yield call(window.Embauche.updateSimulationResults, output)
-		} catch (e) {
-			console.log('ARG', e)
-		}
-	}
-}
-
-function* watchSteps() {
-	//yield* takeEvery('SUBMIT_STEP', handleSubmitStep)
-}
-
 
 let serializeObject = source =>
 	Object.keys(source)
@@ -51,6 +20,7 @@ let baseUrl =
 			], [])
 		.join('+')
 
+// Pure requêteur pour OpenFisca, ne dépend pas de l'UI
 function request(input) {
 
 	let
@@ -74,20 +44,29 @@ function request(input) {
 		)
 }
 
-
-
 function* handleFormChange() {
 	try {
 		let
-			basicInputValues = yield select(state => state.form.basicInput.values),
-			transformedValues = Object.keys(basicInputData).reduce((final, name) => {
-				let data = basicInputData[name],
-					userValue = basicInputValues[Object.keys(basicInputValues).find(k => k == name)],
-					transformed = typeof data != 'string' ? data[1](userValue) : {[name]: data}
+			basicValues = yield select(state => state.form.basicInput.values),
+			advancedValues = yield select(state => state.form.advancedQuestions && state.form.advancedQuestions.values),
+			inputValues = Object.assign({}, basicValues, advancedValues),
+			transformedValues = Object.keys(inputData).reduce((final, name) => {
+				let data = inputData[name],
+					userValue = inputValues[Object.keys(inputValues).find(k => k == name)]
 
-				return Object.assign(final, transformed)
-			}, {}),
-			results = yield call(request, transformedValues)
+				if (typeof data == 'string')
+					return Object.assign(final, {[name]: data})
+
+				if (userValue == null) return final
+
+				if (typeof data === 'function')
+					return Object.assign(final, data(userValue))
+
+				// data is an Array and the function is the second element
+				return Object.assign(final, data[1](userValue))
+			}, {})
+
+		let	results = yield call(request, transformedValues)
 		yield put({type: 'SIMULATION_SUCCESS', results})
 	} catch (e) {
 		console.log('ARGHH', e)
@@ -100,5 +79,5 @@ function* watchFormChanges() {
 }
 
 export default function* rootSaga() {
-	yield [ watchSteps(), watchFormChanges() ]
+	yield [ watchFormChanges() ]
 }

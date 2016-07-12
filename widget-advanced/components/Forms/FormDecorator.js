@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {Field, formValueSelector, change} from 'redux-form'
-import * as actions from '../../actions'
+import {submitStep, editStep} from '../../actions'
 
 /*
 This higher order component wraps "Form" components (e.g. Question.js), that represent user inputs,
@@ -25,7 +24,8 @@ export var FormDecorator = RenderField =>
 			}
 		},
 		dispatch => ({
-			actions: bindActionCreators(actions, dispatch),
+			editStep: name => dispatch(editStep(name)),
+			submitStep: (name, ignored) => dispatch(submitStep(name, ignored)),
 			setFormValue: (field, value) => dispatch(change('advancedQuestions', field, value)),
 		})
 	)
@@ -38,9 +38,7 @@ export var FormDecorator = RenderField =>
 				visible,
 				name,
 				steps,
-				actions: {submitStep},
-				variableName,
-				serialise,
+				submitStep,
 				valueType,
 				valueIfIgnored,
 				attributes,
@@ -49,19 +47,11 @@ export var FormDecorator = RenderField =>
 				possibleChoice,
 			} = this.props
 
-			/* Call redux-form's handleSumbit to keep the form in state
-			and trigger the SUMIT_STEP action that will mark this
-			step in the state as completed.
-			SUBMIT_STEP will also trigger an API call if specified in the props.
-			The value can be serialised before being sent online,
-			e.g. to transform a percentage to a ratio */
-			serialise = serialise || valueType && new valueType().serialise
-			let	submit = (value, ignored) => () => submitStep(name, variableName, value, serialise, ignored)
 
 			let ignoreStep = () => {
 				// Renseigne automatiquement la valeur de la saisie (en se plongeant dans les entrailles de redux-form)
 				this.props.setFormValue(name, valueIfIgnored)
-				submit(valueIfIgnored, true)()
+				submitStep(name, true)
 			}
 
 				//TODO field.onChange(valueIfIgnored)
@@ -85,7 +75,7 @@ export var FormDecorator = RenderField =>
 				choices,  /* Question component's radio choices */
 				optionsURL, /* Select component's data source */
 				possibleChoice, /* RhetoricalQuestion component's only choice :'-( */
-				submit,
+				submit: () => submitStep(name),
 				valueType,
 			}
 
@@ -116,7 +106,7 @@ export var FormDecorator = RenderField =>
 		*/
 		renderHeader(unfolded) {
 			let {
-				actions: {editStep},
+				editStep,
 				name,
 				headerClick = () => editStep(name),
 			} = this.props

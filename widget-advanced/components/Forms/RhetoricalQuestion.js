@@ -6,13 +6,14 @@ import classnames from 'classnames'
 export default class RhetoricalQuestion extends Component {
 	render() {
 		let {
-			input: {stepProps: {submit, possibleChoice: {text, value}}, ...rest},
+			input,
+			stepProps: {submit, possibleChoice: {text, value}},
 		} = this.props
 		return (
 			<span className="answer">
 				<label key={value} className={classnames('radio')}>
 					<input
-						type="radio" {...rest} onClick={submit}
+						type="radio" {...input} onClick={submit}
 						value={value} />
 					{text}
 				</label>

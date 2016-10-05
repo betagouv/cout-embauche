@@ -12,7 +12,7 @@ export default class Question extends Component {
 		let {
 			name,
 			input,
-			input: {stepProps: {submit, choices}, ...rest},
+			stepProps: {submit, choices},
 			touched, error, disabled,
 		} = this.props
 
@@ -21,7 +21,7 @@ export default class Question extends Component {
 				{ choices.map((choice) =>
 						( <label key={choice} className={classnames('radio', {checked: choice === input.value})}>
 								<input
-									type="radio" {...rest} onClick={submit}
+									type="radio" {...input} onClick={submit}
 									value={choice} checked={choice === input.value ? 'checked' : ''} />
 								{choice}
 							</label>

@@ -50,11 +50,12 @@ export default class Select extends Component {
 
 	render() {
 		let {
-			input: {stepProps: {submit}, ...rest},
+			input,
+			stepProps: {submit},
 		} = this.props
 		return (
 			<div className="select-answer">
-				<ReactSelectWrapper {...rest} options={this.state.options} submit={submit} />
+				<ReactSelectWrapper {...input} options={this.state.options} submit={submit} />
 			</div>
 
 		)

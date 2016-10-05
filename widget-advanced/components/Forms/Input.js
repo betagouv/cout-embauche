@@ -8,7 +8,7 @@ export default class Input extends Component {
 		let {
 			name,
 			input,
-			input: {stepProps: {submit, valueType}, ...rest},
+			stepProps: {submit, valueType},
 			touched, error, disabled,
 		} = this.props,
 			answerSuffix = valueType && new valueType().suffix,
@@ -17,7 +17,7 @@ export default class Input extends Component {
 		return (
 			<span className="answer">
 				<input
-					type="text" {...rest}
+					type="text" {...input}
 					className={classnames({suffixed})}
 					id={'step-' + name} />
 				{ suffixed &&

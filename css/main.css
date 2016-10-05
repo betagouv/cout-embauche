@@ -25,11 +25,11 @@ input, select {
 	margin: 0 .5em;
 	vertical-align: middle;
 	color: rgba(0, 0, 0, .8);
+	text-align: center;
 }
 
 input[type="number"] {
 	max-width: 5em;
-	text-align: right;
 }
 
 select[name="typeEntreprise"] {
@@ -41,15 +41,11 @@ input[name="effectifEntreprise"] {
 }
 
 input[name="codePostal"] {
-	max-width: 6em;
+	max-width: 5.5em;
 }
 
 input[name="heuresParSemaine"] {
 	max-width: 2.3em;
-}
-
-input.centered {
-	text-align: center;
 }
 
 label.dynamic-info {
@@ -99,6 +95,7 @@ input#salaire ~ .input-help {
 	text-align: left;
 	width: 20em;
 	vertical-align: middle;
+	text-align: left;
 }
 
 section.taxes {

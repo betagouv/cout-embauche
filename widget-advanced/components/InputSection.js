@@ -17,7 +17,6 @@ export default class Input extends Component {
 					{ !showAdvanced ?
 						<span>{'Continuer l\'estimation'}</span>:
 						<span>Réinitialiser</span>
-						/* TODO: cliquez là, ça vous donnera plus de précision */
 					}
 				</button>
 			</div>

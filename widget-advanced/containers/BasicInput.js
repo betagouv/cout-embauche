@@ -49,7 +49,7 @@ export default class BasicInput extends Component {
 					<Field id="salaire" name="salaire" component="input" type="number"
 						min="0" max="9999999" placeholder="2300" step="any" />
 					<label htmlFor="salaire">
-						&nbsp;€
+						&nbsp; € &nbsp;
 					</label>
 					<span className="input-help">Rémunération totale<br/>
 						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.

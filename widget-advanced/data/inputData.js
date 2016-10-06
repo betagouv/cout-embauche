@@ -21,6 +21,8 @@ let	inputData = {
 
 	//TODO apprenti
 
+	typeEmployé: v => v === 'apprenti' ? {apprenti: true}: {},
+
 	/* Le type d'entreprise association 190X n'est pas défini comme une catégorie dans OpenFisca,
 	mais comme un booléen */
 	typeEntreprise: [

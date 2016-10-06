@@ -1,13 +1,18 @@
-import { takeEvery } from 'redux-saga'
+import { takeLatest } from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
 import {inputData} from './data/inputData'
 import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS} from './actions'
 import {request} from './openfisca'
 
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
 function* handleFormChange(action) {
 	if (action.type === 'redux-form/CHANGE' && action.meta.field == 'codePostal')
 		return // it is just an intermediary field used to input a codeINSEE
+
+	// debounce by 500ms
+	yield call(delay, 500)
 
 	try {
 		let
@@ -46,7 +51,7 @@ function* handleFormChange(action) {
 }
 
 function* watchFormChanges() {
-	yield* takeEvery([ INITIAL_REQUEST, 'redux-form/CHANGE' ], handleFormChange)
+	yield takeLatest([ INITIAL_REQUEST, 'redux-form/CHANGE' ], handleFormChange)
 }
 
 export default function* rootSaga() {

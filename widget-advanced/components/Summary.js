@@ -16,8 +16,9 @@ export default class Summary extends Component {
 	render() {
 		let
 			{
+				results,
 				results: {
-					salaire_super_brut, cout_du_travail, salaire_net_a_payer,
+					salaire_super_brut, cout_du_travail,
 				},
 				typeEntreprise, typeSalaireEntré,
 				humanizeFigures: humanize,
@@ -28,12 +29,12 @@ export default class Summary extends Component {
 				'entreprise_est_association_non_lucrative': 'association',
 				'entreprise': 'entreprise',
 			}[typeEntreprise],
-			typeSalaire = {
-				'net': 'brut',
-				'brut': 'net',
-			}[typeSalaireEntré]
-
-		if (salaire_super_brut == null) return null
+			correspondanceSalaires = {
+				'net': [ 'brut', 'Salaire brut', 'salaire_de_base' ],
+				'brut': [ 'net', 'Salaire net', 'salaire_net_a_payer' ],
+			}[typeSalaireEntré],
+			[ salaireTitle, salaireDescription, salaireVariable ] = correspondanceSalaires,
+			salaireFigure = results[salaireVariable]
 
 		return (
 			<div className="simulation-summary">
@@ -46,13 +47,13 @@ export default class Summary extends Component {
 								<span>
 									<br />
 									ou <Figure title="Coût du travail" figure={humanize(cout_du_travail)}/>
-									après déduction des aides différées.
+									&nbsp; après déduction des aides différées.
 								</span>
 							}
 						</p>
 						<p>
-							Mon salarié·e touchera <Figure title="Salaire net" figure={humanize(salaire_net_a_payer)}/>
-							{typeSalaire} par mois.
+							Mon salarié·e touchera <Figure title={salaireDescription} figure={humanize(salaireFigure)}/>&nbsp;
+							{salaireTitle} par mois.
 						</p>
 					</div>
 					<button

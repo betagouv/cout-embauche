@@ -27,6 +27,6 @@ export default class Results extends Component {
 			</div>
 		)
 	}
-	humanizeFigures = decimalDigits => value => fmt(value.toFixed(decimalDigits))
+	humanizeFigures = decimalDigits => value => value == null ? '...' : fmt(value.toFixed(decimalDigits))
 
 }

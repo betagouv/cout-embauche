@@ -43,10 +43,17 @@ let	inputData = {
 		value => ({ 'heures_remunerees_volume': value * (151.66 / 35)}),
 	],
 
+	typeSalaireEntré: [ 'brut', () => ({}) ],
+
 	//TODO handle salaire brut / net
 	salaire: [
 		2300,
-		value => ({ 'salaire_de_base': value }),
+		(value, values) => ({
+			// Use other values to determine the name of this key
+			[values['typeSalaireEntré'] == 'brut' ?
+				'salaire_de_base' :
+				'salaire_net_a_payer'
+			]: value }),
 	],
 
 	tempsDeTravail: [

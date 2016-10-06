@@ -7,8 +7,6 @@ Sommes:
     name: Coût du travail
   - key: salaire_super_brut
     name: Salaire super brut
-  - key: salaire_net_a_payer
-    name: Salaire net
 
 Cotisations employeur:
 

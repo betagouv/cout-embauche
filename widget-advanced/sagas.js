@@ -24,10 +24,10 @@ function* handleFormChange() {
 				if (userValue == null) return final
 
 				if (typeof transformer === 'function')
-					return Object.assign(final, transformer(userValue))
+					return Object.assign(final, transformer(userValue, inputValues))
 
 				// else transformer is an Array and the function is the second element
-				return Object.assign(final, transformer[1](userValue))
+				return Object.assign(final, transformer[1](userValue, inputValues))
 			}, {}),
 
 			results = yield call(request, transformedValues)

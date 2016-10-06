@@ -42,7 +42,11 @@ let baseUrl =
 export function request(input) {
 
 	let
-		url = baseUrl + '?' + serializeObject(input),
+		url =
+			baseUrl +
+			(input['salaire_net_a_payer'] ? '+salaire_de_base' : '+salaire_net_a_payer') +
+			'?' +
+			serializeObject(input),
 		headers = input['salaire_net_a_payer'] ? {
 			'x-OpenFisca-Extensions': 'de_net_a_brut',
 		} : {}

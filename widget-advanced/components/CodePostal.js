@@ -18,7 +18,7 @@ export default class CodePostal extends Component {
 				{/* Le code INSEE sera déduit du code postal entré par l'utilisateur */}
 				<label htmlFor="codeINSEE">{message}</label>
 				{ fetchedCodes &&
-					<Field component="select" name="codeINSEE">
+					<Field component="select" name="codeINSEE" >
 						{fetchedCodes.map(item =>
 							<option key={item.codeInsee} value={item.codeInsee}>{item.nomCommune}</option>
 						)}
@@ -28,9 +28,8 @@ export default class CodePostal extends Component {
 		)
 	}
 	componentWillReceiveProps({codePostal}) {
-		if (!codePostal) return
-		if (codePostal.length !== 5)
-			return this.setErrorMessage('')
+		if (!codePostal || codePostal.length !== 5)
+			return this.setErrorMessage('', this.state.fetchedCodes)
 
 		if (codePostal != this.props.codePostal)
 			this.fetchCodes(codePostal)
@@ -52,16 +51,22 @@ export default class CodePostal extends Component {
 				}
 				return response.json()
 			})
-			.then(json => json.length === 0 ?
-				this.setErrorMessage('Aucune commune n\'a été trouvée'):
-				this.setState({message: '', fetchedCodes: json})
-			)
+			.then(json => {
+				if (json.length === 0)
+					this.setErrorMessage('Aucune commune n\'a été trouvée')
+				else {
+					this.setState({message: '', fetchedCodes: json})
+					this.props.changeCodeINSEE(json[0].codeInsee)
+				}
+			})
 			.catch(error =>
 				this.setErrorMessage('Le code postal n\'a pas pu être pris en compte')
 				//TODO handle error  && console.error(error)
 			)
 	}
-	setErrorMessage(message) {
+	setErrorMessage(message, erase) {
 		this.setState({message, fetchedCodes: null})
+		if (erase)
+			this.props.changeCodeINSEE('')
 	}
 }

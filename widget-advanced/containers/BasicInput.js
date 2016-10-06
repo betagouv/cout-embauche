@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Field, reduxForm, formValueSelector } from 'redux-form'
+import { Field, reduxForm, formValueSelector, change } from 'redux-form'
 import {connect} from 'react-redux'
 import CodePostal from '../components/CodePostal'
 import {initialValues} from '../data/inputData'
@@ -9,6 +9,9 @@ let selector = formValueSelector('basicInput')
 @connect(state => ({
 	enTempsPartiel: selector(state, 'tempsDeTravail') == 'temps_partiel',
 	codePostal: selector(state, 'codePostal'),
+}), dispatch => ({
+	changeCodeINSEE: (value) =>
+		dispatch(change('basicInput', 'codeINSEE', value)),
 }))
 @reduxForm({
 	form: 'basicInput', // a unique name for this form
@@ -17,7 +20,7 @@ let selector = formValueSelector('basicInput')
 })
 export default class BasicInput extends Component {
 	render() {
-		let {enTempsPartiel, codePostal} = this.props
+		let {enTempsPartiel, changeCodeINSEE, codePostal} = this.props
 		return (
 			<form className="basic-input">
 				<Field component="select" name="typeEntreprise" >
@@ -78,7 +81,7 @@ export default class BasicInput extends Component {
 					</label>
 				}
 
-				<CodePostal codePostal={codePostal} />
+				<CodePostal codePostal={codePostal} changeCodeINSEE={changeCodeINSEE}/>
 
 				{/* TODO: mode_recouvrement des allègements de cotisation à envoyer dans la requête */}
 

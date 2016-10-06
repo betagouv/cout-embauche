@@ -5,7 +5,10 @@ import {inputData} from './data/inputData'
 import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS} from './actions'
 import {request} from './openfisca'
 
-function* handleFormChange() {
+function* handleFormChange(action) {
+	if (action.type === 'redux-form/CHANGE' && action.meta.field == 'codePostal')
+		return // it is just an intermediary field used to input a codeINSEE
+
 	try {
 		let
 			inputValues = Object.assign({},

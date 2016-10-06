@@ -1,4 +1,17 @@
 import React, { Component } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
+let Figure = ({figure, title}) =>
+	<ReactCSSTransitionGroup
+			transitionName="flash"
+			transitionEnterTimeout={100}
+			transitionLeaveTimeout={100}
+			>
+			<span key={figure} className="figure" title={title}>
+				{figure} €
+			</span>
+		</ReactCSSTransitionGroup>
+
 export default class Summary extends Component {
 	render() {
 		let
@@ -28,20 +41,18 @@ export default class Summary extends Component {
 				<div className="content">
 					<div className="figures">
 						<p>
-							Cela coûtera <span className="figure" title="Salaire super-brut">
-								{humanize(salaire_super_brut)} €
-							</span> par mois à mon {labelTypeEntreprise},
+							Cela coûtera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois à mon {labelTypeEntreprise},
 							{ (salaire_super_brut != cout_du_travail) &&
 								<span>
 									<br />
-									ou <span className="figure" title="Coût du travail">{humanize(cout_du_travail)} €</span> après déduction des aides différées.
+									ou <Figure title="Coût du travail" figure={humanize(cout_du_travail)}/>
+									après déduction des aides différées.
 								</span>
 							}
 						</p>
 						<p>
-							Mon salarié·e touchera <span className="figure" title="Salaire net">
-								{humanize(salaire_net_a_payer)} €
-							</span> {typeSalaire} par mois.
+							Mon salarié·e touchera <Figure title="Salaire net" figure={humanize(salaire_net_a_payer)}/>
+							{typeSalaire} par mois.
 						</p>
 					</div>
 					<button

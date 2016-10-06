@@ -33,6 +33,18 @@
 
 .simulation-summary .figure {
 	color: white;
+	padding: 0 .2em;
+	transition: background .8s;
+}
+
+/* Animation of summary figures changes : flash ! */
+.flash-enter {
+		background: rgba(255, 255, 255, 0.5);
+}
+
+.flash-leave {
+    /* Completely hide the button while it's being animated and before it's removed from the DOM. */
+    display: none;
 }
 
 /* See handleResultActions() for what happens with these buttons */

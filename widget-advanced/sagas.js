@@ -8,8 +8,15 @@ import {request} from './openfisca'
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 function* handleFormChange(action) {
+	// it is just an intermediary field used to input a codeINSEE, does not need an update
 	if (action.type === 'redux-form/CHANGE' && action.meta.field == 'codePostal')
-		return // it is just an intermediary field used to input a codeINSEE
+		return
+
+	// there is a form validation error -> do not update
+	let syncErrors = yield select(state =>
+		state.form.advancedQuestions && state.form.advancedQuestions.syncErrors
+	)
+	if (syncErrors) return
 
 	// debounce by 500ms
 	yield call(delay, 500)

@@ -1,8 +1,8 @@
 .advanced-simulation {
-  /* font-family: 'Open Sans'; */
-  font-size: 80%;
-  color: #555;
-  line-height: normal;
+	/* font-family: 'Open Sans'; */
+	font-size: 80%;
+	color: #555;
+	line-height: normal;
 }
 
 #conversation {
@@ -18,7 +18,7 @@
 
 .form-group {
 	position: relative;
-  margin-bottom: 3.5em;
+	margin-bottom: 3.5em;
 }
 
 .form-group.explicit > .group-content {
@@ -214,7 +214,7 @@ question : make it visible with colors */
 
 .step label.suffix {
 	margin: -2em;
-  font-size: 85%;
+	font-size: 85%;
 	color: #AAB2BD;
 	vertical-align: middle;
 }
@@ -249,13 +249,13 @@ question : make it visible with colors */
 .step .send {
 	position: relative;
 	left: 4.5em;
-  padding: 0 .1em 0 .5em;
+	padding: 0 .1em 0 .5em;
 	bottom: 0;
 	background: none;
-  cursor: pointer;
-  color: #4A89DC;
-  border: 1px solid;
-  line-height: 0em;
+	cursor: pointer;
+	color: #4A89DC;
+	border: 1px solid;
+	line-height: 0em;
 }
 
 .step .send[disabled]{
@@ -263,18 +263,26 @@ question : make it visible with colors */
 }
 
 .step .send .icon {
-  margin-left: .2em;
-  font-size: 150%;
-  color: #4A89DC;
-  vertical-align: middle;
+	margin-left: .2em;
+	font-size: 150%;
+	color: #4A89DC;
+	vertical-align: middle;
 }
 
 .step .send .text {
-  text-transform: uppercase;
-  font-size: 90%;
-  line-height: 2em;
+	text-transform: uppercase;
+	font-size: 90%;
+	line-height: 2em;
 }
 
 .answer {
 	float: right;
+}
+
+.step-input-error {
+	position: absolute;
+	right: 0;
+	bottom: -1.5em;
+	font-size: .8em;
+	font-style: italic;
 }

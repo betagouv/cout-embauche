@@ -16,21 +16,24 @@ export default class Input extends Component {
 			answerSuffix = valueType && new valueType().suffix,
 			suffixed = answerSuffix != null
 		return (
-			<span className="answer">
-				<input
-					type="text" {...input}
-					className={classnames({suffixed})}
-					id={'step-' + name} />
-				{ suffixed &&
-					<label className="suffix" htmlFor={'step-' + name}>
-						{answerSuffix}
-					</label>
-				}
-				<button className="send" disabled={!input.value} onClick={submit}>
-					<span className="text">valider</span>
-					<span className="icon">✓</span>
-				</button>
-				{touched && error && <span style={{background: 'red'}} className="error">{error}</span>}
+			<span>
+				<span className="answer">
+					<input
+						type="text" {...input}
+						className={classnames({suffixed})}
+						id={'step-' + name} />
+					{ suffixed &&
+						<label className="suffix" htmlFor={'step-' + name}>
+							{answerSuffix}
+						</label>
+					}
+					<button className="send" disabled={!input.value || (touched && error)}
+						onClick={() => !error ? submit() : null} >
+						<span className="text">valider</span>
+						<span className="icon">✓</span>
+					</button>
+				</span>
+				{touched && error && <span className="step-input-error">{error}</span>}
 			</span>
 		)
 	}

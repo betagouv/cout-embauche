@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { connect } from 'react-redux'
 import {Field, formValueSelector, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
-
+import questionSet from '../../containers/conversation-question-set'
 /*
 This higher order component wraps "Form" components (e.g. Question.js), that represent user inputs,
 with a header, click actions and more goodies.
@@ -35,17 +35,21 @@ export var FormDecorator = RenderField =>
 		}
 		render() {
 			let {
-				visible,
 				name,
+				visible,
 				steps,
 				submitStep,
+			} = this.props
+
+			let {
 				valueType,
 				valueIfIgnored,
 				attributes,
 				choices,
 				optionsURL,
 				possibleChoice,
-			} = this.props
+				human,
+			} = questionSet[name]
 
 
 			let ignoreStep = () => {
@@ -82,7 +86,7 @@ export var FormDecorator = RenderField =>
 			return (
 			<div className={classNames('step', {unfolded})}>
 				{this.state.helpVisible && this.renderHelpBox()}
-				{this.renderHeader(unfolded)}
+				{this.renderHeader(unfolded, valueType, human)}
 				{unfolded &&
 						<fieldset>
 							{ valueIfIgnored &&
@@ -104,7 +108,7 @@ export var FormDecorator = RenderField =>
 		/*
 			< Le titre de ma question > ----------- < (? bulle d'aide) / résultat >
 		*/
-		renderHeader(unfolded) {
+		renderHeader(unfolded, valueType, human) {
 			let {
 				editStep,
 				name,
@@ -113,7 +117,7 @@ export var FormDecorator = RenderField =>
 
 			return (
 				<span className="form-header" onClick={headerClick}>
-				{ unfolded ? this.renderQuestion() : this.renderTitleAndAnswer()}
+				{ unfolded ? this.renderQuestion() : this.renderTitleAndAnswer(valueType, human)}
 				</span>
 			)
 		}
@@ -128,12 +132,10 @@ export var FormDecorator = RenderField =>
 					}
 				</span>
 
-		renderTitleAndAnswer() {
+		renderTitleAndAnswer(valueType, human) {
 			let {
 				name,
 				answers,
-				valueType,
-				human,
 			} = this.props,
 				value = answers[name],
 				// Show a beautiful answer to the user, rather than the technical form value

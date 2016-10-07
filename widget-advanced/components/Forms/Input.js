@@ -9,11 +9,12 @@ export default class Input extends Component {
 			name,
 			input,
 			stepProps: {submit, valueType},
-			touched, error, disabled,
+			meta: {
+				touched, error,
+			},
 		} = this.props,
 			answerSuffix = valueType && new valueType().suffix,
 			suffixed = answerSuffix != null
-
 		return (
 			<span className="answer">
 				<input
@@ -29,7 +30,7 @@ export default class Input extends Component {
 					<span className="text">valider</span>
 					<span className="icon">✓</span>
 				</button>
-				{touched && error && !disabled && <span className="error">{error}</span>}
+				{touched && error && <span style={{background: 'red'}} className="error">{error}</span>}
 			</span>
 		)
 	}

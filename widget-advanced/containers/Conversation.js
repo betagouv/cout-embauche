@@ -14,15 +14,13 @@ import questionSet from './conversation-question-set'
 let selector = formValueSelector('advancedQuestions'),
 	simpleSelector = formValueSelector('basicInput')
 
-let {rework, validate } = questionSet['mutuelle']
-console.log(validate(rework('45')))
 @reduxForm({
 	form: 'advancedQuestions',
 	validate: values =>
 		Object.keys(values).reduce((result, next) => {
 			let value = values[next],
 				{rework, validate} = questionSet[next],
-				error = validate(rework(value))
+				error = rework && validate && validate(rework(value))
 			return Object.assign(result, error ? {[next]: error} : null)
 		}, {})
 	,

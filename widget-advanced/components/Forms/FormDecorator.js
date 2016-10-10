@@ -106,17 +106,11 @@ export var FormDecorator = RenderField =>
 		}
 
 		/*
-			< Le titre de ma question > ----------- < (? bulle d'aide) / résultat >
+			< Le titre de ma question > ----------- < (? bulle d'aide) OU résultat >
 		*/
 		renderHeader(unfolded, valueType, human) {
-			let {
-				editStep,
-				name,
-				headerClick = () => editStep(name),
-			} = this.props
-
 			return (
-				<span className="form-header" onClick={headerClick}>
+				<span className="form-header" >
 				{ unfolded ? this.renderQuestion() : this.renderTitleAndAnswer(valueType, human)}
 				</span>
 			)
@@ -125,16 +119,19 @@ export var FormDecorator = RenderField =>
 		renderQuestion = () =>
 				<span>
 					<h1>{this.props.question}</h1>
-					{this.props.helpText &&
+					{questionSet[this.props.name].helpText &&
 						<span
 						className="question-mark"
-						onClick={() => this.setState({helpVisible: true})}>?</span>
+						onClick={() => this.setState({helpVisible: true})}>
+							?
+						</span>
 					}
 				</span>
 
 		renderTitleAndAnswer(valueType, human) {
 			let {
 				name,
+				editStep,
 				answers,
 			} = this.props,
 				value = answers[name],
@@ -142,7 +139,7 @@ export var FormDecorator = RenderField =>
 				humanFunc = human || valueType && new valueType().human || (v => v)
 
 			return (
-				<span>
+				<span onClick={() => editStep(name)}>
 					<h1>{this.props.title}</h1>
 					<ReactCSSTransitionGroup
 							transitionAppear={true}
@@ -153,11 +150,21 @@ export var FormDecorator = RenderField =>
 				</span>)
 		}
 
-		renderHelpBox = () =>
-			<div className="help-box">
+		renderHelpBox() {
+			let {name} = this.props,
+				helpText = questionSet[name].helpText,
+				helpComponent =
+					typeof helpText === 'string' ?
+					(<p>{helpText}</p>) :
+					helpText
+
+			return <div className="help-box">
 				<a
 					className="close-help"
-					onClick={() => this.setState({helpVisible: false})}>&#10005;</a>
-				<p>{this.props.helpText}</p>
+					onClick={() => this.setState({helpVisible: false})}>
+					<span className="close-text">revenir</span> &#10005;
+				</a>
+				{helpComponent}
 			</div>
+		}
 	}

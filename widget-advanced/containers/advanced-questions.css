@@ -236,6 +236,8 @@ question : make it visible with colors */
 
 .help-box p {
 	padding: 1em;
+	font-size: 90%;
+	font-style: italic;
 }
 
 .close-help {
@@ -244,6 +246,11 @@ question : make it visible with colors */
 	top: 0;
 	right: 0;
 	font-size: 150%;
+}
+.close-text {
+	font-size: 60%;
+	font-weight: 800;
+	vertical-align: middle;
 }
 
 .step .send {

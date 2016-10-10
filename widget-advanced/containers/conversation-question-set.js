@@ -15,18 +15,16 @@ export default {
 			v.replace(/,/g, '.') // commas -> dots
 			.replace(/\s/g, ''), // remove spaces
 		validate: v => validate(v, 'number'),
-		helpText: //TODO could be a component to include HTML e.g. links
-			`L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
-			de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.`,
+		helpText:
+			<p>
+				L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
+				de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.
+				<br/>
+				<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33754" target="_blank">
+					Voir les détails.
+				</a>
+			</p>,
 	},
-	/*
-	<p>L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
-	de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.
-	<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33754" target="_blank">
-		Voir les détails.
-	</a>
-	</p>
-	*/
 
 	'pourcentage_alternants': {
 		attributes: {
@@ -41,12 +39,16 @@ export default {
 			v.replace(/,/g, '.') // commas -> dots
 			.replace(/\s/g, ''), // remove spaces
 		validate: v => validate(v, 'number'),
-		helpText: 'Ce pourcentage nous permet de calculer le montant de la Contribution Supplémentaire à l\'Apprentissage',
+		helpText: <p>Ce pourcentage de l'ensemble de vos salariés nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage, destinée à encourager cette forme d'emploi.</p>,
 	},
 
 	'tauxRisqueConnu': {
 		choices: [ 'Oui', 'Non' ],
-		helpText: 'Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur net-entreprises.fr',
+		helpText:
+		<p>
+			Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur &nsbp;
+			<a href="http://www.net-entreprises.fr/html/compte-accident-travail.htm" target="_blank">net-entreprises.fr</a> ou reçu par courrier.
+		</p>,
 	},
 
 	'tauxRisque': {

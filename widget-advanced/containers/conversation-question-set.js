@@ -4,9 +4,9 @@ import validate from '../validators.js'
 
 export default {
 	'mutuelle': {
+		// We use 'text' inputs : browser behaviour with input=number doesn't quite work with our "update simulation on input change"...
 		attributes: {
-			type: 'number',
-			step: 'any',
+			inputMode: 'numeric',
 			placeholder: 'par ex. 30',
 		},
 		valueType: Euro,
@@ -28,10 +28,7 @@ export default {
 
 	'pourcentage_alternants': {
 		attributes: {
-			type: 'number',
-			step: 'any',
-			min: '0',
-			max: '100',
+			inputMode: 'numeric',
 		},
 		valueType: Percentage,
 		valueIfIgnored: '0',
@@ -53,11 +50,8 @@ export default {
 
 	'tauxRisque': {
 		attributes: {
-			type: 'number',
-			step: 'any',
-			min: '0',
-			max: '200',
-			placeholder: '1.1',
+			inputMode: 'numeric',
+			placeholder: 'Par ex. 1,1',
 		},
 		rework: v =>
 			v.replace(/,/g, '.') // commas -> dots
@@ -75,6 +69,12 @@ export default {
 	'jei': {
 		choices: [ 'Oui', 'Non' ],
 		valueIfIgnored: 'Non',
-		helpText: 'Votre entreprise doit être éligible à ce statut, et votre employé doit avoir une fonction de recherche et développement. En savoir plus : https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188',
+		helpText: <p>
+			Votre entreprise doit être éligible à ce statut, et votre employé doit avoir une fonction de recherche et développement.
+			<br/>
+			<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188" target="_blank">
+				En savoir plus
+			</a>
+		</p>,
 	},
 }

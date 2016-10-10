@@ -8,7 +8,7 @@ export default class Input extends Component {
 		let {
 			name,
 			input,
-			stepProps: {submit, valueType},
+			stepProps: {attributes, submit, valueType},
 			meta: {
 				touched, error,
 			},
@@ -21,7 +21,9 @@ export default class Input extends Component {
 					<input
 						type="text" {...input}
 						className={classnames({suffixed})}
-						id={'step-' + name} />
+						id={'step-' + name}
+						{...attributes}
+						/>
 					{ suffixed &&
 						<label className="suffix" htmlFor={'step-' + name}>
 							{answerSuffix}

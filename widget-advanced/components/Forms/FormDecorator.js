@@ -149,10 +149,12 @@ export var FormDecorator = RenderField =>
 				name,
 				editStep,
 				answers,
+				steps,
 			} = this.props,
 				value = answers[name],
 				// Show a beautiful answer to the user, rather than the technical form value
-				humanFunc = human || valueType && new valueType().human || (v => v)
+				humanFunc = human || valueType && new valueType().human || (v => v),
+				ignored = steps.get(name) === 'ignored'
 
 			return (
 				<span onClick={() => editStep(name)}>
@@ -161,7 +163,10 @@ export var FormDecorator = RenderField =>
 							transitionAppear={true}
 							transitionName="answer"
 							transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-							<span key="1" className="resume">{humanFunc(value)}</span>
+							<span key="1" className="resume">
+								{humanFunc(value)}
+								{ignored && <span className="answer-ignored">(défaut)</span>}
+							</span>
 						</ReactCSSTransitionGroup>
 				</span>)
 		}

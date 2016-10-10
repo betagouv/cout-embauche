@@ -170,6 +170,13 @@ question : make it visible with colors */
 	transition: 1s display;
 }
 
+.answer-ignored {
+	font-size: 60%;
+	opacity: .8;
+	margin-left: .8em;
+	vertical-align: middle;
+}
+
 .ignore, .ignore:visited {
 	cursor: pointer;
 	position: absolute;

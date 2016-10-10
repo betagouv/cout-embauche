@@ -13,7 +13,7 @@ class ReactSelectWrapper extends Component {
 			value, onBlur, onChange, submit,
 			options,
 			onChangeAndSubmit =
-				(value, [ option ]) => {
+				option => {
 					option.text = option['Taux net'] + ' %'
 					onChange(option)
 					submit()
@@ -25,16 +25,16 @@ class ReactSelectWrapper extends Component {
 		if (!options) return null
 
 		return (
+			// For redux-form integration, checkout https://github.com/erikras/redux-form/issues/82#issuecomment-143164199
 			<ReactSelect
 					options={options}
 					onChange={onChangeAndSubmit}
 					labelKey="Nature du risque"
 					valueKey="Code risque"
-					placeholder="Choisissez une catégorie"
+					placeholder="Tapez des mots ou déroulez la liste complète"
 					optionRenderer={SelectOption}
 					valueRenderer={(value) => value['Nature du risque'].substring(0, 50) + '...'}
-
-					comment="See https://github.com/erikras/redux-form/issues/82#issuecomment-143164199"
+					clearable={false}
 					value={selectValue}
 					onBlur={() => onBlur(value)}
 			/>
@@ -62,7 +62,7 @@ export default class Select extends Component {
 	}
 
 	componentDidMount() {
-		fetch(this.props.input.stepProps.optionsURL)
+		fetch(this.props.stepProps.optionsURL)
 				.then(response => {
 					if (!response.ok) {
 						let error = new Error(response.statusText)

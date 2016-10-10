@@ -38,6 +38,11 @@ class Conversation extends Component {
 		/* C'est ici qu'est définie la suite de questions à poser. */
 		return (
 			<div id="conversation">
+				<Select
+					visible={true}
+					title="Code de risque sélectionné"
+					question="Quelle est la catégorie de risque de votre entreprise ?"
+					name="selectTauxRisque" />
 				<Input
 					title="Complémentaire santé"
 					question="Quel est le montant total de votre complémentaire santé entreprise obligatoire ?"
@@ -72,7 +77,7 @@ class Conversation extends Component {
 							<Select
 								visible={true}
 								title="Code de risque sélectionné"
-								question="Choisissez la catégorie de risque de votre entreprise"
+								question="Quelle est la catégorie de risque de votre entreprise ?"
 								name="selectTauxRisque" />
 							<ResultATMP
 								selectedTauxRisque={formValue('selectTauxRisque')}

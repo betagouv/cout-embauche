@@ -9,21 +9,14 @@ import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
 import {reduxForm, formValueSelector} from 'redux-form'
 import { Percentage } from '../formValueTypes.js'
-import questionSet from './conversation-question-set'
+import validate from './conversation-validate'
 
 let advancedInputSelector = formValueSelector('advancedQuestions'),
 	basicInputSelector = formValueSelector('basicInput')
 
 @reduxForm({
 	form: 'advancedQuestions',
-	validate: values =>
-		Object.keys(values).reduce((result, next) => {
-			let value = values[next],
-				{rework, validate} = questionSet[next],
-				error = rework && validate && validate(rework(value))
-			return Object.assign(result, error ? {[next]: error} : null)
-		}, {})
-	,
+	validate,
 })
 @connect(state => ({
 	formValue: (field, simple) => simple ? basicInputSelector(state, field): advancedInputSelector(state, field),

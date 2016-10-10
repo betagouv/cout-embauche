@@ -12,6 +12,25 @@ with a header, click actions and more goodies.
 Read https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750
 to understand those precious higher order components.
 */
+
+class IgnoreStepButton extends Component {
+	componentDidMount() {
+		window.addEventListener('keydown', ({key}) => this.handleKeyDown(key, this.props.action), false)
+	}
+	handleKeyDown(key, action) {
+		if (key !== 'Escape') return
+		action()
+	}
+	componentWillUnmount() {
+		window.removeEventListener('keydown', this.handleKeyDown, false)
+	}
+	render() {
+		return <a className="ignore" onClick={this.props.action}>
+			passer
+		</a>
+	}
+}
+
 let selector = formValueSelector('advancedQuestions')
 
 export var FormDecorator = RenderField =>
@@ -89,9 +108,7 @@ export var FormDecorator = RenderField =>
 				{unfolded &&
 						<fieldset>
 							{ valueIfIgnored &&
-								<a className="ignore" onClick={ignoreStep}>
-									passer
-								</a>
+								<IgnoreStepButton action={ignoreStep}/>
 							}
 							<Field
 								component={RenderField}

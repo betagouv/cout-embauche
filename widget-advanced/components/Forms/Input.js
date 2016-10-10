@@ -23,6 +23,12 @@ export default class Input extends Component {
 						className={classnames({suffixed})}
 						id={'step-' + name}
 						{...attributes}
+						onKeyDown={({key}) =>
+							key == 'Enter' && input.value && (
+							!error ?
+								submit() :
+								input.onBlur() // blur will trigger the error
+						)}
 						/>
 					{ suffixed &&
 						<label className="suffix" htmlFor={'step-' + name}>

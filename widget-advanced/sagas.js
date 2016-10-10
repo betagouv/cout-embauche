@@ -4,6 +4,7 @@ import Promise from 'core-js/fn/promise'
 import {inputData} from './data/inputData'
 import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS} from './actions'
 import {request} from './openfisca'
+import validate from './containers/conversation-validate'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -12,20 +13,23 @@ function* handleFormChange(action) {
 	if (action.type === 'redux-form/CHANGE' && action.meta.field == 'codePostal')
 		return
 
-	// there is a form validation error -> do not update
-	let syncErrors = yield select(state =>
-		state.form.advancedQuestions && state.form.advancedQuestions.syncErrors
-	)
-	if (syncErrors) return
-
 	// debounce by 500ms
 	yield call(delay, 500)
+
+	let
+		basicValues = yield select(state => state.form.basicInput.values),
+		advancedValues = yield select(state => state.form.advancedQuestions && state.form.advancedQuestions.values)
+
+	// there is a form validation error -> do not update
+	if (advancedValues && Object.keys(validate(advancedValues)).length)
+		return
+
 
 	try {
 		let
 			inputValues = Object.assign({},
-				yield select(state => state.form.basicInput.values),
-				yield select(state => state.form.advancedQuestions && state.form.advancedQuestions.values)
+				basicValues,
+				advancedValues,
 			),
 			// Transform the raw input object to a new one tailored for the simulation API
 			// 'inputData' provides this correspondance

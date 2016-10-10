@@ -7,7 +7,7 @@ export default {
 		// We use 'text' inputs : browser behaviour with input=number doesn't quite work with our "update simulation on input change"...
 		attributes: {
 			inputMode: 'numeric',
-			placeholder: 'par ex. 30',
+			placeholder: 'votre réponse', // help for the first input
 		},
 		valueType: Euro,
 		valueIfIgnored: '30',

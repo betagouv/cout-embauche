@@ -5,6 +5,7 @@ import classnames from 'classnames'
 @FormDecorator
 export default class RhetoricalQuestion extends Component {
 	render() {
+		console.log(this.props)
 		let {
 			input,
 			stepProps: {submit, possibleChoice: {text, value}},

@@ -11,8 +11,8 @@ import {reduxForm, formValueSelector} from 'redux-form'
 import { Percentage } from '../formValueTypes.js'
 import questionSet from './conversation-question-set'
 
-let selector = formValueSelector('advancedQuestions'),
-	simpleSelector = formValueSelector('basicInput')
+let advancedInputSelector = formValueSelector('advancedQuestions'),
+	basicInputSelector = formValueSelector('basicInput')
 
 @reduxForm({
 	form: 'advancedQuestions',
@@ -26,7 +26,7 @@ let selector = formValueSelector('advancedQuestions'),
 	,
 })
 @connect(state => ({
-	formValue: (field, simple) => simple ? simpleSelector(state, field): selector(state, field),
+	formValue: (field, simple) => simple ? basicInputSelector(state, field): advancedInputSelector(state, field),
 	steps: state.steps,
 }), dispatch => ({
 	actions: bindActionCreators(actions, dispatch),
@@ -38,15 +38,10 @@ class Conversation extends Component {
 		/* C'est ici qu'est définie la suite de questions à poser. */
 		return (
 			<div id="conversation">
-				<Select
-					visible={true}
-					title="Code de risque sélectionné"
-					question="Quelle est la catégorie de risque de votre entreprise ?"
-					name="selectTauxRisque" />
 				<Input
 					title="Complémentaire santé"
 					question="Quel est le montant total de votre complémentaire santé entreprise obligatoire ?"
-					visible="true"
+					visible={true}
 					name="mutuelle" />
 				<Input
 					title="Pourcentage d'alternants"
@@ -81,7 +76,8 @@ class Conversation extends Component {
 								name="selectTauxRisque" />
 							<ResultATMP
 								selectedTauxRisque={formValue('selectTauxRisque')}
-								formValue={formValue} {...{steps}}
+								formValue={formValue}
+								{...{steps}}
 								effectif={formValue('effectifEntreprise', 'basicInput')} />
 						</Group>
 					</Group>

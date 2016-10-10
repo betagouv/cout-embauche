@@ -39,6 +39,7 @@ export var FormDecorator = RenderField =>
 				visible,
 				steps,
 				submitStep,
+				possibleChoice, // should be found in the question set thoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code
 			} = this.props
 
 			let {
@@ -47,10 +48,8 @@ export var FormDecorator = RenderField =>
 				attributes,
 				choices,
 				optionsURL,
-				possibleChoice,
 				human,
 			} = questionSet[name]
-
 
 			let ignoreStep = () => {
 				// Renseigne automatiquement la valeur de la saisie (en se plongeant dans les entrailles de redux-form)

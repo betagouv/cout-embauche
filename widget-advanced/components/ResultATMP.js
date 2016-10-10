@@ -19,8 +19,6 @@ class ResultATMP extends Component {
 				name="tauxRisque"
 				question={this.renderText(tauxCommunGeneral, taux, effectif)}
 				possibleChoice={{text: 'OK', value: taux}}
-				variableName="taux_accident_travail"
-				serialise={v => v/100}
 				/>
 		)
 	}
@@ -32,7 +30,7 @@ class ResultATMP extends Component {
 			return `Votre taux AT/MP est ${taux}%`
 		else {
 			return `Votre taux AT/MP est estimé à ${taux}%, le taux commun de votre activité.
-							Rendez-vous sur net-entreprises.fr pour obtenir votre taux individuel.`
+							Nous ne pouvons accéder à votre place à votre taux individualisé.`
 		}
 	}
 

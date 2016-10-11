@@ -7,8 +7,13 @@ export default class RhetoricalQuestion extends Component {
 	render() {
 		let {
 			input,
-			stepProps: {submit, possibleChoice: {text, value}},
+			stepProps: {submit, possibleChoice},
 		} = this.props
+
+		if (!possibleChoice) return null // No action possible
+
+		let {text, value} = possibleChoice
+		
 		return (
 			<span className="answer">
 				<label key={value} className={classnames('radio')}>

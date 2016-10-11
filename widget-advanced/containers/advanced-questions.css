@@ -300,3 +300,7 @@ question : make it visible with colors */
 	font-size: .8em;
 	font-style: italic;
 }
+
+.step textarea {
+	vertical-align: middle;
+}

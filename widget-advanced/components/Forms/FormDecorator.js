@@ -4,7 +4,9 @@ import classNames from 'classnames'
 import { connect } from 'react-redux'
 import {Field, formValueSelector, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
-import questionSet from '../../containers/conversation-question-set'
+import conversationSteps from '../../containers/conversation-steps'
+import IgnoreStepButton from './IgnoreStepButton'
+
 /*
 This higher order component wraps "Form" components (e.g. Question.js), that represent user inputs,
 with a header, click actions and more goodies.
@@ -12,26 +14,6 @@ with a header, click actions and more goodies.
 Read https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750
 to understand those precious higher order components.
 */
-
-class IgnoreStepButton extends Component {
-	componentDidMount() {
-		window.addEventListener('keydown', ({key}) => this.handleKeyDown(key, this.props.action), false)
-	}
-	handleKeyDown(key, action) {
-		if (key !== 'Escape') return
-		action()
-	}
-	componentWillUnmount() {
-		window.removeEventListener('keydown', this.handleKeyDown, false)
-	}
-	render() {
-		return <a className="ignore" onClick={this.props.action}>
-			passer
-		</a>
-	}
-}
-
-let selector = formValueSelector('advancedQuestions')
 
 export var FormDecorator = RenderField =>
 	@connect( //... this helper directly to the redux state to avoid passing more props
@@ -61,14 +43,21 @@ export var FormDecorator = RenderField =>
 				possibleChoice, // should be found in the question set thoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code
 			} = this.props
 
-			let {
-				valueType,
-				valueIfIgnored,
-				attributes,
-				choices,
-				optionsURL,
-				human,
-			} = questionSet[name]
+			let stepData =
+				RenderField.name === 'RhetoricalQuestion' ?
+				{} : conversationSteps[name]
+
+			if (!stepData)
+				throw Error('Step ' + name + ', used in Conversation, misses an entry in conversation-steps.js')
+			let	{
+					valueType,
+					valueIfIgnored,
+					attributes,
+					choices,
+					optionsURL,
+					human,
+					helpText,
+				} = stepData
 
 			let ignoreStep = () => {
 				// Renseigne automatiquement la valeur de la saisie (en se plongeant dans les entrailles de redux-form)
@@ -104,11 +93,11 @@ export var FormDecorator = RenderField =>
 			return (
 			<div className={classNames('step', {unfolded})}>
 				{this.state.helpVisible && this.renderHelpBox()}
-				{this.renderHeader(unfolded, valueType, human)}
+				{this.renderHeader(unfolded, valueType, human, helpText)}
 				{unfolded &&
 						<fieldset>
 							{ valueIfIgnored &&
-								<IgnoreStepButton action={ignoreStep}/>
+								<IgnoreStepButton name={name} action={ignoreStep}/>
 							}
 							<Field
 								component={RenderField}
@@ -124,18 +113,18 @@ export var FormDecorator = RenderField =>
 		/*
 			< Le titre de ma question > ----------- < (? bulle d'aide) OU résultat >
 		*/
-		renderHeader(unfolded, valueType, human) {
+		renderHeader(unfolded, valueType, human, helpText) {
 			return (
 				<span className="form-header" >
-				{ unfolded ? this.renderQuestion() : this.renderTitleAndAnswer(valueType, human)}
+				{ unfolded ? this.renderQuestion(helpText) : this.renderTitleAndAnswer(valueType, human)}
 				</span>
 			)
 		}
 
-		renderQuestion = () =>
+		renderQuestion = (helpText) =>
 				<span>
 					<h1>{this.props.question}</h1>
-					{questionSet[this.props.name].helpText &&
+					{helpText &&
 						<span
 						className="question-mark"
 						onClick={() => this.setState({helpVisible: true})}>
@@ -173,7 +162,7 @@ export var FormDecorator = RenderField =>
 
 		renderHelpBox() {
 			let {name} = this.props,
-				helpText = questionSet[name].helpText,
+				helpText = conversationSteps[name].helpText,
 				helpComponent =
 					typeof helpText === 'string' ?
 					(<p>{helpText}</p>) :

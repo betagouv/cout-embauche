@@ -5,6 +5,8 @@ import * as actions from '../actions'
 import Question from '../components/Forms/Question'
 import Input from '../components/Forms/Input'
 import Select from '../components/Forms/Select'
+import RhetoricalQuestion from '../components/Forms/RhetoricalQuestion'
+import TextArea from '../components/Forms/TextArea'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
 import {reduxForm, formValueSelector} from 'redux-form'
@@ -80,6 +82,23 @@ class Conversation extends Component {
 						question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
 						visible={steps.get('tauxRisque')}
 						name="jei" />
+
+					<Question
+						title="Service utile ?"
+						question="Ce service vous a-t-il été utile ?"
+						visible={steps.get('jei')}
+						name="serviceUtile" />
+					<RhetoricalQuestion
+						visible={formValue('serviceUtile') === ':-)'}
+						name="partage"
+						question={'N\'hésitez pas à partager le simulateur :' + window.location.href }
+						/>
+					<TextArea
+						visible={formValue('serviceUtile') === ':-|'}
+						name="remarque"
+						title="Votre remarque"
+						question={'Que pouvons-nous faire pour l\'améliorer ?'}
+						/>
 		</div>)
 	}
 }

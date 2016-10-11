@@ -77,4 +77,23 @@ export default {
 			</a>
 		</p>,
 	},
+
+	'serviceUtile': {
+		choices: [ ':-|', ':-)' ],
+		valueIfIgnored: ':-)',
+		helpText: <p>
+			Dites-nous si ce simulateur vous a été utile, et à la hauteur de vos attentes.
+		</p>,
+	},
+
+	'remarque': {
+		attributes: {
+			cols: 30,
+			rows: 6,
+			placeholder: 'Votre remarque',
+		},
+		validate: v => v === '' && 'Entrez votre remarque',
+		human: v => v.substring(0,20) + '...',
+	},
+
 }

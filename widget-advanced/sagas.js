@@ -37,10 +37,10 @@ function* handleFormChange(action) {
 				let transformer = inputData[name],
 					userValue = inputValues[name]
 
-				if (typeof transformer == 'string')
+				if (typeof transformer == 'string') // well not really a transformer then !
 					return Object.assign(final, {[name]: transformer})
 
-				if (userValue == null) return final
+				if (userValue == null) return final // ignore !
 
 				if (typeof transformer === 'function')
 					return Object.assign(final, transformer(userValue, inputValues))

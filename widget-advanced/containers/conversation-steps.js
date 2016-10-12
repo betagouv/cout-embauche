@@ -43,8 +43,7 @@ export default {
 		choices: [ 'Oui', 'Non' ],
 		helpText:
 		<p>
-			Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur &nsbp;
-			<a href="http://www.net-entreprises.fr/html/compte-accident-travail.htm" target="_blank">net-entreprises.fr</a> ou reçu par courrier.
+			Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur&nbsp;<a href="http://www.net-entreprises.fr/html/compte-accident-travail.htm" target="_blank">net-entreprises.fr</a> ou reçu par courrier.
 		</p>,
 	},
 
@@ -82,7 +81,7 @@ export default {
 		choices: [ ':-|', ':-)' ],
 		valueIfIgnored: ':-)',
 		helpText: <p>
-			Dites-nous si ce simulateur vous a été utile, et à la hauteur de vos attentes.
+			Dites-nous si ce simulateur vous a été utile
 		</p>,
 	},
 

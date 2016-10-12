@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import {Field, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
 import conversationSteps from '../../containers/conversation-steps'
 import IgnoreStepButton from './IgnoreStepButton'
+import themeColour from '../../themeColour'
+import {answered, answer} from './userAnswerButtonStyle'
 
-let paragraphIfString = input =>
-	typeof input === 'string' ?
-	(<p>{input}</p>) :
-	input
 
 /*
 This higher order component wraps "Form" components (e.g. Question.js), that represent user inputs,
@@ -121,14 +118,20 @@ export var FormDecorator = RenderField =>
 		renderHeader(unfolded, valueType, human, helpText) {
 			return (
 				<span className="form-header" >
-				{ unfolded ? this.renderQuestion(helpText) : this.renderTitleAndAnswer(valueType, human)}
+				{ unfolded ? this.renderQuestion(unfolded, helpText) : this.renderTitleAndAnswer(valueType, human)}
 				</span>
 			)
 		}
 
-		renderQuestion = (helpText) =>
+		renderQuestion = (unfolded, helpText) =>
 				<span>
-					<h1>{this.props.question}</h1>
+					<h1
+						style={{
+							border: '1px solid ' + themeColour,
+							background: 'none',
+							color: themeColour,
+						}}
+						>{this.props.question}</h1>
 					{helpText &&
 						<span
 						className="question-mark"
@@ -153,30 +156,28 @@ export var FormDecorator = RenderField =>
 			return (
 				<span onClick={() => editStep(name)}>
 					<h1>{this.props.title}</h1>
-					<ReactCSSTransitionGroup
-							transitionAppear={true}
-							transitionName="answer"
-							transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-							<span key="1" className="resume">
-								{humanFunc(value)}
-								{ignored && <span className="answer-ignored">(défaut)</span>}
-							</span>
-						</ReactCSSTransitionGroup>
+						<span key="1" className="resume" style={answered} >
+							{humanFunc(value)}
+							{ignored && <span className="answer-ignored">(défaut)</span>}
+						</span>
 				</span>)
 		}
 
 		renderHelpBox() {
 			let {name} = this.props,
-				helpText = conversationSteps[name].helpText
-
+				helpText = conversationSteps[name].helpText,
+				helpComponent =
+					typeof helpText === 'string' ?
+					(<p>{helpText}</p>) :
+					helpText
 
 			return <div className="help-box">
 				<a
 					className="close-help"
 					onClick={() => this.setState({helpVisible: false})}>
-					<span className="close-text">revenir</span> &#10005;
+					<span className="close-text">revenir</span> &#x2718;
 				</a>
-				{paragraphIfString(helpText)}
+				{helpComponent}
 			</div>
 		}
 	}

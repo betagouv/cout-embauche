@@ -19,11 +19,10 @@ input, select {
 	appearance: none;
 	background-color: white;
 	border: none;
-	border-bottom: 1px solid #9A9A9A;
+	border-bottom: 1px solid #aaa;
 	border-radius: 0;
 	padding: .2em 0;
 	margin: 0 .5em;
-	vertical-align: middle;
 	color: rgba(0, 0, 0, .8);
 	text-align: center;
 }

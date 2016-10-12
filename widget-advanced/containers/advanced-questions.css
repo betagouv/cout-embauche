@@ -1,7 +1,5 @@
 .advanced-simulation {
-	/* font-family: 'Open Sans'; */
 	font-size: 80%;
-	color: #555;
 	line-height: normal;
 }
 
@@ -12,17 +10,16 @@
 
 .step {
 	position: relative;
-	margin-bottom: 3.5em;
+	margin-bottom: 4.5em;
 }
 
 
 .form-group {
 	position: relative;
-	margin-bottom: 3.5em;
+	margin-bottom: 4.5em;
 }
 
 .form-group.explicit > .group-content {
-	border-left: 1px solid #4A89DC;
 	margin-left: 1em;
 	padding: .8em 0 0 1.3em;
 }
@@ -42,8 +39,6 @@
 	left: 3%;
 }
 
-/* Simple way for a visual stack,
-hinting on the fact that it is a group result */
 .group-title {
 	position: relative;
 	display: inline-block;
@@ -58,26 +53,6 @@ hinting on the fact that it is a group result */
 	width: 100%;
 	border: 1px solid rgba(0,0,0,.3);
 }
-.form-group.unfolded .group-title h1 {
-	color: #4A89DC;
-	border: 1px solid #4A89DC;
-}
-.form-group.unfolded .group-title h1:first-child {
-	display: none;
-}
-
-.form-group.folded .group-title h1:nth-child(2) {
-	cursor: pointer;
-	border: 1px solid rgba(0,0,0,.6);
-}
-.form-group.folded .group-title h1:first-child {
-	color: transparent;
-	border-top: none;
-	border-left: none;
-	position: absolute;
-	left: .15em;
-	top: .15em;
-}
 
 .step h1 {
 	display: inline-block;
@@ -89,17 +64,12 @@ hinting on the fact that it is a group result */
 	border-radius: 1em;
 	position: relative;
 	cursor: pointer;
-	border: 1px solid rgba(0,0,0,.3);
-}
-.step.unfolded h1 {
-	cursor: default;
+	border: 1px solid #aaa;
 }
 /* The unfolded step is the currently focused
 question : make it visible with colors */
 .step.unfolded h1 {
-	border: 1px solid #4A89DC;
-	background: none;
-	color: #4A89DC;
+	cursor: default;
 }
 
 /* Our little question help icon */
@@ -143,27 +113,9 @@ question : make it visible with colors */
 	line-height: 1.8em;
 	border-radius: 1em;
 	float: right;
-	color: #4A89DC;
-	border: 1px solid #4A89DC;
 }
 .step label.radio:hover {
-	background: #4A89DC;
-	color: white;
-}
-.step label.radio.checked,
-.resume {
-	background: #4A89DC;
-	border-color: #4A89DC;
-	color: white;
-}
-
-.answer-appear {
-	background: #AAB2BD;
-}
-
-.answer-appear.answer-appear-active {
-	background: #4A89DC;
-	transition: background .2s ease-in;
+	/* TODO userAnsweriauzdnoaizndaozid */
 }
 
 .resume {
@@ -194,14 +146,13 @@ question : make it visible with colors */
 
 .step input[type=text],
 .step input[type=number] {
-	color: #434A54;
-	border-bottom: 1px solid #AAB2BD;
+	border-bottom: 1px solid #aaa;
 	display: inline-block;
 	line-height: 1.8em;
 	font-size: 100%;
 	padding: 0;
 	padding-right: .4em;
-	width: 9em;
+	width: 8em;
 	text-align: right;
 }
 
@@ -252,10 +203,11 @@ question : make it visible with colors */
 	position: absolute;
 	top: 0;
 	right: 0;
-	font-size: 150%;
+	font-size: 130%;
 }
 .close-text {
-	font-size: 60%;
+	text-transform: uppercase;
+	font-size: 55%;
 	font-weight: 800;
 	vertical-align: middle;
 }
@@ -267,7 +219,6 @@ question : make it visible with colors */
 	bottom: 0;
 	background: none;
 	cursor: pointer;
-	color: #4A89DC;
 	border: 1px solid;
 	line-height: 0em;
 }
@@ -277,9 +228,8 @@ question : make it visible with colors */
 }
 
 .step .send .icon {
-	margin-left: .2em;
-	font-size: 150%;
-	color: #4A89DC;
+	margin-left: .3em;
+	font-size: 135%;
 	vertical-align: middle;
 }
 
@@ -306,7 +256,6 @@ question : make it visible with colors */
 }
 
 #share-link {
-	background: #4A89DC;
 	color: white;
 	padding: .2em 1.2em;
 	display: inline-block;

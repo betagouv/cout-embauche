@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import themeColour from '../themeColour'
 
 let Figure = ({figure, title}) =>
 	<ReactCSSTransitionGroup
@@ -38,8 +39,7 @@ export default class Summary extends Component {
 
 		return (
 			<div className="simulation-summary">
-				<h1>{/* "Résultats de l'estimation" */}</h1>
-				<div className="content">
+				<div className="content" style={{background: themeColour}}>
 					<div className="figures">
 						<p>
 							Cela coûtera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois à mon {labelTypeEntreprise},
@@ -47,7 +47,7 @@ export default class Summary extends Component {
 								<span>
 									<br />
 									ou <Figure title="Coût du travail" figure={humanize(cout_du_travail)}/>
-									&nbsp; après déduction des aides différées.
+									&nbsp;après déduction des aides différées.
 								</span>
 							}
 						</p>

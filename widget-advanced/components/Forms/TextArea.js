@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {FormDecorator} from './FormDecorator'
+import themeColour from '../../themeColour'
 
 @FormDecorator
 export default class Input extends Component {
@@ -27,7 +28,7 @@ export default class Input extends Component {
 								input.onBlur() // blur will trigger the error
 						)}
 						/>
-					<button className="send" disabled={!input.value || (touched && error)}
+					<button className="send" style={{color: themeColour}} disabled={!input.value || (touched && error)}
 						onClick={() => !error ? submit() : null} >
 						<span className="text">valider</span>
 						<span className="icon">✓</span>

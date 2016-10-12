@@ -4,16 +4,7 @@
 	width: 90%;
 }
 
-.simulation-summary h1 {
-	font-size: 60%;
-	color: #346DB9;
-	font-weight: 300;
-	line-height: 1.3em;
-	margin: 0;
-}
-
 .simulation-summary .content {
-	background: #4A89DC; /* main blue */
 	padding: .01em 1.8em;
 	position: relative;
 }
@@ -25,9 +16,10 @@
 }
 
 .simulation-summary p {
-	color: #CEE3FF; /* lighter blue */
-	line-height: 1em;
-	border-left: 3px solid white;
+	color: rgba(255, 255, 255, .85);
+	font-weight: 200;
+	line-height: 1.2em;
+	border-left: 1px solid white;
 	padding-left: .65em;
 }
 
@@ -82,8 +74,8 @@ button.action span {
 }
 
 .show-details {
-	background: none;
 	border: 1px solid white;
+	background: none;
 	color: white;
 	font-size: 55%;
 	padding: .3em;
@@ -94,7 +86,8 @@ button.action span {
 }
 
 .show-details:hover {
-	background: #70A7EE;
+	background: white;
+	color: #333;
 }
 
 .bring-input-back {

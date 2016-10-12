@@ -85,14 +85,18 @@ class Conversation extends Component {
 
 					<Question
 						title="Service utile ?"
-						question="Ce service vous a-t-il été utile ?"
+						question="Votre estimation est terminée. En êtes-vous satisfait ?"
 						visible={steps.get('jei')}
 						name="serviceUtile" />
 					<RhetoricalQuestion
 						visible={formValue('serviceUtile') === ':-)'}
 						name="partage"
-						question={'N\'hésitez pas à partager le simulateur :' + window.location.href }
-						/>
+						question={<span>
+							N'hésitez pas à partager le simulateur
+							<br/>
+							<span id="share-link">{window.location.href}</span>
+						</span>
+						} />
 					<TextArea
 						visible={formValue('serviceUtile') === ':-|'}
 						name="remarque"

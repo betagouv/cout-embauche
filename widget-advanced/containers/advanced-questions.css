@@ -304,3 +304,18 @@ question : make it visible with colors */
 .step textarea {
 	vertical-align: middle;
 }
+
+#share-link {
+	background: #4A89DC;
+	color: white;
+	padding: .2em 1.2em;
+	display: inline-block;
+	margin-top: .3em;
+	border-radius: .25em;
+}
+#share-icon {
+	font-size: 200%;
+	vertical-align: middle;
+	line-height: 0em;
+	margin-left: .3em;
+}

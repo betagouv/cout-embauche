@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
-import {Field, formValueSelector, change} from 'redux-form'
+import {Field, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
 import conversationSteps from '../../containers/conversation-steps'
 import IgnoreStepButton from './IgnoreStepButton'
+
+let paragraphIfString = input =>
+	typeof input === 'string' ?
+	(<p>{input}</p>) :
+	input
 
 /*
 This higher order component wraps "Form" components (e.g. Question.js), that represent user inputs,
@@ -162,11 +167,8 @@ export var FormDecorator = RenderField =>
 
 		renderHelpBox() {
 			let {name} = this.props,
-				helpText = conversationSteps[name].helpText,
-				helpComponent =
-					typeof helpText === 'string' ?
-					(<p>{helpText}</p>) :
-					helpText
+				helpText = conversationSteps[name].helpText
+
 
 			return <div className="help-box">
 				<a
@@ -174,7 +176,7 @@ export var FormDecorator = RenderField =>
 					onClick={() => this.setState({helpVisible: false})}>
 					<span className="close-text">revenir</span> &#10005;
 				</a>
-				{helpComponent}
+				{paragraphIfString(helpText)}
 			</div>
 		}
 	}

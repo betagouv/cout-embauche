@@ -35,14 +35,18 @@
 }
 
 .flash-leave {
-    /* Completely hide the button while it's being animated and before it's removed from the DOM. */
-    display: none;
+		/* Completely hide the button while it's being animated and before it's removed from the DOM. */
+		display: none;
 }
 
 /* See handleResultActions() for what happens with these buttons */
 
 button.action span {
 	text-transform: uppercase;
+}
+
+#user-next-action {
+	height: 1.5em;
 }
 
 /* Change button text on hover */
@@ -68,9 +72,18 @@ button.action span {
 	margin: 0 auto;
 	display: block;
 	font-size: 55%;
+  height: 2em;
 }
 .show-advanced[disabled]{
 	display: none;
+}
+
+#input-tip {
+	color: #666;
+	text-align: center;
+	font-size: 60%;
+	font-style: italic;
+	height: 2em;
 }
 
 .show-details {

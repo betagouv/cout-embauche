@@ -268,3 +268,7 @@ question : make it visible with colors */
 	line-height: 0em;
 	margin-left: .3em;
 }
+
+.select-answer.commune .Select {
+	width: 50%;
+}

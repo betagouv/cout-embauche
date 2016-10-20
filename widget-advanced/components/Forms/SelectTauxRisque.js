@@ -12,13 +12,13 @@ class ReactSelectWrapper extends Component {
 		let {
 			value, onBlur, onChange, submit,
 			options,
-			onChangeAndSubmit =
+			submitOnChange =
 				option => {
 					option.text = option['Taux net'] + ' %'
 					onChange(option)
 					submit()
 				},
-				selectValue = value && value['Code risque'],
+			selectValue = value && value['Code risque'],
 				// but ReactSelect obviously needs a unique identifier
 			} = this.props
 
@@ -28,7 +28,7 @@ class ReactSelectWrapper extends Component {
 			// For redux-form integration, checkout https://github.com/erikras/redux-form/issues/82#issuecomment-143164199
 			<ReactSelect
 					options={options}
-					onChange={onChangeAndSubmit}
+					onChange={submitOnChange}
 					labelKey="Nature du risque"
 					valueKey="Code risque"
 					placeholder="Tapez des mots ou déroulez la liste complète"

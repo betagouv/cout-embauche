@@ -70,7 +70,7 @@ let	inputData = {
 
 	codeINSEE: [
 		'',
-		value => ({'depcom_entreprise': value}),
+		({codeInsee}) => ({'depcom_entreprise': codeInsee || ''}),
 	],
 
 	/****** Simulation avancée *******/

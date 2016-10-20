@@ -8,10 +8,7 @@ import validate from './containers/conversation-validate'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-function* handleFormChange(action) {
-	// it is just an intermediary field used to input a codeINSEE, does not need an update
-	if (action.type === 'redux-form/CHANGE' && action.meta.field == 'codePostal')
-		return
+function* handleFormChange() {
 
 	// debounce by 500ms
 	yield call(delay, 500)

@@ -3,6 +3,11 @@ import { Percentage, Euro } from '../formValueTypes.js'
 import validate from '../validators.js'
 
 export default {
+	'codeINSEE': {
+		human: v => v.nomCommune,
+		helpText: <p>Quelle est la commune du lieu de travail effectif du salarié ?</p>,
+	},
+
 	'mutuelle': {
 		// We use 'text' inputs : browser behaviour with input=number doesn't quite work with our "update simulation on input change"...
 		attributes: {

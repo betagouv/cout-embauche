@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { Field, reduxForm, formValueSelector, change } from 'redux-form'
 import {connect} from 'react-redux'
-import CodePostal from '../components/CodePostal'
 import {initialValues} from '../data/inputData'
 
 let selector = formValueSelector('basicInput')
 
 @connect(state => ({
 	enTempsPartiel: selector(state, 'tempsDeTravail') == 'temps_partiel',
-	codePostal: selector(state, 'codePostal'),
 }), dispatch => ({
 	changeCodeINSEE: (value) =>
 		dispatch(change('basicInput', 'codeINSEE', value)),
@@ -20,7 +18,7 @@ let selector = formValueSelector('basicInput')
 })
 export default class BasicInput extends Component {
 	render() {
-		let {enTempsPartiel, changeCodeINSEE, codePostal} = this.props
+		let {enTempsPartiel} = this.props
 		return (
 			<form className="basic-input">
 				<Field component="select" name="typeEntreprise" >

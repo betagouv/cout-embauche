@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions'
 import Question from '../components/Forms/Question'
 import Input from '../components/Forms/Input'
-import Select from '../components/Forms/Select'
+import SelectCommune from '../components/Forms/SelectCommune'
+import SelectTauxRisque from '../components/Forms/SelectTauxRisque'
 import RhetoricalQuestion from '../components/Forms/RhetoricalQuestion'
 import TextArea from '../components/Forms/TextArea'
 import Group from '../components/Group'
@@ -30,14 +31,20 @@ let advancedInputSelector = formValueSelector('advancedQuestions'),
 class Conversation extends Component {
 	render() {
 		let { formValue, steps, actions} = this.props
+		let effectifEntreprise = formValue('effectifEntreprise', 'basicInput')
 
 		/* C'est ici qu'est définie la suite de questions à poser. */
 		return (
 			<div id="conversation">
+				<SelectCommune
+					visible={effectifEntreprise > 10}
+					title="Commune"
+					question="Quelle est la commune de l'embauche ?"
+					name="codeINSEE" />
 				<Input
 					title="Complémentaire santé"
 					question="Quel est le montant total de votre complémentaire santé entreprise obligatoire ?"
-					visible={true}
+					visible={effectifEntreprise <= 10 || steps.get('codeINSEE')}
 					name="mutuelle" />
 				<Input
 					title="Pourcentage d'alternants"
@@ -65,7 +72,7 @@ class Conversation extends Component {
 							visible={formValue('tauxRisqueConnu') == 'Oui'}
 							name="tauxRisque" />
 						<Group visible={formValue('tauxRisqueConnu')== 'Non'}>
-							<Select
+							<SelectTauxRisque
 								visible={true}
 								title="Code de risque sélectionné"
 								question="Quelle est la catégorie de risque de votre entreprise ?"

@@ -87,7 +87,7 @@ input#salaire ~ .input-help {
 	transition: opacity .1s linear;
 	display: inline-block;
 	font-size: 60%;
-	margin: 0 -22em 0 .5em;
+	margin: 0 -21em 0 .5em;
 	line-height: 1.2em;
 	border-left: 1px solid #CCC;
 	padding: .5em;

@@ -65,13 +65,14 @@ export default class BasicInput extends Component {
 					<span>par mois</span>
 
 				</fieldset>
-				<br/>
+				&nbsp;&nbsp;
 				<label>à temps
 					<Field component="select" name="tempsDeTravail" >
 						<option value="temps_plein">plein</option>
 						<option value="temps_partiel">partiel</option>
 					</Field>
 				</label>
+				<br />
 				{ enTempsPartiel &&
 					<label>
 						pour
@@ -80,10 +81,6 @@ export default class BasicInput extends Component {
 						heures par semaine <br/>
 					</label>
 				}
-
-				<CodePostal codePostal={codePostal} changeCodeINSEE={changeCodeINSEE}/>
-
-				{/* TODO: mode_recouvrement des allègements de cotisation à envoyer dans la requête */}
 
 			</form>
 		)

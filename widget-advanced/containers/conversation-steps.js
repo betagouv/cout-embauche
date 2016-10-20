@@ -26,7 +26,7 @@ export default {
 				de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.
 				<br/>
 				<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33754" target="_blank">
-					Voir les détails.
+					Voir les détails (service-public.fr)
 				</a>
 			</p>,
 	},
@@ -74,10 +74,10 @@ export default {
 		choices: [ 'Oui', 'Non' ],
 		valueIfIgnored: 'Non',
 		helpText: <p>
-			Votre entreprise doit être éligible à ce statut, et votre employé doit avoir une fonction de recherche et développement.
+			Votre entreprise doit être éligible à ce statut, et votre employé doit notamment être fortement impliqué dans le projet de R&D.
 			<br/>
 			<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F31188" target="_blank">
-				En savoir plus
+				Voir toutes les conditions (service-public.fr)
 			</a>
 		</p>,
 	},

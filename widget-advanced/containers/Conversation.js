@@ -86,7 +86,7 @@ class Conversation extends Component {
 					</Group>
 
 					<Question
-						title="Statut Jeune Entreprise Innovante"
+						title="Exonération Jeune Entreprise Innovante"
 						question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
 						visible={steps.get('tauxRisque')}
 						name="jei" />

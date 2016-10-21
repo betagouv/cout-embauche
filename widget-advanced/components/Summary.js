@@ -56,7 +56,7 @@ export default class Summary extends Component {
 							{salaireTitle} par mois.
 						</p>
 					</div>
-					<button
+					<button	type="button"
 						className="action show-details" autoComplete="off"
 						onClick={toggleSection} >
 						{showDetails ?

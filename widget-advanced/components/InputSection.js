@@ -16,7 +16,8 @@ export default class Input extends Component {
 				<div id="user-next-action">
 				{
 					basicInputTouched ?
-					<button className="action show-advanced"
+					<button type="button" 
+						className="action show-advanced"
 						autoComplete="off"
 						onClick={toggleAdvancedSection}	>
 						{ !showAdvanced ?

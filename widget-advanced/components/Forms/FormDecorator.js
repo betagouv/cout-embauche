@@ -42,15 +42,14 @@ export var FormDecorator = RenderField =>
 				visible,
 				steps,
 				submitStep,
-				possibleChoice, // should be found in the question set thoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code
+				possibleChoice, // should be found in the question set thoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code,
 			} = this.props
 
-			let stepData =
-				RenderField.name === 'RhetoricalQuestion' ?
-				{} : conversationSteps[name]
+			let stepData = conversationSteps[name]
 
 			if (!stepData)
 				throw Error('Step ' + name + ', used in Conversation, misses an entry in conversation-steps.js')
+
 			let	{
 					valueType,
 					valueIfIgnored,

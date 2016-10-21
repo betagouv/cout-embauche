@@ -90,6 +90,8 @@ export default {
 		</p>,
 	},
 
+	'partage': {},
+
 	'remarque': {
 		attributes: {
 			cols: 30,

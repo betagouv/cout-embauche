@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import GroupTitle from './GroupTitle'
 import classnames from 'classnames'
-import themeColour from '../themeColour'
+import {themeColour, textColour} from '../themeColours'
 import {answered} from './Forms/userAnswerButtonStyle'
 
 /* Groups can be used only to avoid repeating conditions for all its children,

@@ -5,7 +5,7 @@ import {Field, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
 import conversationSteps from '../../containers/conversation-steps'
 import IgnoreStepButton from './IgnoreStepButton'
-import themeColour from '../../themeColour'
+import {themeColour, textColour, textColourOnWhite} from '../../themeColours'
 import {answered, answer} from './userAnswerButtonStyle'
 
 
@@ -127,9 +127,9 @@ export var FormDecorator = RenderField =>
 				<span>
 					<h1
 						style={{
-							border: '1px solid ' + themeColour,
+							border: '2px solid ' + themeColour, // higher border width and colour to emphasize focus
 							background: 'none',
-							color: themeColour,
+							color: textColourOnWhite,
 						}}
 						>{this.props.question}</h1>
 					{helpText &&

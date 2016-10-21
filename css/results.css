@@ -16,15 +16,13 @@
 }
 
 .simulation-summary p {
-	color: rgba(255, 255, 255, .85);
 	font-weight: 200;
 	line-height: 1.2em;
-	border-left: 1px solid white;
+	border-left: 1px solid;
 	padding-left: .65em;
 }
 
 .simulation-summary .figure {
-	color: white;
 	padding: 0 .2em;
 	transition: background .8s;
 }
@@ -43,6 +41,23 @@
 
 button.action span {
 	text-transform: uppercase;
+}
+
+.show-details {
+	border: 1px solid;
+	background: none;
+	font-size: 55%;
+	padding: .3em;
+	cursor: pointer;
+	width: 15em;
+	position: absolute;
+	top: 40%;
+	box-sizing:border-box;
+	height: 3.5em;
+}
+
+.show-details:hover {
+	border-width: 2px;
 }
 
 #user-next-action {
@@ -65,7 +80,7 @@ button.action span {
 
 .show-advanced {
 	background: none;
-	border: 1px solid rgb(154, 154, 154);
+	border: 1px solid #aaa;
 	padding: .25em;
 	cursor: pointer;
 	width: 16em;
@@ -84,23 +99,6 @@ button.action span {
 	font-size: 60%;
 	font-style: italic;
 	height: 2em;
-}
-
-.show-details {
-	border: 1px solid white;
-	background: none;
-	color: white;
-	font-size: 55%;
-	padding: .3em;
-	cursor: pointer;
-	width: 15em;
-	position: absolute;
-	top: 40%;
-}
-
-.show-details:hover {
-	background: white;
-	color: #333;
 }
 
 .bring-input-back {

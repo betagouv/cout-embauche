@@ -13,7 +13,7 @@ import ResultATMP from '../components/ResultATMP'
 import {reduxForm, formValueSelector} from 'redux-form'
 import { Percentage } from '../formValueTypes.js'
 import validate from './conversation-validate'
-import themeColour from '../themeColour'
+import {themeColour, textColour} from '../themeColours'
 
 let advancedInputSelector = formValueSelector('advancedQuestions'),
 	basicInputSelector = formValueSelector('basicInput')
@@ -102,7 +102,7 @@ class Conversation extends Component {
 						question={<span>
 							N'hésitez pas à partager le simulateur !
 							<br/>
-							<span id="share-link" style={{color: 'white', background: themeColour}}>{window.location.href}</span>
+							<span id="share-link" style={{color: textColour, background: themeColour}}>{window.location.href}</span>
 						</span>
 						} />
 					<TextArea

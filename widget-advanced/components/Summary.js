@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import themeColour from '../themeColour'
+import {themeColour, textColour, lighterTextColour} from '../themeColours'
 
 let Figure = ({figure, title}) =>
 	<ReactCSSTransitionGroup
@@ -8,7 +8,7 @@ let Figure = ({figure, title}) =>
 			transitionEnterTimeout={100}
 			transitionLeaveTimeout={100}
 			>
-			<span key={figure} className="figure" title={title}>
+			<span key={figure} className="figure" title={title} style={{color: textColour}} >
 				{figure} €
 			</span>
 		</ReactCSSTransitionGroup>
@@ -35,13 +35,15 @@ export default class Summary extends Component {
 				'brut': [ 'net', 'Salaire net', 'salaire_net_a_payer' ],
 			}[typeSalaireEntré],
 			[ salaireTitle, salaireDescription, salaireVariable ] = correspondanceSalaires,
-			salaireFigure = results[salaireVariable]
+			salaireFigure = results[salaireVariable],
+			paragraphBorderStyle = {borderColor: textColour},
+			buttonStyle = {borderColor: textColour, color: textColour}
 
 		return (
 			<div className="simulation-summary">
-				<div className="content" style={{background: themeColour}}>
+				<div className="content" style={{background: themeColour, color: lighterTextColour}}>
 					<div className="figures">
-						<p>
+						<p style={paragraphBorderStyle}>
 							Cela coûtera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois à mon {labelTypeEntreprise},
 							{ (salaire_super_brut != cout_du_travail) &&
 								<span>
@@ -51,14 +53,15 @@ export default class Summary extends Component {
 								</span>
 							}
 						</p>
-						<p>
+						<p style={paragraphBorderStyle}>
 							Mon salarié·e touchera <Figure title={salaireDescription} figure={humanize(salaireFigure)}/>&nbsp;
 							{salaireTitle} par mois.
 						</p>
 					</div>
 					<button	type="button"
 						className="action show-details" autoComplete="off"
-						onClick={toggleSection} >
+						onClick={toggleSection}
+						style={buttonStyle} >
 						{showDetails ?
 							<span>Revenir à la saisie</span> :
 							<span>Voir le détail<br />des prélèvements</span>

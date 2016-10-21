@@ -1,12 +1,12 @@
-import themeColour from '../../themeColour'
+import {themeColour, textColour, textColourOnWhite} from '../../themeColours'
 
 export let answered = {
 	background: themeColour,
 	border: '1px solid ' + themeColour,
-	color: 'white',
+	color: textColour,
 }
 
 export let answer = {
-	color: themeColour,
-	border: '1px solid ' + themeColour,
+	color: textColourOnWhite,
+	border: '1px solid ' + textColourOnWhite,
 }

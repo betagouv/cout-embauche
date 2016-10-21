@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {FormDecorator} from './FormDecorator'
-import themeColour from '../../themeColour'
+import {themeColour, textColour} from '../../themeColours'
 
 @FormDecorator
 export default class Input extends Component {

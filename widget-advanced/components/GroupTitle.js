@@ -1,5 +1,5 @@
 import React from 'react'
-import themeColour from '../themeColour'
+import {themeColour, textColourOnWhite} from '../themeColours'
 
 /* Simple way for a visual stack : using two h1,
 hinting at the fact that it is a group result */
@@ -23,7 +23,7 @@ export default ({text, onClick, folded}) =>
 				border: '1px solid #aaa',
 			} : {
 				border: '1px solid ' + themeColour,
-				color: themeColour,
+				color: textColourOnWhite,
 			}}>
 				{text}
 			</h1>

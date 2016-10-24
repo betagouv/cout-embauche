@@ -5,7 +5,7 @@
 
 #conversation {
 	margin: 3em auto;
-	width: 40em;
+	max-width: 40em;
 }
 
 .step {
@@ -56,7 +56,7 @@
 
 .step h1 {
 	display: inline-block;
-	max-width: 60%;
+	max-width: 55%;
 	font-size: 100%;
 	font-weight: 400;
 	padding: .5em .8em;
@@ -94,11 +94,7 @@ question : make it visible with colors */
 }
 
 .step fieldset {
-	/* Reset the default style of this element */
-	border: 0;
-	margin: .3em;
-	padding: 0;
-	width: 95%;
+	margin: .8em 0;
 }
 
 .step label.radio,
@@ -144,9 +140,8 @@ question : make it visible with colors */
 	display : none;
 }
 
-.step input[type=text],
-.step input[type=number] {
-	border-bottom: 1px solid #aaa;
+.step input[type=text] {
+	border-bottom: 1px solid;
 	display: inline-block;
 	line-height: 1.8em;
 	font-size: 100%;
@@ -156,24 +151,14 @@ question : make it visible with colors */
 	text-align: right;
 }
 
-.step input[type=number]::-webkit-outer-spin-button,
-.step input[type=number]::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-}
-
-.step input[type=number] {
-		-moz-appearance:textfield;
-}
-
 .step input.suffixed {
 	padding-right: 1.5em;
 }
 
 .step label.suffix {
-	margin: -2em;
+	position: relative;
+	left: -1.5em;
 	font-size: 85%;
-	color: #AAB2BD;
 	vertical-align: middle;
 }
 
@@ -209,22 +194,21 @@ question : make it visible with colors */
 	text-transform: uppercase;
 	font-size: 55%;
 	font-weight: 800;
+}
+
+.close-text .icon {
+	font-size: 150%;
 	vertical-align: middle;
 }
 
+
 .step .send {
-	position: relative;
-	left: 4.5em;
 	padding: 0 .1em 0 .5em;
-	bottom: 0;
 	background: none;
 	cursor: pointer;
 	border: 1px solid;
+	border-radius: .2em;
 	line-height: 0em;
-}
-
-.step .send[disabled]{
-	visibility: hidden;
 }
 
 .step .send .icon {
@@ -253,11 +237,12 @@ question : make it visible with colors */
 
 .step textarea {
 	vertical-align: middle;
+	margin-right: 1em;
 }
 
 #share-link {
 	color: white;
-	padding: .2em 1.2em;
+	padding: .3em .3em;
 	display: inline-block;
 	margin-top: .3em;
 	border-radius: .25em;

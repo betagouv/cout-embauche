@@ -42,7 +42,7 @@ class ReactSelectWrapper extends Component {
 	}
 }
 
-@FormDecorator
+@FormDecorator('select')
 export default class Select extends Component {
 	state = {
 		options: null,

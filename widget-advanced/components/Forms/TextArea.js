@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {FormDecorator} from './FormDecorator'
 import {themeColour, textColour} from '../../themeColours'
 
-@FormDecorator
+@FormDecorator('text-area')
 export default class Input extends Component {
 	render() {
 		let {
@@ -12,7 +12,9 @@ export default class Input extends Component {
 			meta: {
 				touched, error,
 			},
-		} = this.props
+		} = this.props,
+			inputError = touched && error,
+			sendButtonDisabled = !input.value || inputError
 
 		return (
 			<span>
@@ -28,13 +30,14 @@ export default class Input extends Component {
 								input.onBlur() // blur will trigger the error
 						)}
 						/>
-					<button className="send" style={{color: themeColour}} disabled={!input.value || (touched && error)}
+					<button className="send"
+						style={{visibility: sendButtonDisabled ? 'hidden' : 'visible', color: textColour, background: themeColour}}
 						onClick={() => !error ? submit() : null} >
 						<span className="text">valider</span>
 						<span className="icon">✓</span>
 					</button>
 				</span>
-				{touched && error && <span className="step-input-error">{error}</span>}
+				{inputError && <span className="step-input-error">{error}</span>}
 			</span>
 		)
 	}

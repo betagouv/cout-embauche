@@ -9,6 +9,12 @@
 	position: relative;
 }
 
+@media(max-width: 500px) {
+	.simulation-summary .content {
+		padding: .01em .8em;
+	}
+}
+
 
 .simulation-summary .figures {
 	display: inline-block;
@@ -49,11 +55,10 @@ button.action span {
 	font-size: 55%;
 	padding: .3em;
 	cursor: pointer;
-	width: 15em;
+	width: 25%;
 	position: absolute;
 	top: 40%;
 	box-sizing:border-box;
-	height: 3.5em;
 }
 
 .show-details:hover {

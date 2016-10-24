@@ -63,7 +63,7 @@ export default class BasicInput extends Component {
 					<span>par mois</span>
 
 				</fieldset>
-				&nbsp;&nbsp;
+				&nbsp;
 				<label>à temps
 					<Field component="select" name="tempsDeTravail" >
 						<option value="temps_plein">plein</option>

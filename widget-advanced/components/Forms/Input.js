@@ -3,7 +3,7 @@ import {FormDecorator} from './FormDecorator'
 import classnames from 'classnames'
 import {themeColour, textColour} from '../../themeColours'
 
-@FormDecorator
+@FormDecorator('input')
 export default class Input extends Component {
 	render() {
 		let {
@@ -11,11 +11,14 @@ export default class Input extends Component {
 			input,
 			stepProps: {attributes, submit, valueType},
 			meta: {
-				touched, error,
+				touched, error, active,
 			},
 		} = this.props,
 			answerSuffix = valueType && new valueType().suffix,
-			suffixed = answerSuffix != null
+			suffixed = answerSuffix != null,
+			inputError = touched && error,
+			sendButtonDisabled = !input.value || inputError
+
 		return (
 			<span>
 				<span className="answer">
@@ -24,6 +27,7 @@ export default class Input extends Component {
 						className={classnames({suffixed})}
 						id={'step-' + name}
 						{...attributes}
+						style={{borderColor: themeColour}}
 						onKeyDown={({key}) =>
 							key == 'Enter' && input.value && (
 							!error ?
@@ -32,17 +36,17 @@ export default class Input extends Component {
 						)}
 						/>
 					{ suffixed &&
-						<label className="suffix" htmlFor={'step-' + name}>
+						<label className="suffix" htmlFor={'step-' + name} style={!active ? {color:  '#aaa'} : {}}>
 							{answerSuffix}
 						</label>
 					}
-					<button className="send" style={{color: textColour}} disabled={!input.value || (touched && error)}
+					<button className="send" style={{visibility: sendButtonDisabled ? 'hidden' : 'visible', color: textColour, background: themeColour}}
 						onClick={() => !error ? submit() : null} >
 						<span className="text">valider</span>
-						<span className="icon" style={{color: themeColour}}>&#x2714;</span>
+						<span className="icon">&#10003;</span>
 					</button>
 				</span>
-				{touched && error && <span className="step-input-error">{error}</span>}
+				{inputError && <span className="step-input-error">{error}</span>}
 			</span>
 		)
 	}

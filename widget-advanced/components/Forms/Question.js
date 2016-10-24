@@ -31,7 +31,7 @@ class RadioLabel extends Component {
 /* Ceci est une saisie de type "radio" : l'utilisateur choisit une réponse dans une liste.
 FormDecorator permet de factoriser du code partagé par les différents types de saisie,
 dont Question est un example */
-@FormDecorator
+@FormDecorator('question')
 export default class Question extends Component {
 	render() {
 		let {

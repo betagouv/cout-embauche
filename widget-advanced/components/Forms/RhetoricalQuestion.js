@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {FormDecorator} from './FormDecorator'
-import classnames from 'classnames'
 import {answer} from './userAnswerButtonStyle'
 
-@FormDecorator
+@FormDecorator('rhetorical-question')
 export default class RhetoricalQuestion extends Component {
 	render() {
 		let {
@@ -11,7 +10,7 @@ export default class RhetoricalQuestion extends Component {
 			stepProps: {submit, possibleChoice},
 		} = this.props
 
-		if (!possibleChoice) return null // No action possible
+		if (!possibleChoice) return null // No action possible, don't render an answer
 
 		let {text, value} = possibleChoice
 

@@ -19,7 +19,7 @@ let getOptions = input =>
 			({options: []})
 		)
 
-@FormDecorator
+@FormDecorator('select')
 export default class Select extends Component {
 
 	render() {

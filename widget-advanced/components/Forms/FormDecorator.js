@@ -17,7 +17,7 @@ Read https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-comp
 to understand those precious higher order components.
 */
 
-export var FormDecorator = RenderField =>
+export var FormDecorator = formType => RenderField =>
 	@connect( //... this helper directly to the redux state to avoid passing more props
 		state => {
 			let advancedQuestions = state.form.advancedQuestions
@@ -42,7 +42,7 @@ export var FormDecorator = RenderField =>
 				visible,
 				steps,
 				submitStep,
-				possibleChoice, // should be found in the question set thoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code,
+				possibleChoice, // should be found in the question set theoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code,
 			} = this.props
 
 			let stepData = conversationSteps[name]
@@ -91,10 +91,13 @@ export var FormDecorator = RenderField =>
 				valueType,
 			}
 
+			/* There won't be any answer zone here, widen the question zone */
+			let wideQuestion = formType == 'rhetorical-question' && !possibleChoice
+
 			return (
-			<div className={classNames('step', {unfolded})}>
+			<div className={classNames('step', {unfolded}, formType)} >
 				{this.state.helpVisible && this.renderHelpBox()}
-				{this.renderHeader(unfolded, valueType, human, helpText)}
+				{this.renderHeader(unfolded, valueType, human, helpText, wideQuestion)}
 				{unfolded &&
 						<fieldset>
 							{ valueIfIgnored &&
@@ -114,21 +117,22 @@ export var FormDecorator = RenderField =>
 		/*
 			< Le titre de ma question > ----------- < (? bulle d'aide) OU résultat >
 		*/
-		renderHeader(unfolded, valueType, human, helpText) {
+		renderHeader(unfolded, valueType, human, helpText, wideQuestion) {
 			return (
 				<span className="form-header" >
-				{ unfolded ? this.renderQuestion(unfolded, helpText) : this.renderTitleAndAnswer(valueType, human)}
+				{ unfolded ? this.renderQuestion(unfolded, helpText, wideQuestion) : this.renderTitleAndAnswer(valueType, human)}
 				</span>
 			)
 		}
 
-		renderQuestion = (unfolded, helpText) =>
+		renderQuestion = (unfolded, helpText, wideQuestion) =>
 				<span>
 					<h1
 						style={{
 							border: '2px solid ' + themeColour, // higher border width and colour to emphasize focus
 							background: 'none',
 							color: textColourOnWhite,
+							maxWidth: wideQuestion ? '95%' : '',
 						}}
 						>{this.props.question}</h1>
 					{helpText &&
@@ -174,7 +178,7 @@ export var FormDecorator = RenderField =>
 				<a
 					className="close-help"
 					onClick={() => this.setState({helpVisible: false})}>
-					<span className="close-text">revenir</span> &#x2718;
+					<span className="close-text">revenir <span className="icon">&#x2715;</span></span>
 				</a>
 				{helpComponent}
 			</div>

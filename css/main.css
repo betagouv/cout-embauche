@@ -2,6 +2,8 @@
 	padding-top: 1em;
 	max-width: 45em;
 	line-height: 2.5;
+	font-size: 125%;
+	margin: auto;
 }
 
 .basic-input {
@@ -112,8 +114,8 @@ section.taxes {
 	font-style: italic;
 }
 
-@media(max-width: 500px) {
-	body {
+/*@media(max-width: 500px) {
+	.SGMAPembauche {
 		padding: 0;
 		width: 15em;
 		text-align: left;
@@ -122,4 +124,4 @@ section.taxes {
 	input {
 		margin: 0;
 	}
-}
+}*/

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import outputVariables from '../data/outputVariables.yaml'
+import outputVariables from '../outputVariables.yaml'
 import classnames from 'classnames'
 
 export default class Details extends Component {

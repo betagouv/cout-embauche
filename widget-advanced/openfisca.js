@@ -1,4 +1,4 @@
-import outputVariables from './data/outputVariables.yaml'
+import outputVariables from './outputVariables.yaml'
 
 // JS API
 window.Embauche = {

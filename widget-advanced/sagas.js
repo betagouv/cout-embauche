@@ -1,10 +1,10 @@
 import { takeLatest } from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
-import {inputData} from './data/inputData'
+import steps from './conversation-steps'
 import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS} from './actions'
 import {request} from './openfisca'
-import validate from './containers/conversation-validate'
+import validate from './conversation-validate'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -28,22 +28,21 @@ function* handleFormChange() {
 				basicValues,
 				advancedValues,
 			),
-			// Transform the raw input object to a new one tailored for the simulation API
-			// 'inputData' provides this correspondance
-			transformedValues = Object.keys(inputData).reduce((final, name) => {
-				let transformer = inputData[name],
+			// Transform the raw input data to a new one tailored for the simulation API
+			transformedValues = Object.keys(steps).reduce((final, name) => {
+				let step = steps[name],
 					userValue = inputValues[name]
 
-				if (typeof transformer == 'string') // well not really a transformer then !
-					return Object.assign(final, {[name]: transformer})
+				let {adapt, valueType, validator} = step
+				if (userValue == null || !adapt)
+					return final
 
-				if (userValue == null) return final // ignore !
+				let	pre1 = validator && validator.pre,
+					type = valueType && new valueType(),
+					pre2 = console.log('yoyo', type) || type && type.validator.pre,
+					pre = pre1 || pre2 || (v => v)
 
-				if (typeof transformer === 'function')
-					return Object.assign(final, transformer(userValue, inputValues))
-
-				// else transformer is an Array and the function is the second element
-				return Object.assign(final, transformer[1](userValue, inputValues))
+				return Object.assign(final, adapt(userValue, pre(userValue), inputValues))
 			}, {}),
 
 			results = yield call(request, transformedValues)

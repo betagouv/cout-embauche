@@ -12,7 +12,7 @@ import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
 import {reduxForm, formValueSelector} from 'redux-form'
 import { Percentage } from '../formValueTypes.js'
-import validate from './conversation-validate'
+import validate from '../conversation-validate'
 import {themeColour, textColour} from '../themeColours'
 
 let advancedInputSelector = formValueSelector('advancedQuestions'),

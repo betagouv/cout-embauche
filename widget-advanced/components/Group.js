@@ -18,7 +18,7 @@ export default class Group extends Component {
 		return (
 			<div className={classnames('form-group', {folded, unfolded: !folded, explicit: text})}>
 				{this.renderHeader(folded)}
-				<div className="group-content" style={!folded && text ? {borderLeft: '1px solid' + themeColour} : {}}>
+				<div className="group-content" style={!folded && text ? {borderLeft: '1px dashed' + themeColour} : {}}>
 					{folded ? null : children}
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--  See how this iframe must be used in ./example-integration.html -->
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -9,21 +10,17 @@
 			body {
 				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 			}
-
-			/* Customize the widget's style */
-			body .SGMAPembauche {
-
-			}
 		</style>
 	</head>
 
 	<body>
-		<script type="text/javascript" src="dist/cout-embauche.js" couleur="#4A89DC"></script>
-		<!-- #1F4382 - #3570B8 - #4A89DC - #4A9DED-->
-		<noscript>
-			Le simulateur de coût d'embauche n'est accessible qu'avec JavaScript activé.
-			Pour l'utiliser, suivez les <a href="http://www.enable-javascript.com/fr/">instructions pour activer JavaScript dans votre navigateur web</a>.
-		</noscript>
+		<script type="text/javascript">
+			var couleur =	window.location.search
+					.substring(1) //get rid of "?" in querystring
+					.split('=')[1]
+			// Example colours : <!-- #1F4382 - #3570B8 - #4A89DC - #4A9DED-->
+			document.write('<script type="text/javascript" src="dist/cout-embauche.js" couleur="' + couleur + '"\></script\>')
+		</script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.5/iframeResizer.contentWindow.min.js"></script>
 	</body>
 </html>

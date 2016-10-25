@@ -14,6 +14,13 @@ module.exports = {
 			'babel-polyfill',
 			'./entry-complete.js',
 		],
+		'simulateur': [
+			'webpack-dev-server/client?http://localhost:3000/',
+			'webpack/hot/only-dev-server',
+			'react-hot-loader/patch',
+			'babel-polyfill',
+			'./entry-iframe.js',
+		],
 	},
 	output: {
 		path: require('path').resolve('./dist/'),

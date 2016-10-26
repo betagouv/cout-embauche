@@ -137,9 +137,9 @@ export var FormDecorator = formType => RenderField =>
 						>{this.props.question}</h1>
 					{helpText &&
 						<span
-						className="question-mark"
+						className="help-button"
 						onClick={() => this.setState({helpVisible: true})}>
-							?
+							aide
 						</span>
 					}
 				</span>

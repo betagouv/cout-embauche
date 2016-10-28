@@ -16,12 +16,12 @@ export default class Input extends Component {
 				<div id="user-next-action">
 				{
 					basicInputTouched ?
-					<button type="button" 
+					<button type="button"
 						className="action show-advanced"
 						autoComplete="off"
 						onClick={toggleAdvancedSection}	>
 						{ !showAdvanced ?
-								<span>{'Compléter l\'estimation'}</span>:
+								<span>{'Affiner l\'estimation'}</span>:
 								<span>Réinitialiser</span>
 						}
 					</button> :

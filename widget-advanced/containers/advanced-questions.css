@@ -32,11 +32,40 @@
 	margin: 4em 0 .6em 0;
 }
 
-/* This is a specialization of .ignore for .form-group */
-.form-group .ignore {
-	top: .3em;
-	bottom: auto;
-	left: 3%;
+.group-items {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Group items animation */
+
+.group-animated-enter {
+	opacity: 0;
+}
+
+.group-animated-enter.group-animated-enter-active {
+	opacity: 1;
+ 	transition: opacity 300ms ease-in;
+}
+
+.group-animated-leave {
+	opacity: 1;
+	transform: scaleY(1);
+}
+
+.group-animated-leave.group-animated-leave-active {
+	opacity: 0;
+	transform: scaleY(0);
+	transform-origin: top;
+  transition: opacity 200ms ease, transform 200ms ease-out;
+}
+
+/* END Group items animation */
+
+/* Group ignore buttons */
+.form-group .header .ignore {
+	margin-left: 3em;
 }
 
 .group-title {
@@ -129,13 +158,19 @@ question : make it visible with colors */
 
 .ignore, .ignore:visited {
 	cursor: pointer;
-	position: absolute;
-	bottom: 0em;
 	color: #888;
 	font-weight: 200;
 	text-decoration: none;
-	border-bottom: 1px solid #aaa;
+	border-bottom: 1px solid #ccc;
 	font-size: 80%;
+	line-height: 1.2em;
+	font-style: italic;
+}
+
+/* step ignore buttons */
+fieldset > .ignore {
+	position: absolute;
+	bottom: 0em;
 }
 
 .step input[type=radio] {
@@ -150,7 +185,8 @@ question : make it visible with colors */
 	padding: 0;
 	padding-right: .4em;
 	width: 8em;
-	text-align: right;
+	text-align: left;
+	padding-left: .2em;
 }
 
 .step input.suffixed {
@@ -258,4 +294,65 @@ question : make it visible with colors */
 
 .select-answer.commune .Select {
 	width: 50%;
+}
+
+
+.input-tip {
+	color: #666;
+	text-align: center;
+	font-size: 65%;
+	font-style: italic;
+	height: 2em;
+	line-height: 1.6em;
+}
+
+.input-tip p {
+	margin: .1em;
+}
+
+#show-advanced {
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Positioning the animated elements absolutely + transition-delay will make it possible
+for the appearing element to appear without stacking up below the first one */
+#user-next-action {
+	position: relative;
+	height: 2em;
+}
+
+.input-tip {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+#reinit {
+	position: static;
+	display: block;
+	text-align: center;
+	font-size: 65%;
+}
+
+.user-next-action-animation-enter {
+	opacity: 0;
+}
+
+.user-next-action-animation-enter.user-next-action-animation-enter-active {
+	opacity: 1;
+	transition: opacity 700ms;
+	transition-delay: 700ms;
+}
+
+.user-next-action-animation-leave {
+  opacity: 1;
+}
+
+.user-next-action-animation-leave.user-next-action-animation-leave-active {
+  opacity: 0;
+  transition: opacity 700ms ease;
 }

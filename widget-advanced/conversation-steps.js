@@ -133,6 +133,7 @@ export default {
 			placeholder: 'Par ex. 1,1',
 		},
 		valueType: Percentage,
+		valueIfIgnored: '1',
 		adapt: validated => ({taux_accident_travail: validated / 100}),
 	},
 

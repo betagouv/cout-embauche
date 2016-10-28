@@ -5,9 +5,9 @@ import {Field, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
 import conversationSteps from '../../conversation-steps'
 import IgnoreStepButton from './IgnoreStepButton'
-import {themeColour, textColour, textColourOnWhite} from '../../themeColours'
+import {themeColour, textColourOnWhite} from '../../themeColours'
 import {answered, answer} from './userAnswerButtonStyle'
-
+import StepAnswer from './StepAnswer'
 
 /*
 This higher order component wraps "Form" components (e.g. Question.js), that represent user inputs,
@@ -152,17 +152,13 @@ export var FormDecorator = formType => RenderField =>
 				steps,
 			} = this.props,
 				value = answers[name],
-				// Show a beautiful answer to the user, rather than the technical form value
-				humanFunc = human || valueType && new valueType().human || (v => v),
 				ignored = steps.get(name) === 'ignored'
+
 
 			return (
 				<span onClick={() => editStep(name)}>
 					<h1>{this.props.title}</h1>
-						<span key="1" className="resume" style={answered} >
-							{humanFunc(value)}
-							{ignored && <span className="answer-ignored">(défaut)</span>}
-						</span>
+						<StepAnswer	{...{value, human, valueType, ignored}} />
 				</span>)
 		}
 

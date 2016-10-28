@@ -25,12 +25,10 @@ let advancedInputSelector = formValueSelector('advancedQuestions'),
 @connect(state => ({
 	formValue: (field, simple) => simple ? basicInputSelector(state, field): advancedInputSelector(state, field),
 	steps: state.steps,
-}), dispatch => ({
-	actions: bindActionCreators(actions, dispatch),
 }))
 class Conversation extends Component {
 	render() {
-		let { formValue, steps, actions} = this.props
+		let { formValue, steps} = this.props
 		let effectifEntreprise = formValue('effectifEntreprise', 'basicInput')
 
 		/* C'est ici qu'est définie la suite de questions à poser. */
@@ -55,11 +53,8 @@ class Conversation extends Component {
 				<Group
 					text="Taux de risque AT/MP"
 					visible={steps.get('pourcentage_alternants')}
-					steps={steps}
-					editStep={actions.editStep}
 					foldTrigger="tauxRisque"
 					valueType={Percentage}
-					answer={formValue('tauxRisque')}
 					>
 						<Question
 							visible={true}
@@ -71,46 +66,47 @@ class Conversation extends Component {
 							question="Entrez votre taux de risque"
 							visible={formValue('tauxRisqueConnu') == 'Oui'}
 							name="tauxRisque" />
-						<Group visible={formValue('tauxRisqueConnu')== 'Non'}>
+						<Group name="tauxInconnu" visible={formValue('tauxRisqueConnu')== 'Non'}>
 							<SelectTauxRisque
 								visible={true}
 								title="Code de risque sélectionné"
 								question="Quelle est la catégorie de risque de votre entreprise ?"
 								name="selectTauxRisque" />
 							<ResultATMP
+								name="resultATMP"
 								selectedTauxRisque={formValue('selectTauxRisque')}
 								formValue={formValue}
 								{...{steps}}
 								effectif={formValue('effectifEntreprise', 'basicInput')} />
 						</Group>
-					</Group>
+				</Group>
 
-					<Question
-						title="Exonération Jeune Entreprise Innovante"
-						question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
-						visible={steps.get('tauxRisque')}
-						name="jei" />
+				<Question
+					title="Exonération Jeune Entreprise Innovante"
+					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
+					visible={steps.get('tauxRisque')}
+					name="jei" />
 
-					<Question
-						title="Service utile ?"
-						question="Votre estimation est terminée. En êtes-vous satisfait ?"
-						visible={steps.get('jei')}
-						name="serviceUtile" />
-					<RhetoricalQuestion
-						visible={formValue('serviceUtile') === ':-)'}
-						name="partage"
-						question={<span>
-							N'hésitez pas à partager le simulateur !
-							<br/>
-							<span id="share-link" style={{color: textColour, background: themeColour}}>{window.location.href}</span>
-						</span>
-						} />
-					<TextArea
-						visible={formValue('serviceUtile') === ':-|'}
-						name="remarque"
-						title="Votre remarque"
-						question={'Que pouvons-nous faire pour l\'améliorer ?'}
-						/>
+				<Question
+					title="Service utile ?"
+					question="Votre estimation est terminée. En êtes-vous satisfait ?"
+					visible={steps.get('jei')}
+					name="serviceUtile" />
+				<RhetoricalQuestion
+					visible={formValue('serviceUtile') === ':-)'}
+					name="partage"
+					question={<span>
+						N'hésitez pas à partager le simulateur !
+						<br/>
+						<span id="share-link" style={{color: textColour, background: themeColour}}>{window.location.href}</span>
+					</span>
+					} />
+				<TextArea
+					visible={formValue('serviceUtile') === ':-|'}
+					name="remarque"
+					title="Votre remarque"
+					question={'Que pouvons-nous faire pour l\'améliorer ?'}
+					/>
 		</div>)
 	}
 }

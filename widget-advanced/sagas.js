@@ -39,7 +39,7 @@ function* handleFormChange() {
 
 				let	pre1 = validator && validator.pre,
 					type = valueType && new valueType(),
-					pre2 = console.log('yoyo', type) || type && type.validator.pre,
+					pre2 = type && type.validator.pre,
 					pre = pre1 || pre2 || (v => v)
 
 				return Object.assign(final, adapt(userValue, pre(userValue), inputValues))

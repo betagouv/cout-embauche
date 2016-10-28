@@ -59,6 +59,15 @@ function activeSections(state = {top: 'input', advanced: false}, {type}) {
 	}
 }
 
+function inputChanged(state = false, {type}) {
+	switch(type) {
+	case 'redux-form/CHANGE':
+		return true
+	default:
+		return state
+	}
+}
+
 export default combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,
@@ -72,4 +81,7 @@ export default combineReducers({
 	results,
 
 	activeSections,
+
+	// Has the user edited one form field ?
+	inputChanged
 })

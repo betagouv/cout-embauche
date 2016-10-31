@@ -117,3 +117,7 @@ details {
 		margin: 0;
 	}
 }
+
+th > .conditions {
+	font-weight: normal;
+}

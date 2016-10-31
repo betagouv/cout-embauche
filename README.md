@@ -6,6 +6,8 @@ A widget to estimate the cost of hiring in France
 
 If you want to create your own specific interface, have a look at the [API documentation](https://embauche.beta.gouv.fr/api-prelevements-sociaux).
 
+The main branch is `gh-pages`. The `advanced` branch is in active development to make the simulation more precise through a series of new questions. 
+
 
 Usage
 -----

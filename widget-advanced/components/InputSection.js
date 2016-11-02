@@ -30,13 +30,13 @@ export default class Input extends Component {
 					{ inputChanged &&
 						<div key="2" className="input-tip">
 							<p>Votre estimation est mise à jour à chaque changement</p>
-							<p>
+							<p>Vous pouvez ensuite &nbsp;
 								<a href="#" style={{color: textColourOnWhite}}
 								id="show-advanced"
 								onClick={toggleAdvancedSection}
 								title="Allez plus loin dans l'estimation avec quelques questions supplémentaires">
-								Affinez les résultats
-								</a>
+								affiner votre situation
+							</a>
 							</p>
 						</div>
 					}

@@ -312,7 +312,6 @@ fieldset > .ignore {
 
 #show-advanced {
 	font-weight: bold;
-	font-style: normal;
 }
 
 /* Positioning the animated elements absolutely + transition-delay will make it possible

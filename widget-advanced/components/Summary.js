@@ -44,13 +44,14 @@ export default class Summary extends Component {
 				<div className="content" style={{background: themeColour, color: lighterTextColour}}>
 					<div className="figures">
 						<p style={paragraphBorderStyle}>
-							Cela coûtera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois à mon {labelTypeEntreprise},
-							{ (salaire_super_brut != cout_du_travail) &&
-								<span>
+							Cela coûtera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois à mon {labelTypeEntreprise}
+							{ (salaire_super_brut != cout_du_travail) ?
+								<span>,
 									<br />
 									ou <Figure title="Coût du travail" figure={humanize(cout_du_travail)}/>
 									&nbsp;après déduction des aides différées.
-								</span>
+								</span> :
+								<span>.</span>
 							}
 						</p>
 						<p style={paragraphBorderStyle}>

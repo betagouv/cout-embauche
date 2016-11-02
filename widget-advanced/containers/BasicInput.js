@@ -21,9 +21,10 @@ export default class BasicInput extends Component {
 		let {enTempsPartiel} = this.props
 		return (
 			<form className="basic-input">
+				Mon
 				<Field component="select" name="typeEntreprise" >
-					<option value="entreprise">Mon entreprise</option>
-					<option value="entreprise_est_association_non_lucrative">Mon association à but non lucratif</option>
+					<option value="entreprise">entreprise</option>
+					<option value="entreprise_est_association_non_lucrative">association à but non lucratif</option>
 				</Field>
 				de
 				<label title="En équivalents temps pleins : un mi-temps vaut 0,5, par exemple.">

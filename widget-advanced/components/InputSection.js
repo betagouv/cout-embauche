@@ -3,15 +3,14 @@ import BasicInput from '../containers/BasicInput'
 import AdvancedQuestions from '../containers/AdvancedQuestions'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import {textColour, themeColour, textColourOnWhite} from '../themeColours'
+import {textColourOnWhite} from '../themeColours'
 
 export default class Input extends Component {
 	render() {
 		let {showInput, showAdvanced, toggleAdvancedSection, inputTouched, inputChanged} = this.props
-		if (!showInput) return null
 
 		return (
-			<div>
+			<div hidden={!showInput}>
 				<BasicInput />
 				{ showAdvanced &&
 					<AdvancedQuestions />

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import outputVariables from '../outputVariables.yaml'
-import classnames from 'classnames'
 
 export default class Details extends Component {
 	render() {
@@ -19,26 +18,33 @@ export default class Details extends Component {
 		return (
 			<table key={category}>
 				<caption>{category}</caption>
-				<tbody>
-					{items.map(i => this.renderItem(i))}
-				</tbody>
+				{items.map(i => this.renderItem(i))}
 			</table>
 		)
 	}
 
 	renderItem(i) {
 		let
-			{results, humanizeFigures} = this.props,
-			{key, name, explained, notCalculated} = i,
-			figure = results[key]
+			{results, humanizeFigures, advancedQuestions, openAdvancedSection} = this.props,
+			{key, name, explained, clarifier} = i,
+			figure = results[key],
+			lineClarified = advancedQuestions(clarifier) != null
 
 		return (
-			<tr key={key}
-				className={classnames({explained, 'not-calculated': notCalculated})}
-				title={explained} >
-				<th>{name}</th>
-				<td>{figure != null ? humanizeFigures(figure) : '--'} €</td>
-			</tr>
+			<tbody key={key} className={explained ? 'explained': ''}>
+				<tr>
+					<th>{name}</th>
+					<td className="value">{figure != null ? humanizeFigures(figure) : '--'} €</td>
+				</tr>
+				{explained && !lineClarified && <tr>
+					<td colSpan="100%" className="explanation">
+						<p>{explained}</p>
+						{clarifier && <p>
+							<a href="#" onClick={openAdvancedSection}>Affinez votre situation</a>
+						</p>}
+					</td>
+				</tr>}
+			</tbody>
 		)
 
 	}

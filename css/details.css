@@ -18,44 +18,38 @@ caption {
 	font-size: 115%;
 }
 
+tbody.explained {
+	line-height: 2.5em;
+}
+
 th {
 	text-align: right;
 }
 
-td {
+td.value {
 	padding-left: 1em;
 	width: 7em;
 }
+td.explanation {
+	font-size: 85%;
+	text-align: right;
+	line-height: 1.3em;
+	font-style: italic;
+	color: #333;
+	padding: 0 4em 0 20%;
+}
+td.explanation p {
+	margin: 0;
+}
+td.explanation p:last-child {
+	margin-bottom: 1em;
+}
+
 
 summary {
 	cursor: pointer;
 	user-select: none;
 	margin-bottom: 2em;
-}
-
-tr.explained {
-	font-style: italic;
-}
-
-tr.explained td {
-	position: relative;
-}
-
-/* Question mark circle icon */
-tr.explained td::after {
-	content: "?";
-	position: absolute;
-	top: .65em;
-	right: 0;
-	width: 1.2em;
-	height: 1.2em;
-	border-radius: 1em;
-	border: 1px solid #333;
-	font-size: 90%;
-	font-style: normal;
-	line-height: 1.2em;
-	font-weight: bold;
-	text-align: center;
 }
 
 #reportDetailsProblem {

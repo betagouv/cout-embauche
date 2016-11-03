@@ -40,7 +40,7 @@ export default class Summary extends Component {
 			buttonStyle = {borderColor: textColour, color: textColour}
 
 		return (
-			<div className="simulation-summary">
+			<section className="simulation-summary">
 				<div className="content" style={{background: themeColour, color: lighterTextColour}}>
 					<div className="figures">
 						<p style={paragraphBorderStyle}>
@@ -69,7 +69,7 @@ export default class Summary extends Component {
 						}
 					</button>
 			</div>
-		</div>
+		</section>
 		)
 	}
 }

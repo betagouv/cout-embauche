@@ -29,7 +29,7 @@ let baseUrl =
 		.reduce((final, category) =>
 			[ // Turn the yaml object into a flat array
 				...final,
-				...outputVariables[category].filter(i => !i.notCalculated).map(i => i.key),
+				...outputVariables[category].map(i => i.key),
 			], [])
 		.join('+')
 

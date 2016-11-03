@@ -1,5 +1,6 @@
-# Ceci constitue presque une fiche de paie complète,
-# avec les aides accordées aux employeurs en plus
+# Ceci constitue presque le tableau d'une fiche de paie complète,
+# avec les aides accordées aux employeurs en plus,
+# et des lignes comme les tickets restaurants en moins.
 
 Sommes:
 
@@ -55,16 +56,18 @@ Cotisations employeur:
   - key: accident_du_travail
     name: Accident du travail
     explained: Montant calculé pour une activité à faible risque d'accident de travail.
-  - key: contribution_supplementaire_apprentissage
-    name: Contribution supplémentaire à l'apprentissage
-    explained: Montant imprécis. Décroît en fonction du pourcentage de l'effectif en apprentissage.
+    clarifier: tauxRisque
   - key: taxe_salaires
     name: Taxe sur les salaires
-    explained: Montant non calculé, sauf pour le cas des associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
-  - key: complementaire_sante
+    explained: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
+  - key: contribution_supplementaire_apprentissage
+    name: Contribution supplémentaire à l'apprentissage
+    explained: Décroît en fonction du pourcentage de l'effectif en apprentissage.
+    clarifier: pourcentage_alternants
+  - key: complementaire_sante_employeur
     name: Complémentaire santé
-    explained: Montant indéterminé. L'employeur doit proposer et payer la moitié d'une offre couvrant un panier de soins minimum.
-    notCalculated: true
+    explained: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part employeur n'est qu'un exemple.
+    clarifier: mutuelle
 
 Cotisations salarié:
 
@@ -94,6 +97,10 @@ Cotisations salarié:
     name: CSG imposable
   - key: crds_salaire
     name: CRDS
+  - key: complementaire_sante_salarie
+    name: Complémentaire santé
+    explained: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part salarié n'est qu'un exemple, que vous pouvez changer.
+    clarifier: mutuelle
 
 Aides employeur immédiates:
 
@@ -110,7 +117,10 @@ Aides employeur différées:
 
   - key: credit_impot_competitivite_emploi
     name: Crédit d'impôt pour la compétitivité et l'emploi (CICE)
+    # Il y a trop de conditions et d'exceptions aux conditions pour les détailler dans cette interface
   - key: aide_premier_salarie
     name: Aide à l'embauche d'un premier salarié
+    explained: Versement trimestriel, limité à 4000€ (2 ans à temps plein)
   - key: aide_embauche_pme
     name: Aide à l'embauche pour les PME
+    explained: Versement trimestriel, limité à 4000€ (2 ans à temps plein)

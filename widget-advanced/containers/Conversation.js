@@ -11,7 +11,7 @@ import TextArea from '../components/Forms/TextArea'
 import Group from '../components/Group'
 import ResultATMP from '../components/ResultATMP'
 import {reduxForm, formValueSelector} from 'redux-form'
-import { Percentage } from '../formValueTypes.js'
+import { percentage } from '../formValueTypes.js'
 import validate from '../conversation-validate'
 import {themeColour, textColour} from '../themeColours'
 
@@ -54,7 +54,7 @@ class Conversation extends Component {
 					text="Taux de risque AT/MP"
 					visible={steps.get('pourcentage_alternants')}
 					foldTrigger="tauxRisque"
-					valueType={Percentage}
+					valueType={percentage}
 					>
 						<Question
 							visible={true}

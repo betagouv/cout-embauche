@@ -14,7 +14,7 @@ export default class Input extends Component {
 				touched, error, active,
 			},
 		} = this.props,
-			answerSuffix = valueType && new valueType().suffix,
+			answerSuffix = valueType.suffix,
 			suffixed = answerSuffix != null,
 			inputError = touched && error,
 			sendButtonDisabled = !input.value || inputError

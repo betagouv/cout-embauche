@@ -1,11 +1,8 @@
-.advanced-simulation {
-	font-size: 80%;
-	line-height: normal;
-}
-
 #conversation {
 	margin: 3em auto;
 	max-width: 40em;
+	font-size: 80%;
+	line-height: normal;
 }
 
 .step {

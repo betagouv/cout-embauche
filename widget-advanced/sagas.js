@@ -13,16 +13,28 @@ function* handleFormChange() {
 	// debounce by 500ms
 	yield call(delay, 500)
 
-	let
-		basicValues = yield select(state => state.form.basicInput.values),
-		advancedValues = yield select(state => state.form.advancedQuestions && state.form.advancedQuestions.values)
-
-	// there is a form validation error -> do not update
-	if (advancedValues && Object.keys(validate(advancedValues)).length)
-		return
-
-
 	try {
+
+		let
+			basicValues = yield select(state => state.form.basicInput.values),
+			advancedValues =
+				yield	select(state =>
+					(state.form.advancedQuestions && state.form.advancedQuestions.values) || {}
+				),
+			validationErrors = validate(advancedValues)
+		// there is a form validation error -> do not update
+		if (Object.keys(validationErrors).length)
+			return
+
+
+		// valid advanced answers -> make the simulation with these answers.
+		// Else use default values !
+		Object.keys(steps).reduce((final, name) => {
+			let {defaultValue} = steps[name]
+			if (defaultValue && (advancedValues[name] == null || validationErrors[name]))
+				advancedValues[name] = defaultValue
+		})
+
 		let
 			inputValues = Object.assign({},
 				basicValues,
@@ -33,14 +45,12 @@ function* handleFormChange() {
 				let step = steps[name],
 					userValue = inputValues[name]
 
-				let {adapt, valueType, validator} = step
+				let {adapt, valueType = {}, validator} = step
 				if (userValue == null || !adapt)
 					return final
 
-				let	pre1 = validator && validator.pre,
-					type = valueType && new valueType(),
-					pre2 = type && type.validator.pre,
-					pre = pre1 || pre2 || (v => v)
+				let
+					{pre = v => v} = Object.assign({}, validator, valueType.validator)
 
 				return Object.assign(final, adapt(userValue, pre(userValue), inputValues))
 			}, {}),
@@ -52,7 +62,7 @@ function* handleFormChange() {
 		yield put({type: SIMULATION_UPDATE_SUCCESS, results})
 
 	} catch (e) {
-		console.log('ARGHH', e)
+		console.log('ARGHH, erreur dans la requête à l\'API', e)
 	}
 
 }

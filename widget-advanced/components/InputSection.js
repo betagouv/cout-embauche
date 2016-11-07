@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import BasicInput from '../containers/BasicInput'
-import AdvancedQuestions from '../containers/AdvancedQuestions'
+import Conversation from '../containers/Conversation'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import {textColourOnWhite} from '../themeColours'
@@ -13,7 +13,7 @@ export default class Input extends Component {
 			<div hidden={!showInput}>
 				<BasicInput />
 				{ showAdvanced &&
-					<AdvancedQuestions />
+					<Conversation />
 				}
 				<div>
 				{ !showAdvanced && <ReactCSSTransitionGroup

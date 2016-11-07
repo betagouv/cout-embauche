@@ -8,7 +8,7 @@ export default class StepAnswer extends Component {
 			value, human, valueType, ignored
 		} = this.props,
 		// Show a beautiful answer to the user, rather than the technical form value
-			humanFunc = human || valueType && new valueType().human || (v => v)
+			humanFunc = human || valueType && valueType.human || (v => v)
 
 		return (
 			<span key="1" className="resume" style={answered} >

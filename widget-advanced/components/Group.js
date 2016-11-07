@@ -61,9 +61,9 @@ export default class Group extends Component {
 
 		let
 			headerClick = () => editStep(foldTrigger),
-			{valueIfIgnored, human} = conversationData[foldTrigger],
+			{defaultValue, human} = conversationData[foldTrigger],
 			ignoreGroup = () => {
-				setFormValue(foldTrigger, valueIfIgnored)
+				setFormValue(foldTrigger, defaultValue)
 				submitStep(foldTrigger, true)
 			},
 			value = formValue(foldTrigger),

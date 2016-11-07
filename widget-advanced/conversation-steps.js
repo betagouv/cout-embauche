@@ -1,5 +1,5 @@
 import React from 'react'
-import { Percentage, Euro } from './formValueTypes.js'
+import { percentage, euro } from './formValueTypes.js'
 
 let	today = new Date()
 
@@ -87,9 +87,9 @@ export default {
 			inputMode: 'numeric',
 			placeholder: 'votre réponse', // help for the first input
 		},
-		valueType: Euro, /* Will give the input a suffix (€), a human representation
+		valueType: euro, /* Will give the input a suffix (€), a human representation
 		that will be used in the form resume, and a validation function */
-		valueIfIgnored: '30', // The user can pass steps in the advanced view, this value is set
+		defaultValue: '40', // The user can pass steps in the advanced view, this value is set
 		helpText: // What will be displayed in the help box
 			<p>
 				L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
@@ -113,8 +113,8 @@ export default {
 		attributes: {
 			inputMode: 'numeric',
 		},
-		valueType: Percentage,
-		valueIfIgnored: '0',
+		valueType: percentage,
+		defaultValue: '0',
 		helpText: <p>Ce pourcentage de l'ensemble de vos salariés nous permet de calculer le montant de la Contribution Supplémentaire à l'Apprentissage, destinée à encourager cette forme d'emploi.</p>,
 		adapt: (raw, validated) => ({'ratio_alternants': validated / 100}),
 	},
@@ -132,8 +132,8 @@ export default {
 			inputMode: 'numeric',
 			placeholder: 'Par ex. 1,1',
 		},
-		valueType: Percentage,
-		valueIfIgnored: '1',
+		valueType: percentage,
+		defaultValue: '1',
 		adapt: validated => ({taux_accident_travail: validated / 100}),
 	},
 
@@ -145,7 +145,7 @@ export default {
 
 	'jei': {
 		choices: [ 'Oui', 'Non' ],
-		valueIfIgnored: 'Non',
+		defaultValue: 'Non',
 		helpText: <p>
 			Votre entreprise doit être éligible à ce statut, et votre employé doit notamment être fortement impliqué dans le projet de R&D.
 			<br/>
@@ -158,7 +158,7 @@ export default {
 
 	'serviceUtile': {
 		choices: [ ':-|', ':-)' ],
-		valueIfIgnored: ':-)',
+		defaultValue: null,
 		helpText: <p>
 			Dites-nous si ce simulateur vous a été utile
 		</p>,

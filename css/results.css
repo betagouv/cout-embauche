@@ -7,6 +7,7 @@
 .simulation-summary .content {
 	padding: .01em 1.8em;
 	position: relative;
+	border-radius: .1em;
 }
 
 @media(max-width: 500px) {
@@ -51,6 +52,7 @@ button.action span {
 
 .show-details {
 	border: 1px solid;
+	border-radius: .2em;
 	background: none;
 	font-size: 55%;
 	padding: .3em;

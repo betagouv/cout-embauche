@@ -44,15 +44,10 @@ class Conversation extends Component {
 					question="Quel est le montant total par salarié de votre complémentaire santé entreprise obligatoire ?"
 					visible={effectifEntreprise <= 10 || steps.get('codeINSEE')}
 					name="mutuelle" />
-				<Input
-					title="Pourcentage d'alternants"
-					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
-					visible={steps.get('mutuelle')}
-					name="pourcentage_alternants" />
 
 				<Group
 					text="Taux de risque AT/MP"
-					visible={steps.get('pourcentage_alternants')}
+					visible={steps.get('mutuelle')}
 					foldTrigger="tauxRisque"
 					valueType={percentage}
 					>
@@ -81,10 +76,16 @@ class Conversation extends Component {
 						</Group>
 				</Group>
 
+				<Input
+					title="Pourcentage d'alternants"
+					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
+					visible={steps.get('tauxRisque')}
+					name="pourcentage_alternants" />
+
 				<Question
 					title="Exonération Jeune Entreprise Innovante"
 					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
-					visible={steps.get('tauxRisque')}
+					visible={steps.get('pourcentage_alternants')}
 					name="jei" />
 
 				<Question

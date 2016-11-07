@@ -88,9 +88,9 @@
 	max-width: 55%;
 	font-size: 100%;
 	font-weight: 400;
-	padding: .5em .8em;
+	padding: .5em 1em;
 	margin: 0;
-	border-radius: 1em;
+	border-radius: 1.4em;
 	position: relative;
 	cursor: pointer;
 	border: 1px solid #aaa;
@@ -185,7 +185,7 @@ fieldset > .ignore {
 	padding: 0;
 	padding-right: .4em;
 	width: 8em;
-	text-align: left;
+	text-align: right;
 	padding-left: .2em;
 }
 

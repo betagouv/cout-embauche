@@ -88,7 +88,7 @@ class Conversation extends Component {
 					name="jei" />
 
 				<Question
-					title="Service utile ?"
+					title="Votre avis"
 					question="Votre estimation est terminée. En êtes-vous satisfait ?"
 					visible={steps.get('jei')}
 					name="serviceUtile" />

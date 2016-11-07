@@ -44,7 +44,7 @@ export default class Summary extends Component {
 				<div className="content" style={{background: themeColour, color: lighterTextColour}}>
 					<div className="figures">
 						<p style={paragraphBorderStyle}>
-							Cela coûtera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois à mon {labelTypeEntreprise}
+							Mon {labelTypeEntreprise} versera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois
 							{ (salaire_super_brut != cout_du_travail) ?
 								<span>,
 									<br />

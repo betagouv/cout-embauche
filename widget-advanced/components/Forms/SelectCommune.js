@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {FormDecorator} from './FormDecorator'
 import ReactSelect from 'react-select'
-import SelectOption from './SelectOption.js'
 import 'react-select/dist/react-select.css'
 import './Select.css'
 
@@ -15,18 +14,19 @@ let getOptions = input =>
 			return response.json()
 		})
 		.then(json => ({options: json}))
-		.catch(error =>
-			({options: []})
-		)
+		.catch(function(error) {
+			console.log('Erreur dans la recherche de communes à partir du code postal', error)
+			return {options: []}
+		})
 
 @FormDecorator('select')
-export default class Select extends Component {
+export default class SelectCommune extends Component {
 	render() {
 		let {
 			input: {
-				value, onBlur, onChange,
+				onChange,
 			},
-			stepProps: {submit},
+			stepProps: {submit}
 		} = this.props,
 			submitOnChange =
 				option => {

@@ -68,6 +68,7 @@ function inputChanged(state = false, {type}) {
 	}
 }
 
+
 export default combineReducers({
 	//  this is handled by redux-form, pas touche !
 	form: formReducer,

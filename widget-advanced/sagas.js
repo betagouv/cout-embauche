@@ -62,7 +62,7 @@ function* handleFormChange() {
 		yield put({type: SIMULATION_UPDATE_SUCCESS, results})
 
 	} catch (e) {
-		console.log('ARGHH, erreur dans la requête à l\'API', e)
+		console.log('ARGHH, erreur dans la requête de calcul des cotisations', e)
 	}
 
 }

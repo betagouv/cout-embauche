@@ -108,11 +108,7 @@ section.taxes {
 	border-radius: .5em;
 }
 
-.info-zone {
-	font-size: 75%;
-	text-align: center;
-	font-style: italic;
-}
+
 
 /*@media(max-width: 500px) {
 	.SGMAPembauche {

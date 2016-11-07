@@ -294,13 +294,16 @@ fieldset > .ignore {
 }
 
 
-.input-tip {
-	color: #666;
-	text-align: center;
+.info-zone {
 	font-size: 65%;
+	text-align: center;
 	font-style: italic;
-	height: 2em;
+	color: #666;
 	line-height: 1.6em;
+}
+
+.input-tip {
+	height: 2em;
 }
 
 .input-tip p {
@@ -316,6 +319,7 @@ for the appearing element to appear without stacking up below the first one */
 #user-next-action {
 	position: relative;
 	height: 2em;
+	margin-bottom: 3em;
 }
 
 .input-tip {

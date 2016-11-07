@@ -1,7 +1,6 @@
 import React  from 'react'
 import {connect} from 'react-redux'
 import {formValueSelector} from 'redux-form'
-import InfoZone from '../components/InfoZone'
 import InputSection from '../components/InputSection'
 import Results from '../containers/Results'
 import Affiliation from '../components/Affiliation'
@@ -25,7 +24,10 @@ let selector = formValueSelector('basicInput')
 }))
 export default class Widget extends React.Component {
 	render() {
-		let {activeSection, showAdvanced, toggleAdvancedSection, inputTouched, inputChanged} = this.props
+		let {
+			activeSection, showAdvanced, toggleAdvancedSection,
+			inputTouched, inputChanged, infoAlternance
+		} = this.props
 		return (
 				<div>
 					<InputSection
@@ -34,8 +36,8 @@ export default class Widget extends React.Component {
 						toggleAdvancedSection={toggleAdvancedSection}
 						inputTouched={inputTouched}
 						inputChanged={inputChanged}
+						infoAlternance={infoAlternance}
 					/>
-					<InfoZone infoAlternance={this.props.infoAlternance} />
 					<Results showDetails={activeSection == 'details'}/>
 					<Affiliation />
 				</div>

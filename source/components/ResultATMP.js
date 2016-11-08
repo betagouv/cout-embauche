@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import resolve from '../../utils/resolve'
 import RhetoricalQuestion from './Forms/RhetoricalQuestion'
 
 class ResultATMP extends Component {

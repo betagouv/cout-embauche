@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import outputVariables from '../outputVariables.yaml'
+import './Details.css'
 
 export default class Details extends Component {
 	render() {

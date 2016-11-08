@@ -1,1 +1,0 @@
-../InputsComponent.js

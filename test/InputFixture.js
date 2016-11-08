@@ -1,2 +1,0 @@
-SALARY = 3000
-DECIMALS = ',42'

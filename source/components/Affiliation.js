@@ -1,4 +1,5 @@
 import React from 'react'
+import './Affiliation.css'
 
 export default () =>
 	<section id="affiliation">

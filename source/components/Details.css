@@ -1,3 +1,8 @@
+section.taxes {
+	font-size: 60%;
+	margin-top: 3em;
+}
+
 table {
 	width: 50%;
 	float: left;
@@ -43,23 +48,4 @@ td.explanation p {
 }
 td.explanation p:last-child {
 	margin-bottom: 1em;
-}
-
-
-summary {
-	cursor: pointer;
-	user-select: none;
-	margin-bottom: 2em;
-}
-
-#reportDetailsProblem {
-	clear: left;
-	display: block;
-	width: 12em;
-	margin: 1em auto 2em;
-	text-decoration: none;
-	color: black;
-	border: 1px solid #C3C3C3;
-	text-align: center;
-	line-height: 2em;
 }

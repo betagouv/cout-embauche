@@ -1,1 +1,0 @@
-../ResultsComponent.js

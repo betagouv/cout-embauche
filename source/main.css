@@ -1,0 +1,24 @@
+.SGMAPembauche {
+	padding-top: 1em;
+	max-width: 45em;
+	line-height: 2.5;
+	font-size: 125%;
+	margin: auto;
+}
+
+input, select {
+	font-size: 100%;
+	appearance: none;
+	background-color: white;
+	border: none;
+	border-bottom: 1px solid #aaa;
+	border-radius: 0;
+	padding: .2em 0;
+	margin: 0 .5em;
+	color: rgba(0, 0, 0, .8);
+	text-align: center;
+}
+
+input[type="number"] {
+	max-width: 5em;
+}

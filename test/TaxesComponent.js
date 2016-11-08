@@ -1,5 +1,0 @@
-root				: '.taxes',
-toggleLink			: '.show-details',
-taxesList			: '.taxes table',
-randomTax			: '.taxes [data-source]',
-createTestButton	: '#createTest',

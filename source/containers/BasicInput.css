@@ -1,35 +1,7 @@
-.SGMAPembauche {
-	padding-top: 1em;
-	max-width: 45em;
-	line-height: 2.5;
-	font-size: 125%;
-	margin: auto;
-}
-
 .basic-input {
 	padding-top: 1em;
 	margin-bottom: 1em;
-}
-
-.basic-input, #error, summary {
 	text-align: center;
-}
-
-input, select {
-	font-size: 100%;
-	appearance: none;
-	background-color: white;
-	border: none;
-	border-bottom: 1px solid #aaa;
-	border-radius: 0;
-	padding: .2em 0;
-	margin: 0 .5em;
-	color: rgba(0, 0, 0, .8);
-	text-align: center;
-}
-
-input[type="number"] {
-	max-width: 5em;
 }
 
 select[name="typeEntreprise"] {
@@ -56,6 +28,7 @@ label.dynamic-info {
 select[data-provides="employee"] {
 	width: 6.5em;
 }
+
 
 /* Enables the first input's help text to pop
 over the lasts of this group.
@@ -96,28 +69,3 @@ input#salaire ~ .input-help {
 	vertical-align: middle;
 	text-align: left;
 }
-
-section.taxes {
-	font-size: 60%;
-	margin-top: 3em;
-}
-
-#error {
-	color: red;
-	border: 1px solid red;
-	border-radius: .5em;
-}
-
-
-
-/*@media(max-width: 500px) {
-	.SGMAPembauche {
-		padding: 0;
-		width: 15em;
-		text-align: left;
-	}
-
-	input {
-		margin: 0;
-	}
-}*/

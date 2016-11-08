@@ -10,18 +10,18 @@ module.exports = {
 			{
 				'cout-embauche': [
 					'babel-polyfill',
-					'./entry-complete.js'
+					'./source/entry-complete.js'
 				],
-				'simulateur': './entry-iframe.js',
+				'simulateur': './source/entry-iframe.js',
 			}	: {
 				'cout-embauche': [
 					'webpack-dev-server/client?http://localhost:3000/',
 					'webpack/hot/only-dev-server',
 					'react-hot-loader/patch',
 					'babel-polyfill',
-					'./entry-complete.js',
+					'./source/entry.js',
 				],
-				'simulateur': './entry-iframe.js',
+				'simulateur': './source/entry-iframe.js',
 			},
 	output: {
 		path: require('path').resolve('./dist/'),

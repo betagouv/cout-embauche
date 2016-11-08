@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Summary from '../components/Summary'
 import Details from '../components/Details'
 import {TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION} from '../actions'
+import './Results.css'
 
 let fmt = new Intl.NumberFormat('fr-FR').format
 

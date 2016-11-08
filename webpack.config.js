@@ -1,27 +1,28 @@
 var webpack = require('webpack'),
 	prefix = require('postcss-prefix-selector'),
-	autoprefixer = require('autoprefixer')
+	autoprefixer = require('autoprefixer'),
+	inProd = process.env.NODE_ENV == 'production'
 
 module.exports = {
 	devtool: 'cheap-module-source-map',
-	entry: {
-		'cout-embauche-simple': './entry-simple.js',
-		'bootstrap-compat': './widget-simple/compat/entry-bootstrap.js',
-		'cout-embauche': [
-			'webpack-dev-server/client?http://localhost:3000/',
-			'webpack/hot/only-dev-server',
-			'react-hot-loader/patch',
-			'babel-polyfill',
-			'./entry-complete.js',
-		],
-		'simulateur': [
-			'webpack-dev-server/client?http://localhost:3000/',
-			'webpack/hot/only-dev-server',
-			'react-hot-loader/patch',
-			'babel-polyfill',
-			'./entry-iframe.js',
-		],
-	},
+	entry:
+		inProd ?
+			{
+				'cout-embauche': [
+					'babel-polyfill',
+					'./entry-complete.js'
+				],
+				'simulateur': './entry-iframe.js',
+			}	: {
+				'cout-embauche': [
+					'webpack-dev-server/client?http://localhost:3000/',
+					'webpack/hot/only-dev-server',
+					'react-hot-loader/patch',
+					'babel-polyfill',
+					'./entry-complete.js',
+				],
+				'simulateur': './entry-iframe.js',
+			},
 	output: {
 		path: require('path').resolve('./dist/'),
 		filename: '[name].js',
@@ -62,7 +63,7 @@ module.exports = {
 		}),
 	],
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
+		!inProd && new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
 		// in order to use the fetch polyfill:
 		new webpack.ProvidePlugin({

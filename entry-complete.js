@@ -5,8 +5,10 @@ import './css/affiliation.css'
 import './css/details.css'
 import './css/tooltip.css'
 
-import html from './widget-advanced/widget.html'
-document.write(html)
+document.write(`
+	<div class="SGMAPembauche" lang="fr">
+	</div>
+`)
 
 require('core-js/fn/promise')
 

@@ -14,12 +14,11 @@
   ],
   "description": "Un simulateur du coût d'embauche en France",
   "engines": {
-    "node": ">=0.12"
+    "node": ">=6.2.0"
   },
   "dependencies": {
     "babel-runtime": "^6.6.1",
     "classnames": "^2.2.1",
-    "object.pick": "*",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -45,6 +44,7 @@
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
+    "chai": "^3.5.0",
     "core-js": "^2.2.0",
     "css-loader": "^0.25.0",
     "dsv-loader": "^1.0.3",
@@ -58,7 +58,10 @@
     "html-loader": "^0.4.2",
     "img-loader": "^1.2.2",
     "imports-loader": "^0.6.5",
+    "jsdom": "^9.8.3",
     "json-loader": "^0.5.4",
+    "mocha": "^3.1.2",
+    "node-fetch": "^1.6.3",
     "node-libs-browser": "^1.0.0",
     "postcss-loader": "^0.13.0",
     "postcss-prefix-selector": "^1.3.0",
@@ -66,6 +69,7 @@
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.1.1",
+    "sinon": "^2.0.0-pre.3",
     "style-loader": "^0.13.0",
     "stylelint": "^7.3.1",
     "url-loader": "^0.5.7",
@@ -76,11 +80,12 @@
   },
   "scripts": {
     "start": "node source/server.js",
-    "pretest": "npm run compile",
-    "test": "npm run lint-js && npm run lint-css && watai test && watai test/errors && watai test/bootstrap-compat",
     "lint-js": "eslint .",
     "lint-css": "stylelint source/*.css",
     "precompile": "rm -rf dist",
-    "compile": "webpack --config source/webpack.config.js --optimize-minimize --optimize-dedupe --optimize-occurrence-order --define process.env.NODE_ENV='\"production\"'"
+    "compile": "NODE_ENV='production' webpack --config source/webpack.config.js --optimize-minimize --optimize-dedupe --optimize-occurrence-order",
+    "pretest": "NODE_ENV='test' npm start",
+    "mocha": "curl http://localhost:3000/dist/test.js > test.temp.js && mocha source/test/setup-jsdom.js test.temp.js && rm test.temp.js",
+    "test": "npm run lint-js && npm run lint-css && npm run mocha"
   }
 }

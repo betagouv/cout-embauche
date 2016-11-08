@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {reduxForm} from 'redux-form'
 import {FormDecorator} from './FormDecorator'
 import ReactSelect from 'react-select'
 import SelectOption from './SelectOption.js'

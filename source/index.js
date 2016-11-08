@@ -2,15 +2,15 @@ import React from 'react'
 import { render } from 'react-dom'
 import { compose, createStore, applyMiddleware } from 'redux'
 import App from './containers/App'
-import todoApp from './reducers'
+import reducers from './reducers'
 import DevTools from './DevTools'
 import { AppContainer } from 'react-hot-loader'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
 
-const sagaMiddleware = createSagaMiddleware()
+let sagaMiddleware = createSagaMiddleware()
 
-const createFinalStore = compose(
+let createFinalStore = compose(
 	// Enables your middleware:
 	applyMiddleware(sagaMiddleware), // any Redux middleware, e.g. redux-thunk
 	// Provides support for DevTools:
@@ -18,7 +18,7 @@ const createFinalStore = compose(
 )(createStore)
 
 
-const store = createFinalStore(todoApp)
+let store = createFinalStore(reducers)
 sagaMiddleware.run(rootSaga)
 
 let anchor = document.querySelector('.SGMAPembauche')

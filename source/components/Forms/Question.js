@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import {reduxForm} from 'redux-form'
 import {FormDecorator} from './FormDecorator'
-import classnames from 'classnames'
 import {answer, answered} from './userAnswerButtonStyle'
 import HoverDecorator from '../HoverDecorator'
 

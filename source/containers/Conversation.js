@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions'
 import Question from '../components/Forms/Question'
 import Input from '../components/Forms/Input'
 import SelectCommune from '../components/Forms/SelectCommune'

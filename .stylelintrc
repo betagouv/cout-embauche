@@ -2,17 +2,15 @@
     "rules": {
         "indentation": "tab",
         "string-quotes": "double",
-        "function-url-quotes": "single",
         "declaration-block-trailing-semicolon": "always",
         "comment-whitespace-inside": "always",
-        "no-missing-eof-newline": true,
+        "no-missing-end-of-source-newline": true,
         "max-empty-lines": 2,
 
-        "color-hex-case": "upper",
         "color-no-invalid-hex": true,
 
         "number-leading-zero": "never",
-        "number-zero-length-no-unit": true,
+        "length-zero-no-unit": true,
 
         "function-calc-no-unspaced-operator": true,
         "function-linear-gradient-no-nonstandard-direction": true,

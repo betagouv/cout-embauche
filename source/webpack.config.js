@@ -1,8 +1,8 @@
 var webpack = require('webpack'),
 	prefix = require('postcss-prefix-selector'),
 	autoprefixer = require('autoprefixer'),
-	prodEnv = process.env.NODE_ENV == 'production',
-	testEnv = process.env.NODE_ENV == 'test'
+	prodEnv = process.env.NODE_ENV == 'production', // eslint-disable-line no-undef
+	testEnv = process.env.NODE_ENV == 'test' // eslint-disable-line no-undef
 
 var config = {
 	devtool: 'cheap-module-source-map',

@@ -24,7 +24,5 @@ new WebpackDevServer(webpack(config), {
 		chunkModules: false,
 	},
 }).listen(port, 'localhost', function (err) {
-	if (err)
-		console.log(err)
-	console.log('Listening at localhost:3000')
+	console.log(err || 'Listening at localhost:3000') // eslint-disable-line no-console
 })

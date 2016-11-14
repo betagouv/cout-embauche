@@ -71,7 +71,9 @@ export default class Select extends Component {
 					return response.json()
 				})
 				.then(json => this.setState({options: json}))
-				.catch(error => console.log('Erreur dans la récupération des codes risques', error))
+				.catch(error =>
+					console.log('Erreur dans la récupération des codes risques', error) // eslint-disable-line no-console
+				)
 	}
 
 }

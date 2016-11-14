@@ -15,7 +15,7 @@ let getOptions = input =>
 		})
 		.then(json => ({options: json}))
 		.catch(function(error) {
-			console.log('Erreur dans la recherche de communes à partir du code postal', error)
+			console.log('Erreur dans la recherche de communes à partir du code postal', error) // eslint-disable-line no-console
 			return {options: []}
 		})
 

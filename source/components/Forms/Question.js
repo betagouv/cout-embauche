@@ -7,10 +7,10 @@ import HoverDecorator from '../HoverDecorator'
 class RadioLabel extends Component {
 
 	render() {
-		let {choice, input, submit, hover} = this.props,
+		let {choice, input, submit, hover, themeColours} = this.props,
 			labelStyle =
 				Object.assign(
-					(choice === input.value || hover) ? answered : answer,
+					(choice === input.value || hover) ? answered(themeColours) : answer(themeColours),
 				)
 
 		return (
@@ -35,12 +35,13 @@ export default class Question extends Component {
 		let {
 			input,
 			stepProps: {submit, choices},
+			themeColours
 		} = this.props
 
 		return (
 			<span>
 				{ choices.map((choice) =>
-						<RadioLabel key={choice} {...{choice, input, submit}}/>
+						<RadioLabel key={choice} {...{choice, input, submit, themeColours}}/>
 				)}
 			</span>
 		)

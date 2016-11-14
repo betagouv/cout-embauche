@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import {textColourOnWhite} from '../themeColours'
 
 export default ({
 	showAdvanced, toggleAdvancedSection,
 	inputTouched, inputChanged,
-	infoAlternance
+	infoAlternance, themeColours: {textColourOnWhite}
 }) =>
 <section className="info-zone">
 	{ !showAdvanced &&

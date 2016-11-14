@@ -11,7 +11,6 @@ import ResultATMP from '../components/ResultATMP'
 import {reduxForm, formValueSelector} from 'redux-form'
 import { percentage } from '../formValueTypes.js'
 import validate from '../conversation-validate'
-import {themeColour, textColour} from '../themeColours'
 
 let advancedInputSelector = formValueSelector('advancedQuestions'),
 	basicInputSelector = formValueSelector('basicInput')
@@ -23,10 +22,11 @@ let advancedInputSelector = formValueSelector('advancedQuestions'),
 @connect(state => ({
 	formValue: (field, simple) => simple ? basicInputSelector(state, field): advancedInputSelector(state, field),
 	steps: state.steps,
+	themeColours: state.themeColours
 }))
 class Conversation extends Component {
 	render() {
-		let { formValue, steps} = this.props
+		let { formValue, steps, themeColours: {colour, textColour}} = this.props
 		let effectifEntreprise = formValue('effectifEntreprise', 'basicInput')
 
 		/* C'est ici qu'est définie la suite de questions à poser. */
@@ -97,7 +97,7 @@ class Conversation extends Component {
 					question={<span>
 						N'hésitez pas à partager le simulateur !
 						<br/>
-						<span id="share-link" style={{color: textColour, background: themeColour}}>{window.location.href}</span>
+						<span id="share-link" style={{color: textColour, background: colour}}>{window.location.href}</span>
 					</span>
 					} />
 				<TextArea

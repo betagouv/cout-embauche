@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import GroupTitle from './GroupTitle'
 import classnames from 'classnames'
-import {themeColour} from '../themeColours'
 import { connect } from 'react-redux'
 import { change} from 'redux-form'
 import {submitStep, editStep} from '../actions'
@@ -17,7 +16,8 @@ or to gather a set of questions that will be eventually collapsed to a final @va
 marked with the 'explicit' class  */
 @connect(state => ({
 	steps: state.steps,
-	formValue: field => formValueSelector('advancedQuestions')(state, field)
+	formValue: field => formValueSelector('advancedQuestions')(state, field),
+	themeColours: state.themeColours
 }), dispatch => ({
 	editStep: name => dispatch(editStep(name)),
 	submitStep: (name, ignored) => dispatch(submitStep(name, ignored)),
@@ -26,7 +26,7 @@ marked with the 'explicit' class  */
 export default class Group extends Component {
 
 	render() {
-		let {visible, steps, foldTrigger, children, text} = this.props,
+		let {visible, steps, foldTrigger, children, text, themeColours: {colour}} = this.props,
 			folded = foldTrigger ? steps.get(foldTrigger) && steps.get(foldTrigger) != 'editing' : false
 
 		if (!visible) return null
@@ -34,7 +34,7 @@ export default class Group extends Component {
 		return (
 			<div className={classnames('form-group', {folded, unfolded: !folded, explicit: text})}>
 				{this.renderHeader(folded)}
-				<div className="group-content" style={!folded && text ? {borderLeft: '1px dashed' + themeColour} : {}}>
+				<div className="group-content" style={!folded && text ? {borderLeft: '1px dashed' + colour} : {}}>
 					<ReactCSSTransitionGroup
 						transitionName="group-animated"
 						transitionEnterTimeout={300}
@@ -54,7 +54,7 @@ export default class Group extends Component {
 	renderHeader(folded) {
 		let {
 			steps, foldTrigger, editStep, setFormValue, submitStep,
-			text, valueType, formValue,
+			text, valueType, formValue, themeColours
 		} = this.props
 
 		if (!text) return null
@@ -71,10 +71,10 @@ export default class Group extends Component {
 
 		return (
 			<div className="header">
-				<GroupTitle {...{text, folded}} onClick={headerClick} />
+				<GroupTitle themeColours={themeColours} {...{text, folded}} onClick={headerClick} />
 				{ !folded && <IgnoreStepButton action={ignoreGroup} /> }
 				{ folded &&
-					<StepAnswer	{...{value, human, valueType, ignored}} />
+					<StepAnswer	{...{value, human, valueType, ignored, themeColours}} />
 				}
 			</div>
 		)

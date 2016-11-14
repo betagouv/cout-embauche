@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {FormDecorator} from './FormDecorator'
 import classnames from 'classnames'
-import {themeColour, textColour} from '../../themeColours'
 
 @FormDecorator('input')
 export default class Input extends Component {
@@ -13,6 +12,7 @@ export default class Input extends Component {
 			meta: {
 				touched, error, active,
 			},
+			themeColours
 		} = this.props,
 			answerSuffix = valueType.suffix,
 			suffixed = answerSuffix != null,
@@ -27,7 +27,7 @@ export default class Input extends Component {
 						className={classnames({suffixed})}
 						id={'step-' + name}
 						{...attributes}
-						style={{borderColor: themeColour}}
+						style={{borderColor: themeColours.colour}}
 						onKeyDown={({key}) =>
 							key == 'Enter' && input.value && (
 							!error ?
@@ -40,7 +40,7 @@ export default class Input extends Component {
 							{answerSuffix}
 						</label>
 					}
-					<button className="send" style={{visibility: sendButtonDisabled ? 'hidden' : 'visible', color: textColour, background: themeColour}}
+					<button className="send" style={{visibility: sendButtonDisabled ? 'hidden' : 'visible', color: themeColours.textColour, background: themeColours.colour}}
 						onClick={() => !error ? submit() : null} >
 						<span className="text">valider</span>
 						<span className="icon">&#10003;</span>

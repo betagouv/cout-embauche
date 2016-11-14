@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {FormDecorator} from './FormDecorator'
-import {themeColour, textColour} from '../../themeColours'
 
 @FormDecorator('text-area')
 export default class Input extends Component {
@@ -12,6 +11,7 @@ export default class Input extends Component {
 			meta: {
 				touched, error,
 			},
+			themeColours
 		} = this.props,
 			inputError = touched && error,
 			sendButtonDisabled = !input.value || inputError
@@ -31,7 +31,7 @@ export default class Input extends Component {
 						)}
 						/>
 					<button className="send"
-						style={{visibility: sendButtonDisabled ? 'hidden' : 'visible', color: textColour, background: themeColour}}
+						style={{visibility: sendButtonDisabled ? 'hidden' : 'visible', color: themeColours.textColour, background: themeColours.colour}}
 						onClick={() => !error ? submit() : null} >
 						<span className="text">valider</span>
 						<span className="icon">✓</span>

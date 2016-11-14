@@ -29,7 +29,7 @@ export default class Widget extends React.Component {
 			inputTouched, inputChanged, infoAlternance
 		} = this.props
 		return (
-				<div>
+				<div className="widget">
 					<InputSection
 						showInput={activeSection == 'input'}
 						showAdvanced={showAdvanced}

@@ -25,3 +25,6 @@ export const TOGGLE_ADVANCED_SECTION = 'TOGGLE_ADVANCED_SECTION'
 
 // The initial request triggers the display of results based on default input information (not filled by the user)
 export const INITIAL_REQUEST = 'INITIAL_REQUEST'
+
+export const CHANGE_THEME_COLOUR = 'CHANGE_THEME_COLOUR'
+export function changeThemeColour(colour) {return {type: CHANGE_THEME_COLOUR, colour}}

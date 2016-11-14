@@ -6,7 +6,7 @@
 	margin: auto;
 }
 
-input, select {
+.widget input, .widget select {
 	font-size: 100%;
 	appearance: none;
 	background-color: white;
@@ -19,6 +19,6 @@ input, select {
 	text-align: center;
 }
 
-input[type="number"] {
+.widget input[type="number"] {
 	max-width: 5em;
 }

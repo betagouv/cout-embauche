@@ -1,9 +1,8 @@
 import React from 'react'
-import {themeColour, textColourOnWhite} from '../themeColours'
 
 /* Simple way for a visual stack : using two h1,
 hinting at the fact that it is a group result */
-export default ({text, onClick, folded}) =>
+export default ({text, onClick, folded, themeColours: {colour, textColourOnWhite}}) =>
 		<div className="group-title" onClick={onClick}>
 			{folded &&
 				<h1 style={{
@@ -22,7 +21,7 @@ export default ({text, onClick, folded}) =>
 				cursor: 'pointer',
 				border: '1px solid #aaa',
 			} : {
-				border: '1px solid ' + themeColour,
+				border: '1px solid ' + colour,
 				color: textColourOnWhite,
 			}}>
 				{text}

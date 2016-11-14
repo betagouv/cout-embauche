@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import {themeColour, textColour, lighterTextColour} from '../themeColours'
 
-let Figure = ({figure, title}) =>
+let Figure = ({figure, title, textColour}) =>
 	<ReactCSSTransitionGroup
 			transitionName="flash"
 			transitionEnterTimeout={100}
@@ -13,10 +13,12 @@ let Figure = ({figure, title}) =>
 			</span>
 		</ReactCSSTransitionGroup>
 
+@connect(state => ({themeColours: state.themeColours}))
 export default class Summary extends Component {
 	render() {
 		let
 			{
+				themeColours: {colour, textColour, lighterTextColour},
 				results,
 				results: {
 					salaire_super_brut, cout_du_travail,
@@ -41,21 +43,21 @@ export default class Summary extends Component {
 
 		return (
 			<section className="simulation-summary">
-				<div className="content" style={{background: themeColour, color: lighterTextColour}}>
+				<div className="content" style={{background: colour, color: lighterTextColour}}>
 					<div className="figures">
 						<p style={paragraphBorderStyle}>
-							Mon {labelTypeEntreprise} versera <Figure title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois
+							Mon {labelTypeEntreprise} versera <Figure textColour={textColour} title="Salaire super-brut" figure={humanize(salaire_super_brut)}/> par mois
 							{ (salaire_super_brut != cout_du_travail) ?
 								<span>,
 									<br />
-									ou <Figure title="Coût du travail" figure={humanize(cout_du_travail)}/>
+									ou <Figure textColour={textColour} title="Coût du travail" figure={humanize(cout_du_travail)}/>
 									&nbsp;après déduction des aides différées.
 								</span> :
 								<span>.</span>
 							}
 						</p>
 						<p style={paragraphBorderStyle}>
-							Mon salarié·e touchera <Figure title={salaireDescription} figure={humanize(salaireFigure)}/>&nbsp;
+							Mon salarié·e touchera <Figure textColour={textColour} title={salaireDescription} figure={humanize(salaireFigure)}/>&nbsp;
 							{salaireTitle} par mois.
 						</p>
 					</div>

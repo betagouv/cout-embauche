@@ -22,6 +22,10 @@ var config = {
 		'test': [
 			'babel-polyfill',
 			'./source/test/test.js'
+		],
+		'colour-chooser': [
+			'babel-polyfill',
+			'./source/entry-colour-chooser.js'
 		]
 	},
 	output: {

@@ -5,7 +5,6 @@ import {Field, change} from 'redux-form'
 import {submitStep, editStep} from '../../actions'
 import conversationSteps from '../../conversation-steps'
 import IgnoreStepButton from './IgnoreStepButton'
-import {themeColour, textColourOnWhite} from '../../themeColours'
 import StepAnswer from './StepAnswer'
 
 /*
@@ -23,6 +22,7 @@ export var FormDecorator = formType => RenderField =>
 			return {
 				steps: state.steps,
 				answers: advancedQuestions && advancedQuestions.values,
+				themeColours: state.themeColours
 			}
 		},
 		dispatch => ({
@@ -42,6 +42,7 @@ export var FormDecorator = formType => RenderField =>
 				steps,
 				submitStep,
 				possibleChoice, // should be found in the question set theoritically, but it is used for a single choice question -> the question itself is dynamic and cannot be input as code,
+				themeColours
 			} = this.props
 
 			let stepData = conversationSteps[name]
@@ -105,6 +106,7 @@ export var FormDecorator = formType => RenderField =>
 								component={RenderField}
 								name={name}
 								stepProps={stepProps}
+								themeColours={themeColours}
 								/>
 						</fieldset>
 				}
@@ -127,9 +129,9 @@ export var FormDecorator = formType => RenderField =>
 				<span>
 					<h1
 						style={{
-							border: '2px solid ' + themeColour, // higher border width and colour to emphasize focus
+							border: '2px solid ' + this.props.themeColours.colour, // higher border width and colour to emphasize focus
 							background: 'none',
-							color: textColourOnWhite,
+							color: this.props.themeColours.textColourOnWhite,
 							maxWidth: wideQuestion ? '95%' : '',
 						}}
 						>{this.props.question}</h1>
@@ -148,6 +150,7 @@ export var FormDecorator = formType => RenderField =>
 				editStep,
 				answers,
 				steps,
+				themeColours
 			} = this.props,
 				value = answers[name],
 				ignored = steps.get(name) === 'ignored'
@@ -156,7 +159,7 @@ export var FormDecorator = formType => RenderField =>
 			return (
 				<span onClick={() => editStep(name)}>
 					<h1>{this.props.title}</h1>
-						<StepAnswer	{...{value, human, valueType, ignored}} />
+						<StepAnswer	{...{value, human, valueType, ignored, themeColours}} />
 				</span>)
 		}
 

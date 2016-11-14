@@ -6,6 +6,7 @@ import {
 	SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS,
 	TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION,
 } from './actions'
+import computeThemeColours from './themeColours'
 
 function steps(state = new Map(), {type, name, ignored}) {
 	switch (type) {
@@ -68,6 +69,11 @@ function inputChanged(state = false, {type}) {
 	}
 }
 
+function themeColours(state = computeThemeColours(), {type, colour}) {
+	if (type == 'CHANGE_THEME_COLOUR')
+		return computeThemeColours(colour)
+	else return state
+}
 
 export default combineReducers({
 	//  this is handled by redux-form, pas touche !
@@ -84,5 +90,7 @@ export default combineReducers({
 	activeSections,
 
 	// Has the user edited one form field ?
-	inputChanged
+	inputChanged,
+
+	themeColours,
 })

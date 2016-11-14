@@ -22,13 +22,13 @@ export default ({
 			{ inputChanged &&
 				<div key="2" className="input-tip">
 					<p>Votre estimation est mise à jour à chaque changement</p>
-					<p>Vous pouvez ensuite &nbsp;
+					<p>Pour des résultats plus précis,&nbsp;
 						<a href="#" style={{color: textColourOnWhite}}
 						id="show-advanced"
 						onClick={toggleAdvancedSection}
 						title="Allez plus loin dans l'estimation avec quelques questions supplémentaires">
-						affiner votre situation
-					</a>
+						affinez votre situation
+					</a> (moins de 10 questions)
 					</p>
 				</div>
 			}

@@ -4,6 +4,6 @@ export let number = {
 	pre: v =>
 		v.replace(/,/g, '.') // commas -> dots
 		.replace(/\s/g, ''), // remove spaces
-	test: /^[0-9]+(\.[0-9]+)?$/,
+	test: v => /^[0-9]+(\.[0-9]+)?$/.test(v),
 	error: 'Vous devez entrer un nombre',
 }

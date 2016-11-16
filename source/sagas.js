@@ -10,7 +10,8 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 function* handleFormChange() {
 
-	// debounce by 500ms
+	/* debounce by 500ms : don't make 10 network requests if the user changes
+	the salary incrementally from 3000 to 3010 */
 	yield call(delay, 500)
 
 	try {
@@ -22,23 +23,26 @@ function* handleFormChange() {
 					(state.form.advancedQuestions && state.form.advancedQuestions.values) || {}
 				),
 			validationErrors = validate(advancedValues)
+
 		// there is a form validation error -> do not update
 		if (Object.keys(validationErrors).length)
 			return
 
-
-		// valid advanced answers -> make the simulation with these answers.
-		// Else use default values !
-		Object.keys(steps).reduce((final, name) => {
-			let {defaultValue} = steps[name]
-			if (defaultValue && (advancedValues[name] == null || validationErrors[name]))
-				advancedValues[name] = defaultValue
-		})
-
-		let
+		/* 	The simulation is made with the basic and avanced input values
+				But if the user input is unset yet or invalid, use the default step value
+		*/
+		let defaultAdvancedValues =
+			Object.keys(steps).reduce((final, name) => {
+				let {defaultValue} = steps[name]
+				return (
+					defaultValue && (advancedValues[name] == null || validationErrors[name])
+				) ?	{...final, [name]: defaultValue}
+						: final
+			}, {}),
 			inputValues = Object.assign({},
 				basicValues,
 				advancedValues,
+				defaultAdvancedValues
 			),
 			// Transform the raw input data to a new one tailored for the simulation API
 			transformedValues = Object.keys(steps).reduce((final, name) => {

@@ -123,7 +123,7 @@ export default {
 		choices: [ 'Oui', 'Non' ],
 		helpText:
 		<p>
-			Cotisation accidents du travail (AT) et maladies professionnelles (MP). Son taux est accessible sur&nbsp;<a href="http://www.net-entreprises.fr/html/compte-accident-travail.htm" target="_blank">net-entreprises.fr</a> ou reçu par courrier.
+			C'est le taux de la cotisation accidents du travail (AT) et maladies professionnelles (MP). Il est accessible sur&nbsp;<a href="http://www.net-entreprises.fr/html/compte-accident-travail.htm" target="_blank">net-entreprises.fr</a> ou reçu par courrier.
 		</p>,
 	},
 

@@ -2,13 +2,13 @@ import steps from './conversation-steps'
 
 export default values =>
 	values == null ? {} :
-	Object.keys(values).reduce((result, next) => {
+	Object.keys(values).reduce((final, next) => {
 		let value = values[next],
 			{valueType = {}, validator} = steps[next],
-			{pre = v => v, validate} = Object.assign({}, validator, valueType.validator)
-		if (!validator) return result
+			{pre = (v => v), test, error} = Object.assign({}, validator, valueType.validator)
+		if (!test) return final
 
-		let error = validate(pre(value))
+		let valid = test(pre(value))
 
-		return Object.assign(result, error ? {[next]: error} : null)
+		return Object.assign(final, valid ? null : {[next]: error})
 	}, {})

@@ -44,7 +44,7 @@ class Conversation extends Component {
 					name="mutuelle" />
 
 				<Group
-					text="Taux de risque AT/MP"
+					text="Risques professionnels"
 					visible={steps.get('mutuelle')}
 					foldTrigger="tauxRisque"
 					valueType={percentage}

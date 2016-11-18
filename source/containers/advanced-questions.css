@@ -144,9 +144,9 @@ question : make it visible with colors */
 }
 
 .answer-ignored {
-	font-size: 60%;
+	font-size: 80%;
 	opacity: .8;
-	margin-left: .8em;
+	margin-left: .4em;
 	vertical-align: middle;
 }
 
@@ -174,13 +174,17 @@ fieldset > .ignore {
 .step input[type=text] {
 	border-bottom: 1px solid;
 	display: inline-block;
-	line-height: 1.8em;
+	line-height: 1.6em;
 	font-size: 100%;
 	padding: 0;
 	padding-right: .4em;
 	width: 8em;
 	text-align: right;
 	padding-left: .2em;
+}
+
+.step input::placeholder {
+   font-style: italic;
 }
 
 .step input.suffixed {

@@ -9,7 +9,7 @@
 .widget input, .widget select {
 	font-size: 100%;
 	appearance: none;
-	background-color: white;
+	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid #aaa;
 	border-radius: 0;

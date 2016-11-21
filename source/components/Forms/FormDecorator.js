@@ -96,20 +96,22 @@ export var FormDecorator = formType => RenderField =>
 			return (
 			<div className={classNames('step', {unfolded}, formType)} >
 				{this.state.helpVisible && this.renderHelpBox()}
-				{this.renderHeader(unfolded, valueType, human, helpText, wideQuestion)}
-				{unfolded &&
-						<fieldset>
-							{ defaultValue &&
-								<IgnoreStepButton name={name} action={ignoreStep}/>
-							}
-							<Field
-								component={RenderField}
-								name={name}
-								stepProps={stepProps}
-								themeColours={themeColours}
-								/>
-						</fieldset>
-				}
+				<div style={{visibility: this.state.helpVisible ? 'hidden' : 'visible'}}>
+					{this.renderHeader(unfolded, valueType, human, helpText, wideQuestion)}
+					{unfolded &&
+							<fieldset>
+								{ defaultValue &&
+									<IgnoreStepButton name={name} action={ignoreStep}/>
+								}
+								<Field
+									component={RenderField}
+									name={name}
+									stepProps={stepProps}
+									themeColours={themeColours}
+									/>
+							</fieldset>
+					}
+				</div>
 			</div>
 			)
 		}

@@ -14,7 +14,7 @@ export default ({
 			transitionName="user-next-action-animation"
 			transitionEnterTimeout={10000}
 			transitionLeaveTimeout={700} >
-			{ !inputTouched &&
+			{ !inputTouched && !inputChanged &&
 				<div key="1" className="input-tip">
 					<p>Renseignez votre situation ci-dessus</p>
 				</div>

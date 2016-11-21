@@ -95,9 +95,7 @@ class Conversation extends Component {
 					visible={formValue('serviceUtile') === ':-)'}
 					name="partage"
 					question={<span>
-						N'hésitez pas à partager le simulateur !
-						<br/>
-						<span id="share-link" style={{color: textColour, background: colour}}>{window.location.href}</span>
+						Merci. N'hésitez pas à partager le simulateur !
 					</span>
 					} />
 				<TextArea

@@ -22,9 +22,8 @@
     "lint-css": "stylelint source/*.css",
     "precompile": "rm -rf dist",
     "compile": "NODE_ENV='production' webpack --config source/webpack.config.js --optimize-minimize --optimize-dedupe --optimize-occurrence-order",
-    "pretest": "NODE_ENV='test' npm start",
-    "mocha": "curl http://localhost:3000/dist/test.js > test.temp.js && mocha source/test/setup-jsdom.js test.temp.js && rm test.temp.js",
-    "test": "npm run lint-js && npm run lint-css && npm run mocha"
+    "pretest": "npm run lint-js && npm run lint-css && NODE_ENV='test' npm start",
+    "test": "curl http://localhost:3000/dist/test.js > test.temp.js && mocha source/test/setup-jsdom.js test.temp.js && rm test.temp.js"
   },
   "dependencies": {
     "babel-runtime": "^6.6.1",

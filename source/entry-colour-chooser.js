@@ -37,7 +37,7 @@ class MyComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<p className="indication">Vous pouvez sur cette page visualiser le simulateur pour différentes couleurs dominantes.</p>
+				<p className="indication">Visualisez sur cette page l'apparence du module pour différentes couleurs principales</p>
 				<SliderPicker
 					color='#4A89DC'
 					onChangeComplete={this.changeColour}

@@ -1,6 +1,6 @@
-A widget to estimate the cost of hiring in France
+A widget to estimate the price of hiring in France : social security contributions minus national exemptions.
 
-> Module Web d'estimation du coût d'une embauche en France.
+> Module Web d'estimation du prix d'une embauche en France. Ce document est technique, et donc rédigé en anglais pour favoriser la réutilisation.
 
 **[Online demo](http://sgmap.github.io/cout-embauche/)**.
 
@@ -13,114 +13,80 @@ Usage
 Include this line where you want the widget to appear in your page:
 
 ```html
- <script src="http://embauche.beta.gouv.fr/modules/pointe/cout-embauche-widget.js"></script>
+ <script id="script-simulateur-embauche" src="dist/simulateur.js" data-couleur="#4A89DC"></script>
  ```
+
+It will add an iframe to your page, containing the simulation interface.
 
 > Reminder: this widget is in beta and may be updated at any time. Please send an email to contact[AT]embauche.beta.gouv.fr to request being sent potentially breaking update notices.
 
 ### Style
 
-The widget's style is deliberately neutral to avoid visual integration problems. The host site's styles will affect the widget, and one can finalize the visual integration with a few CSS rules.
+The widget's style is deliberately simple and used only one color. Set your own color as an attribute to the `script` tag above to blend it in your page's visual theme.
 
-### Using with Bootstrap
 
-If you use [Twitter Bootstrap version 2 CSS](http://getbootstrap.com/2.3.2/), an integration is provided. Simply add the following line after the inclusion of the widget:
+### Alternative integration
 
-```html
-<script async src="http://embauche.beta.gouv.fr/modules/pointe/bootstrap-compat.js"></script>
+For a deeper style personnalisation, or to be able to use the JS API (see its documentation at `./js-API.md`) the widget can be integrated as a no-iframe script. Learn how by reading `./iframe.html` page or contacting us at contact[AT]embauche.beta.gouv.fr.
+
+
+Development
+---------------------
+
+
+Run :
+
+```
+npm i
+npm start
+```
+and open `localhost:3000`.
+
+
+### Testing
+
+The widget is tested with Enzyme in a headless browser environment.
+
+```
+npm run test
+```
+> This command also runs the js and css linters.
+
+### Compilation
+
+The development version is heavy and slow. Use this in production :
+
+```
+npm run compile
 ```
 
-> If you use version [Bootstrap version 3](http://getbootstrap.com), no compatibility line should be required.  
+Architecture
+-------------------
+
+The app is built with `React`, `Redux` and `Redux-forms`. Read the [Redux introduction](http://redux.js.org/) before going further. The computations rely on the OpenFisca `/formula` API through a dedicated instance.
+
+The app can be in 3 different states. The `Summary` component is always visible to give a live summary of the results.
+- basic input, the inital app state, providing you with a fast estimation before your water is boiled. It is displayed in a "cloze test" design.
+- advanced input to go further, ~10 questions while your tea infuses, displayed in a conversational design.
+- a detailed view that dissects the results
+
+When the user fills the forms :
+- `Redux-forms` updates the state with raw inputs
+- `sagas` watch the form update action and triggers, if needed, a simulation API call with the app state, reprocessed. The simulation results are stored in the app state too.
+- The `React` components, notably the `Summary` and `Details` views use the app state to display the results to the user.
+
+
+The `Conversation` component handles the advanced form. The conversation is composed of form components, augmented with the `formDecorator` higher order component ([read about it](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750)).
+
 
 Browser compatibility
 ---------------------
 
-### [Continuously tested](https://circleci.com/gh/sgmap/cout-embauche) on:
+### The widget is compatible with most recent browsers :
 
-[![Integration Tests Results](https://saucelabs.com/browser-matrix/sgmap-embauche-bot.svg)](https://saucelabs.com/u/sgmap-embauche-bot)
+- IE10. TODO. (not compatible with IE < 10)
+- Safari 8. TODO
+- Firefox (latest stable) TODO
+- Chrome (latest stable) TODO
 
-
-### Also known to be compatible with:
-
-- IE10.
-- Safari 8.
-- Opera 28.
-
-> These tests are run manually and may not be as up-to-date as the above.
-
-
-### Not compatible with:
-
-- IE < 10.
-- Safari < 5.1.
-- Opera < 11.5.
-
-
-JS API
----
-
-The JS API is exposed in `window.Embauche`.
-
-At the moment, it depends on the widget being present in the DOM to load the configuration from it.
-
-> Please open an issue if you want to consume the API in a different way.
-
-
-### `window.Embauche.OpenFisca.getLastResults()`
-
-Returns the currently-displayed computed simulation data, as an object containing the OpenFisca-computed values, as identifiers from the OpenFisca [legislation](http://legislation.openfisca.fr) mapped to `Number` values.
-
-
-### `window.Embauche.OpenFisca.get([additionalParameters], callback)`
-
-Calls the Paie API, parameterised with the current state of the form.
-
-You can adjust the situation to compute by passing an object as the first argument (`additionalParameters`). The parameters you can use are documented in the [Paie API](http://embauche.beta.gouv.fr/api/doc).
-
-This function takes a callback as last argument. This callback will be called with three parameters:
-
-- An optional error. The failed `XMLHttpRequest`, or a `SyntaxError` if the fetched OpenFisca value is not properly formatted.
-- An object containing the OpenFisca-computed values, as identifiers from the OpenFisca [legislation](http://legislation.openfisca.fr) mapped to `Number` values.
-- The full OpenFisca [response](http://embauche.beta.gouv.fr/api/doc) if you need everything it sends back.
-
-If the callback is not input, returns the OpenFisca `GET` URL to obtain the results, as documented in the [`/formula` API](http://embauche.beta.gouv.fr/api/doc).
-
-#### Example:
-
-```js
-window.Embauche.OpenFisca.get({
-	zone_revitalisation_rurale: true
-}, function(error, results) {
-	if (error) throw error;
-	window.alert('Employer would pay ' + results.salaire_super_brut + ' if this geographic zone was elected as a ZRR.')
-});
-```
-
-Build
------
-
-This widget is packaged with [Webpack](http://webpack.github.io) and distributed through [RawGit CDN](https://rawgit.com).
-
-> RawGit does not offer any guarantees, we will distribute on our own servers when we get enough users to justify the investment.
-
-
-### Compilation
-
-To compile your modifications, clone this repository, `cd` to it and `npm install`. You can then run `npm run compile` whenever you change a file to update files under `dist`.
-
-Run `npm start` to get [webpack's development server](https://webpack.github.io/docs/webpack-dev-server.html) and visit the ouput url to work on `index.html` with automatic page reloading on source change.
-
-To work directly on a module with automatic page reloading , e.g. the `cout-embauche-widget`, add  `dist/cout-embauche-widget` at the end of the ouput url.
-
-
-### Distribution
-
-Simply compile the widget and push your changes on GitHub.
-
-
-Test
-----
-
-This widget is covered by integration tests written with [Watai](https://github.com/MattiSG/Watai) under the `test` folder. To run them locally, follow the [installation guide](https://github.com/MattiSG/Watai#installing) and run `npm test`.
-
-These tests are run continuously on [CircleCI](https://circleci.com/gh/sgmap/cout-embauche).
+> These tests are run manually

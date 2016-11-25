@@ -8,7 +8,7 @@ var config = {
 	devtool: 'cheap-module-source-map',
 	entry: {
 		'cout-embauche':
-			prodEnv ? [
+			(testEnv || prodEnv) ? [
 				'babel-polyfill',
 				'./source/entry.js'
 			] : [
@@ -83,7 +83,7 @@ var config = {
 /* Plugins */
 
 var
-	hotReloading = prodEnv ? [] : [new webpack.HotModuleReplacementPlugin()],
+	hotReloading = (prodEnv || testEnv) ? [] : [new webpack.HotModuleReplacementPlugin()],
 	fetchDefinition = [testEnv ?
 		new webpack.ProvidePlugin({'fetch': 'node-fetch'}) :
 		new webpack.ProvidePlugin({

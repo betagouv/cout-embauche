@@ -6,28 +6,42 @@ var webpack = require('webpack'),
 
 var config = {
 	devtool: 'cheap-module-source-map',
-	entry: {
-		'cout-embauche':
-			(testEnv || prodEnv) ? [
-				'babel-polyfill',
-				'./source/entry.js'
-			] : [
-				'webpack-dev-server/client?http://localhost:3000/',
-				'webpack/hot/only-dev-server',
-				'react-hot-loader/patch',
-				'babel-polyfill',
-				'./source/entry.js',
-			],
-		'simulateur': './source/entry-iframe.js',
-		'test': [
-			'babel-polyfill',
-			'./source/test/test.js'
-		],
-		'colour-chooser': [
-			'babel-polyfill',
-			'./source/entry-colour-chooser.js'
-		]
-	},
+	entry: (function() {
+		let
+			jsModule = {
+				'cout-embauche':
+					(testEnv || prodEnv) ? [
+						'babel-polyfill',
+						'./source/entry.js'
+					] : [
+						'webpack-dev-server/client?http://localhost:3000/',
+						'webpack/hot/only-dev-server',
+						'react-hot-loader/patch',
+						'babel-polyfill',
+						'./source/entry.js',
+					]
+			},
+			iframeModule = {
+				'simulateur': './source/entry-iframe.js'
+			},
+			testModule = testEnv && {
+				test: [
+					'babel-polyfill',
+					'./source/test/test.js'
+				]
+			},
+			colourModule = !testEnv && {
+				'colour-chooser': [
+					'babel-polyfill',
+					'./source/entry-colour-chooser.js'
+				]
+			}
+
+
+		return Object.assign(
+			jsModule, iframeModule, testModule, colourModule
+		)
+	})(),
 	output: {
 		path: require('path').resolve('./dist/'),
 		filename: '[name].js',
@@ -92,7 +106,7 @@ var
 	noError = [new webpack.NoErrorsPlugin()]
 
 config.plugins =
-	hotReloading
+	[].concat(hotReloading)
 		.concat(fetchDefinition)
 		.concat(noError)
 

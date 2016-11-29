@@ -30,7 +30,7 @@ export default {
 	/* Nous simulons une embauche, donc nous incrémentons l'effectif */
 	'effectifEntreprise': {
 		initial: 0,
-		adapt: raw => ({'effectif_entreprise': raw + 1}),
+		adapt: raw => ({'effectif_entreprise': +raw + 1}),
 	},
 
 	/* Nous voulons un ratio : on multiplie donc le nombre d'heures par semaine capté par

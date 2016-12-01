@@ -19,8 +19,9 @@ function collectInput(form) {
 	Object.assign(input, addBooleanParameters())
 
 	// Additional parameters
-	const today = new Date(),
-		mm = ('0' + (today.getMonth() + 1)).slice(-2)
+	const today = new Date()
+	let mm = ('0' + (today.getMonth() + 1)).slice(-2)
+	mm = mm == '12' ? '11' : mm // computations will fail in december. Lazy fix.
 
 	input['contrat_de_travail_debut'] = today.getFullYear() + '-' + mm
 

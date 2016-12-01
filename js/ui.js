@@ -2,15 +2,26 @@ import transForms from './transForms.js'
 
 const getForm = () => document.querySelector('.SGMAPembauche form')
 
+// Compute the YYYY-MM simulation period
+const today = new Date()
+let mm = ('0' + (today.getMonth() + 1)).slice(-2)
+mm = mm == '12' ? '11' : mm // computations will fail in december. Lazy fix.
+const simulationPeriod = today.getFullYear() + '-' + mm
+
+
 function getOutputVariables() {
 	const baseUrl = getForm().action,
+		datedBaseUrl =
+			baseUrl.split('formula/')[0] +
+			'formula/' + simulationPeriod + '/' +
+			baseUrl.split('formula/')[1],
 		// some of the output variables are chosen dynamically
 		sourcesToAdd =
 			[ ...document.querySelectorAll('[data-add-source-to-action]') ]
 				.map(element => element.getAttribute('data-source'))
 				.join('+')
 
-	return `${baseUrl}+${sourcesToAdd}`
+	return `${datedBaseUrl}+${sourcesToAdd}`
 }
 
 function collectInput(form) {
@@ -19,11 +30,7 @@ function collectInput(form) {
 	Object.assign(input, addBooleanParameters())
 
 	// Additional parameters
-	const today = new Date()
-	let mm = ('0' + (today.getMonth() + 1)).slice(-2)
-	mm = mm == '12' ? '11' : mm // computations will fail in december. Lazy fix.
-
-	input['contrat_de_travail_debut'] = today.getFullYear() + '-' + mm
+	input['contrat_de_travail_debut'] = simulationPeriod
 
 	return input
 }

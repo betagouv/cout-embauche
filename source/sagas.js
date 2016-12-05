@@ -5,6 +5,7 @@ import steps from './conversation-steps'
 import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS} from './actions'
 import {request} from './openfisca'
 import validate from './conversation-validate'
+import {change} from 'redux-form'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -72,7 +73,7 @@ function* handleFormChange() {
 }
 
 function* watchFormChanges() {
-	yield takeLatest([ INITIAL_REQUEST, 'redux-form/CHANGE' ], handleFormChange)
+	yield takeLatest([ INITIAL_REQUEST, change().type ], handleFormChange)
 }
 
 export default function* rootSaga() {

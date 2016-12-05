@@ -7,6 +7,7 @@ import {
 	TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION,
 } from './actions'
 import computeThemeColours from './themeColours'
+import {change} from 'redux-form'
 
 function steps(state = new Map(), {type, name, ignored}) {
 	switch (type) {
@@ -62,7 +63,7 @@ function activeSections(state = {top: 'input', advanced: false}, {type}) {
 
 function inputChanged(state = false, {type}) {
 	switch(type) {
-	case 'redux-form/CHANGE':
+	case change().type:
 		return true
 	default:
 		return state

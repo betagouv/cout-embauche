@@ -51,7 +51,8 @@ function* handleFormChange() {
 					userValue = inputValues[name]
 
 				let {adapt, valueType = {}, validator} = step
-				if (userValue == null || !adapt)
+
+				if (!adapt)
 					return final
 
 				let

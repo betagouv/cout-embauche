@@ -1,5 +1,14 @@
 import outputVariables from './outputVariables.yaml'
 
+export function simulationDate() {
+	let
+		today = new Date(),
+		MM = ('0' + (today.getMonth() + 1)).slice(-2),
+		simulationMM = MM == '12' ? '11' : MM // computations will fail in december. Lazy fix.
+
+	return today.getFullYear() + '-' + simulationMM
+}
+
 // JS API
 window.Embauche = {
 	OpenFisca: {
@@ -23,7 +32,7 @@ let serializeObject = source =>
 
 // Url pointing to an instance of the OpenFisca Web API and containing the desired output variables
 let baseUrl =
-	'https://embauche.beta.gouv.fr/openfisca/api/2/formula/' +
+	'https://embauche.beta.gouv.fr/openfisca/api/2/formula/' + simulationDate() + '/' +
 	// output variables are extracted from the YAML file used to display them in the UI
 	Object.keys(outputVariables)
 		.reduce((final, category) =>

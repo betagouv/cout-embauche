@@ -1,8 +1,6 @@
 import React from 'react'
 import { percentage, euro } from './formValueTypes.js'
-
-let	today = new Date()
-
+import {simulationDate} from './openfisca.js'
 
 export default {
 
@@ -11,7 +9,7 @@ export default {
 		adapt: () => ({
 			allegement_fillon_mode_recouvrement: 'anticipe_regularisation_fin_de_periode',
 			allegement_cotisation_allocations_familiales_mode_recouvrement: 'anticipe_regularisation_fin_de_periode',
-			contrat_de_travail_debut: today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2),
+			contrat_de_travail_debut: simulationDate(),
 		}),
 	},
 

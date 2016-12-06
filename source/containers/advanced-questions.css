@@ -175,12 +175,19 @@ fieldset > .ignore {
 	border-bottom: 1px solid;
 	display: inline-block;
 	line-height: 1.6em;
+	height: 1.6em; /* IE 11 needs this */
 	font-size: 100%;
 	padding: 0;
 	padding-right: .4em;
 	width: 8em;
 	text-align: right;
 	padding-left: .2em;
+}
+
+/* Remove IE's clear button the appears before our suffix */
+.step input::-ms-clear {
+  width : 0;
+  height: 0;
 }
 
 .step input::placeholder {

@@ -109,5 +109,10 @@ config.plugins =
 	[].concat(hotReloading)
 		.concat(fetchDefinition)
 		.concat(noError)
+		.concat(new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': `"${process.env.NODE_ENV}"` // eslint-disable-line no-undef
+			}
+		}))
 
 module.exports = config

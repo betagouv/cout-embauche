@@ -2,10 +2,11 @@ import { takeLatest } from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
 import steps from './conversation-steps'
-import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS} from './actions'
+import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS, SUBMIT_STEP} from './actions'
 import {request} from './openfisca'
 import validate from './conversation-validate'
 import {change} from 'redux-form'
+let CHANGE = change().type
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -73,10 +74,49 @@ function* handleFormChange() {
 
 }
 
-function* watchFormChanges() {
-	yield takeLatest([ INITIAL_REQUEST, change().type ], handleFormChange)
+function* handleSatisfaction({type, name, meta}) {
+	let
+		satisfaction = type == CHANGE && meta.field == 'serviceUtile',
+		message = type == SUBMIT_STEP && name == 'remarque'
+
+	if (! (satisfaction || message)) return
+
+	try {
+		let {remarque, serviceUtile} =
+				yield	select(state => state.form.advancedQuestions.values)
+
+		let body = {
+			'fields': {
+				'satisfait': message ? 'remarque' : serviceUtile,
+				'message': message ? remarque : ''
+			}
+		}
+		yield call((body) =>
+			fetch('https://api.airtable.com/v0/appihuPtw4TUIR0Y3/retours', {
+				method: 'POST',
+				headers: {
+					'Authorization': 'Bearer keyUq4AzhJSweQaGB',
+					'Content-type': 'application/json'
+				},
+				body: JSON.stringify(body)
+			}), body)
+	} catch (e) {
+		console.log('ARGHH, erreur dans l\'envoi de la satisfaction utilisateur', e) // eslint-disable-line no-console
+	}
+
+
 }
 
+function* watchFormChanges() {
+	yield takeLatest([ INITIAL_REQUEST, CHANGE ], handleFormChange)
+}
+
+
+function* watchStepSubmit() {
+	yield takeLatest([ SUBMIT_STEP, CHANGE ], handleSatisfaction)
+}
+
+
 export default function* rootSaga() {
-	yield [ watchFormChanges() ]
+	yield [ watchFormChanges(), watchStepSubmit() ]
 }

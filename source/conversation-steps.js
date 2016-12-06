@@ -159,7 +159,7 @@ export default {
 		defaultValue: null,
 		helpText: <p>
 			Dites-nous si ce simulateur vous a été utile
-		</p>,
+		</p>
 	},
 
 	'partage': {},
@@ -168,7 +168,7 @@ export default {
 		attributes: {
 			cols: 30,
 			rows: 6,
-			placeholder: 'Votre remarque',
+			placeholder: 'Votre remarque. N\'inscrivez pas ici de données personnelles (utilisez le lien de contact)',
 		},
 		validator: {
 			test: v => v !== '',

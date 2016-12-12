@@ -27,7 +27,7 @@ let createFinalStore = compose(
 let store = createFinalStore(reducers)
 sagaMiddleware.run(rootSaga)
 
-@connect(null,
+@connect(state => ({couleur: state.themeColours.colour}),
 	dispatch => ({
 		changeColour: colour => dispatch(changeThemeColour(colour))
 	}))
@@ -37,11 +37,16 @@ class MyComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<p className="indication">Visualisez sur cette page l'apparence du module pour différentes couleurs principales</p>
+				<p className="indication">
+					Visualisez sur cette page l'apparence du module pour différentes couleurs principales.
+				</p>
 				<SliderPicker
 					color='#4A89DC'
 					onChangeComplete={this.changeColour}
 					/>
+				<p className="indication">
+					La couleur sélectionnée, à déclarer comme attribut "data-couleur" du script sur votre page est : <b>{this.props.couleur}</b>
+				</p>
 				<Widget />
 			</div>)
 	}

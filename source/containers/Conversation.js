@@ -77,13 +77,15 @@ class Conversation extends Component {
 				<Input
 					title="Pourcentage d'alternants"
 					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
-					visible={steps.get('tauxRisque')}
+					visible={effectifEntreprise >= 249 && steps.get('tauxRisque')}
 					name="pourcentage_alternants" />
 
 				<Question
 					title="Exonération Jeune Entreprise Innovante"
 					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
-					visible={steps.get('pourcentage_alternants')}
+					visible={
+						(effectifEntreprise < 249 && steps.get('tauxRisque'))
+						|| steps.get('pourcentage_alternants')}
 					name="jei" />
 
 				<Question

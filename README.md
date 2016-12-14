@@ -2,7 +2,7 @@ A widget to estimate the price of hiring in France : social security contributio
 
 > Module Web d'estimation du prix d'une embauche en France. Ce document est technique, et donc rédigé en anglais pour favoriser la réutilisation.
 
-**[Online demo](http://sgmap.github.io/cout-embauche/)**.
+**[Online demo](https://embauche.beta.gouv.fr/simulateur/)**.
 
 If you want to create your own specific interface, have a look at the [API documentation](https://embauche.beta.gouv.fr/api-prelevements-sociaux).
 
@@ -84,9 +84,8 @@ Browser compatibility
 
 ### The widget is compatible with most recent browsers :
 
-- IE10. TODO. (not compatible with IE < 10)
-- Safari 8. TODO
-- Firefox (latest stable) TODO
-- Chrome (latest stable) TODO
-
-> These tests are run manually
+- IE11 / Edge
+- All latest versions of
+  - Safari
+  - Firefox
+  - Chrome

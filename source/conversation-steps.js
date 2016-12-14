@@ -102,6 +102,7 @@ export default {
 
 
 	'codeINSEE': {
+		defaultValue: {codeInsee: '29019', nomCommune: 'Ville de 100 000 habitants'},
 		human: v => v.nomCommune,
 		helpText: <p>Quelle est la commune du lieu de travail effectif du salarié ?</p>,
 		adapt: (selectObject) => ({'depcom_entreprise': selectObject && selectObject.codeInsee || ''}),

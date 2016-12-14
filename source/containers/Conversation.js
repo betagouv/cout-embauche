@@ -33,14 +33,14 @@ class Conversation extends Component {
 		return (
 			<div id="conversation">
 				<SelectCommune
-					visible={effectifEntreprise > 10}
+					visible={effectifEntreprise >= 10}
 					title="Commune"
 					question="Quelle est la commune de l'embauche ?"
 					name="codeINSEE" />
 				<Input
 					title="Complémentaire santé"
 					question="Quel est le montant total par salarié de votre complémentaire santé entreprise obligatoire ?"
-					visible={effectifEntreprise <= 10 || steps.get('codeINSEE')}
+					visible={effectifEntreprise < 10 || steps.get('codeINSEE')}
 					name="mutuelle" />
 
 				<Group

@@ -42,7 +42,6 @@ class Conversation extends Component {
 					question="Quel est le montant total par salarié de votre complémentaire santé entreprise obligatoire ?"
 					visible={effectifEntreprise < 10 || steps.get('codeINSEE')}
 					name="mutuelle" />
-
 				<Group
 					text="Risques professionnels"
 					visible={steps.get('mutuelle')}
@@ -81,11 +80,17 @@ class Conversation extends Component {
 					name="pourcentage_alternants" />
 
 				<Question
-					title="Exonération Jeune Entreprise Innovante"
-					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
 					visible={
 						(effectifEntreprise < 249 && steps.get('tauxRisque'))
 						|| steps.get('pourcentage_alternants')}
+					title="Régime Alsace-Moselle"
+					question="Le salarié est-il affilié au régime d'Alsace-Moselle ?"
+					name="alsaceMoselle" />
+
+				<Question
+					title="Exonération Jeune Entreprise Innovante"
+					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
+					visible={steps.get('alsaceMoselle')}
 					name="jei" />
 
 				<Question

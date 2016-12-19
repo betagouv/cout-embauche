@@ -8,7 +8,12 @@ import validate from './conversation-validate'
 import {change} from 'redux-form'
 let CHANGE = change().type
 
-let sessionId = Math.floor(Math.random() * 1000000000000)
+// variables for a better feedback log
+let
+	sessionId = Math.floor(Math.random() * 1000000000000),
+	url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -92,7 +97,8 @@ function* handleSatisfaction({type, name, meta}) {
 				'satisfait': message ? 'remarque' : serviceUtile,
 				'message': message ? remarque : '',
 				'date': new Date().toISOString(),
-				'id': sessionId + ''
+				'id': sessionId + '',
+				'url': url
 			}
 		}
 		yield call((body) =>

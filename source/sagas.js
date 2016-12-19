@@ -17,7 +17,14 @@ let
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-function* handleFormChange() {
+function* handleFormChange(e) {
+	let {meta} = e,
+		field = meta && meta.field
+
+	if (field && !steps[field].adapt) {
+		// This change doesn't impact the Web API call
+		return
+	}
 
 	/* debounce by 500ms : don't make 10 network requests if the user changes
 	the salary incrementally from 3000 to 3010 */

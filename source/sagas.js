@@ -88,7 +88,8 @@ function* handleSatisfaction({type, name, meta}) {
 		let body = {
 			'fields': {
 				'satisfait': message ? 'remarque' : serviceUtile,
-				'message': message ? remarque : ''
+				'message': message ? remarque : '',
+				'date': new Date().toISOString()
 			}
 		}
 		yield call((body) =>

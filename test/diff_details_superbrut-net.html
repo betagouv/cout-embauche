@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Simulateur de coût d'embauche</title>
+		<style>
+			body {
+				font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+			}
+
+			/* Customize the widget's style */
+			body .SGMAPembauche {
+				padding-top: 3em;
+				margin: auto;
+			}
+		</style>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.32/browser.js"></script>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../dist/cout-embauche-widget.js"></script>
+		<noscript>
+			Le simulateur de coût d'embauche n'est accessible qu'avec JavaScript activé.
+			Pour l'utiliser, suivez les <a href="http://www.enable-javascript.com/fr/">instructions pour activer JavaScript dans votre navigateur web</a>.
+		</noscript>
+		<script type="text/ecmascript-6">
+			// cotisations that we knowingly do not display in the details section
+			var hiddenCotisations = [ 'contribution_developpement_apprentissage' ]
+			var form = document.querySelector('.SGMAPembauche #input form')
+
+			// request their value as a result of the API call .
+			// They could later be added to the recomputation.
+			// var newAction = form.getAttribute('action') + '+' + hiddenCotisations.join('+')
+			// form.setAttribute('action', newAction)
+
+			// remake the open fisca request
+			form.querySelector('input[name="salaire_de_base"]').value = 1458
+
+			setTimeout(() => {
+				var salaireBrut = + document.querySelector('#salaire').value
+				var res = {
+					employeur: salaireBrut,
+					salarie: salaireBrut,
+				};
+				[...document.querySelectorAll('table')].map(category => {
+
+					if (category.innerHTML.includes('Cotisations employeur')) {
+						[...category.querySelectorAll('td span')].map((el) =>
+							res.employeur += - el.innerHTML.replace(',', '.'))
+					}
+
+					if (category.innerHTML.includes('Cotisations salarié')) {
+						[...category.querySelectorAll('td span')].map((el) =>
+							res.salarie += + el.innerHTML.replace(',', '.'))
+					}
+
+					if (category.innerHTML.includes('Exonérations employeur')) {
+						[...category.querySelectorAll('td span')].map((el) =>
+							res.employeur += - el.innerHTML.replace(',', '.'))
+					}
+
+				})
+
+				const widget = document.querySelector('.SGMAPembauche')
+				widget.insertAdjacentHTML('beforeend',
+					`<p style="border: 2px solid FireBrick">
+					salaires recalculés :
+						superbrut ${res.employeur.toFixed(2)},
+						net ${res.salarie.toFixed(2)}
+					</p>` +
+					`<p style="font-size: 13px">
+					Cotisations que nous n'affichons pas, pourtant incluses dans les salaires :
+					${hiddenCotisations.join(', ')}
+					</p>`
+				)
+			}, 1500)
+
+		</script>
+	</body>
+</html>

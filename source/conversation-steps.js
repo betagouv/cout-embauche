@@ -169,7 +169,7 @@ export default {
 		attributes: {
 			cols: 30,
 			rows: 6,
-			placeholder: 'Votre remarque. N\'inscrivez pas ici de données personnelles (utilisez le lien de contact)',
+			placeholder: 'Votre remarque, accompagnée de votre email si vous voulez un retour.',
 		},
 		validator: {
 			test: v => v !== '',

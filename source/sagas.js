@@ -8,9 +8,23 @@ import validate from './conversation-validate'
 import {change} from 'redux-form'
 let CHANGE = change().type
 
+// variables for a better feedback log
+let
+	sessionId = Math.floor(Math.random() * 1000000000000),
+	url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href
+
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-function* handleFormChange() {
+function* handleFormChange(e) {
+	let {meta} = e,
+		field = meta && meta.field
+
+	if (field && !steps[field].adapt) {
+		// This change doesn't impact the Web API call
+		return
+	}
 
 	/* debounce by 500ms : don't make 10 network requests if the user changes
 	the salary incrementally from 3000 to 3010 */
@@ -88,7 +102,10 @@ function* handleSatisfaction({type, name, meta}) {
 		let body = {
 			'fields': {
 				'satisfait': message ? 'remarque' : serviceUtile,
-				'message': message ? remarque : ''
+				'message': message ? remarque : '',
+				'date': new Date().toISOString(),
+				'id': sessionId + '',
+				'url': url
 			}
 		}
 		yield call((body) =>

@@ -12,8 +12,8 @@ let CHANGE = change().type
 let
 	sessionId = Math.floor(Math.random() * 1000000000000),
 	url = (window.location != window.parent.location)
-            ? document.referrer
-            : document.location.href
+						? document.referrer
+						: document.location.href
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -109,11 +109,10 @@ function* handleSatisfaction({type, name, meta}) {
 			}
 		}
 		yield call((body) =>
-			fetch('https://api.airtable.com/v0/appihuPtw4TUIR0Y3/retours', {
+			fetch('https://embauche.beta.gouv.fr/retour', {
 				method: 'POST',
 				headers: {
-					'Authorization': 'Bearer keyUq4AzhJSweQaGB',
-					'Content-type': 'application/json'
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify(body)
 			}), body)

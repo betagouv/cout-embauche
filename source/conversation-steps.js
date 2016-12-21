@@ -100,6 +100,15 @@ export default {
 		adapt: (raw, validated) => ({'complementaire_sante_montant': validated}),
 	},
 
+	'alsaceMoselle': {
+		choices: [ 'Oui', 'Non' ],
+		helpText:
+		<p>
+			Cette affiliation est obligatoire si l'activité est exercée dans les départements du Bas-Rhin, du Haut-Rhin et de la Moselle. Elle l'est aussi dans certains autres cas, expliqués sur <a href="http://regime-local.fr/salaries/" target="_blank">cette page.</a>
+			<br/>
+		</p>,
+		adapt: raw => ({salarie_regime_alsace_moselle: raw === 'Oui' ? 1 : 0}),
+	},
 
 	'codeINSEE': {
 		defaultValue: {codeInsee: '29019', nomCommune: 'Ville de 100 000 habitants'},

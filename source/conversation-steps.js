@@ -102,6 +102,7 @@ export default {
 
 	'alsaceMoselle': {
 		choices: [ 'Oui', 'Non' ],
+		defaultValue: 'Non',
 		helpText:
 		<p>
 			Cette affiliation est obligatoire si l'activité est exercée dans les départements du Bas-Rhin, du Haut-Rhin et de la Moselle. Elle l'est aussi dans certains autres cas, expliqués sur <a href="http://regime-local.fr/salaries/" target="_blank">cette page.</a>
@@ -149,6 +150,23 @@ export default {
 		fields: [ 'resume' ],
 		human: v => v.text,
 		optionsURL: 'https://cdn.rawgit.com/sgmap/taux-collectifs-cotisation-atmp/master/taux-2016.json',
+	},
+
+	'penibilite': {
+		choices: [ 'Plusieurs facteurs', 'Un facteur', 'Non'],
+		defaultValue: 'Non',
+		helpText: <p>
+			Les employeurs qui exposent un salarié à un facteur de pénibilité au-delà des seuils prévus est redevable d'une cotisation de pénibilité additionnelle. Elle est doublée si les facteurs sont multiples.
+			<br/>
+			<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33777" target="_blank">
+				Comprendre la cotisation pénibilité (service-public.fr)
+			</a>
+		</p>,
+		adapt: raw => ({
+			exposition_penibilite: {
+				'Non': 0, 'Un facteur': 1, 'Plusieurs facteurs': 2
+			}[raw]
+		}),
 	},
 
 	'jei': {

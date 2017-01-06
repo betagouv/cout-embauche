@@ -55,7 +55,7 @@ export default class BasicInput extends Component {
 						&nbsp; € &nbsp;
 					</label>
 					<span className="input-help">Rémunération totale<br/>
-						<em>(min. <span data-source="smic_proratise" data-round>1467</span>)</em>, dont primes.
+						<em>(min. 1480€)</em>, dont primes.
 					</span>
 
 					<Field component="select" name="typeSalaireEntré" >

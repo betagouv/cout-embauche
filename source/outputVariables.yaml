@@ -68,6 +68,10 @@ Cotisations employeur:
     name: Complémentaire santé
     explained: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part employeur n'est qu'un exemple.
     clarifier: mutuelle
+  - key: penibilite
+    name: Cotisation pénibilité
+    explained: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
+    clarifier: penibilite
 
 Cotisations salarié:
 

@@ -88,9 +88,15 @@ class Conversation extends Component {
 					name="alsaceMoselle" />
 
 				<Question
+					title="Pénibilité du travail"
+					question="Le salarié est-il exposé à des facteurs de pénibilité au-delà des seuils d'exposition ?"
+					visible={steps.get('alsaceMoselle')}
+					name="penibilite" />
+
+				<Question
 					title="Exonération Jeune Entreprise Innovante"
 					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
-					visible={steps.get('alsaceMoselle')}
+					visible={steps.get('penibilite')}
 					name="jei" />
 
 				<Question

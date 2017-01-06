@@ -119,8 +119,8 @@ Aides employeur différées:
     name: Crédit d'impôt pour la compétitivité et l'emploi (CICE)
     # Il y a trop de conditions et d'exceptions aux conditions pour les détailler dans cette interface
   - key: aide_premier_salarie
-    name: Aide à l'embauche d'un premier salarié
-    explained: Versement trimestriel, limité à 4000€ (2 ans à temps plein)
+    name: Aide à l'embauche d'un 1er salarié
+    explained: Aide non renouvelée en 2017
   - key: aide_embauche_pme
     name: Aide à l'embauche pour les PME
-    explained: Versement trimestriel, limité à 4000€ (2 ans à temps plein)
+    explained: Pour une embauche avant la fin juin 2017. Limitée à 4000€ (2 ans à temps plein), versement trimestriel.

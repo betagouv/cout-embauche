@@ -156,7 +156,7 @@ export default {
 		choices: [ 'Plusieurs facteurs', 'Un facteur', 'Non'],
 		defaultValue: 'Non',
 		helpText: <p>
-			Les employeurs qui exposent un salarié à un facteur de pénibilité au-delà des seuils prévus est redevable d'une cotisation de pénibilité additionnelle. Elle est doublée si les facteurs sont multiples.
+			Un employeur qui expose un salarié à un facteur de pénibilité au-delà des seuils prévus est redevable d'une cotisation de pénibilité additionnelle. Elle est doublée si les facteurs sont multiples.
 			<br/>
 			<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33777" target="_blank">
 				Comprendre la cotisation pénibilité (service-public.fr)

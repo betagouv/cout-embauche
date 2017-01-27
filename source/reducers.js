@@ -4,6 +4,7 @@ import {reducer as formReducer} from 'redux-form'
 import { SUBMIT_STEP, EDIT_STEP, UNSUBMIT_ALL} from './actions'
 import {
 	SIMULATION_UPDATE_REQUEST, SIMULATION_UPDATE_SUCCESS,
+	SIMULATION_UPDATE_FAILURE,
 	TOGGLE_TOP_SECTION, TOGGLE_ADVANCED_SECTION,
 } from './actions'
 import computeThemeColours from './themeColours'
@@ -34,6 +35,8 @@ function pending(state = false, action) {
 		return true
 	case SIMULATION_UPDATE_SUCCESS:
 		return false
+	case SIMULATION_UPDATE_FAILURE:
+		return 'error'
 	default:
 		return state
 	}

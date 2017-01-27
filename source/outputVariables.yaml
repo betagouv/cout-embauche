@@ -126,5 +126,5 @@ Aides employeur différées:
     name: Aide à l'embauche d'un 1er salarié
     explained: Aide non renouvelée en 2017
   - key: aide_embauche_pme
-    name: Aide à l'embauche pour les PME
+    name: Aide à l'embauche pour les TPE et PME
     explained: Pour une embauche avant la fin juin 2017. Limitée à 4000€ (2 ans à temps plein), versement trimestriel.

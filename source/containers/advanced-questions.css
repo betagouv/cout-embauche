@@ -322,8 +322,22 @@ fieldset > .ignore {
 }
 
 .error {
-	font-weight: bold
+	font-style: normal;
+	padding: .6em 3em;
+	line-height: 1.2em;
+	margin: 0 auto;
+	border: 1px solid #222;
+	background: #e74c3c;
+	color: black;
+	border-radius: .1em;
+	display: inline-block;
 }
+
+.error a {
+	font-style: italic;
+	color: black;
+}
+
 
 #show-advanced {
 	font-weight: bold;

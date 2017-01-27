@@ -53,8 +53,8 @@ export default ({
 	{
 		typeof pending == 'string' &&
 		<p className="error">
-			<span style={{color: 'red'}}>Une erreur s'est produite.</span>
-			Pensez à vérifier votre connexion, et à <a href="https://browser-update.org/fr/update.html" target="_blank">utiliser un navigateur Web à jour</a>
+			<span className="error-warning">Une erreur s'est produite. </span><br/>
+			Pensez à vérifier votre connexion, à <a href="https://browser-update.org/fr/update.html" target="_blank">utiliser un navigateur à jour</a>, ou à nous <a href="mailto:contact@embauche.beta.gouv.fr?subject=Erreur lors de la simulation">contacter.</a>
 	</p>
 	}
 

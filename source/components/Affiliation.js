@@ -3,11 +3,11 @@ import './Affiliation.css'
 
 export default () =>
 	<section id="affiliation">
-		<a href="http://openfisca.fr" target="_blank">
-			<img alt="OpenFisca" src="http://www.openfisca.fr/hotlinks/logo-openfisca.svg" />
+		<a href="https://openfisca.fr" target="_blank">
+			<img alt="OpenFisca" src="https://www.openfisca.fr/hotlinks/logo-openfisca.svg" />
 		</a>
     <a href="https://beta.gouv.fr" target="_blank">
-      <img alt="Secrétariat Général pour la Modernisation de l'Action Publique" src="http://www.modernisation.gouv.fr/sites/default/files/bloc-sgmap-2.jpg" />
+      <img id="logo-SGMAP" alt="Secrétariat Général pour la Modernisation de l'Action Publique" src="https://embauche.beta.gouv.fr/img/logo-SGMAP-fond-blanc.svg" />
     </a>
 		<a id="affiliation-contact" href="mailto:contact@embauche.beta.gouv.fr?subject=A propos du simulateur d'embauche">contact</a>
   </section>

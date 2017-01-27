@@ -317,6 +317,10 @@ fieldset > .ignore {
 	margin: .1em;
 }
 
+.alternance {
+	font-weight: bold
+}
+
 #show-advanced {
 	font-weight: bold;
 }

@@ -140,8 +140,9 @@ export var FormDecorator = formType => RenderField =>
 					{helpText &&
 						<span
 						className="help-button"
+						style={{color: this.props.themeColours.textColourOnWhite}}
 						onClick={() => this.setState({helpVisible: true})}>
-							aide
+							+ infos
 						</span>
 					}
 				</span>

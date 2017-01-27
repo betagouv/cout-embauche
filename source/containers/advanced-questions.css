@@ -105,16 +105,14 @@ question : make it visible with colors */
 	margin-top: .5em;
 	line-height: 1.1em;
 	border-radius: 1em;
-	font-size: 90%;
 	color: #777;
 	border: 1px solid;
 	background: none;
 	text-align: center;
 	cursor: pointer;
-	color: #aaa;
-	text-transform: uppercase;
-  font-size: 60%;
+  font-size: 75%;
   padding: .25em .6em;
+	font-weight: bold;
 }
 .help-button:hover {
 	color: #333;

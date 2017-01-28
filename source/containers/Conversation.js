@@ -39,7 +39,7 @@ class Conversation extends Component {
 					name="codeINSEE" />
 				<Input
 					title="Complémentaire santé"
-					question="Quel est le montant total par salarié de la complémentaire santé obligatoire de l'entreprise ?"
+					question="Quel est le montant mensuel de la complémentaire santé obligatoire de l'entreprise ?"
 					visible={effectifEntreprise < 10 || steps.get('codeINSEE')}
 					name="mutuelle" />
 				<Group

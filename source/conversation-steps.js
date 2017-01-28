@@ -90,8 +90,8 @@ export default {
 		defaultValue: '40', // The user can pass steps in the advanced view, this value is set
 		helpText: // What will be displayed in the help box
 			<p>
-				L'employeur a l'obligation en 2016 de proposer et financer à 50% une offre
-				de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins.
+				L'employeur a l'obligation de proposer une offre
+				de complémentaire santé. Son montant est libre, tant qu'elle couvre un panier légal de soins. Il doit prendre en charge la moitié du montant, ce que nous avons retenu pour cette simulation, ou davantage.
 				<br/>
 				<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33754" target="_blank">
 					Voir les détails (service-public.fr)
@@ -156,7 +156,7 @@ export default {
 		choices: [ 'Plusieurs facteurs', 'Un facteur', 'Non'],
 		defaultValue: 'Non',
 		helpText: <p>
-			Les employeurs qui exposent un salarié à un facteur de pénibilité au-delà des seuils prévus est redevable d'une cotisation de pénibilité additionnelle. Elle est doublée si les facteurs sont multiples.
+			Un employeur qui expose un salarié à un facteur de pénibilité au-delà des seuils prévus est redevable d'une cotisation de pénibilité additionnelle. Elle est doublée si les facteurs sont multiples.
 			<br/>
 			<a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F33777" target="_blank">
 				Comprendre la cotisation pénibilité (service-public.fr)

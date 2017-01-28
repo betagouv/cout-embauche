@@ -105,16 +105,14 @@ question : make it visible with colors */
 	margin-top: .5em;
 	line-height: 1.1em;
 	border-radius: 1em;
-	font-size: 90%;
 	color: #777;
 	border: 1px solid;
 	background: none;
 	text-align: center;
 	cursor: pointer;
-	color: #aaa;
-	text-transform: uppercase;
-  font-size: 60%;
+  font-size: 75%;
   padding: .25em .6em;
+	font-weight: bold;
 }
 .help-button:hover {
 	color: #333;
@@ -316,6 +314,28 @@ fieldset > .ignore {
 .input-tip p {
 	margin: .1em;
 }
+
+.alternance {
+	font-weight: bold
+}
+
+.error {
+	font-style: normal;
+	padding: .6em 3em;
+	line-height: 1.2em;
+	margin: 0 auto;
+	border: 1px solid #222;
+	background: #e74c3c;
+	color: black;
+	border-radius: .1em;
+	display: inline-block;
+}
+
+.error a {
+	font-style: italic;
+	color: black;
+}
+
 
 #show-advanced {
 	font-weight: bold;

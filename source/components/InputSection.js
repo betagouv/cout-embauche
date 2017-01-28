@@ -4,7 +4,7 @@ import BasicInput from '../containers/BasicInput'
 import Conversation from '../containers/Conversation'
 import InfoZone from './InfoZone'
 
-@connect(state => ({themeColours: state.themeColours}))
+@connect(state => ({themeColours: state.themeColours, pending: state.pending}))
 export default class Input extends Component {
 	render() {
 		let {showInput, showAdvanced} = this.props

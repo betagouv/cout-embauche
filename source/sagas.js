@@ -2,7 +2,7 @@ import { takeLatest } from 'redux-saga'
 import { call, put, select} from 'redux-saga/effects'
 import Promise from 'core-js/fn/promise'
 import steps from './conversation-steps'
-import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS, SUBMIT_STEP} from './actions'
+import {INITIAL_REQUEST, SIMULATION_UPDATE_SUCCESS, SIMULATION_UPDATE_FAILURE, SUBMIT_STEP} from './actions'
 import {request} from './openfisca'
 import validate from './conversation-validate'
 import {change} from 'redux-form'
@@ -84,6 +84,8 @@ function* handleFormChange(e) {
 
 	} catch (e) {
 		console.log('ARGHH, erreur dans la requête de calcul des cotisations', e) // eslint-disable-line no-console
+		yield put({type: SIMULATION_UPDATE_FAILURE })
+
 	}
 
 }

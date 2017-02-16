@@ -149,7 +149,7 @@ export default {
 	'selectTauxRisque': {
 		fields: [ 'resume' ],
 		human: v => v.text,
-		optionsURL: 'https://cdn.rawgit.com/sgmap/taux-collectifs-cotisation-atmp/master/taux-2016.json',
+		optionsURL: 'https://cdn.rawgit.com/sgmap/taux-collectifs-cotisation-atmp/master/taux-2017.json',
 	},
 
 	'penibilite': {

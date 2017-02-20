@@ -1,40 +1,79 @@
-section.taxes {
+/*
+Ressources pour améliorer le style du tableau :
+https://tympanus.net/Tutorials/StickyTableHeaders/index2.html
+
+*/
+
+#taxes {
 	font-size: 60%;
 	margin-top: 3em;
 }
 
 table {
-	width: 50%;
+	width: 100%;
 	float: left;
 	margin-bottom: 3em;
+	border-spacing: 2px;
+	font-size: 130%;
 }
 
 @media(max-width: 1024px) {
 	table {
-		width: 80%;
 	}
 }
 
 caption {
 	font-weight: bold;
 	border-bottom: 1px solid #C3C3C3;
-	margin-left: 30%;
 	margin-bottom: 1em;
 	font-size: 115%;
 }
 
-tbody.explained {
-	line-height: 2.5em;
-}
-
-th {
+thead tr th {
+	border-bottom: 1px solid #4A89DC;
+	color: #4A89DC;
+	font-size: 110%;
 	text-align: right;
 }
 
-td.value {
-	padding-left: 1em;
-	width: 7em;
+thead tr th:first-child {
+	visibility: hidden;
 }
+
+
+tbody::before
+{
+  content: '';
+  display: block;
+  height: 1em;
+}
+
+tbody:first {
+	/*display: none;*/
+	background: red;
+}
+
+tr:nth-child(2n) {
+	background: #f8f8f8
+}
+
+td,th {
+	display: table-cell;
+	padding: .3em .6em;
+	line-height: 2em;
+}
+
+th {
+}
+
+td.value {
+	text-align: right;
+}
+
+td .na {
+	opacity: .4
+}
+
 td.explanation {
 	font-size: 85%;
 	text-align: right;
@@ -48,4 +87,17 @@ td.explanation p {
 }
 td.explanation p:last-child {
 	margin-bottom: 1em;
+}
+
+.category th {
+	font-weight: 300;
+	color: #4A89DC;
+	font-size: 140%;
+	padding-left: 0;
+	text-align: left;
+
+}
+tr.category {
+	border-bottom: 3px solid #4A89DC;
+	background: white;
 }

@@ -1,42 +1,78 @@
 import React, { Component } from 'react'
-import outputVariables from '../outputVariables.yaml'
+// import outputVariables from '../outputVariables.yaml'
+import spec from '../results-spec.yaml'
+import classNames from 'classnames'
 import './Details.css'
 
 export default class Details extends Component {
 	render() {
 		return (
-			<section className="taxes">
-				{
-					Object.keys(outputVariables)
-						.filter(category => category !== 'Sommes')
-						.map(c => this.renderCategory(c, outputVariables[c]))
-				}
+			<section id="taxes">
+				<table>
+					<thead>
+						<tr>
+							<th>Éléments</th>
+							<th>Part employeur</th>
+							<th>Part salarié</th>
+						</tr>
+					</thead>
+						{ Object.keys(spec)
+								.filter(category => category !== 'Sommes')
+								.map(c => this.renderCategory(c))
+						}
+				</table>
+
 				<a href="mailto:contact@embauche.beta.gouv.fr?subject=Erreur dans les résultats du simulateur">Signaler une erreur</a>
 			</section>
 		)
 	}
-	renderCategory(category, items) {
+	renderCategory(categoryName) { // category = 'Santé'
+		let
+			category = spec[categoryName], // items = maladie, complémentaire, prévoyance
+			categoryIsItem = category.employeur || category.salarie,
+			itemNames = !categoryIsItem && Object.keys(category)
 
-		return (
-			<table key={category}>
-				<caption>{category}</caption>
-				{items.map(i => this.renderItem(i))}
-			</table>
-		)
+		return <tbody key={categoryName}>
+			<tr className="category">
+				<th id={categoryName}
+						scope="colgroup">
+						{categoryName}
+				</th>
+				{ categoryIsItem && this.renderTableCells(
+					null, category
+				)}
+			</tr>
+			{itemNames && itemNames.map(
+				name => <tr key={name}>
+					{this.renderTableCells(
+							name,
+							category[name]
+					)}
+					</tr>
+			)}
+		</tbody>
 	}
 
-	renderItem(i) {
+	renderTableCells(name, {employeur, salarie, explained, clarifier}) {
+
 		let
-			{results, humanizeFigures, advancedQuestions, openAdvancedSection} = this.props,
-			{key, name, explained, clarifier} = i,
-			figure = results[key],
+			{results: {[employeur]: employeurValue, [salarie]: salarieValue}, advancedQuestions, openAdvancedSection} = this.props,
 			lineClarified = advancedQuestions(clarifier) != null
 
-		return (
-			<tbody key={key} className={explained ? 'explained': ''}>
+		return [
+			...name ? [
+				<td key="element" className="element">{name}</td>
+			] : [],
+			...[
+				<td key="employeur" className="value employeur">{this.humanFigure(employeurValue)}</td>,
+				<td key="salarie" className="value salarie">{this.humanFigure(salarieValue)}</td>
+			]
+		]
+
+			{/* <tbody key={name} className={explained ? 'explained': ''}>
 				<tr>
 					<th>{name}</th>
-					<td className="value">{figure != null ? humanizeFigures(figure) : '--'} €</td>
+					<td className="value">humanFigure(value)</td>
 				</tr>
 				{explained && !lineClarified && <tr>
 					<td colSpan="100%" className="explanation">
@@ -46,8 +82,13 @@ export default class Details extends Component {
 						</p>}
 					</td>
 				</tr>}
-			</tbody>
-		)
+			</tbody> */}
+	}
 
+	humanFigure(figure) {
+		let notApplicable = figure == null
+		return <span className={classNames({na:notApplicable})}>
+			{notApplicable ? '--' : this.props.humanizeFigures(figure) + ' €'}
+		</span>
 	}
 }

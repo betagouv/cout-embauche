@@ -4,21 +4,21 @@
 
 Sommes:
 
-  Coût du travail:
-    employeur: cout_du_travail
-  Salaire super brut:
-    employeur: salaire_super_brut
-  # - key: cout_du_travail
-  #   name: Coût du travail
-  # - key: salaire_super_brut
-  #   name: Salaire super brut
+  # Coût du travail:
+  #   employeur: cout_du_travail
+  # Salaire super brut:
+  #   employeur: salaire_super_brut
+  - key: cout_du_travail
+    name: Coût du travail
+  - key: salaire_super_brut
+    name: Salaire super brut
 
 ####################################################################################
 
 Santé:
   Maladie (MMID):
     employeur: mmid_employeur
-    salarié: mmid_salarie
+    salarie: mmid_salarie
   Contribution solidarité autonomie:
     fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32872
     employeur: contribution_solidarite_autonomie
@@ -35,10 +35,9 @@ Santé:
 ####################################################################################
 
 Accidents du travail - Maladies Professionnelles:
-  Accident du travail:
-    employeur:: accident_du_travail
-    explained: Montant calculé pour une activité à faible risque d'accident de travail.
-    clarifier: tauxRisque
+  employeur: accident_du_travail
+  explained: Montant calculé pour une activité à faible risque d'accident de travail.
+  clarifier: tauxRisque
 
 ####################################################################################
 
@@ -53,10 +52,6 @@ Retraite:
   AGFF:
     employeur: agff_employeur
     salarie: agff_salarie
-
-  APEC:
-    employeur: apec_employeur
-    salarie: apec_salarie
 
   AGIRC:
     employeur: agirc_employeur
@@ -77,19 +72,24 @@ Retraite:
 ####################################################################################
 
 Famille - Sécurité Sociale:
-  Allocations familiales:
-    employeur: famille
+  employeur: famille
 
 ####################################################################################
 
 Assurance Chômage:
-  AGS:
-    employeur: ags
-    fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F31409
 
   Assurance chômage:
     employeur: chomage_employeur
     salarie: chomage_salarie
+
+  APEC:
+    employeur: apec_employeur
+    salarie: apec_salarie
+
+  AGS:
+    employeur: ags
+    fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F31409
+
 
 ####################################################################################
 
@@ -137,13 +137,13 @@ Autres:
 CSG / CRDS:
 
   CSG:
-    salarié: csg_deductible_salaire
+    salarie: csg_deductible_salaire
 
   CSG imposable:
-    salarié: csg_imposable_salaire
+    salarie: csg_imposable_salaire
 
   CRDS:
-    salarié: crds_salaire
+    salarie: crds_salaire
 
 ####################################################################################
 

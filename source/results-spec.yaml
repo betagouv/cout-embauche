@@ -19,18 +19,15 @@ Santé:
   Maladie (MMID):
     employeur: mmid_employeur
     salarie: mmid_salarie
-  Contribution solidarité autonomie:
-    fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32872
-    employeur: contribution_solidarite_autonomie
+
+  Prévoyance obligatoire cadre:
+    employeur: prevoyance_obligatoire_cadre
 
   Complémentaire santé:
     employeur: complementaire_sante_employeur
     salarie: complementaire_sante_salarie
     explained: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part n'est qu'un exemple, que vous pouvez changer.
     clarifier: mutuelle
-
-  Prévoyance obligatoire cadre:
-    employeur: prevoyance_obligatoire_cadre
 
 ####################################################################################
 
@@ -49,9 +46,9 @@ Retraite:
     employeur: vieillesse_plafonnee_employeur
     salarie: vieillesse_deplafonnee_salarie
 
-  AGFF:
-    employeur: agff_employeur
-    salarie: agff_salarie
+  ARRCO:
+    employeur: arrco_employeur
+    salarie: arrco_salarie
 
   AGIRC:
     employeur: agirc_employeur
@@ -61,13 +58,13 @@ Retraite:
     employeur: agirc_gmp_employeur
     salarie: agirc_gmp_salarie
 
-  ARRCO:
-    employeur: arrco_employeur
-    salarie: arrco_salarie
-
   Cotisation Exceptionnelle Temporaire:
     employeur: cotisation_exceptionnelle_temporaire_employeur
     salarie: cotisation_exceptionnelle_temporaire_salarie
+
+  AGFF:
+    employeur: agff_employeur
+    salarie: agff_salarie
 
 ####################################################################################
 
@@ -82,32 +79,21 @@ Assurance Chômage:
     employeur: chomage_employeur
     salarie: chomage_salarie
 
-  APEC:
-    employeur: apec_employeur
-    salarie: apec_salarie
-
   AGS:
     employeur: ags
     fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F31409
 
+  APEC:
+    employeur: apec_employeur
+    salarie: apec_salarie
 
 ####################################################################################
 
 Autres:
-  Formation professionnelle:
-    employeur: formation_professionnelle
 
-  Participation à l'effort de construction:
-    employeur: participation_effort_construction
-
-  Taxe d'apprentissage:
-    employeur: taxe_apprentissage
-
-  Contribution supplémentaire à l'apprentissage:
-    employeur:
-      key: contribution_supplementaire_apprentissage
-    explained: Décroît en fonction du pourcentage de l'effectif en apprentissage.
-    clarifier: pourcentage_alternants
+  Contribution solidarité autonomie:
+    fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32872
+    employeur: contribution_solidarite_autonomie
 
   Fonds national d'aide au logement:
     employeur: fnal
@@ -115,39 +101,60 @@ Autres:
   Contribution au dialogue social:
     employeur: financement_organisations_syndicales
 
-  Versement:
+  Versement transport:
     employeur: versement_transport
 
   Forfait social:
     employeur: forfait_social
 
-  Taxe sur les salaires:
-    employeur:
-      key: taxe_salaires
-    explained: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
+####################################################################################
 
-  Cotisation pénibilité:
-    employeur:
-      key: penibilite
-    explained: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
-    clarifier: penibilite
+Autres éléments employeur hors bulletin de paie:
+
+    Formation professionnelle:
+      employeur: formation_professionnelle
+
+    Participation à l'effort de construction:
+      employeur: participation_effort_construction
+
+    Taxe d'apprentissage:
+      employeur: taxe_apprentissage
+
+    Contribution supplémentaire à l'apprentissage:
+      employeur:
+        key: contribution_supplementaire_apprentissage
+      explained: Décroît en fonction du pourcentage de l'effectif en apprentissage.
+      clarifier: pourcentage_alternants
+
+
+    Taxe sur les salaires:
+      employeur:
+        key: taxe_salaires
+      explained: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
+
+    Cotisation pénibilité:
+      employeur:
+        key: penibilite
+      explained: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
+      clarifier: penibilite
+
 
 ####################################################################################
 
 CSG / CRDS:
 
-  CSG:
+  CSG non imposable à l'impôt sur le revenu:
     salarie: csg_deductible_salaire
 
-  CSG imposable:
+  CSG imposable à l'impôt sur le revenu:
     salarie: csg_imposable_salaire
 
-  CRDS:
+  CRDS imposable à l'impôt sur le revenu:
     salarie: crds_salaire
 
 ####################################################################################
 
-Allègements de cotisations:
+Allègement de cotisations:
 
   Réduction générale sur les bas salaires (ex-Fillon):
     employeur: allegement_fillon
@@ -157,7 +164,7 @@ Allègements de cotisations:
 
 ####################################################################################
 
-Aides:
+Aides employeur:
   Jeune entreprise innovante:
     employeur: exoneration_cotisations_employeur_jei
   Exonérations pour l'apprentissage:
@@ -165,7 +172,7 @@ Aides:
 
 ####################################################################################
 
-Aides différées:
+Aides employeur différées:
 
   Crédit d'impôt pour la compétitivité et l'emploi (CICE):
     employeur: credit_impot_competitivite_emploi

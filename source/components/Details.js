@@ -12,8 +12,8 @@ export default class Details extends Component {
 					<thead>
 						<tr>
 							<th>Éléments</th>
-							<th>Part employeur</th>
 							<th>Part salarié</th>
+							<th>Part employeur</th>
 						</tr>
 					</thead>
 						{ Object.keys(spec)
@@ -64,8 +64,8 @@ export default class Details extends Component {
 				<td key="element" className="element">{name}</td>
 			] : [],
 			...[
-				<td key="employeur" className="value employeur">{this.humanFigure(employeurValue)}</td>,
-				<td key="salarie" className="value salarie">{this.humanFigure(salarieValue)}</td>
+				<td key="salarie" className="value salarie">{this.humanFigure(salarieValue)}</td>,
+				<td key="employeur" className="value employeur">{this.humanFigure(employeurValue)}</td>
 			]
 		]
 

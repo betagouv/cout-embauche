@@ -16,11 +16,11 @@ Sommes:
 ####################################################################################
 
 Santé:
-  Maladie (MMID):
+  Sécurité sociale - Maladie Maternité Invalidité Décès:
     employeur: mmid_employeur
     salarie: mmid_salarie
 
-  Prévoyance obligatoire cadre:
+  Complémentaire prévoyance obligatoire cadre:
     employeur: prevoyance_obligatoire_cadre
 
   Complémentaire santé:
@@ -39,32 +39,34 @@ Accidents du travail - Maladies Professionnelles:
 ####################################################################################
 
 Retraite:
-  Vieillesse déplafonnée:
-    employeur: vieillesse_deplafonnee_employeur
-    salarie: vieillesse_plafonnee_salarie
-  Vieillesse plafonnée:
+  Sécurité sociale plafonnée:
     employeur: vieillesse_plafonnee_employeur
+    salarie: vieillesse_plafonnee_salarie
+
+  Sécurité sociale déplafonnée:
+    employeur: vieillesse_deplafonnee_employeur
     salarie: vieillesse_deplafonnee_salarie
 
-  ARRCO:
+  Complémentaire (ARRCO):
     employeur: arrco_employeur
     salarie: arrco_salarie
 
-  AGIRC:
+  Complémentaire cadre (AGIRC):
     employeur: agirc_employeur
     salarie: agirc_salarie
 
-  AGIRC GMP:
+  Complémentaire cadre garantie minimale de points (AGIRC GMP):
     employeur: agirc_gmp_employeur
     salarie: agirc_gmp_salarie
+
+  Complémentaire alignement de l'âge de départ (AGFF):
+    employeur: agff_employeur
+    salarie: agff_salarie
 
   Cotisation Exceptionnelle Temporaire:
     employeur: cotisation_exceptionnelle_temporaire_employeur
     salarie: cotisation_exceptionnelle_temporaire_salarie
 
-  AGFF:
-    employeur: agff_employeur
-    salarie: agff_salarie
 
 ####################################################################################
 
@@ -73,17 +75,17 @@ Famille - Sécurité Sociale:
 
 ####################################################################################
 
-Assurance Chômage:
+Assurance chômage:
 
-  Assurance chômage:
+  Sécurité sociale:
     employeur: chomage_employeur
     salarie: chomage_salarie
 
-  AGS:
+  Cotisation au régime de garantie des salaires (AGS):
     employeur: ags
     fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F31409
 
-  APEC:
+  Cotisation pour le financement de l'emploi des cadres (APEC):
     employeur: apec_employeur
     salarie: apec_salarie
 
@@ -95,7 +97,7 @@ Autres:
     fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32872
     employeur: contribution_solidarite_autonomie
 
-  Fonds national d'aide au logement:
+  Fonds national d'aide au logement (FNAL):
     employeur: fnal
 
   Contribution au dialogue social:
@@ -125,7 +127,6 @@ Autres éléments employeur hors bulletin de paie:
         key: contribution_supplementaire_apprentissage
       explained: Décroît en fonction du pourcentage de l'effectif en apprentissage.
       clarifier: pourcentage_alternants
-
 
     Taxe sur les salaires:
       employeur:

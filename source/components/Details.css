@@ -59,7 +59,7 @@ tr:nth-child(2n) {
 
 td,th {
 	display: table-cell;
-	padding: .3em .6em;
+	padding: .15em .6em;
 	line-height: 2em;
 }
 

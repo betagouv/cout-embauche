@@ -1,0 +1,205 @@
+# Ceci constitue presque le tableau d'une fiche de paie complète,
+# avec les aides accordées aux employeurs en plus,
+# et des lignes comme les tickets restaurants en moins.
+
+Sommes:
+
+  # Coût du travail:
+  #   employeur: cout_du_travail
+  # Salaire super brut:
+  #   employeur: salaire_super_brut
+  - key: cout_du_travail
+    name: Coût du travail
+  - key: salaire_super_brut
+    name: Salaire super brut
+
+####################################################################################
+
+Détails:
+
+  Bulletin de paie:
+
+    description: >
+      Ce premier tableau correspond au bulletin de paie simplifié.
+      Attention, ceci n'en fait pas pour autant un bulletin de paie valide !
+    contouré: oui
+
+    catégories:
+      Santé:
+        Sécurité sociale - Maladie Maternité Invalidité Décès:
+          employeur: mmid_employeur
+          salarie: mmid_salarie
+
+        Complémentaire prévoyance obligatoire cadre:
+          employeur: prevoyance_obligatoire_cadre
+
+        Complémentaire santé:
+          employeur: complementaire_sante_employeur
+          salarie: complementaire_sante_salarie
+          explanation: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part n'est qu'un exemple, que vous pouvez changer.
+          clarifier: mutuelle
+
+      ####################################################################################
+
+      Accidents du travail - Maladies Professionnelles:
+        employeur: accident_du_travail
+        explanation: Montant calculé pour une activité à faible risque d'accident de travail.
+        clarifier: tauxRisque
+
+      ####################################################################################
+
+      Retraite:
+        Sécurité sociale plafonnée:
+          employeur: vieillesse_plafonnee_employeur
+          salarie: vieillesse_plafonnee_salarie
+
+        Sécurité sociale déplafonnée:
+          employeur: vieillesse_deplafonnee_employeur
+          salarie: vieillesse_deplafonnee_salarie
+
+        Complémentaire (ARRCO):
+          employeur: arrco_employeur
+          salarie: arrco_salarie
+
+        Complémentaire cadre (AGIRC):
+          employeur: agirc_employeur
+          salarie: agirc_salarie
+
+        Complémentaire cadre garantie minimale de points (AGIRC GMP):
+          employeur: agirc_gmp_employeur
+          salarie: agirc_gmp_salarie
+
+        Complémentaire alignement de l'âge de départ (AGFF):
+          employeur: agff_employeur
+          salarie: agff_salarie
+
+        Cotisation Exceptionnelle Temporaire:
+          employeur: cotisation_exceptionnelle_temporaire_employeur
+          salarie: cotisation_exceptionnelle_temporaire_salarie
+
+
+      ####################################################################################
+
+      Famille - Sécurité Sociale:
+        employeur: famille
+
+      ####################################################################################
+
+      Assurance chômage:
+
+        Sécurité sociale:
+          employeur: chomage_employeur
+          salarie: chomage_salarie
+
+        Cotisation au régime de garantie des salaires (AGS):
+          employeur: ags
+          fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F31409
+
+        Cotisation pour le financement de l'emploi des cadres (APEC):
+          employeur: apec_employeur
+          salarie: apec_salarie
+
+      ####################################################################################
+
+      Autres:
+
+        Contribution solidarité autonomie:
+          fiche: https://www.service-public.fr/professionnels-entreprises/vosdroits/F32872
+          employeur: contribution_solidarite_autonomie
+
+        Fonds national d'aide au logement (FNAL):
+          employeur: fnal
+
+        Contribution au dialogue social:
+          employeur: financement_organisations_syndicales
+
+        Versement transport:
+          employeur: versement_transport
+
+        Forfait social:
+          employeur: forfait_social
+
+      ####################################################################################
+
+      CSG / CRDS:
+
+        CSG non imposable à l'impôt sur le revenu:
+          salarie: csg_deductible_salaire
+
+        CSG imposable à l'impôt sur le revenu:
+          salarie: csg_imposable_salaire
+
+        CRDS imposable à l'impôt sur le revenu:
+          salarie: crds_salaire
+
+      ####################################################################################
+
+      Allègements de cotisations:
+
+        Réduction générale sur les bas salaires (ex-Fillon):
+          employeur: allegement_fillon
+
+        Réduction de cotisation d’allocations familiales:
+          employeur: allegement_cotisation_allocations_familiales
+
+      ####################################################################################
+
+  Hors bulletin de paie:
+    description: Éléments hors bulletin de paie
+    contouré: oui
+
+    catégories:
+
+      Autres éléments employeur:
+
+          Formation professionnelle:
+            employeur: formation_professionnelle
+
+          Participation à l'effort de construction:
+            employeur: participation_effort_construction
+
+          Taxe d'apprentissage:
+            employeur: taxe_apprentissage
+
+          Contribution supplémentaire à l'apprentissage:
+            employeur:
+              key: contribution_supplementaire_apprentissage
+            explanation: Décroît en fonction du pourcentage de l'effectif en apprentissage.
+            clarifier: pourcentage_alternants
+
+          Taxe sur les salaires:
+            employeur:
+              key: taxe_salaires
+            explanation: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
+
+          Cotisation pénibilité:
+            employeur:
+              key: penibilite
+            explanation: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
+            clarifier: penibilite
+
+
+      ####################################################################################
+
+      Aides employeur:
+        Jeune entreprise innovante:
+          employeur: exoneration_cotisations_employeur_jei
+        Exonérations pour l'apprentissage:
+          employeur: exoneration_cotisations_employeur_apprenti
+
+      ####################################################################################
+
+      Aides employeur différées:
+
+        Crédit d'impôt pour la compétitivité et l'emploi (CICE):
+          employeur: credit_impot_competitivite_emploi
+
+        Aide à l'embauche d'un 1er salarié:
+          employeur:
+            key: aide_premier_salarie
+          explanation: Aide non renouvelée en 2017
+
+        Aide à l'embauche pour les TPE et PME:
+          employeur:
+            key: aide_embauche_pme
+          explanation: Pour une embauche avant la fin juin 2017. Limitée à 4000€ (2 ans à temps plein), versement trimestriel.

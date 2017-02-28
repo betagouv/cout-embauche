@@ -16,6 +16,7 @@ table {
 	margin-bottom: 3em;
 	border-spacing: 2px;
 	font-size: 130%;
+	padding: 2em;
 }
 
 @media(max-width: 1024px) {
@@ -24,10 +25,14 @@ table {
 }
 
 caption {
-	font-weight: bold;
-	border-bottom: 1px solid #C3C3C3;
-	margin-bottom: 1em;
-	font-size: 115%;
+	font-style: italic;
+	text-align: left;
+	color: #333;
+	font-size: 85%;
+	margin-bottom: .3em;
+	margin-left: 1.8em;
+	text-decoration: underline;
+	text-decoration-color: #ccc;
 }
 
 thead tr th {
@@ -83,7 +88,7 @@ td .na {
 .category .subtotal {
 	font-size: 100%;
 	text-align: right;
-	opacity: .9
+	opacity: 1
 }
 
 .explanation {

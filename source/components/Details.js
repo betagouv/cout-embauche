@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import outputVariables from '../outputVariables.yaml'
-import spec from '../results-spec.yaml'
+import spec from '../details-spec.yaml'
 import classNames from 'classnames'
 import './Details.css'
 
@@ -14,33 +14,44 @@ let
 
 export default class Details extends Component {
 	render() {
-		let headerStyle = {
-			borderBottom: '1px solid ' + this.props.colours.textColourOnWhite,
-			color: this.props.colours.textColourOnWhite
-		}
+		let details = spec['Détails'],
+			tables = Object.keys(details)
 		return (
 			<section id="taxes">
-				<table>
-					<thead>
-						<tr>
-							{headers.map( text =>
-								<th style={headerStyle}>{text}</th>
-							)}
-						</tr>
-					</thead>
-						{ Object.keys(spec)
-								.filter(category => category !== 'Sommes')
-								.map(c => this.renderCategory(c))
-						}
-				</table>
-
+				{tables.map(t => this.renderTable(details, t))}
 				<a href="mailto:contact@embauche.beta.gouv.fr?subject=Erreur dans les résultats du simulateur">Signaler une erreur</a>
 			</section>
 		)
 	}
-	renderCategory(categoryName) { // category = 'Santé'
+
+	renderTable(details, tableKey) {
 		let
-			category = spec[categoryName], // items = maladie, complémentaire, prévoyance
+			{description, 'catégories': categories} = details[tableKey],
+			headerStyle = {
+				borderBottom: '1px solid ' + this.props.colours.textColourOnWhite,
+				color: this.props.colours.textColourOnWhite
+			}
+		return (
+			<table
+					key={tableKey} >
+				<caption>{description}</caption>
+				<thead>
+					<tr>
+						{headers.map( text =>
+							<th style={headerStyle}>{text}</th>
+						)}
+					</tr>
+				</thead>
+					{ Object
+							.keys(categories)
+							.map(c => this.renderCategory(categories, c)) }
+			</table>
+		)
+	}
+
+	renderCategory(categories, categoryName) { // ex. category = 'Santé'
+		let
+			category = categories[categoryName], // ex. items = maladie, complémentaire, prévoyance
 			categoryIsItem = category.employeur || category.salarie,
 			itemNames = !categoryIsItem && Object.keys(category),
 			colouredTextStyle = {color: this.props.colours.textColourOnWhite},
@@ -62,8 +73,12 @@ export default class Details extends Component {
 				{ categoryIsItem ? this.renderTableCells(
 					null, category
 				) : [
-					<th className="subtotal" style={colouredTextStyle}>{this.humanFigure(salarieTotal)}</th>,
-					<th className="subtotal" style={colouredTextStyle}>{this.humanFigure(employeurTotal)}</th> ]
+					<th className="subtotal" style={colouredTextStyle}>
+						{this.humanFigure(salarieTotal)}
+					</th>,
+					<th className="subtotal" style={colouredTextStyle}>
+						{this.humanFigure(employeurTotal)}
+					</th> ]
 				}
 			</tr>
 			{itemNames && itemNames.map(

@@ -50,10 +50,6 @@ tbody::before
   height: 1em;
 }
 
-tbody:first-of-type::before {
-	display: none;
-}
-
 tr:nth-child(2n) {
 	background: #f8f8f8
 }
@@ -82,6 +78,12 @@ td .na {
 	padding-left: 0;
 	text-align: left;
 	line-height: 2em;
+}
+
+.category .subtotal {
+	font-size: 100%;
+	text-align: right;
+	opacity: .9
 }
 
 .explanation {

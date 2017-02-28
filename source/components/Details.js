@@ -42,17 +42,29 @@ export default class Details extends Component {
 		let
 			category = spec[categoryName], // items = maladie, complémentaire, prévoyance
 			categoryIsItem = category.employeur || category.salarie,
-			itemNames = !categoryIsItem && Object.keys(category)
+			itemNames = !categoryIsItem && Object.keys(category),
+			colouredTextStyle = {color: this.props.colours.textColourOnWhite},
+			[salarieTotal, employeurTotal] =
+				itemNames ? itemNames.reduce(
+					([st, et], name) => {
+						let [s=0, e=0] = this.getResults(category[name])
+						return [st + s, et + e]
+					},
+					[0, 0]
+				) : []
 
 		return <tbody key={categoryName}>
 			<tr className="category">
-				<th style={{color: this.props.colours.textColourOnWhite}} id={categoryName}
+				<th style={colouredTextStyle} id={categoryName}
 						scope="colgroup">
 						{categoryName}
 				</th>
-				{ categoryIsItem && this.renderTableCells(
+				{ categoryIsItem ? this.renderTableCells(
 					null, category
-				)}
+				) : [
+					<th className="subtotal" style={colouredTextStyle}>{this.humanFigure(salarieTotal)}</th>,
+					<th className="subtotal" style={colouredTextStyle}>{this.humanFigure(employeurTotal)}</th> ]
+				}
 			</tr>
 			{itemNames && itemNames.map(
 				name => <tr key={name}>
@@ -78,10 +90,19 @@ export default class Details extends Component {
 		</div>
 	}
 
+	getResults({employeur, salarie}) {
+		let {
+			results: {
+				[salarie]: salarieValue,
+				[employeur]: employeurValue
+			}
+		} = this.props
+		return [salarieValue, employeurValue]
+	}
+
 	renderTableCells(name, line) {
 		let
-			{employeur, salarie} = line,
-			{results: {[employeur]: employeurValue, [salarie]: salarieValue}} = this.props
+			[salarieValue, employeurValue] = this.getResults(line)
 
 		return [
 			...name ? [

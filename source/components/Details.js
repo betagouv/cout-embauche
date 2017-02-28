@@ -4,16 +4,28 @@ import spec from '../results-spec.yaml'
 import classNames from 'classnames'
 import './Details.css'
 
+let
+	headers = [
+		'Éléments',
+		'Part salarié',
+		'Part employeur'
+	]
+
+
 export default class Details extends Component {
 	render() {
+		let headerStyle = {
+			borderBottom: '1px solid ' + this.props.colours.textColourOnWhite,
+			color: this.props.colours.textColourOnWhite
+		}
 		return (
 			<section id="taxes">
 				<table>
 					<thead>
 						<tr>
-							<th>Éléments</th>
-							<th>Part salarié</th>
-							<th>Part employeur</th>
+							{headers.map( text =>
+								<th style={headerStyle}>{text}</th>
+							)}
 						</tr>
 					</thead>
 						{ Object.keys(spec)
@@ -34,7 +46,7 @@ export default class Details extends Component {
 
 		return <tbody key={categoryName}>
 			<tr className="category">
-				<th id={categoryName}
+				<th style={{color: this.props.colours.textColourOnWhite}} id={categoryName}
 						scope="colgroup">
 						{categoryName}
 				</th>
@@ -61,7 +73,7 @@ export default class Details extends Component {
 		return <div className="explanation">
 			<span>{explanation}</span>
 			{clarifier &&
-				<a href="#" onClick={openAdvancedSection}>Affinez votre situation</a>
+				<a style={{color: this.props.colours.textColourOnWhite}} href="#" onClick={openAdvancedSection}>Affinez votre situation</a>
 			}
 		</div>
 	}

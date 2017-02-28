@@ -31,8 +31,6 @@ caption {
 }
 
 thead tr th {
-	border-bottom: 1px solid #4A89DC;
-	color: #4A89DC;
 	font-size: 105%;
 	text-align: center;
 	min-width: 7.5em;
@@ -80,15 +78,10 @@ td .na {
 
 .category th {
 	font-weight: 300;
-	color: #4A89DC;
 	font-size: 140%;
 	padding-left: 0;
 	text-align: left;
 	line-height: 2em;
-}
-tr.category {
-	border-bottom: 3px solid #4A89DC;
-	background: white;
 }
 
 .explanation {

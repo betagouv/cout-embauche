@@ -26,14 +26,14 @@ Santé:
   Complémentaire santé:
     employeur: complementaire_sante_employeur
     salarie: complementaire_sante_salarie
-    explained: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part n'est qu'un exemple, que vous pouvez changer.
+    explanation: L'employeur doit proposer une offre couvrant un panier de soins minimum. Cette part n'est qu'un exemple, que vous pouvez changer.
     clarifier: mutuelle
 
 ####################################################################################
 
 Accidents du travail - Maladies Professionnelles:
   employeur: accident_du_travail
-  explained: Montant calculé pour une activité à faible risque d'accident de travail.
+  explanation: Montant calculé pour une activité à faible risque d'accident de travail.
   clarifier: tauxRisque
 
 ####################################################################################
@@ -125,18 +125,18 @@ Autres éléments employeur hors bulletin de paie:
     Contribution supplémentaire à l'apprentissage:
       employeur:
         key: contribution_supplementaire_apprentissage
-      explained: Décroît en fonction du pourcentage de l'effectif en apprentissage.
+      explanation: Décroît en fonction du pourcentage de l'effectif en apprentissage.
       clarifier: pourcentage_alternants
 
     Taxe sur les salaires:
       employeur:
         key: taxe_salaires
-      explained: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
+      explanation: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
 
     Cotisation pénibilité:
       employeur:
         key: penibilite
-      explained: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
+      explanation: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
       clarifier: penibilite
 
 
@@ -181,9 +181,9 @@ Aides employeur différées:
   Aide à l'embauche d'un 1er salarié:
     employeur:
       key: aide_premier_salarie
-    explained: Aide non renouvelée en 2017
+    explanation: Aide non renouvelée en 2017
 
   Aide à l'embauche pour les TPE et PME:
     employeur:
       key: aide_embauche_pme
-    explained: Pour une embauche avant la fin juin 2017. Limitée à 4000€ (2 ans à temps plein), versement trimestriel.
+    explanation: Pour une embauche avant la fin juin 2017. Limitée à 4000€ (2 ans à temps plein), versement trimestriel.

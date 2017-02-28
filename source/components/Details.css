@@ -7,6 +7,7 @@ https://tympanus.net/Tutorials/StickyTableHeaders/index2.html
 #taxes {
 	font-size: 60%;
 	margin-top: 3em;
+	line-height: normal;
 }
 
 table {
@@ -32,8 +33,10 @@ caption {
 thead tr th {
 	border-bottom: 1px solid #4A89DC;
 	color: #4A89DC;
-	font-size: 110%;
-	text-align: right;
+	font-size: 105%;
+	text-align: center;
+	min-width: 7.5em;
+	line-height: 2em;
 }
 
 thead tr th:first-child {
@@ -41,6 +44,7 @@ thead tr th:first-child {
 }
 
 
+/* Un padding entre les différentes catégories de résultats */
 tbody::before
 {
   content: '';
@@ -48,19 +52,19 @@ tbody::before
   height: 1em;
 }
 
-tbody:first {
-	/*display: none;*/
-	background: red;
+tbody:first-of-type::before {
+	display: none;
 }
 
 tr:nth-child(2n) {
 	background: #f8f8f8
 }
-
+td {
+	line-height: 2em;
+}
 td,th {
 	display: table-cell;
 	padding: .15em .6em;
-	line-height: 2em;
 }
 
 th {
@@ -74,30 +78,35 @@ td .na {
 	opacity: .4
 }
 
-td.explanation {
-	font-size: 85%;
-	text-align: right;
-	line-height: 1.3em;
-	font-style: italic;
-	color: #333;
-	padding: 0 4em 0 20%;
-}
-td.explanation p {
-	margin: 0;
-}
-td.explanation p:last-child {
-	margin-bottom: 1em;
-}
-
 .category th {
 	font-weight: 300;
 	color: #4A89DC;
 	font-size: 140%;
 	padding-left: 0;
 	text-align: left;
-
+	line-height: 2em;
 }
 tr.category {
 	border-bottom: 3px solid #4A89DC;
 	background: white;
+}
+
+.explanation {
+	font-size: 75%;
+	font-style: italic;
+	color: #444;
+	line-height: 1.2em;
+	position: relative;
+	margin-left: 1.5em;
+	padding-bottom: .6em;
+}
+.explanation span {
+	display: inline-block;
+	width: 75%;
+}
+.explanation a {
+	color: #4A89DC;
+	position: absolute;
+	right: .3em;
+	bottom: .3em;
 }

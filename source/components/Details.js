@@ -53,36 +53,36 @@ export default class Details extends Component {
 		</tbody>
 	}
 
-	renderTableCells(name, {employeur, salarie, explained, clarifier}) {
-
-		let
-			{results: {[employeur]: employeurValue, [salarie]: salarieValue}, advancedQuestions, openAdvancedSection} = this.props,
+	renderExplanation({explanation, clarifier}) {
+		let {openAdvancedSection, advancedQuestions} = this.props,
 			lineClarified = advancedQuestions(clarifier) != null
+
+		if (!explanation || lineClarified) return null
+		return <div className="explanation">
+			<span>{explanation}</span>
+			{clarifier &&
+				<a href="#" onClick={openAdvancedSection}>Affinez votre situation</a>
+			}
+		</div>
+	}
+
+	renderTableCells(name, line) {
+		let
+			{employeur, salarie} = line,
+			{results: {[employeur]: employeurValue, [salarie]: salarieValue}} = this.props
 
 		return [
 			...name ? [
-				<td key="element" className="element">{name}</td>
+				<td key="element" className="element">
+					{name}
+					{this.renderExplanation(line)}
+				</td>
 			] : [],
 			...[
 				<td key="salarie" className="value salarie">{this.humanFigure(salarieValue)}</td>,
 				<td key="employeur" className="value employeur">{this.humanFigure(employeurValue)}</td>
 			]
 		]
-
-			{/* <tbody key={name} className={explained ? 'explained': ''}>
-				<tr>
-					<th>{name}</th>
-					<td className="value">humanFigure(value)</td>
-				</tr>
-				{explained && !lineClarified && <tr>
-					<td colSpan="100%" className="explanation">
-						<p>{explained}</p>
-						{clarifier && <p>
-							<a href="#" onClick={openAdvancedSection}>Affinez votre situation</a>
-						</p>}
-					</td>
-				</tr>}
-			</tbody> */}
 	}
 
 	humanFigure(figure) {

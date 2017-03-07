@@ -22,7 +22,7 @@
 	width: 70%;
 }
 
-.simulation-summary p {
+.simulation-summary .figures p {
 	font-weight: 200;
 	line-height: 1.2em;
 	border-left: 1px solid;
@@ -84,10 +84,20 @@ button.action span {
 	display: none;
 }
 
-#limits {
+#limitations {
 	color: #4A89DC;
 	font-size: 60%;
 	line-height: 1.1em;
-	margin-top: .3em;
+	margin-top: .6em;
 	text-align: center;
+}
+
+#limitations p {
+	margin: 0em;
+	margin-top: .1em;
+}
+
+#paie-limitation {
+	font-weight: 600;
+	font-style: italic;
 }

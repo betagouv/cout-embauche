@@ -25,11 +25,7 @@ export default class Details extends Component {
 
 	renderTable(details, tableKey) {
 		let
-			{description, 'catégories': categories} = details[tableKey],
-			headerStyle = {
-				borderBottom: '1px solid ' + this.props.colours.textColourOnWhite,
-				color: this.props.colours.textColourOnWhite
-			}
+			{description, 'catégories': categories} = details[tableKey]
 		return (
 			<table
 					key={tableKey} >
@@ -37,7 +33,7 @@ export default class Details extends Component {
 				<thead>
 					<tr>
 						{headers.map( text =>
-							<th style={headerStyle}>{text}</th>
+							<th>{text}</th>
 						)}
 					</tr>
 				</thead>
@@ -72,10 +68,10 @@ export default class Details extends Component {
 				{ categoryIsItem ? this.renderTableCells(
 					null, category
 				) : [
-					<th className="subtotal" style={colouredTextStyle}>
+					<th className="subtotal">
 						{this.humanFigure(salarieTotal)}
 					</th>,
-					<th className="subtotal" style={colouredTextStyle}>
+					<th className="subtotal">
 						{this.humanFigure(employeurTotal)}
 					</th> ]
 				}

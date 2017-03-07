@@ -17,6 +17,7 @@ table {
 	border-spacing: 2px;
 	font-size: 130%;
 	padding: 2em;
+	color: #333;
 }
 
 @media(max-width: 1024px) {
@@ -37,9 +38,11 @@ caption {
 
 thead tr th {
 	font-size: 105%;
-	text-align: center;
+	text-align: right;
 	min-width: 7.5em;
 	line-height: 2em;
+	text-decoration: underline solid #ccc;
+	font-weight: normal;
 }
 
 thead tr th:first-child {

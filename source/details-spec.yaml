@@ -6,9 +6,9 @@ Détails:
 
   Bulletin de paie:
 
-    description: >
-      Éléments apparaissant sur le bulletin de paie clarifié.
-      Attention, cette simulation n'a pas la valeur d'un bulletin de paie.
+    # description: >
+      # Éléments apparaissant sur le bulletin de paie clarifié.
+      # Attention, cette simulation n'a pas la valeur d'un bulletin de paie.
 
     catégories:
       Santé:

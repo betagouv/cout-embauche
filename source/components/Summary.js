@@ -71,7 +71,12 @@ export default class Summary extends Component {
 						}
 					</button>
 			</div>
-			<div id="limits" style={{color: textColourOnWhite}}>Ce simulateur ne prend en compte les conventions, accords collectifs, les régimes particuliers et les règles relatives au congés.</div>
+			<div id="limitations" style={{color: textColourOnWhite}}>
+				<p>Ce simulateur ne prend en compte les conventions, accords collectifs, les régimes particuliers et les règles relatives au congés.</p>
+				{showDetails &&
+					<p id="paie-limitation">Attention, cette simulation n'a pas la valeur d'un bulletin de paie.</p>
+				}
+			</div>
 		</section>
 		)
 	}

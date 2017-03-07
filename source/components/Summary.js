@@ -18,7 +18,7 @@ export default class Summary extends Component {
 	render() {
 		let
 			{
-				themeColours: {colour, textColour, lighterTextColour},
+				themeColours: {colour, textColour, lighterTextColour, textColourOnWhite},
 				results,
 				results: {
 					salaire_super_brut, cout_du_travail,
@@ -71,6 +71,7 @@ export default class Summary extends Component {
 						}
 					</button>
 			</div>
+			<div id="limits" style={{color: textColourOnWhite}}>Ce simulateur ne prend en compte les conventions, accords collectifs, les régimes particuliers et les règles relatives au congés.</div>
 		</section>
 		)
 	}

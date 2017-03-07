@@ -83,3 +83,11 @@ button.action span {
 .bring-input-back:disabled {
 	display: none;
 }
+
+#limits {
+	color: #4A89DC;
+	font-size: 60%;
+	line-height: 1.1em;
+	margin-top: .3em;
+	text-align: center;
+}

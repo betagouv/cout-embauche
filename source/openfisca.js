@@ -1,4 +1,4 @@
-import outputVariables from './outputVariables.yaml'
+import detailsSpec from './details-spec.yaml'
 
 export function simulationDate() {
 	let
@@ -30,18 +30,40 @@ let serializeObject = source =>
 		.map(key => encodeURI(key + '=' + source[key]))
 		.join('&')
 
+let details = detailsSpec['Détails'],
+	tables = Object.keys(details)
+
+let flatten = list => list.reduce(
+	(memo, l) => [
+		...memo,
+		... (typeof l == 'string' ?
+			[l]
+		: flatten(l)
+		)
+	]
+	, []
+)
+
+let detailsOutputVariableKeys = flatten(tables.map(t => {
+	let table = details[t]['catégories'],
+		categories = Object.keys(table)
+	return categories.map(c => {
+		let category = table[c],
+			items = Object.keys(category)
+		return items.map(key => {
+			let {employeur, salarie} = category[key]
+			return (employeur ? [employeur] : []).concat( (salarie ? [salarie] : []))
+		})
+	})
+})
+)
+
+
 // Url pointing to an instance of the OpenFisca Web API and containing the desired output variables
 let baseUrl =
 	'https://embauche.beta.gouv.fr/openfisca/api/2/formula/' + simulationDate() + '/' +
 	// output variables are extracted from the YAML file used to display them in the UI
-	Object.keys(outputVariables)
-		.reduce((final, category) =>
-			[ // Turn the yaml object into a flat array
-				...final,
-				...outputVariables[category].map(i => i.key),
-			], [])
-		.join('+')
-
+	detailsOutputVariableKeys.concat(['cout_du_travail', 'salaire_super_brut']).join('+')
 
 /** Helper to call the OpenFisca Web API's /formula endpoint
 *

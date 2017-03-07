@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import outputVariables from '../outputVariables.yaml'
 import spec from '../details-spec.yaml'
 import classNames from 'classnames'
 import './Details.css'
@@ -65,7 +64,7 @@ export default class Details extends Component {
 				) : []
 
 		return <tbody key={categoryName}>
-			<tr className="category">
+			<tr key="category" className="category">
 				<th style={colouredTextStyle} id={categoryName}
 						scope="colgroup">
 						{categoryName}
@@ -125,7 +124,7 @@ export default class Details extends Component {
 					{name}
 					{this.renderExplanation(line)}
 				</td>
-			] : [],
+			] : [], // No name, the name is the category
 			...[
 				<td key="salarie" className="value salarie">{this.humanFigure(salarieValue)}</td>,
 				<td key="employeur" className="value employeur">{this.humanFigure(employeurValue)}</td>

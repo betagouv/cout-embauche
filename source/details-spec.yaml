@@ -2,25 +2,12 @@
 # avec les aides accordées aux employeurs en plus,
 # et des lignes comme les tickets restaurants en moins.
 
-Sommes:
-
-  # Coût du travail:
-  #   employeur: cout_du_travail
-  # Salaire super brut:
-  #   employeur: salaire_super_brut
-  - key: cout_du_travail
-    name: Coût du travail
-  - key: salaire_super_brut
-    name: Salaire super brut
-
-####################################################################################
-
 Détails:
 
   Bulletin de paie:
 
     description: >
-      Éléments apparaissant sur le bulletin de paie simplifié.
+      Éléments apparaissant sur le bulletin de paie clarifié.
       Attention, cette simulation n'a pas la valeur d'un bulletin de paie.
 
     catégories:
@@ -160,21 +147,22 @@ Détails:
             employeur: taxe_apprentissage
 
           Contribution supplémentaire à l'apprentissage:
-            employeur:
-              key: contribution_supplementaire_apprentissage
+            employeur: contribution_supplementaire_apprentissage
             explanation: Décroît en fonction du pourcentage de l'effectif en apprentissage.
             clarifier: pourcentage_alternants
 
-          Taxe sur les salaires:
-            employeur:
-              key: taxe_salaires
-            explanation: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
-
           Cotisation pénibilité:
-            employeur:
-              key: penibilite
+            employeur: penibilite
             explanation: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
             clarifier: penibilite
+
+          Taxe sur les salaires:
+            employeur: taxe_salaires
+            explanation: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.
+
+          Cotisation santé au travail:
+            employeur: null
+            explanation: L'employeur a l'obligation d'adhérer à un service de santé au travail. Le coût ne dépend légalement que de l'effectif, mais son montant par salarié est libre, donc non calculé ici.
 
 
       ####################################################################################
@@ -193,11 +181,9 @@ Détails:
           employeur: credit_impot_competitivite_emploi
 
         Aide à l'embauche d'un 1er salarié:
-          employeur:
-            key: aide_premier_salarie
+          employeur: aide_premier_salarie
           explanation: Aide non renouvelée en 2017
 
         Aide à l'embauche pour les TPE et PME:
-          employeur:
-            key: aide_embauche_pme
+          employeur: aide_embauche_pme
           explanation: Pour une embauche avant la fin juin 2017. Limitée à 4000€ (2 ans à temps plein), versement trimestriel.

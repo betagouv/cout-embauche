@@ -122,15 +122,15 @@ export default class Details extends Component {
 				</td>
 			] : [], // No name, the name is the category
 			...[
-				<td key="salarie" className="value salarie">{this.humanFigure(salarieValue)}</td>,
-				<td key="employeur" className="value employeur">{this.humanFigure(employeurValue)}</td>
+				<td key="salarie" className="salarie">{this.humanFigure(salarieValue)}</td>,
+				<td key="employeur" className="employeur">{this.humanFigure(employeurValue)}</td>
 			]
 		]
 	}
 
 	humanFigure(figure) {
 		let notApplicable = figure == null
-		return <span className={classNames({na:notApplicable})}>
+		return <span className={classNames('value', {na:notApplicable})}>
 			{notApplicable ? '--' : this.props.humanizeFigures(figure) + ' €'}
 		</span>
 	}

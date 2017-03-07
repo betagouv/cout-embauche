@@ -51,7 +51,7 @@ function results(state = {}, {type, results}) {
 	}
 }
 
-function activeSections(state = {top: 'details', advanced: false}, {type}) {
+function activeSections(state = {top: 'input', advanced: false}, {type}) {
 	switch (type) {
 	// What is the active top section, input or details ?
 	case TOGGLE_TOP_SECTION:

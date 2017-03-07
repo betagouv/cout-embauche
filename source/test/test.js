@@ -49,8 +49,8 @@ describe('Test du simulateur de coût d\'embauche', function() {
 		app.find('.show-details').simulate('click')
 		setTimeout(() => {
 			expect(
-				app.find('tbody td.value').first().text()
-			).to.not.equal('-- €') // to not be the default value (API error)
+				app.find('.value').first().text()
+			).to.not.equal('--') // to not be the default value (API error)
 			app.find('.show-details').simulate('click') //revert
 			done()
 		}, 100)

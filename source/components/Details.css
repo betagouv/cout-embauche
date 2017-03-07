@@ -72,8 +72,11 @@ td,th {
 th {
 }
 
-td.value {
+td {
 	text-align: right;
+}
+td.element {
+	text-align: left;
 }
 
 td .na {

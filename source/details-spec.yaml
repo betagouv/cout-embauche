@@ -20,9 +20,8 @@ Détails:
   Bulletin de paie:
 
     description: >
-      Ce premier tableau correspond au bulletin de paie simplifié.
-      Attention, ceci n'en fait pas pour autant un bulletin de paie valide !
-    contouré: oui
+      Éléments apparaissant sur le bulletin de paie simplifié.
+      Attention, cette simulation n'a pas la valeur d'un bulletin de paie.
 
     catégories:
       Santé:
@@ -87,7 +86,7 @@ Détails:
 
       Assurance chômage:
 
-        Sécurité sociale:
+        Chômage:
           employeur: chomage_employeur
           salarie: chomage_salarie
 
@@ -134,7 +133,7 @@ Détails:
 
       ####################################################################################
 
-      Allègements de cotisations:
+      Allègements employeur:
 
         Réduction générale sur les bas salaires (ex-Fillon):
           employeur: allegement_fillon
@@ -146,13 +145,12 @@ Détails:
 
   Hors bulletin de paie:
     description: Éléments hors bulletin de paie
-    contouré: oui
 
     catégories:
 
-      Autres éléments employeur:
+      Autres prélèvements employeur:
 
-          Formation professionnelle:
+          Contribution à la formation professionnelle:
             employeur: formation_professionnelle
 
           Participation à l'effort de construction:
@@ -181,7 +179,7 @@ Détails:
 
       ####################################################################################
 
-      Aides employeur:
+      Autres allègements employeur:
         Jeune entreprise innovante:
           employeur: exoneration_cotisations_employeur_jei
         Exonérations pour l'apprentissage:

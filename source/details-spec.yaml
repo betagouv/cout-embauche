@@ -99,6 +99,12 @@ Détails:
         Contribution au dialogue social:
           employeur: financement_organisations_syndicales
 
+        Participation à l'effort de construction:
+          employeur: participation_effort_construction
+
+        Contribution à la formation professionnelle:
+          employeur: formation_professionnelle
+
         Versement transport:
           employeur: versement_transport
 
@@ -136,12 +142,6 @@ Détails:
     catégories:
 
       Autres prélèvements employeur:
-
-          Contribution à la formation professionnelle:
-            employeur: formation_professionnelle
-
-          Participation à l'effort de construction:
-            employeur: participation_effort_construction
 
           Taxe d'apprentissage:
             employeur: taxe_apprentissage

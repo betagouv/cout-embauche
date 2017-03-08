@@ -44,16 +44,20 @@ let flatten = list => list.reduce(
 	, []
 )
 
+let extractEmployeurSalarie = ({employeur, salarie}) =>
+	(employeur ? [employeur] : []).concat( (salarie ? [salarie] : []))
+
 let detailsOutputVariableKeys = flatten(tables.map(t => {
 	let table = details[t]['catégories'],
 		categories = Object.keys(table)
 	return categories.map(c => {
 		let category = table[c],
-			items = Object.keys(category)
-		return items.map(key => {
-			let {employeur, salarie} = category[key]
-			return (employeur ? [employeur] : []).concat( (salarie ? [salarie] : []))
-		})
+			items = Object.keys(category),
+			categoryOutputVariables = extractEmployeurSalarie(category)
+
+		return categoryOutputVariables.length ?
+			categoryOutputVariables
+		:	items.map(key => extractEmployeurSalarie(category[key]) )
 	})
 })
 )

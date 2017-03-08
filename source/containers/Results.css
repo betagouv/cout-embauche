@@ -93,11 +93,10 @@ button.action span {
 }
 
 #limitations p {
-	margin: 0em;
-	margin-top: .1em;
 }
 
-#paie-limitation {
+#limitations #paie-limitation {
 	font-weight: 600;
 	font-style: italic;
+	margin-top: .6em;
 }

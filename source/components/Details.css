@@ -46,7 +46,7 @@ thead tr th {
 }
 
 thead tr th:first-child {
-	visibility: hidden;
+	opacity: 0; /* Keep it for copy paste to spreadsheet */
 }
 
 

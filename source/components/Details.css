@@ -79,7 +79,7 @@ td.element {
 	text-align: left;
 }
 
-td .na {
+td .na, th .na {
 	opacity: .4
 }
 

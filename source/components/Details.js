@@ -44,6 +44,15 @@ export default class Details extends Component {
 		)
 	}
 
+
+	// If all the summed elements are null, the sum is null. Else it is a number
+	sum = (memo, next) =>
+		typeof next == 'number' ?
+			typeof memo == 'number' ?
+				memo + next
+			: next
+		: memo
+
 	renderCategory(categories, categoryName) { // ex. category = 'Santé'
 		let
 			category = categories[categoryName], // ex. items = maladie, complémentaire, prévoyance
@@ -53,10 +62,10 @@ export default class Details extends Component {
 			[salarieTotal, employeurTotal] =
 				itemNames ? itemNames.reduce(
 					([st, et], name) => {
-						let [s=0, e=0] = this.getResults(category[name])
-						return [st + s, et + e]
+						let [s, e] = this.getResults(category[name])
+						return [this.sum(st, s), this.sum(et, e)]
 					},
-					[0, 0]
+					[null, null]
 				) : []
 
 		return <tbody key={categoryName}>
@@ -107,7 +116,7 @@ export default class Details extends Component {
 				[employeur]: employeurValue
 			}
 		} = this.props
-		return [salarieValue, employeurValue]
+		return [salarie === 0 ? 0 : salarieValue, employeur === 0 ? 0 : employeurValue]
 	}
 
 	renderTableCells(name, line) {
@@ -130,7 +139,7 @@ export default class Details extends Component {
 
 	humanFigure(figure) {
 		let notApplicable = figure == null
-		return <span className={classNames('value', {na:notApplicable})}>
+		return <span className={classNames('value', {na:notApplicable})} title={notApplicable ? 'Non applicable' : ''}>
 			{notApplicable ? '--' : this.props.humanizeFigures(figure) + ' €'}
 		</span>
 	}

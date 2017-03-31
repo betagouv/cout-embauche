@@ -8,6 +8,7 @@ let selector = formValueSelector('basicInput')
 
 @connect(state => ({
 	enTempsPartiel: selector(state, 'tempsDeTravail') == 'temps_partiel',
+	heuresParSemaine: selector(state, 'heuresParSemaine')
 }), dispatch => ({
 	changeCodeINSEE: (value) =>
 		dispatch(change('basicInput', 'codeINSEE', value)),
@@ -19,7 +20,13 @@ let selector = formValueSelector('basicInput')
 })
 export default class BasicInput extends Component {
 	render() {
-		let {enTempsPartiel} = this.props
+		let
+			{enTempsPartiel, heuresParSemaine} = this.props,
+			SMIC = 1480.27,
+			salaireMinimum = Math.round(
+				!enTempsPartiel ? SMIC : SMIC * (heuresParSemaine / 35)
+			)
+
 		return (
 			<form className="basic-input">
 				Mon
@@ -55,7 +62,7 @@ export default class BasicInput extends Component {
 						&nbsp; € &nbsp;
 					</label>
 					<span className="input-help">Rémunération totale<br/>
-						<em>(min. 1480€)</em>, dont primes.
+						<em>(min. {salaireMinimum}€)</em>, dont primes.
 					</span>
 
 					<Field component="select" name="typeSalaireEntré" >

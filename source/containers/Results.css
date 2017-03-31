@@ -22,7 +22,7 @@
 	width: 70%;
 }
 
-.simulation-summary p {
+.simulation-summary .figures p {
 	font-weight: 200;
 	line-height: 1.2em;
 	border-left: 1px solid;
@@ -54,7 +54,7 @@ button.action span {
 	border: 1px solid;
 	border-radius: .2em;
 	background: none;
-	font-size: 55%;
+	font-size: 65%;
 	padding: .3em;
 	cursor: pointer;
 	width: 25%;
@@ -82,4 +82,21 @@ button.action span {
 }
 .bring-input-back:disabled {
 	display: none;
+}
+
+#limitations {
+	color: #4A89DC;
+	font-size: 60%;
+	line-height: 1.1em;
+	margin-top: .4em;
+	text-align: center;
+}
+
+#limitations p {
+}
+
+#limitations #paie-limitation {
+	font-weight: 600;
+	font-style: italic;
+	margin-top: .6em;
 }

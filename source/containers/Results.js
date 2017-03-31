@@ -15,7 +15,8 @@ let selector = formValueSelector('basicInput'),
 	typeEntreprise: selector(state, 'typeEntreprise'),
 	typeSalaireEntré: selector(state, 'typeSalaireEntré'),
 	results: state.results,
-	advancedQuestions: name => advancedSelector(state, name)
+	advancedQuestions: name => advancedSelector(state, name),
+	themeColours: state.themeColours
 }), dispatch => ({
 	toggleSection: () =>
 		dispatch({type: TOGGLE_TOP_SECTION}),
@@ -34,7 +35,8 @@ export default class Results extends Component {
 						openAdvancedSection={this.props.openAdvancedSection}
 						advancedQuestions={this.props.advancedQuestions}
 						results={this.props.results}
-						humanizeFigures={this.humanizeFigures(2)} />
+						humanizeFigures={this.humanizeFigures(2)}
+						colours={this.props.themeColours} />
 				}
 			</div>
 		)

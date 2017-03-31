@@ -1,51 +1,111 @@
-section.taxes {
+#taxes {
 	font-size: 60%;
-	margin-top: 3em;
+	line-height: normal;
 }
 
 table {
-	width: 50%;
+	width: 100%;
 	float: left;
 	margin-bottom: 3em;
+	border-spacing: 2px;
+	font-size: 130%;
+	padding: 2em;
+	color: #333;
 }
 
 @media(max-width: 1024px) {
 	table {
-		width: 80%;
 	}
 }
 
 caption {
-	font-weight: bold;
-	border-bottom: 1px solid #C3C3C3;
-	margin-left: 30%;
-	margin-bottom: 1em;
-	font-size: 115%;
+	font-style: italic;
+	text-align: left;
+	color: #333;
+	font-size: 85%;
+	margin-bottom: .3em;
+	margin-left: 1.8em;
+	text-decoration: underline;
+	text-decoration-color: #ccc;
 }
 
-tbody.explained {
-	line-height: 2.5em;
+thead tr th {
+	font-size: 105%;
+	text-align: right;
+	min-width: 7.5em;
+	line-height: 2em;
+	text-decoration: underline solid #ccc;
+	font-weight: normal;
+}
+
+thead tr th:first-child {
+	opacity: 0; /* Pour le copier coller dans un tableur */
+}
+
+
+/* Un padding entre les différentes catégories de résultats */
+tbody::before
+{
+  content: '';
+  display: block;
+  height: 1em;
+}
+
+tr:nth-child(2n) {
+	background: #f8f8f8
+}
+td {
+	line-height: 2em;
+}
+td,th {
+	display: table-cell;
+	padding: .15em .6em;
 }
 
 th {
-	text-align: right;
 }
 
-td.value {
-	padding-left: 1em;
-	width: 7em;
-}
-td.explanation {
-	font-size: 85%;
+td {
 	text-align: right;
-	line-height: 1.3em;
+}
+td.element {
+	text-align: left;
+}
+
+td .na, th .na {
+	opacity: .4
+}
+
+.category th {
+	font-weight: 300;
+	font-size: 140%;
+	padding-left: 0;
+	text-align: left;
+	line-height: 2em;
+}
+
+.category .subtotal {
+	font-size: 100%;
+	text-align: right;
+	opacity: 1
+}
+
+.explanation {
+	font-size: 75%;
 	font-style: italic;
-	color: #333;
-	padding: 0 4em 0 20%;
+	color: #444;
+	line-height: 1.2em;
+	position: relative;
+	margin-left: 1.5em;
+	padding-bottom: .6em;
 }
-td.explanation p {
-	margin: 0;
+.explanation span {
+	display: inline-block;
+	width: 75%;
 }
-td.explanation p:last-child {
-	margin-bottom: 1em;
+.explanation a {
+	color: #4A89DC;
+	position: absolute;
+	right: .3em;
+	bottom: .3em;
 }

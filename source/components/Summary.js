@@ -18,7 +18,7 @@ export default class Summary extends Component {
 	render() {
 		let
 			{
-				themeColours: {colour, textColour, lighterTextColour},
+				themeColours: {colour, textColour, lighterTextColour, textColourOnWhite},
 				results,
 				results: {
 					salaire_super_brut, cout_du_travail,
@@ -70,6 +70,12 @@ export default class Summary extends Component {
 							<span>Voir le détail<br />des prélèvements</span>
 						}
 					</button>
+			</div>
+			<div id="limitations" style={{color: textColourOnWhite}}>
+				<p>Ce simulateur ne prend pas en compte les conventions, accords collectifs, les régimes particuliers et aides localisées.</p>
+				{showDetails &&
+					<p id="paie-limitation">Attention, ce détail n'est pas opposable à un bulletin de paie. En cas d'écart, vous pouvez en discuter avec votre responsable.</p>
+				}
 			</div>
 		</section>
 		)

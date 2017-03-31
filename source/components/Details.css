@@ -1,9 +1,3 @@
-/*
-Ressources pour améliorer le style du tableau :
-https://tympanus.net/Tutorials/StickyTableHeaders/index2.html
-
-*/
-
 #taxes {
 	font-size: 60%;
 	line-height: normal;
@@ -45,7 +39,7 @@ thead tr th {
 }
 
 thead tr th:first-child {
-	opacity: 0; /* Keep it for copy paste to spreadsheet */
+	opacity: 0; /* Pour le copier coller dans un tableur */
 }
 
 

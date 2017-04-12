@@ -35,11 +35,11 @@ class Conversation extends Component {
 				<SelectCommune
 					visible={effectifEntreprise >= 10}
 					title="Commune"
-					question="Quelle est la commune de l'embauche ?"
+					question="Quelle est la commune de l'embauche ?"
 					name="codeINSEE" />
 				<Input
 					title="Complémentaire santé"
-					question="Quel est le montant mensuel de la complémentaire santé obligatoire de l'entreprise ?"
+					question="Quel est le montant mensuel de la complémentaire santé obligatoire de l'entreprise ?"
 					visible={effectifEntreprise < 10 || steps.get('codeINSEE')}
 					name="mutuelle" />
 				<Group
@@ -51,7 +51,7 @@ class Conversation extends Component {
 						<Question
 							visible={true}
 							title="Taux de risque connu"
-							question="Connaissez-vous votre taux de risque AT/MP ?"
+							question="Connaissez-vous votre taux de risque AT/MP ?"
 							name="tauxRisqueConnu" />
 						<Input
 							title="Taux de risque"
@@ -62,7 +62,7 @@ class Conversation extends Component {
 							<SelectTauxRisque
 								visible={true}
 								title="Code de risque sélectionné"
-								question="Quelle est la catégorie de risque de votre entreprise ?"
+								question="Quelle est la catégorie de risque de votre entreprise ?"
 								name="selectTauxRisque" />
 							<ResultATMP
 								name="resultATMP"
@@ -75,7 +75,7 @@ class Conversation extends Component {
 
 				<Input
 					title="Pourcentage d'alternants"
-					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
+					question="Quel est le pourcentage d'alternants dans votre entreprise ?"
 					visible={effectifEntreprise >= 249 && steps.get('tauxRisque')}
 					name="pourcentage_alternants" />
 
@@ -84,38 +84,38 @@ class Conversation extends Component {
 						(effectifEntreprise < 249 && steps.get('tauxRisque'))
 						|| steps.get('pourcentage_alternants')}
 					title="Régime Alsace-Moselle"
-					question="Le salarié est-il affilié au régime d'Alsace-Moselle ?"
+					question="Le salarié est-il affilié au régime d'Alsace-Moselle ?"
 					name="alsaceMoselle" />
 
 				<Question
 					title="Pénibilité du travail"
-					question="Le salarié est-il exposé à des facteurs de pénibilité au-delà des seuils d'exposition ?"
+					question="Le salarié est-il exposé à des facteurs de pénibilité au-delà des seuils d'exposition ?"
 					visible={steps.get('alsaceMoselle')}
 					name="penibilite" />
 
 				<Question
 					title="Exonération Jeune Entreprise Innovante"
-					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
+					question="Profitez-vous du statut Jeune Entreprise Innovante pour cette embauche ?"
 					visible={steps.get('penibilite')}
 					name="jei" />
 
 				<Question
 					title="Votre avis"
-					question="Votre estimation est terminée. En êtes-vous satisfait ?"
+					question="Votre estimation est terminée. En êtes-vous satisfait ?"
 					visible={steps.get('jei')}
 					name="serviceUtile" />
 				<RhetoricalQuestion
 					visible={formValue('serviceUtile') === ':-)'}
 					name="partage"
 					question={<span>
-						Merci. N'hésitez pas à partager le simulateur !
+						Merci. N'hésitez pas à partager le simulateur !
 					</span>
 					} />
 				<TextArea
 					visible={formValue('serviceUtile') === ':-|'}
 					name="remarque"
 					title="Votre remarque"
-					question={'Que pouvons-nous faire pour l\'améliorer ?'}
+					question={'Que pouvons-nous faire pour l\'améliorer ?'}
 					/>
 		</div>)
 	}

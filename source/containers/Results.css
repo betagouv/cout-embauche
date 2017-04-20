@@ -95,6 +95,13 @@ button.action span {
 #limitations p {
 }
 
+#sim-limitation {
+	display: flex;
+	justify-content: space-between;
+}
+#sim-limitation a {
+	color: inherit;
+}
 #limitations #paie-limitation {
 	font-weight: 600;
 	font-style: italic;

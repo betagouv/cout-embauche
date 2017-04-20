@@ -15,6 +15,22 @@ let Figure = ({figure, title, textColour}) =>
 
 @connect(state => ({themeColours: state.themeColours}))
 export default class Summary extends Component {
+	state = {
+		lastUpdate: null
+	}
+	componentDidMount() {
+		fetch('https://api.github.com/repos/sgmap/cout-embauche/releases/latest')
+				.then(response => {
+					if (!response.ok)
+						console.log('Impossible de récupérer la date de dernière mise à jour')// eslint-disable-line no-console
+
+					return response.json()
+				})
+				.then(json => this.setState({lastUpdate: {date: json.published_at.substring(0, 9), link: json.html_url}}))
+				.catch(() =>
+					console.log('Impossible de récupérer la date de dernière mise à jour')// eslint-disable-line no-console
+				)
+	}
 	render() {
 		let
 			{
@@ -39,7 +55,8 @@ export default class Summary extends Component {
 			[ salaireTitle, salaireDescription, salaireVariable ] = correspondanceSalaires,
 			salaireFigure = results[salaireVariable],
 			paragraphBorderStyle = {borderColor: textColour},
-			buttonStyle = {borderColor: textColour, color: textColour}
+			buttonStyle = {borderColor: textColour, color: textColour},
+			lastUpdate = this.state.lastUpdate
 
 		return (
 			<section className="simulation-summary">
@@ -72,7 +89,19 @@ export default class Summary extends Component {
 					</button>
 			</div>
 			<div id="limitations" style={{color: textColourOnWhite}}>
-				<p>Ce simulateur ne prend pas en compte les conventions, accords collectifs, les régimes particuliers et aides localisées.</p>
+				<p id="sim-limitation">
+					<span>
+						Ce simulateur ne prend pas en compte les conventions, accords collectifs, les régimes particuliers et aides localisées.
+					</span>
+					<span>
+						{lastUpdate &&
+							<span>Mis à jour le <a href={lastUpdate.link} target="_blank">
+									{new Date(lastUpdate.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric'})}
+								</a>.
+							</span>
+						}
+					</span>
+				</p>
 				{showDetails &&
 					<p id="paie-limitation">Attention, ce détail n'est pas opposable à un bulletin de paie. En cas d'écart, vous pouvez en discuter avec votre responsable.</p>
 				}

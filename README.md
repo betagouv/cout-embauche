@@ -87,5 +87,5 @@ Browser compatibility
 - IE11 / Edge
 - All latest versions of
   - Safari
-  - Firefox
+  - Firefox (>=35)
   - Chrome

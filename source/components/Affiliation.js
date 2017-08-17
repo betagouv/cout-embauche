@@ -3,7 +3,7 @@ import './Affiliation.css'
 
 export default () =>
 	<section id="affiliation">
-		<a href="https://openfisca.fr" target="_blank">
+		<a href="https://openfisca.fr?utm_source=affiliation&utm_campaign=widget_embauche" target="_blank">
 			<img alt="OpenFisca" src="https://www.openfisca.fr/hotlinks/logo-openfisca.svg" />
 		</a>
     <a href="https://beta.gouv.fr" target="_blank">

@@ -1,3 +1,5 @@
+Attention : the legal rules behind this module will be maintained for a short while, but the interface will not and no new simulation features will be added here. See this [project](https://github.com/sgmap/syso) for the new simulators.  
+
 A widget to estimate the price of hiring in France : social security contributions minus national exemptions.
 
 > Module Web d'estimation du prix d'une embauche en France. Ce document est technique, et donc rédigé en anglais pour favoriser la réutilisation.

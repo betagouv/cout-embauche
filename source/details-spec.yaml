@@ -170,8 +170,6 @@ Détails:
       Autres allègements employeur:
         Jeune entreprise innovante:
           employeur: exoneration_cotisations_employeur_jei
-        Exonérations pour l'apprentissage:
-          employeur: exoneration_cotisations_employeur_apprenti
 
       ####################################################################################
 

@@ -315,8 +315,13 @@ fieldset > .ignore {
 	margin: .1em;
 }
 
-.alternance {
-	font-weight: bold
+.infoNonCDI {
+	margin: 3em auto;
+	font-size: 140%;
+}
+.infoNonCDI a {
+	color: inherit;
+	font-weight: 600;
 }
 
 .error {

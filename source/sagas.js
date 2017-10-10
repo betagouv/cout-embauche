@@ -21,7 +21,7 @@ function* handleFormChange(e) {
 	let {meta} = e,
 		field = meta && meta.field
 
-	if (field && !steps[field].adapt) {
+	if (field && (!steps[field] || !steps[field].adapt)) {
 		// This change doesn't impact the Web API call
 		return
 	}

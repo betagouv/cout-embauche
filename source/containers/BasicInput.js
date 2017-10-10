@@ -45,6 +45,7 @@ export default class BasicInput extends Component {
 				&nbsp; souhaite embaucher un·e
 				<Field component="select" name="typeEmployé" >
 					<option value="CDI">CDI</option>
+					<option value="CDD">CDD</option>
 					<option value="apprenti">apprenti·e</option>
 				</Field>
 

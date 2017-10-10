@@ -11,7 +11,7 @@ let selector = formValueSelector('basicInput')
 @connect(state => ({
 	activeSection: state.activeSections.top,
 	showAdvanced: state.activeSections.advanced,
-	infoAlternance: selector(state, 'typeEmployé') == 'apprenti',
+	infoNonCDI: selector(state, 'typeEmployé') === 'CDI' ? false : selector(state, 'typeEmployé'),
 	inputTouched: state.form.basicInput && (
 		state.form.basicInput.active || state.form.basicInput.anyTouched),
 	inputChanged: state.inputChanged
@@ -26,7 +26,7 @@ export default class Widget extends React.Component {
 	render() {
 		let {
 			activeSection, showAdvanced, toggleAdvancedSection,
-			inputTouched, inputChanged, infoAlternance
+			inputTouched, inputChanged, infoNonCDI
 		} = this.props
 		return (
 				<div className="widget">
@@ -36,9 +36,10 @@ export default class Widget extends React.Component {
 						toggleAdvancedSection={toggleAdvancedSection}
 						inputTouched={inputTouched}
 						inputChanged={inputChanged}
-						infoAlternance={infoAlternance}
+						infoNonCDI={infoNonCDI}
 					/>
-					<Results showDetails={activeSection == 'details'}/>
+					{!infoNonCDI &&
+						<Results showDetails={activeSection == 'details'}/> }
 					<Affiliation />
 				</div>
 		)

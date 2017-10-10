@@ -4,36 +4,52 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 export default ({
 	showAdvanced, toggleAdvancedSection,
 	inputTouched, inputChanged,
-	infoAlternance, themeColours: {textColourOnWhite},
+	infoNonCDI, themeColours: {textColourOnWhite},
 	pending
 }) =>
 <section className="info-zone">
-	{ !showAdvanced &&
-		<ReactCSSTransitionGroup
-			id="user-next-action"
-			component="div"
-			transitionName="user-next-action-animation"
-			transitionEnterTimeout={10000}
-			transitionLeaveTimeout={700} >
-			{ !inputTouched && !inputChanged &&
-				<div key="1" className="input-tip">
-					<p>Renseignez votre situation ci-dessus</p>
-				</div>
+	{	infoNonCDI ?
+		<p className="infoNonCDI" style={{color: textColourOnWhite}}>
+			{ infoNonCDI == 'apprenti' && <span>
+					Pour une simulation d'embauche en apprentissage, rendez-vous sur <a href="https://www.alternance.emploi.gouv.fr/portail_alternance/jcms/hl_6238/simulateur-alternant" target="_blank">
+						le simulateur du portail de l'alternance
+					</a>.
+				</span>
 			}
-			{ inputChanged &&
-				<div key="2" className="input-tip">
-					<p>Votre estimation est mise à jour à chaque changement</p>
-					<p>Pour des résultats plus précis,&nbsp;
-						<a href="#" style={{color: textColourOnWhite}}
-						id="show-advanced"
-						onClick={toggleAdvancedSection}
-						title="Allez plus loin dans l'estimation avec quelques questions supplémentaires">
-						affinez votre situation
-					</a> (moins de 10 questions)
-					</p>
-				</div>
+			{ infoNonCDI == 'CDD' && <span>
+					Pour une simulation d'embauche en CDD, rendez-vous sur <a href="https://embauche.beta.gouv.fr/simu/surco%C3%BBt-CDD/intro" target="_blank">
+						notre simulateur en version <em>beta</em>
+					</a>.
+				</span>
 			}
-		</ReactCSSTransitionGroup>
+		</p>
+	: (
+		!showAdvanced &&
+			<ReactCSSTransitionGroup
+				id="user-next-action"
+				component="div"
+				transitionName="user-next-action-animation"
+				transitionEnterTimeout={10000}
+				transitionLeaveTimeout={700} >
+				{ !inputTouched && !inputChanged &&
+					<div key="1" className="input-tip">
+						<p>Renseignez votre situation ci-dessus</p>
+					</div>
+				}
+				{ inputChanged &&
+					<div key="2" className="input-tip">
+						<p>Votre estimation est mise à jour à chaque changement</p>
+						<p>Pour des résultats plus précis,&nbsp;
+							<a href="#" style={{color: textColourOnWhite}}
+							id="show-advanced"
+							onClick={toggleAdvancedSection}
+							title="Allez plus loin dans l'estimation avec quelques questions supplémentaires">
+							affinez votre situation
+						</a> (moins de 10 questions)
+						</p>
+					</div>
+				}
+			</ReactCSSTransitionGroup>)
 	}
 	{ showAdvanced &&
 		<a href="#"
@@ -42,13 +58,6 @@ export default ({
 		title="Réinitialiser les questions supplémentaires">
 		Réinitialiser
 		</a>
-	}
-	{	infoAlternance &&
-		<p className="alternance">
-			Note: pour une simulation plus fiable du cas de l'apprentissage, rendez-vous sur <a href="https://www.alternance.emploi.gouv.fr/portail_alternance/jcms/hl_6238/simulateur-alternant" target="_blank">
-				le simulateur du portail de l'alternance
-			</a>
-		</p>
 	}
 	{
 		typeof pending == 'string' &&

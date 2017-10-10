@@ -114,8 +114,6 @@ Aides employeur immédiates:
     name: Réduction de cotisation d’allocations familiales
   - key: exoneration_cotisations_employeur_jei
     name: Jeune entreprise innovante
-  - key: exoneration_cotisations_employeur_apprenti
-    name: Exonérations pour l'apprentissage
 
 Aides employeur différées:
 

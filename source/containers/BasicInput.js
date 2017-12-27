@@ -66,7 +66,7 @@ export default class BasicInput extends Component {
 						<em>(min. {salaireMinimum}€)</em>, dont primes.
 					</span>
 
-					<Field component="select" name="typeSalaireEntré" >
+					<Field component="select" name="typeSalaireEntré" disabled>
 						<option value="brut">brut</option>
 						<option value="net">net</option>
 					</Field>

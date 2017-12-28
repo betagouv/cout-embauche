@@ -1,12 +1,13 @@
-Attention : the legal rules behind this module will be maintained for a short while, but the interface will not and no new simulation features will be added here. See this [project](https://github.com/sgmap/syso) for the new simulators.  
+:warning: Attention : Les règles législatives qui font tourner ce module seront mises à jour pendant un moment, mais l'interface ne va plus évoluer. Les travaux sont continués [ici](https://github.com/sgmap/syso).
 
-A widget to estimate the price of hiring in France : social security contributions minus national exemptions.
+> The legal rules behind this module will be maintained for a short while, but the interface will not and no new simulation features will be added here. See this [project](https://github.com/sgmap/syso) for the new simulators.
 
-> Module Web d'estimation du prix d'une embauche en France. Ce document est technique, et donc rédigé en anglais pour favoriser la réutilisation.
+Module Web d'estimation du prix d'une embauche en France. Ce document est technique, et donc rédigé en anglais pour favoriser la réutilisation.
 
-**[Online demo](https://embauche.beta.gouv.fr/simulateur/)**.
+> A widget to estimate the price of hiring in France : social security contributions minus national exemptions.
 
-If you want to create your own specific interface, have a look at the [API documentation](https://embauche.beta.gouv.fr/api-prelevements-sociaux).
+
+**[demo](https://embauche.beta.gouv.fr/modules/v2/)**.
 
 
 Usage
@@ -15,8 +16,8 @@ Usage
 Include this line where you want the widget to appear in your page:
 
 ```html
- <script id="script-simulateur-embauche" src="dist/simulateur.js" data-couleur="#4A89DC"></script>
- ```
+<script id="script-simulateur-embauche" src="dist/simulateur.js" data-couleur="#4A89DC"></script>
+```
 
 It will add an iframe to your page, containing the simulation interface.
 
@@ -88,6 +89,6 @@ Browser compatibility
 
 - IE11 / Edge
 - All latest versions of
-  - Safari
-  - Firefox (>=35)
-  - Chrome
+ - Safari
+ - Firefox (>=35)
+ - Chrome

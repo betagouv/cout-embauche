@@ -151,11 +151,6 @@ Détails:
             explanation: Décroît en fonction du pourcentage de l'effectif en apprentissage.
             clarifier: pourcentage_alternants
 
-          Cotisation pénibilité:
-            employeur: penibilite
-            explanation: L'employeur est redevable d'une cotisation de pénibilité additionnelle pour les salariés exposés à un ou des facteurs de pénibilité.
-            clarifier: penibilite
-
           Taxe sur les salaires:
             employeur: taxe_salaires
             explanation: Montant non calculé, sauf pour les associations à but non lucratif. Taxe due notamment par les entreprises non assujetties à la TVA.

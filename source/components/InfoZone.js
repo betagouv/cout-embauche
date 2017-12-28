@@ -17,8 +17,8 @@ export default ({
 				</span>
 			}
 			{ infoNonCDI == 'CDD' && <span>
-					Pour une simulation d'embauche en CDD, rendez-vous sur <a href="https://embauche.beta.gouv.fr/simu/surco%C3%BBt-CDD/intro" target="_blank">
-						notre simulateur en version <em>beta</em>
+					Pour une simulation d'embauche en CDD, rendez-vous sur <a href="https://embauche.beta.gouv.fr" target="_blank">
+						la nouvelle version du simulateur
 					</a>.
 				</span>
 			}
